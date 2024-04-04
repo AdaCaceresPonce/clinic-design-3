@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Service;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +18,23 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin',
+            'email' => 'admin@mail.com',
+            'password' => bcrypt('12345678'),
         ]);
+
+        Storage::deleteDirectory('services/card_images');
+        Storage::deleteDirectory('services/cover_images');
+        Storage::deleteDirectory('professionals');
+
+        Storage::makeDirectory('services/card_images');
+        Storage::makeDirectory('services/cover_images');
+        Storage::makeDirectory('professionals');
+
+
+        Service::factory(8)->create();
+        $this->call(SpecialtySeeder::class);
+        $this->call(ProfessionalSeeder::class);
+
     }
 }
