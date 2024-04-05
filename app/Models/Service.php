@@ -18,4 +18,9 @@ class Service extends Model
         'cover_image_path',
         'additional_info',
     ];
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
+
 }
