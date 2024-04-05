@@ -9,6 +9,10 @@ class Specialty extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function professionals(){
         return $this->belongsToMany('App\Models\Professional');
     }
