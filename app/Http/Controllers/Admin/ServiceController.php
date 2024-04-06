@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -13,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::orderBy('id', 'desc')->paginate(8);
+        $services = Service::orderBy('id', 'desc')->paginate(6);
         
         return view('admin.services.index', compact('services'));
     }
@@ -31,7 +32,39 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'unique:services,slug',
+            'small_description' => 'required',
+            'long_description' => 'required',
+            'card_image_path' => 'required|image|max:2048',
+            'cover_image_path' => 'required|image|max:1024',
+        ],[],[
+            'name' => 'nombre',
+            'slug' => 'slug',
+            'small_description' => 'descripción para la carta',
+            'long_description' => 'descripción general del servicio',
+            'card_image_path' => 'imagen para la carta',
+            'cover_image_path' => 'imagen de portada',
+        ]);
+
+        $service = [];
+        $service = $request->all();
+        $service['slug'] = Str::slug($request->input('name'));
+        $service['card_image_path'] = $request->file('card_image_path')->store('services/card_images');
+        $service['cover_image_path'] = $request->file('cover_image_path')->store('services/cover_images');
+
+        Service::create($service);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Servicio creado correctamente'
+        ]);
+
+        return redirect()->route('admin.services.index');
+
     }
 
     /**
