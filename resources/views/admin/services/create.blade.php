@@ -31,7 +31,7 @@
                                     onchange="previewImage(1);" />
                             </label>
                         </div>
-                        <img id="uploadPreview1" class="object-contain w-auto max-h-45 md:h-auto md:w-full rounded-xl"
+                        <img id="uploadPreview1" class="object-contain w-full max-h-48 md:max-h-[362px] rounded-xl"
                             src="{{ asset('img/no-image.jpg') }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
@@ -52,7 +52,7 @@
                                     onchange="previewImage(2);" />
                             </label>
                         </div>
-                        <img id="uploadPreview2" class="object-contain w-auto max-h-45 md:h-auto md:w-full rounded-xl"
+                        <img id="uploadPreview2" class="object-contain w-full max-h-48 md:max-h-[362px] rounded-xl"
                             src="{{ asset('img/no-image.jpg') }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
