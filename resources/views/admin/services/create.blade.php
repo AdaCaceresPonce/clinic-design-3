@@ -14,6 +14,7 @@
 
     <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        
         <div class="card-gray mx-auto max-w-[1230px]">
             {{-- Imagenes --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
@@ -32,7 +33,8 @@
                             </label>
                         </div>
                         <img id="uploadPreview1"
-                            class="object-contain w-full max-h-48 md:max-h-[365px] md:min-h-[365px] border-[2px] bg-white border-blue-400 rounded-xl"
+                            class="object-contain w-full max-h-48 md:max-h-[365px] md:min-h-[365px] border-[2px] bg-white border-blue-400 rounded-xl
+                            @error('card_image_path') border-red-500 @enderror"
                             src="{{ asset('img/no-image.jpg') }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
@@ -54,7 +56,8 @@
                             </label>
                         </div>
                         <img id="uploadPreview2"
-                            class="object-contain w-full max-h-48 md:max-h-[365px] md:min-h-[365px] border-[2px] bg-white border-blue-400 rounded-xl"
+                            class="object-contain w-full max-h-48 md:max-h-[365px] md:min-h-[365px] border-[2px] bg-white border-blue-400 rounded-xl
+                            @error('cover_image_path') border-red-500 @enderror"
                             src="{{ asset('img/no-image.jpg') }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}

@@ -35,7 +35,7 @@ class ServiceController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'slug' => 'unique:services,slug',
+            'slug' => 'unique:services',
             'small_description' => 'required',
             'long_description' => 'required',
             'card_image_path' => 'required|image|max:2048',
@@ -80,7 +80,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('admin.services.edit', compact('service'));
     }
 
     /**
@@ -88,7 +88,49 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+
+        $request['slug'] = Str::slug($request->input('name'));
+
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'unique:services,slug,'. $service->id,
+            'small_description' => 'required',
+            'long_description' => 'required',
+            'card_image_path' => 'image|max:2048',
+            'cover_image_path' => 'image|max:1024',
+        ],[],[
+            'name' => 'nombre',
+            'slug' => 'slug',
+            'small_description' => 'descripción para la carta',
+            'long_description' => 'descripción general del servicio',
+            'card_image_path' => 'imagen para la carta',
+            'cover_image_path' => 'imagen de portada',
+        ]);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Familia actualizada correctamente'
+        ]);
+
+        
+        $service->update($request->except(['cover_image_path', 'card_image_path']));
+
+        if ($request->hasFile('card_image_path')) {
+            $service->update(['card_image_path' => $request->file('card_image_path')->store('services/card_images')]);
+        }
+
+        if ($request->hasFile('cover_image_path')) {
+            $service->update(['cover_image_path' => $request->file('cover_image_path')->store('services/cover_images')]);
+        }
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Servicio actualizado correctamente'
+        ]);
+
+        return redirect()->route('admin.services.edit', compact('service'));
     }
 
     /**
