@@ -20,6 +20,13 @@
             'route' => route('admin.specialties.index'),
             'active' => request()->routeIs('admin.specialties.*'),
         ],
+        [
+            //Profesionales
+            'icon' => 'fa-solid fa-user-doctor',
+            'name' => 'Profesionales',
+            'route' => route('admin.professionals.index'),
+            'active' => request()->routeIs('admin.professionals.*'),
+        ],
     ];
 @endphp
 
