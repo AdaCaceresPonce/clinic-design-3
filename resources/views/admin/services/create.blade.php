@@ -12,6 +12,8 @@
     ],
 ]">
 
+    <x-validation-errors class="mb-4"/>
+
     <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
@@ -19,7 +21,7 @@
             {{-- Imagenes --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <div class="col lg:mb-0">
-                    <x-label class="mb-2 text-lg">
+                    <x-label class="mb-2 text-[15px] font-black">
                         Imagen de la tarjeta:
                     </x-label>
                     <figure class="relative">
@@ -38,11 +40,11 @@
                             src="{{ asset('img/no-image.jpg') }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
-                    <x-input-error for="card_image_path" />
+                    <x-input-error class="mt-1" for="card_image_path" />
                 </div>
 
                 <div class="col">
-                    <x-label class="mb-2">
+                    <x-label class="mb-2 text-[15px] font-black">
                         Imagen de portada:
                     </x-label>
                     <figure class="relative">
@@ -61,13 +63,13 @@
                             src="{{ asset('img/no-image.jpg') }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
-                    <x-input-error for="cover_image_path" />
+                    <x-input-error class="mt-1" for="cover_image_path" />
                 </div>
             </div>
 
             {{-- Campos --}}
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Nombre:
                 </x-label>
                 <x-input class="w-full" placeholder="Ingrese el nombre del servicio" name="name"
@@ -76,7 +78,7 @@
             </div>
 
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Descripción para la tarjeta:
                 </x-label>
                 <textarea name="small_description"
@@ -87,7 +89,7 @@
             </div>
 
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Descripción del servicio:
                 </x-label>
                 <textarea name="long_description"
@@ -98,7 +100,7 @@
             </div>
 
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Información adicional del servicio:
                 </x-label>
                 <textarea name="additional_info"

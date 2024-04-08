@@ -22,7 +22,7 @@
             @foreach ($services as $service)
                 <div class="max-w-full bg-white border-[2px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
                     
-                    <img class="object-cover w-full h-[309px] sm:h-[222px] md:h-[200px] xl:h-[228px] 2xl:h-[288px]" src="{{ Storage::url($service->card_image_path) }}" alt="" />
+                    <img class="object-cover w-full h-[309px] sm:h-[222px] md:h-[190px] xl:h-[228px] 2xl:h-[288px]" src="{{ Storage::url($service->card_image_path) }}" alt="" />
 
                     <div class="p-5">
                         <h5 class="mb-4 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
