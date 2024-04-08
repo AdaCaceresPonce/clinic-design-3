@@ -7,10 +7,18 @@
             'active' => request()->routeIs('admin.dashboard'),
         ],
         [
+            //Servicios
             'icon' => 'fa-solid fa-tooth',
             'name' => 'Servicios',
             'route' => route('admin.services.index'),
             'active' => request()->routeIs('admin.services.*'),
+        ],
+        [
+            //Especialidades
+            'icon' => 'fa-solid fa-briefcase-medical',
+            'name' => 'Especialidades',
+            'route' => route('admin.specialties.index'),
+            'active' => request()->routeIs('admin.specialties.*'),
         ],
     ];
 @endphp
