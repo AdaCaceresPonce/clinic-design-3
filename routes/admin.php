@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SpecialtyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,3 +9,4 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::resource('services', ServiceController::class);
+Route::resource('specialties', SpecialtyController::class);
