@@ -19,7 +19,7 @@
             {{-- Imagenes --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <div class="col lg:mb-0">
-                    <x-label class="mb-2 text-lg">
+                    <x-label class="mb-2 text-[15px] font-black">
                         Imagen de la tarjeta:
                     </x-label>
                     <figure class="relative">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col">
-                    <x-label class="mb-2">
+                    <x-label class="mb-2 text-[15px] font-black">
                         Imagen de portada:
                     </x-label>
                     <figure class="relative">
@@ -67,7 +67,7 @@
 
             {{-- Campos --}}
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Nombre:
                 </x-label>
                 <x-input class="w-full" placeholder="Ingrese el nombre del servicio" name="name"
@@ -76,7 +76,7 @@
             </div>
 
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Descripción para la tarjeta:
                 </x-label>
                 <textarea name="small_description"
@@ -87,7 +87,7 @@
             </div>
 
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Descripción del servicio:
                 </x-label>
                 <textarea name="long_description"
@@ -98,7 +98,7 @@
             </div>
 
             <div class="mb-4">
-                <x-label class="mb-1">
+                <x-label class="mb-1 text-[15px] font-black">
                     Información adicional del servicio:
                 </x-label>
                 <textarea name="additional_info"
@@ -107,21 +107,54 @@
             </div>
 
             <div class="flex justify-end">
-                <x-button>
+                {{-- Eliminar --}}
+                <x-danger-button onclick="confirmDelete()">
+                    Eliminar
+                </x-danger-button>
+
+                <x-button class="ml-2">
                     Actualizar
                 </x-button>
             </div>
 
         </div>
     </form>
+
+    {{-- Formulario que será enviado al presionar "Eliminar" --}}
+    <form id="delete-form" action="{{ route('admin.services.destroy', $service) }}" method="POST">
+        @csrf
+        @method('DELETE')
+    </form>
+
     @push('js')
         <script>
+            //Previsualizar imagen
             function previewImage(nb) {
                 var reader = new FileReader();
                 reader.readAsDataURL(document.getElementById('uploadImage' + nb).files[0]);
                 reader.onload = function(e) {
                     document.getElementById('uploadPreview' + nb).src = e.target.result;
                 };
+            }
+
+            //Alerta de confirmar eliminar
+            function confirmDelete() {
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás revertir esto!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Sí, borralo!",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form').submit();
+                    }
+                    
+                });
+                
             }
         </script>
     @endpush

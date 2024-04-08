@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ServiceController extends Controller
@@ -33,25 +34,36 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
 
+        $request['slug'] = Str::slug($request->input('name'));
+
         $request->validate([
             'name' => 'required',
             'slug' => 'unique:services',
             'small_description' => 'required',
             'long_description' => 'required',
-            'card_image_path' => 'required|image|max:2048',
+            'card_image_path' => 'required|image|max:1024',
             'cover_image_path' => 'required|image|max:1024',
-        ],[],[
+        ],[
+            'name.required' => 'El nombre del servicio es obligatorio.',
+            'small_description.required' => 'La descripcion para la tarjeta es necesaria.',
+            'long_description.required' => 'La descripcion del servicio es necesaria.',
+            'slug.unique' => 'Ya hay un servicio registrado con ese nombre.',
+            'card_image_path.required' => 'La imagen para la tarjeta es obligatoria.',
+            'card_image_path.image' => 'El archivo para la tarjeta debe ser una imagen.',
+            'cover_image_path.required' => 'La imagen de portada es obligatoria.',
+            'cover_image_path.image' => 'El archivo para la portada debe ser una imagen.',
+        ],[
             'name' => 'nombre',
             'slug' => 'slug',
             'small_description' => 'descripción para la carta',
             'long_description' => 'descripción general del servicio',
-            'card_image_path' => 'imagen para la carta',
+            'card_image_path' => 'imagen para la tarjeta',
             'cover_image_path' => 'imagen de portada',
         ]);
 
         $service = [];
         $service = $request->all();
-        $service['slug'] = Str::slug($request->input('name'));
+        // $service['slug'] = Str::slug($request->input('name'));
         $service['card_image_path'] = $request->file('card_image_path')->store('services/card_images');
         $service['cover_image_path'] = $request->file('cover_image_path')->store('services/cover_images');
 
@@ -138,6 +150,17 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        Storage::delete($service->card_image_path);
+        Storage::delete($service->cover_image_path);
+
+        $service->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Realizado!',
+            'text' => 'Servicio eliminado correctamente.'
+        ]);
+
+        return redirect()->route('admin.services.index');
     }
 }
