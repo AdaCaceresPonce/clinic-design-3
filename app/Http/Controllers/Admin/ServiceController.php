@@ -119,13 +119,6 @@ class ServiceController extends Controller
             'cover_image_path' => 'imagen de portada',
         ]);
 
-        session()->flash('swal', [
-            'icon' => 'success',
-            'title' => '¡Bien hecho!',
-            'text' => 'Familia actualizada correctamente'
-        ]);
-
-        
         $service->update($request->except(['cover_image_path', 'card_image_path']));
 
         if ($request->hasFile('card_image_path')) {

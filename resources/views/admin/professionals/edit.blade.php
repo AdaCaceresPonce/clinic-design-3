@@ -34,7 +34,7 @@
                             </label>
                         </div>
                         <img id="uploadPreview1"
-                            class="object-contain w-full max-h-48 md:max-h-[660.6px] md:min-h-[660.6px] border-[2px] bg-white border-blue-400 rounded-xl
+                            class="object-contain w-full max-h-96 md:max-h-[660.6px] md:min-h-[660.6px] border-[2px] bg-white border-blue-400 rounded-xl
                     @error('photo_path') border-red-500 @enderror"
                             src="{{ Storage::url($professional->photo_path) }}" alt="">
                     </figure>
@@ -66,10 +66,10 @@
                         <select
                             class="w-full select-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                             name="specialties[]" multiple="multiple">
-                            <option value="" disabled="disabled">Selecciona una o más especialidades</option>
+                            {{-- <option value="" disabled="disabled">Selecciona una o más especialidades</option> --}}
                             @foreach ($specialties as $specialty)
                                 <option value="{{ $specialty->id }}"
-                                    {{ (in_array($specialty->id, old('specialties', [])) || $doctor->specialties->contains('id', $specialty->id)) ? 'selected' : '' }}>
+                                    {{ (in_array($specialty->id, old('specialties', [])) || $professional->specialties->contains('id', $specialty->id)) ? 'selected' : '' }}>
                                     {{ $specialty->name }}
                                 </option>
                             @endforeach
@@ -126,7 +126,7 @@
     </form>
 
     {{-- Formulario que será enviado al presionar "Eliminar" --}}
-    <form id="delete-form" action="{{ route('admin.professional.destroy', $professional) }}" method="POST">
+    <form id="delete-form" action="{{ route('admin.professionals.destroy', $professional) }}" method="POST">
         @csrf
         @method('DELETE')
     </form>
@@ -141,6 +141,13 @@
                     document.getElementById('uploadPreview' + nb).src = e.target.result;
                 };
             }
+
+            $(document).ready(function() {
+                $('.select-multiple').select2({
+                    placeholder: 'Selecciona una o más especialidades',
+                    width: '100%',
+                });
+            });
 
             //Alerta de confirmar eliminar
             function confirmDelete() {
@@ -164,4 +171,5 @@
         </script>
     @endpush
 
+    
 </x-admin-layout>

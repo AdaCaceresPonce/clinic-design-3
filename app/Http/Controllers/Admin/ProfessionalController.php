@@ -88,7 +88,8 @@ class ProfessionalController extends Controller
      */
     public function edit(Professional $professional)
     {
-        return view('admin.prossionals.edit', compact('professional'));
+        $specialties = Specialty::all();
+        return view('admin.professionals.edit', compact('professional', 'specialties'));
     }
 
     /**
@@ -114,7 +115,33 @@ class ProfessionalController extends Controller
             'photo_path.image' => 'El archivo cargado debe ser una imagen.',
         ]);
 
-        
+        $specialties = $request->input('specialties', []);
+        $currentSpecialties = $professional->specialties->pluck('id')->toArray();
+
+        // Identifica las especialidades a adjuntar (nuevas)
+        $newSpecialties = array_diff($specialties, $currentSpecialties);
+        foreach ($newSpecialties as $specialtyId) {
+            $professional->specialties()->attach($specialtyId);
+        }
+        // Identifica las especialidades a desvincular (eliminadas)
+        $removedSpecialties = array_diff($currentSpecialties, $specialties);
+        foreach ($removedSpecialties as $specialtyId) {
+            $professional->specialties()->detach($specialtyId);
+        }
+
+        $professional->update($request->except(['photo_path']));
+
+        if ($request->hasFile('photo_path')) {
+            $professional->update(['photo_path' => $request->file('photo_path')->store('professionals')]);
+        }
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Datos del profesional actualizados correctamente'
+        ]);
+
+        return redirect()->route('admin.professionals.edit', compact('professional'));
     }
 
     /**
