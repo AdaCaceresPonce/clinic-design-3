@@ -79,7 +79,7 @@
                         </x-label>
                         <textarea name="description"
                             class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                            placeholder="Ingrese la descripción completa del profesional" name="">{{ old('description') }}</textarea>
+                            placeholder="Ingrese la descripción completa del profesional">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="mb-4">

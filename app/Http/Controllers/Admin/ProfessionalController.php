@@ -49,7 +49,6 @@ class ProfessionalController extends Controller
             'lastname.required' => 'El apellido del profesional es obligatorio.',
             'description.required' => 'La descripcion del profesional es requerido.',
             'specialties.required' => 'Selecciona al menos una especialidad.',
-            'slug.unique' => 'Ya hay un servicio registrado con ese nombre.',
             'photo_path.required' => 'La foto del profesional es necesaria.',
             'photo_path.image' => 'El archivo cargado debe ser una imagen.',
         ]);
@@ -89,7 +88,7 @@ class ProfessionalController extends Controller
      */
     public function edit(Professional $professional)
     {
-        //
+        return view('admin.prossionals.edit', compact('professional'));
     }
 
     /**
@@ -97,7 +96,25 @@ class ProfessionalController extends Controller
      */
     public function update(Request $request, Professional $professional)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+            'description' => 'required',
+            'photo_path' => 'image|max:1024',
+            'specialties' => 'required',
+            'facebook_link' => 'nullable|url',
+            'linkedin_link' => 'nullable|url',
+            'twitter_link' => 'nullable|url',
+            'instagram_link' => 'nullable|url',
+        ],[
+            'name.required' => 'El nombre del profesional es obligatorio.',
+            'lastname.required' => 'El apellido del profesional es obligatorio.',
+            'description.required' => 'La descripcion del profesional es requerido.',
+            'specialties.required' => 'Selecciona al menos una especialidad.',
+            'photo_path.image' => 'El archivo cargado debe ser una imagen.',
+        ]);
+
+        
     }
 
     /**
