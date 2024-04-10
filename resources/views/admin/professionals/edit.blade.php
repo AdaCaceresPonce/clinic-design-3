@@ -11,6 +11,7 @@
         'name' => $professional->name,
     ],
 ]">
+    <x-validation-errors class="mb-4" />
 
     <form action="{{ route('admin.professionals.update', $professional) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -47,7 +48,8 @@
                         <x-label class="mb-1 text-[15px] font-black">
                             Nombre:
                         </x-label>
-                        <x-input class="w-full " placeholder="Ingrese el nombre del profesional" name="name"
+                        <x-input class="w-full"
+                            placeholder="Ingrese el nombre del profesional" name="name"
                             value="{{ old('name', $professional->name) }}" />
                     </div>
 
@@ -69,7 +71,7 @@
                             {{-- <option value="" disabled="disabled">Selecciona una o más especialidades</option> --}}
                             @foreach ($specialties as $specialty)
                                 <option value="{{ $specialty->id }}"
-                                    {{ (in_array($specialty->id, old('specialties', [])) || $professional->specialties->contains('id', $specialty->id)) ? 'selected' : '' }}>
+                                    {{ in_array($specialty->id, old('specialties', [])) || $professional->specialties->contains('id', $specialty->id) ? 'selected' : '' }}>
                                     {{ $specialty->name }}
                                 </option>
                             @endforeach
@@ -118,7 +120,10 @@
             </div>
 
             <div class="flex justify-end">
-                <x-button>
+                <x-danger-button onclick="confirmDelete()">
+                    Eliminar
+                </x-danger-button>
+                <x-button class="ml-2">
                     Actualizar Datos
                 </x-button>
             </div>
@@ -171,5 +176,5 @@
         </script>
     @endpush
 
-    
+
 </x-admin-layout>

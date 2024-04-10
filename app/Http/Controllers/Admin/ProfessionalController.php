@@ -7,6 +7,7 @@ use App\Models\Professional;
 use App\Models\Specialty;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfessionalController extends Controller
 {
@@ -149,6 +150,16 @@ class ProfessionalController extends Controller
      */
     public function destroy(Professional $professional)
     {
-        //
+        Storage::delete($professional->photo_path);
+
+        $professional->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Realizado!',
+            'text' => 'Profesional eliminado correctamente.'
+        ]);
+
+        return redirect()->route('admin.professionals.index');
     }
 }
