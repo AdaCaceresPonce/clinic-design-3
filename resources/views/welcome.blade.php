@@ -7,4 +7,5 @@
             </div>
         </x-container>
     </section>
+
 </x-app-layout>

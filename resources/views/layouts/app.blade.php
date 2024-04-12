@@ -22,77 +22,19 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased lg:overflow-y-auto" x-data="{
+    open: false,
+}"
+    :class="{
+        'overflow-y-hidden': open
+    }">
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
         {{-- @livewire('navigation-menu') --}}
 
-        <div>
-            <header class="bg-white border-b-2 border-b-[#C5C5C5]">
-                <x-container class="py-2 px-4">
 
-                    <div class="flex justify-between items-center space-x-4">
-
-                        <button class="text-2xl block lg:hidden">
-                            <i class="fas fa-bars"></i>
-                        </button>
-
-                        {{-- Logo empresa --}}
-                        <div class="flex">
-                            <a href="/" class="flex items-center">
-                                <img class="size-[52px] object-cover" src="{{ asset('img/logo-navbar.png') }}"
-                                    alt="">
-                                <h1 class="ml-2 text-xl font-black">Clínica Dental</h1>
-                            </a>
-                        </div>
-                        {{-- Enlaces --}}
-                        <div class="flex-1 hidden lg:block">
-                            <div class="flex justify-center space-x-8 h-full">
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]">Inicio</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]">Nosotros</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]">Servicios</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]">Profesionales</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]">Contacto</a>
-                            </div>
-                        </div>
-                        <div class="hidden lg:block">
-                            <button class="text-base text-white px-7 py-2 bg-blue-600 rounded-xl">
-                                Intranet
-                            </button>
-                        </div>
-                    </div>
-
-                </x-container>
-
-                {{-- <nav id="navigation-menu"
-                    class="bg-neutral-700 bg-opacity-25 w-full absolute">
-                    <div class="bg-white h-full overflow-y-auto">
-                        <a href="" class="text-base font-semibold hover:text-[#0069F4]"">Inicio</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]"">Nosotros</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]"">Servicios</a>
-                                <a href=""
-                                    class="text-base font-semibold hover:text-[#0069F4]"">Profesionales</a>
-                                <a href="" class="text-base font-semibold hover:text-[#0069F4]"">Contacto</a>
-                    </div>
-                </nav> --}}
-            </header>
-
-            {{-- <div class="fixed top-0 left-0 inset-0 bg-black bg-opacity-25 z-10">
-
-                </div>
-                <div class="fixed top-0 left-0 z-20">
-                    <div class="w-80 h-screen bg-white">
-
-                        <div class="px-4 py-3 bg-white border-b-2 border-b-[#C5C5C5]">
-                            <span class="text-lg">
-                                Hola
-                            </span>
-                        </div>
-
-                    </div>
-                </div> --}}
-        </div>
+        @include('layouts.partials.app.navbar')
 
         <!-- Page Heading -->
         @if (isset($header))
