@@ -1,4 +1,4 @@
-<header class="bg-white border-b-2 border-[#C5C5C5] sticky top-0">
+<header class="bg-white border-b-2 border-[#C5C5C5] sticky top-0 z-50">
     <x-container class="py-2 px-4">
 
         <div class="flex justify-between items-center">
@@ -39,7 +39,7 @@
         style="display: none;">
 
         <div x-on:click.away="open=false" class="bg-white h-full w-6/12 md:w-5/12 overflow-y-auto mt-[1.9px]">
-            <ul>
+            <ul class="mt-2">
                 <li class="py-3 px-4 sm:px-6">
                     <a href="" class="text-base font-semibold hover:text-[#0069F4]">Inicio</a>
                 </li>
