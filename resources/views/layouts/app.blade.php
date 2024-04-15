@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    @stack('css')
+
     {{-- FontAwesome --}}
     <script src="https://kit.fontawesome.com/c5d68cbda8.js" crossorigin="anonymous"></script>
 
@@ -22,7 +24,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased lg:overflow-y-auto" x-data="{
+<body class="font-sans antialiased lg:overflow-y-auto bg-white" x-data="{
     open: false,
 }"
     :class="{
@@ -30,7 +32,7 @@
     }">
     <x-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-white">
         {{-- @livewire('navigation-menu') --}}
 
 
@@ -54,6 +56,8 @@
     @stack('modals')
 
     @livewireScripts
+
+    @stack('js')
 </body>
 
 </html>
