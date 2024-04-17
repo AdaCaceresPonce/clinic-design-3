@@ -28,7 +28,7 @@
                             src="{{ Storage::url($service->card_image_path) }}" alt="" />
 
                         <div class="p-5">
-                            <h5 class="mb-4 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <h5 class="mb-4 text-lg sm:text-xl font-bold min-h-[56px] line-clamp-2 tracking-tight text-gray-900 dark:text-white">
                                 {{ $service->name }}
                             </h5>
                             <a href="{{ route('admin.services.edit', $service) }}"

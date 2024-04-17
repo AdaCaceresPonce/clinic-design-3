@@ -33,7 +33,7 @@
     </section>
 
     <section>
-        <x-container class="px-4 py-24 lg:py-36">
+        <x-container class="px-4 pt-24 pb-20">
             <div class="flex items-center flex-wrap-reverse">
                 <div class="w-full lg:w-1/2">
                     <img class="h-[450px] sm:h-[550px] lg:h-[670px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
@@ -79,40 +79,47 @@
 
     {{-- Servicios --}}
     <section>
-        <x-container class="px-4 pb-24 lg:pb-36 lg:pt-10 flex-col">
+        <x-container class="px-4 py-20 flex-col">
             {{-- Titulo --}}
             <div class="mb-10 px-4 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
-                    <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                    <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         Nuestros <span class="text-[#0075FF]">Servicios Dentales.</span>
                     </p>
                 </div>
                 <div>
-                    <p class="text-base sm:text-lg lg:text-2xl mt-4">
+                    <p class="text-base sm:text-lg lg:text-xl mt-3">
                         Descubre los servicios que ponemos a tu disposición, siempre con la mejor atención médica
                         dental.
                     </p>
                 </div>
             </div>
             {{-- Slider --}}
-            <div class="flex justify-center align-middle">
-                <div class="card__container swiper pb-14">
-                    <div class="card__content lg:px-6">
+            <div class="flex justify-center align-middle mb-5">
+                <div class="card__container swiper pb-14 px-10">
+                    <div class="card__content rounded-xl">
                         <div class="swiper-wrapper">
                             @foreach ($services as $service)
-                                <article class="card__article swiper-slide border-[2px] border-[#1376F8]">
-                                    <div class="card__image">
+                                <article class="card__article swiper-slide border-[3px] rounded-xl border-[#1376F8]">
+                                    <div class="card__image w-full">
                                         <img src="{{ $service->image }}" alt="image"
-                                            class="card__img object-cover object-center">
-                                        <div class="card__shadow"></div>
+                                            class="card__img object-cover object-center w-full">
                                     </div>
 
                                     <div class="card__data">
-                                        <h3 class="card__name">{{ $service->name }}</h3>
-                                        <p class="card__description">
+                                        <h3 class="card__name font-bold text-lg mb-2 line-clamp-2 min-h-[56px]">
+                                            {{ $service->name }}
+                                        </h3>
+                                        <p class="card__description mb-5">
                                             {{ $service->small_description }}
                                         </p>
-                                        <a href="#" class="card__button">View More</a>
+                                        <div class="flex justify-center">
+                                            <a href="#"
+                                                class="text-white items-center bg-blue-700 py-2 px-6 rounded-lg">
+                                                Conoce más
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </article>
                             @endforeach
@@ -131,12 +138,67 @@
 
                 </div>
             </div>
+            {{-- Ver todos los servicios --}}
+            <div class="flex w-full justify-center">
+                <a href="#" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                    Ver todos los servicios
+                </a>
             </div>
         </x-container>
     </section>
 
+    {{-- Profesionales --}}
     <section>
-        <x-container class="px-4">
+        <x-container class="py-20">
+            <div class="bg-[#DEFFFE] py-16 rounded-2xl">
+                {{-- Titulo --}}
+                <div class="mb-10 px-4 text-center sm:px-15 lg:px-40">
+                    <div>
+                        <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                            Nuestros <span class="text-[#0075FF]">Profesionales.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-base sm:text-lg lg:text-xl mt-3">
+                            Disponemos de un equipo de profesionales altamente capacitados.
+                        </p>
+                    </div>
+                </div>
+                {{-- Ver todos los profesionales --}}
+                <div class="flex w-full justify-center">
+                    <a href="#" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                        Conoce al equipo completo
+                    </a>
+                </div>
+            </div>
+
+        </x-container>
+    </section>
+
+    {{-- Opiniones --}}
+    <section>
+        <x-container class="px-4 py-20">
+            {{-- Titulo --}}
+            <div class="mb-10 px-4 pb-4 text-center sm:px-15 lg:px-40">
+                <div>
+                    <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                        <span class="text-[#0075FF]">Lo que nuestros pacientes opinan.</span>
+                    </p>
+                </div>
+                <div>
+                    <p class="text-base sm:text-lg lg:text-xl mt-3">
+                        Pacientes de diferentes lugares nos dejan sus opiniones.
+                    </p>
+                </div>
+            </div>
+
+
+        </x-container>
+    </section>
+
+    {{-- Contacto --}}
+    <section>
+        <x-container class="px-4 py-20">
             {{-- Titulo --}}
             <div class="mb-10 px-4 text-center sm:px-15 lg:px-20">
                 <div>
@@ -145,7 +207,7 @@
                     </p>
                 </div>
                 <div>
-                    <p class="text-base sm:text-lg lg:text-2xl mt-4 text-[#0075FF] font-bold">
+                    <p class="text-base sm:text-lg lg:text-xl mt-4 text-[#0075FF] font-bold">
                         Solicita una cita o envía una consulta. Nos contactaremos contigo lo más antes posible.
                     </p>
                 </div>
@@ -184,7 +246,8 @@
                             {{-- Texto --}}
                             <div class="ml-4 flex flex-1 flex-col">
                                 <span class="font-bold">Horarios de atención</span>
-                                <span class="font-medium leading-5">Lunes a Viernes: 8:00 am - 6:00 pm<br>Sábados y Domingos: 8:00 am - 3:00 pm</span>
+                                <span class="font-medium leading-5">Lunes a Viernes: 8:00 am - 6:00 pm<br>Sábados y
+                                    Domingos: 8:00 am - 3:00 pm</span>
                             </div>
                         </div>
                     </div>
@@ -199,28 +262,21 @@
 
     <style>
         .card__content {
-            margin-inline: 1.75rem;
-            border-radius: 1.25rem;
             overflow: hidden;
         }
 
         .card__article {
-            width: 300px;
-            border-radius: 1.25rem;
+            width: 250px;
             overflow: hidden;
         }
 
-        .card__image {
-            position: relative;
-        }
 
         .card__data {
-            padding: 1.5rem 1.5rem;
+            padding: 1.2rem 1.2rem;
         }
 
         .card__img {
-            width: 100%;
-            height: 240px;
+            height: 260px;
             margin: 0 auto;
         }
 
@@ -257,20 +313,21 @@
             .card__content {
                 margin__inline: 3rem;
             }
+
             .swiper-button-prev,
             .swiper-button-next {
                 display: block;
             }
         }
 
-        @media screen and(min-width: 1120px){
-            .card__container{
-                
-            }
-            .swiper-button-next{
+        @media screen and(min-width: 1120px) {
+            .card__container {}
+
+            .swiper-button-next {
                 right: -1rem;
             }
-            .swiper-button-prev{
+
+            .swiper-button-prev {
                 left: -1rem;
             }
         }
