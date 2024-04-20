@@ -100,7 +100,8 @@
                     <div class="card__content rounded-xl">
                         <div class="swiper-wrapper ">
                             @foreach ($services as $service)
-                                <article class="card__article swiper-slide border-[3px] rounded-xl border-[#1376F8] shadow-lg">
+                                <article
+                                    class="card__article swiper-slide border-[3px] rounded-xl border-[#1376F8] shadow-lg">
 
                                     <div class="card__image w-full flex justify-center items-center relative">
                                         <h3
@@ -155,7 +156,7 @@
     {{-- Profesionales --}}
     <section>
         <x-container class="py-20">
-            <div class="bg-[#DEFFFE] py-16 rounded-2xl">
+            <div class="bg-[#DEFFFE] py-16 px-4 rounded-2xl">
                 {{-- Titulo --}}
                 <div class="mb-10 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
                     <div>
@@ -168,6 +169,42 @@
                             Disponemos de un equipo de profesionales altamente capacitados.
                         </p>
                     </div>
+                </div>
+                {{-- Slider --}}
+                <div class="professionals__content w-full h-full mb-8 lg:px-16">
+                    <div class="swiper w-full h-full professionals__slider pt-6 pb-14 px-4 js-professionals-slider">
+                        <div class="swiper-wrapper">
+                            @foreach ($professionals as $professional)
+                                {{-- Carta --}}
+                                <article
+                                    class="swiper-slide professional__card bg-white w-[260px] overflow-hidden rounded-xl border-[1px] border-[#636363] shadow-lg"
+                                    style="">
+                                    {{-- Foto del profesional --}}
+                                    <div class="">
+                                        <img src="{{ $professional->photo }}" alt="image"
+                                            class="card__img w-full object-cover object-center">
+                                    </div>
+                                    {{-- Datos del profesional --}}
+                                    <div class="px-4 py-6 text-center">
+                                        <p class="font-bold text-lg">{{ $professional->name }}</p>
+                                        <p class="text-[#0075FF] font-bold">
+                                            @foreach ($professional->specialties as $specialty)
+                                                {{ $specialty->name }}
+                                                @if (!$loop->last)
+                                                    /
+                                                @endif
+                                            @endforeach
+                                        </p>
+
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+
+                        {{-- Paginacion --}}
+                        <div class="swiper-pagination js-professionals-pagination"></div>
+                    </div>
+
                 </div>
                 {{-- Ver todos los profesionales --}}
                 <div class="flex w-full justify-center">
@@ -184,7 +221,7 @@
     <section>
         <x-container class="px-4 py-20">
             {{-- Titulo --}}
-            <div class="mb-10 px-4 pb-4 text-center sm:px-15 lg:px-40">
+            <div class="mb-5 px-4 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         <span class="text-[#0075FF]">Lo que nuestros pacientes opinan.</span>
@@ -196,13 +233,13 @@
                     </p>
                 </div>
             </div>
-            {{-- Opiniones --}}
+            {{-- Slider Opiniones --}}
             <div class="testimonials__content">
-                <div class="swiper pb-14 testimonials__slider js-testimonials-slider">
+                <div class="swiper pt-6 pb-14  lg:px-4 testimonials__slider js-testimonials-slider">
                     <div class="swiper-wrapper">
                         {{-- Carta de opinion --}}
                         <div
-                            class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF]">
+                            class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF] shadow-lg">
                             <div class="info flex items-center relative">
                                 <img class="mr-4 size-16 object-cover object-center rounded-full"
                                     src="{{ asset('img/ceo.jpg') }}" alt="">
@@ -220,7 +257,7 @@
                                 dolor at voluptatem atque!
                             </p>
                         </div>
-                        
+
                         {{-- Carta de opinion --}}
                         <div
                             class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF]">
@@ -428,6 +465,11 @@
                 left: -1rem;
             }
         }
+
+
+        .professional__card {
+            height: calc((100% - 30px) / 2) !important;
+        }
     </style>
 
     @push('js')
@@ -477,6 +519,36 @@
                     },
                     968: {
                         slidesPerView: 2,
+                    },
+                },
+            });
+
+            let swiperProfessionals = new Swiper('.js-professionals-slider', {
+                // Optional parameters
+                spaceBetween: 30,
+                grabCursor: true,
+
+
+                // If we need pagination
+                pagination: {
+                    el: '.js-professionals-pagination',
+                    clickable: true,
+                },
+
+                breakpoints: {
+                    600: {
+                        slidesPerView: 2,
+                        grid: {
+                            rows: 1,
+                            fill: "row",
+                        },
+                    },
+                    968: {
+                        slidesPerView: 3,
+                        grid: {
+                            rows: 2,
+                            fill: "row",
+                        },
                     },
                 },
             });

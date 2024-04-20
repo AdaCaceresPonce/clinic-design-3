@@ -11,8 +11,8 @@ class WelcomeController extends Controller
     public function index(){
 
         $services = Service::orderBy('id', 'desc')->get();
-        $professionals = Professional::orderBy('id', 'desc')->with('specialties');
+        $professionals = Professional::orderBy('id', 'desc')->with('specialties')->get();
 
-        return view('welcome', compact('services'));
+        return view('welcome', compact('services', 'professionals'));
     }
 }
