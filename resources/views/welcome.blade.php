@@ -348,10 +348,67 @@
             </div>
             {{-- Cuadro de contacto --}}
             <div class="flex items-center flex-wrap-reverse">
-                {{-- Formulario --}}
-                <div class="w-full lg:w-1/2">
-                    <div class="card">
+                
+                <div class="w-full h-full lg:w-1/2">
+                    {{-- Formulario --}}
+                    <div class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 w-full border-[2px] border-[#00CAF7] space-y-5">
 
+                        <div class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0">
+                            <div class="flex-1">
+                                <x-label class="mb-1 text-[15px] font-black">
+                                    Nombres:
+                                </x-label>
+                                <x-input class="w-full" placeholder="Ingrese sus nombres" name="name"
+                                    value="{{ old('name') }}" />
+                                <x-input-error for="name" />
+                            </div>
+                            <div class="flex-1">
+                                <x-label class="mb-1 text-[15px] font-black">
+                                    Apellidos:
+                                </x-label>
+                                <x-input class="w-full" placeholder="Ingrese sus apellidos" name="lastname"
+                                    value="{{ old('lastname') }}" />
+                                <x-input-error for="lastname" />
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <x-label class="mb-1 text-[15px] font-black">
+                                Servicio:
+                            </x-label>
+            
+                            <x-select name="service_id" id="" class="w-full">
+                                <option value="">
+                                    Seleccione un servicio (Opcional)
+                                </option>
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}" @selected(old('service_id') == $service->id)>
+                                        {{ $service->name }}
+                                    </option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div>
+                            <x-label class="mb-1 text-[15px] font-black">
+                                Teléfono o celular:
+                            </x-label>
+                            <x-input class="w-full" placeholder="Ingrese su número de contacto" name="lastname"
+                                value="{{ old('lastname') }}" />
+                            <x-input-error for="lastname" />
+                        </div>
+                        <div>
+                            <x-label class="mb-1 text-[15px] font-black">
+                                Mensaje:
+                            </x-label>
+                            <textarea name="message"
+                            class="w-full h-40 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                            placeholder="Ingresa tu mensaje aquí">{{ old('message') }}</textarea>
+                        </div>
+                        <div class="flex w-full justify-center">
+                            <a href="#" class="text-white text-lg font-medium bg-blue-700 py-2 px-6 rounded-lg">
+                                Enviar <i class="fa-solid fa-paper-plane ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 {{-- Info de contacto --}}
