@@ -12,7 +12,3 @@ Route::get('/', function () {
 Route::resource('services', ServiceController::class);
 Route::resource('specialties', SpecialtyController::class);
 Route::resource('professionals', ProfessionalController::class);
-
-Route::get('/about-us', function () {
-    return view('about_us.about_us');
-});

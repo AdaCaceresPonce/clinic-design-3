@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
 
+    {{-- Portada de bienvenida --}}
     <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative"
         style="background-image: url('{{ asset('img/bienvenida.jpg') }}');">
         {{-- Fondo azulado para la imagen --}}
@@ -32,6 +33,7 @@
         </x-container>
     </section>
 
+    {{-- Contenido Confianza --}}
     <section>
         <x-container class="px-4 pt-24 pb-20">
             <div class="flex items-center flex-wrap-reverse">
