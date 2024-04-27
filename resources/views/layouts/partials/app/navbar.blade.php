@@ -17,8 +17,8 @@
         ],
         [
             'name' => 'Profesionales',
-            'route' => '',
-            'active' => '',
+            'route' => route('our_professionals.index'),
+            'active' => request()->routeIs('our_professionals.index'),
         ],
         [
             'name' => 'Contacto',

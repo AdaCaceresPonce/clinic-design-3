@@ -5,7 +5,7 @@
     @endpush
 
     {{-- Portada --}}
-    {{-- <x-page-cover :image="asset('img/nosotros.jpg')" :name="'Sobre Nosotros'" /> --}}
+    <x-page-cover :image="asset('img/nosotros.jpg')" :name="'Sobre Nosotros'" />
 
     {{-- Quienes somos --}}
     <section>
