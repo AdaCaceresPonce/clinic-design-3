@@ -17,8 +17,8 @@
         ],
         [
             'name' => 'Profesionales',
-            'route' => '',
-            'active' => '',
+            'route' => route('our_professionals.index'),
+            'active' => request()->routeIs('our_professionals.index'),
         ],
         [
             'name' => 'Contacto',
@@ -50,7 +50,7 @@
                 <div class="flex justify-center space-x-8 h-full">
                     @foreach ($links as $link)
                         <a href="{{ $link['route'] }}"
-                            class="text-base font-semibold hover:text-[#0069F4] {{ $link['active'] ? 'text-[#0069F4]' : '' }}">
+                            class="text-base font-semibold hover:text-[#0069F4] {{ $link['active'] ? 'text-[#0069F4] underline underline-offset-[6px]' : '' }}">
                             {{ $link['name'] }}
                         </a>
                     @endforeach

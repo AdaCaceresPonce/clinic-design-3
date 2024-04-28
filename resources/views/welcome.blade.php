@@ -68,9 +68,12 @@
                         </ul>
                     </div>
                     <div class="mt-12">
-                        <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
+                        {{-- <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
                             Conócenos
-                        </button>
+                        </button> --}}
+                        <a href="{{ route('about_us.index') }}" class="text-white text-lg font-medium bg-blue-700 py-4 px-8 rounded-xl">
+                            Conócenos
+                        </a>
                     </div>
                 </div>
             </div>
@@ -208,7 +211,7 @@
                 </div>
                 {{-- Ver todos los profesionales --}}
                 <div class="flex w-full justify-center">
-                    <a href="#" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                    <a href="{{ route('our_professionals.index') }}" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                         Conoce al equipo completo
                     </a>
                 </div>
