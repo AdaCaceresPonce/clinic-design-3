@@ -38,7 +38,7 @@
         <x-container class="px-4 py-20">
             {{-- Titulo --}}
             <div class="mb-10 px-2 text-center sm:px-15 lg:px-20">
-                <p class="text-2xl sm:text-3xl lg:text-4xl text-[#0075FF] leading-tight lg:leading-tight font-bold">
+                <p class="text-3xl sm:text-3xl lg:text-4xl text-[#0075FF] leading-tight lg:leading-tight font-bold">
                     Conoce a nuestro equipo de Profesionales
                 </p>
                 <p class="text-base sm:text-lg lg:text-xl mt-4">
@@ -46,22 +46,67 @@
                 </p>
             </div>
             {{-- Profesionales --}}
-            <div>
+            <div class="px-2 sm:px-16 md:px-8 lg:px-8 space-y-8">
                 @foreach ($professionals as $professional)
-                    <div>
-                        <div>
+                    {{-- Carta de profesional --}}
+                    <div class="flex flex-wrap bg-[#E0FFFF] border-[1px] border-[#9B9B9B] rounded-lg overflow-hidden shadow-lg">
+                        
+                        {{-- Foto del profesional --}}
+                        <div class="w-full md:w-1/3 border-b-[1px] lg:border-b-[0px] lg:border-r-[1px] border-r-[#9B9B9B] rounded-l-lg">
+                            
+                            <img class="w-full h-[400px] object-cover object-center" src="{{ $professional->photo }}" alt="">
 
                         </div>
-                        <div>
-                            <p>
-                                {{ $professional->name }}
+                        
+                        {{-- Informacion del profesional --}}
+                        <div class="w-full md:w-2/3 p-8 flex flex-col">
+                            {{-- Nombres --}}
+                            <p class="text-xl font-bold">
+                                {{ $professional->name }} {{ $professional->lastname }}
                             </p>
+                            {{-- Especialidades --}}
+                            <p class="text-[#0075FF] text-lg font-bold">
+                                @foreach ($professional->specialties as $specialty)
+                                    {{ $specialty->name }}
+                                    @if (!$loop->last)
+                                        /
+                                    @endif
+                                @endforeach
+                            </p>
+                            {{-- Informacion --}}
+                            <p class="mt-4 grow">
+                                {{ $professional->description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cupiditate doloremque maiores voluptates unde nostrum, in saepe error, perspiciatis odio officiis corrupti expedita! Cumque placeat sequi numquam magnam debitis cupiditate, quidem quibusdam, nemo accusantium deserunt qui dolorum blanditiis rem laboriosam commodi nihil modi pariatur culpa? Optio quas sit possimus nostrum.
+                            </p>
+
+                            <div class="text-[#0075FF] text-2xl flex space-x-3 justify-end">
+                                @if ($professional->facebook_link)
+                                    <a href="{{ $professional->facebook_link }}">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                @endif
+                                @if ($professional->linkedin_link)
+                                    <a href="{{ $professional->linkedin_link }}">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                @endif
+                                @if ($professional->twitter_link)
+                                    <a href="{{ $professional->twitter_link }}">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                @endif
+                                @if ($professional->instagram_link)
+                                    <a href="{{ $professional->instagram_link }}">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                @endif
+                            </div>
                         </div>
 
                     </div>
                 @endforeach
-
-                
+                <div class="mt-3">
+                    {{ $professionals->links() }}
+                </div>
             </div>
         </x-container>
     </section>
