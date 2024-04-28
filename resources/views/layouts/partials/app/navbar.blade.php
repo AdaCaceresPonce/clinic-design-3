@@ -12,8 +12,8 @@
         ],
         [
             'name' => 'Servicios',
-            'route' => '',
-            'active' => '',
+            'route' => route('our_service.index'),
+            'active' => request()->routeIs('our_service.index'),
         ],
         [
             'name' => 'Profesionales',
