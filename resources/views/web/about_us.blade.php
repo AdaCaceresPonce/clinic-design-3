@@ -8,7 +8,7 @@
     <x-page-cover :image="asset('img/nosotros.jpg')" :name="'Sobre Nosotros'" />
 
     {{-- Quienes somos --}}
-    <section>
+    <section class="bg-[#E3FFFE]">
         <x-container class="px-4 py-20">
             <div class="flex items-center flex-wrap">
                 {{-- Texto --}}
@@ -23,10 +23,10 @@
                     </p>
                 </div>
                 {{-- Imagen --}}
-                <div class="w-full lg:w-1/2 flex justify-center">
+                <div class="w-full mt-10 lg:mt-0 lg:w-1/2 flex justify-center">
                     <div class="">
                         <div class="flex items-center 
-                            size-[300px] bg-[#E3FFFE] sm:size-[400px]  md:size-[450px] lg:size-[500px] 
+                            size-[300px] bg-white sm:size-[400px]  md:size-[450px] lg:size-[500px] 
                             justify-center rounded-full border-[3.5px] border-[#23B0FF] relative">
 
                             <img class="rounded-full 
@@ -126,8 +126,8 @@
         <x-container class="px-4 py-20">
             <div class="flex items-center flex-wrap-reverse">
                 {{-- Imagen --}}
-                <div class="w-full lg:w-1/2 px-4">
-                    <img class="h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
+                <div class="w-full mt-10 lg:mt-0 lg:w-1/2 px-4">
+                    <img class="h-[450px] sm:h-[550px] lg:h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
                         src="{{ asset('img/nosotros-2.jpg') }}" alt="">
                 </div>
                 {{-- Texto --}}

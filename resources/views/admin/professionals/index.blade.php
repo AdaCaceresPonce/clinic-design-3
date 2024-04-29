@@ -21,17 +21,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 @foreach ($professionals as $professional)
                     <div
-                        class="max-w-full bg-white border-[2px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+                        class="flex flex-col max-w-full bg-white border-[2px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
 
                         <img class="object-cover w-full h-[309px] sm:h-[222px] md:h-[190px] xl:h-[228px] 2xl:h-[288px]"
                             src="{{ Storage::url($professional->photo_path) }}" alt="" />
 
-                        <div class="p-5">
-                            <h5 class="mb-4 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <div class="p-5 flex flex-col grow">
+                            <h5 class="mb-4 text-lg sm:text-xl grow font-bold tracking-tight text-gray-900 dark:text-white">
                                 {{ $professional->name }}
                             </h5>
                             <a href="{{ route('admin.professionals.edit', $professional) }}"
-                                class="inline-flex items-center px-2 py-1.5 sm:px-3 sm:py-2 text-base sm:text-base font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-400">
+                                class="items-center px-2 py-1.5 sm:px-3 sm:py-2 text-base sm:text-base font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-400">
                                 Editar
                                 <i class="fa-solid fa-pen-to-square ml-2"></i>
                             </a>

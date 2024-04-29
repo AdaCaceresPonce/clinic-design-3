@@ -10,7 +10,7 @@ class OurProfessionalsController extends Controller
 {
     public function index(){
 
-        $professionals = Professional::orderBy('id', 'desc')->with('specialties')->paginate(3);
+        $professionals = Professional::orderBy('id', 'desc')->with('specialties')->paginate(4);
 
         return view('web.our_professionals', compact('professionals'));
     }

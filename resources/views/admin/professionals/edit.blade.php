@@ -35,7 +35,7 @@
                             </label>
                         </div>
                         <img id="uploadPreview1"
-                            class="object-contain w-full max-h-96 md:max-h-[660.6px] md:min-h-[660.6px] border-[2px] bg-white border-blue-400 rounded-xl
+                            class="object-cover w-full max-h-96 md:max-h-[660.6px] md:min-h-[660.6px] border-[2px] bg-white border-blue-400 rounded-xl
                     @error('photo_path') border-red-500 @enderror"
                             src="{{ Storage::url($professional->photo_path) }}" alt="">
                     </figure>
