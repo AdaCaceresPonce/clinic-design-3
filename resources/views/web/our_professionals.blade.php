@@ -47,13 +47,21 @@
                     Disponemos de un equipo de profesionales altamente capacitados.
                 </p>
             </div>
-            {{-- Profesionales --}}
-            <div class="px-2 sm:px-8 md:px-8 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+
+            {{--Seccion Profesionales --}}
+            <div class="px-2 sm:px-8 md:px-0 lg:px-0
+                md:w-[684px] lg:w-full mx-auto">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 
+                    gap-6 lg:gap-8">
+
+                    {{-- Listar Profesionales --}}
                     @foreach ($professionals as $professional)
+
                         {{-- Carta de profesional --}}
                         <div class="flex flex-col lg:flex-row bg-[#E0FFFF] rounded-lg overflow-hidden shadow-lg 
-                        border-[1px] border-[#9B9B9B]">
+                        border-[1px] border-[#9B9B9B]
+                        md:w-[330px] lg:w-full mx-auto">
 
                             {{-- Foto del profesional --}}
                             {{-- <div
@@ -64,7 +72,10 @@
                                     alt="">
 
                             </div> --}}
-                            <img src="{{ $professional->photo }}" class="w-full object-cover object-center lg:w-1/3 h-[400px]" alt="">
+                            <img src="{{ $professional->photo }}" 
+                                class="w-full object-cover object-center h-[300px] sm:h-[200px] md:h-[350px] lg:w-1/3 lg:h-[400px]
+                                border-b-[1px] border-b-[#9B9B9B] 
+                                lg:border-b-0 lg:border-r-[1px] lg:border-r-[#9B9B9B]" alt="">
 
                             {{-- Informacion del profesional --}}
                             <div class="p-6 w-full grow lg:w-2/3 flex flex-col">
@@ -85,8 +96,8 @@
                                 </p>
 
                                 {{-- Descripcion --}}
-                                <p class="mt-4 text-sm lg:text-base grow">
-                                    {{ $professional->description }}
+                                <p class="mt-4 text-sm lg:text-sm grow text-ellipsis overflow-hidden">
+                                    {{ $professional->description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. At delectus quidem ipsam tempore, eligendi fugit odit natus qui maiores, nemo, ab labore.
                                 </p>
 
                                 {{-- Redes sociales --}}
