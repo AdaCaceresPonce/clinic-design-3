@@ -1,5 +1,9 @@
 <x-app-layout>
 
+    <x-slot name="title">
+        Sobre Nosotros
+    </x-slot>
+
     @push('css')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush

@@ -16,9 +16,9 @@ class ClinicInformationSeeder extends Seeder
         $info = [
             'phone' => '225533',
             'cellphone' => '999 999 999',
-            'schedule' => 'Lunes a Viernes: 7:00 am - 8:00 pm / Sabados y Domingos: 7:00 am - 3:00pm',
+            'schedule' => 'Lunes a Viernes: 7:00 am - 8:00 pm / Sábados y Domingos: 7:00 am - 3:00 pm',
             'email' => 'clinicadental@mail.com',
-            'address'=>'Calle 123 lote 12',
+            'address'=>'Calle Avenida 123 lote 123',
             'navbar_clinic_logo' => 'img/navbar_logo.png',
             'footer_clinic_logo' => 'img/footer_logo.jpg',
             'facebook_link'=>'https://www.facebook.com/',

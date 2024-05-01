@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
 
 
         Service::factory(8)->create();
+        $this->call(ClinicInformationSeeder::class);
         $this->call(SpecialtySeeder::class);
         $this->call(ProfessionalSeeder::class);
 

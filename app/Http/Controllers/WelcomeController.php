@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClinicInformation;
 use App\Models\Professional;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class WelcomeController extends Controller
 
         $services = Service::orderBy('id', 'desc')->get();
         $professionals = Professional::orderBy('id', 'desc')->with('specialties')->get();
-
-        return view('welcome', compact('services', 'professionals'));
+        $clinic_information = ClinicInformation::first();
+        
+        return view('welcome', compact('services', 'professionals', 'clinic_information'));
     }
 }

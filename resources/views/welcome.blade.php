@@ -1,20 +1,25 @@
 <x-app-layout>
 
+    <x-slot name="title">
+        Inicio
+    </x-slot>
+    
     @push('css')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
 
     <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative"
         style="background-image: url('{{ asset('img/bienvenida.jpg') }}');">
+
         {{-- Fondo azulado para la imagen --}}
         <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
         </div>
-        <x-container
-            class="px-8 py-24 h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
-            {{-- Tarjeta de bienvenida --}}
-            <div class="bg-[#EAFBFF] bg-opacity-75 rounded-3xl px-11 py-12 max-w-[570px] text-center lg:text-start">
 
-                <p class="text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
+        <x-container class="px-2 sm:px-8 py-20 sm:py-24 h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
+            {{-- Tarjeta de bienvenida --}}
+            <div class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
+
+                <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
                     Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span>
                 </p>
 
@@ -22,7 +27,7 @@
                     En Clínica Dental utilizamos las mejores herramientas y materiales para brindarte un servicio y
                     atención de calidad velando siempre por tu comodidad.</p>
 
-                <div class="mt-12">
+                <div class="mt-8 sm:mt-12">
                     <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
                         Agenda una cita
                     </button>
@@ -33,16 +38,18 @@
     </section>
 
     <section>
-        <x-container class="px-4 pt-24 pb-20">
+        <x-container class="px-4 py-14 sm:py-20">
             <div class="flex items-center flex-wrap-reverse">
                 <div class="w-full lg:w-1/2">
                     <img class="h-[450px] sm:h-[550px] lg:h-[670px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
                         src="{{ asset('img/clinica-confianza.jpg') }}" alt="">
                 </div>
-                <div class="w-full lg:w-1/2 px-8 pb-10 sm:px-20 lg:pl-16 lg:pr-0 lg:pb-0 text-start">
-                    <p class="text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
+                <div class="w-full lg:w-1/2 px-4 pb-10 sm:px-20 lg:pl-16 lg:pr-0 lg:pb-0 text-start">
+
+                    <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
                         Una Clínica Dental en la que puedes <span class="text-[#0075FF]">confiar.</span>
                     </p>
+
                     <p class="text-base sm:text-lg lg:text-xl mt-7">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                         Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
@@ -82,12 +89,12 @@
 
     {{-- Servicios --}}
     <section>
-        <x-container class="px-4 py-20 flex-col">
+        <x-container class="px-4 py-14 sm:py-20 flex-col">
             {{-- Titulo --}}
             <div class="mb-8 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
-                    <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        Nuestros <span class="text-[#0075FF]">Servicios Dentales.</span>
+                    <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                        <span class="text-[#0075FF]">Nuestros Servicios Dentales.</span>
                     </p>
                 </div>
                 <div>
@@ -98,8 +105,8 @@
                 </div>
             </div>
             {{-- Slider --}}
-            <div class="flex justify-center align-middle mb-5">
-                <div class="card__container swiper pb-14 px-10">
+            <div class="flex justify-center align-middle w-[307px] sm:w-full mb-5 mx-auto">
+                <div class="card__container swiper pb-14 px-0 sm:px-10">
                     <div class="card__content rounded-xl">
                         <div class="swiper-wrapper ">
                             @foreach ($services as $service)
@@ -159,12 +166,12 @@
     {{-- Profesionales --}}
     <section>
         <x-container class="py-20">
-            <div class="bg-[#DEFFFE] py-16 px-4 rounded-2xl">
+            <div class="bg-[#DEFFFE] py-16 px-4 rounded-3xl">
                 {{-- Titulo --}}
-                <div class="mb-10 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
+                <div class="mb-5 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
                     <div>
-                        <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                            Nuestros <span class="text-[#0075FF]">Profesionales.</span>
+                        <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                            <span class="text-[#0075FF]">Nuestros Profesionales.</span>
                         </p>
                     </div>
                     <div>
@@ -226,7 +233,7 @@
             {{-- Titulo --}}
             <div class="mb-5 px-4 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
-                    <p class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                    <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         <span class="text-[#0075FF]">Lo que nuestros pacientes opinan.</span>
                     </p>
                 </div>
@@ -404,7 +411,7 @@
                                 Mensaje:
                             </x-label>
                             <textarea name="message"
-                            class="w-full h-40 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                            class="w-full h-60 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                             placeholder="Ingresa tu mensaje aquí">{{ old('message') }}</textarea>
                         </div>
                         <div class="flex w-full justify-center">
@@ -414,39 +421,80 @@
                         </div>
                     </div>
                 </div>
+
                 {{-- Info de contacto --}}
-                <div class="w-full lg:w-1/2">
+                <div class="w-full mb-4 lg:mb-0 lg:w-1/2">
                     {{-- Datos --}}
-                    <div class="pl-4 space-y-4">
-                        {{-- Elemento --}}
+                    <div class="lg:pl-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 h-1/2">
+
+                        {{-- Telefono --}}
                         <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                             {{-- Icono --}}
                             <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                                 <i class="fa-solid fa-phone text-xl text-white"></i>
                             </div>
+
                             {{-- Texto --}}
-                            <div class="ml-4 flex flex-1 flex-col">
+                            <div class="ml-2 sm:ml-3 flex flex-1 flex-col">
                                 <span class="font-bold">Teléfono</span>
-                                <span class="font-medium">999 999 999</span>
+                                <span class="font-medium text-sm text-[#535353]">
+                                    {{ $clinic_information['cellphone'] }}
+                                </span>
                             </div>
                         </div>
 
-                        {{-- Elemento --}}
-                        <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                        {{-- Horarios --}}
+                        <div class="w-full sm:h-[83px] p-[10px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                             {{-- Icono --}}
                             <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                                 <i class="fa-regular fa-clock text-2xl text-white"></i>
                             </div>
+
                             {{-- Texto --}}
-                            <div class="ml-4 flex flex-1 flex-col">
+                            <div class="ml-2 sm:ml-3 flex flex-1 flex-col">
                                 <span class="font-bold">Horarios de atención</span>
-                                <span class="font-medium leading-5">Lunes a Viernes: 8:00 am - 6:00 pm<br>Sábados y
-                                    Domingos: 8:00 am - 3:00 pm</span>
+                                <span class="font-medium text-xs leading-4 sm:text-sm text-[#535353]">
+                                    {{ $clinic_information['schedule'] }}
+                                </span>
                             </div>
                         </div>
+
+                        {{-- Email --}}
+                        <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                            {{-- Icono --}}
+                            <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
+                                <i class="fa-regular fa-envelope text-2xl text-white"></i>
+                            </div>
+
+                            {{-- Texto --}}
+                            <div class="ml-2 sm:ml-3 flex flex-1 flex-col">
+                                <span class="font-bold">Correo electrónico</span>
+                                <span class="font-medium text-sm sm:text-base text-[#535353]">
+                                    {{ $clinic_information['email'] }}
+                                </span>
+                            </div>
+                        </div>
+
+                        {{-- Direccion --}}
+                        <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                            {{-- Icono --}}
+                            <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
+                                <i class="fa-solid fa-map-location-dot text-2xl text-white"></i>
+                            </div>
+
+                            {{-- Texto --}}
+                            <div class="ml-2 sm:ml-3 flex flex-1 flex-col">
+                                <span class="font-bold">Dirección</span>
+                                <span class="font-medium text-sm sm:text-base text-[#535353]">
+                                    {{ $clinic_information['address'] }}
+                                </span>
+                            </div>
+                        </div>
+
+                        
                     </div>
                     {{-- Imagen --}}
-                    <div>
+                    <div class="h-1/2">
 
                     </div>
                 </div>

@@ -1,4 +1,9 @@
 <x-app-layout>
+
+    <x-slot name="title">
+        Nuestros Profesionales
+    </x-slot>
+
     {{-- Portada --}}
     <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="'Nuestros Profesionales'" />
 
@@ -49,11 +54,10 @@
             </div>
 
             {{--Seccion Profesionales --}}
-            <div class="px-2 sm:px-8 md:px-0 lg:px-0
+            <div class="sm:px-8 md:px-0 lg:px-0
                 md:w-[684px] lg:w-full mx-auto">
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 
-                    gap-6 lg:gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 lg:gap-10">
 
                     {{-- Listar Profesionales --}}
                     @foreach ($professionals as $professional)
@@ -61,7 +65,7 @@
                         {{-- Carta de profesional --}}
                         <div class="flex flex-col lg:flex-row bg-[#E0FFFF] rounded-lg overflow-hidden shadow-lg 
                         border-[1px] border-[#9B9B9B]
-                        md:w-[330px] lg:w-full mx-auto">
+                        w-[295px] min-[540px]:w-[340px] sm:w-[450px] md:w-[330px] lg:w-full mx-auto">
 
                             {{-- Foto del profesional --}}
                             {{-- <div
@@ -73,7 +77,8 @@
 
                             </div> --}}
                             <img src="{{ $professional->photo }}" 
-                                class="w-full object-cover object-center h-[300px] sm:h-[200px] md:h-[350px] lg:w-1/3 lg:h-[400px]
+                                class="w-full object-cover object-top 
+                                h-[294px] min-[540px]:h-[360px] sm:h-[450px] md:h-[350px] lg:w-1/3 lg:h-[400px]
                                 border-b-[1px] border-b-[#9B9B9B] 
                                 lg:border-b-0 lg:border-r-[1px] lg:border-r-[#9B9B9B]" alt="">
 

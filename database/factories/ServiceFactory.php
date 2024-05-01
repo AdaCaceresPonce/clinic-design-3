@@ -17,12 +17,12 @@ class ServiceFactory extends Factory
      */
     public function definition(): array
     {
-        $name = $this->faker->sentence();
+        $name = $this->faker->sentence(4);
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'small_description' => $this->faker->text(25),
-            'long_description' => $this->faker->text(150),
+            'small_description' => $this->faker->text(200),
+            'long_description' => $this->faker->text(1550),
             'card_image_path' => 'services/card_images/' . $this->faker->image('public/storage/services/card_images', 640, 480, null, false),
             'cover_image_path' => 'services/cover_images/' . $this->faker->image('public/storage/services/cover_images', 1000, 350, null, false),
             'additional_info' => $this->faker->text(225),
