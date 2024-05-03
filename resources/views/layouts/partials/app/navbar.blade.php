@@ -57,9 +57,9 @@
                 </div>
             </div>
             <div class="hidden lg:block">
-                <button class="text-base text-white px-7 py-2 bg-blue-600 rounded-xl">
+                <a href="{{ route('admin.dashboard') }}" class="text-base text-white px-7 py-2 bg-blue-600 rounded-xl">
                     Intranet
-                </button>
+                </a>
             </div>
         </div>
 
@@ -80,9 +80,9 @@
                     </li>
                 @endforeach
                 <li class="py-3 px-4 sm:px-6">
-                    <button class="text-base text-white px-7 py-2 bg-blue-600 rounded-xl">
+                    <a href="{{ route('admin.dashboard') }}" class="text-base text-white px-7 py-2 bg-blue-600 rounded-xl">
                         Intranet
-                    </button>
+                    </a>
                 </li>
             </ul>
         </div>

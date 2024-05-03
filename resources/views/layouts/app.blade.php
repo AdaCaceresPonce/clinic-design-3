@@ -7,10 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        {{-- {{ config('app.name', 'Laravel') }} --}}
-        @isset($title)
+        {{ config('app.name', 'Laravel') }}
+        {{-- @isset($title)
             {{ $title }}
-        @endisset
+        @endisset --}}
     </title>
 
     <!-- Fonts -->
@@ -29,7 +29,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased lg:overflow-y-auto bg-white" x-data="{
+<body class="font-cabin antialiased lg:overflow-y-auto bg-white" x-data="{
     open: false,
 }"
     :class="{

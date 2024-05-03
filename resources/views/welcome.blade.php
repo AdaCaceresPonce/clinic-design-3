@@ -91,7 +91,7 @@
     <section>
         <x-container class="px-4 py-14 sm:py-20 flex-col">
             {{-- Titulo --}}
-            <div class="mb-8 pb-4 text-center sm:px-15 lg:px-40">
+            <div class="mb-6 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         <span class="text-[#0075FF]">Nuestros Servicios Dentales.</span>
@@ -181,18 +181,20 @@
                     </div>
                 </div>
                 {{-- Slider --}}
-                <div class="professionals__content w-full h-full mb-8 lg:px-16">
-                    <div class="swiper w-full h-full professionals__slider pt-6 pb-14 px-4 js-professionals-slider">
+                <div class="professionals__content w-[307px] sm:w-[543px] min-[780px]:w-[600px] min-[968px]:w-full lg:max-w-[1045px]
+                    min-[968px]:px-8 mb-5 
+                    flex justify-center mx-auto align-middle">
+                    <div class="swiper w-full h-full professionals__slider min-[968px]:px-4 pt-6 pb-14 js-professionals-slider">
                         <div class="swiper-wrapper">
                             @foreach ($professionals as $professional)
                                 {{-- Carta --}}
                                 <article
-                                    class="swiper-slide professional__card bg-white w-[260px] overflow-hidden rounded-xl border-[1px] border-[#636363] shadow-lg"
+                                    class="swiper-slide professional__card bg-white overflow-hidden rounded-xl border-[1px] border-[#636363] shadow-lg"
                                     style="">
                                     {{-- Foto del profesional --}}
                                     <div class="">
                                         <img src="{{ $professional->photo }}" alt="image"
-                                            class="card__img w-full object-cover object-center">
+                                            class="card__img w-full object-cover object-top">
                                     </div>
                                     {{-- Datos del profesional --}}
                                     <div class="px-4 py-6 text-center">

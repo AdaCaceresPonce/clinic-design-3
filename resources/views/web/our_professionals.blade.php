@@ -48,7 +48,7 @@
                 <p class="text-3xl sm:text-3xl lg:text-4xl text-[#0075FF] leading-tight lg:leading-tight font-bold">
                     Conoce a nuestro equipo de Profesionales
                 </p>
-                <p class="text-base sm:text-lg lg:text-xl mt-4">
+                <p class="text-lg sm:text-lg lg:text-xl mt-4">
                     Disponemos de un equipo de profesionales altamente capacitados.
                 </p>
             </div>
