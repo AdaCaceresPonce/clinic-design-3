@@ -27,6 +27,14 @@
             'route' => route('admin.professionals.index'),
             'active' => request()->routeIs('admin.professionals.*'),
         ],
+
+        [
+            //Información de la Clínica
+            'icon' => 'fa-solid fa-house-chimney-medical',
+            'name' => 'Información de la Clínica',
+            'route' => route('admin.clinic_information.index'),
+            'active' => request()->routeIs('admin.clinic_information.*'),
+        ],
     ];
 @endphp
 
