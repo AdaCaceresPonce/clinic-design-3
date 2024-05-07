@@ -78,7 +78,7 @@
                             </div> --}}
                             <img src="{{ $professional->photo }}" 
                                 class="w-full object-cover object-top 
-                                h-[294px] min-[540px]:h-[360px] sm:h-[450px] md:h-[350px] lg:w-1/3 lg:h-[400px]
+                                h-[310px] min-[540px]:h-[360px] sm:h-[450px] md:h-[350px] lg:w-1/3 lg:h-[400px]
                                 border-b-[1px] border-b-[#9B9B9B] 
                                 lg:border-b-0 lg:border-r-[1px] lg:border-r-[#9B9B9B]" alt="">
 

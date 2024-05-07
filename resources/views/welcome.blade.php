@@ -3,7 +3,7 @@
     <x-slot name="title">
         Inicio
     </x-slot>
-    
+
     @push('css')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
@@ -15,9 +15,11 @@
         <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
         </div>
 
-        <x-container class="px-2 sm:px-8 py-20 sm:py-24 h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
+        <x-container
+            class="px-2 sm:px-8 py-20 sm:py-24 h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
             {{-- Tarjeta de bienvenida --}}
-            <div class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
+            <div
+                class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
 
                 <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
                     Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span>
@@ -78,7 +80,8 @@
                         {{-- <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
                             Conócenos
                         </button> --}}
-                        <a href="{{ route('about_us.index') }}" class="text-white text-lg font-medium bg-blue-700 py-4 px-8 rounded-xl">
+                        <a href="{{ route('about_us.index') }}"
+                            class="text-white text-lg font-medium bg-blue-700 py-4 px-8 rounded-xl">
                             Conócenos
                         </a>
                     </div>
@@ -181,10 +184,12 @@
                     </div>
                 </div>
                 {{-- Slider --}}
-                <div class="professionals__content w-[307px] sm:w-[543px] min-[780px]:w-[600px] min-[968px]:w-full lg:max-w-[1045px]
+                <div
+                    class="professionals__content w-[307px] sm:w-[543px] min-[780px]:w-[600px] min-[968px]:w-full lg:max-w-[1045px]
                     min-[968px]:px-8 mb-5 
                     flex justify-center mx-auto align-middle">
-                    <div class="swiper w-full h-full professionals__slider min-[968px]:px-4 pt-6 pb-14 js-professionals-slider">
+                    <div
+                        class="swiper w-full h-full professionals__slider min-[968px]:px-4 pt-6 pb-14 js-professionals-slider">
                         <div class="swiper-wrapper">
                             @foreach ($professionals as $professional)
                                 {{-- Carta --}}
@@ -220,7 +225,8 @@
                 </div>
                 {{-- Ver todos los profesionales --}}
                 <div class="flex w-full justify-center">
-                    <a href="{{ route('our_professionals.index') }}" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                    <a href="{{ route('our_professionals.index') }}"
+                        class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                         Conoce al equipo completo
                     </a>
                 </div>
@@ -359,13 +365,15 @@
                 </div>
             </div>
             {{-- Cuadro de contacto --}}
-            <div class="flex items-center flex-wrap-reverse">
-                
-                <div class="w-full h-full lg:w-1/2">
-                    {{-- Formulario --}}
-                    <div class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 w-full border-[2px] border-[#00CAF7] space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
 
-                        <div class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0">
+                <div class="w-full order-last lg:order-first">
+                    {{-- Formulario --}}
+                    <div
+                        class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 size-full border-[3px] border-[#00CAF7] space-y-5">
+
+                        <div
+                            class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0">
                             <div class="flex-1">
                                 <x-label class="mb-1 text-[15px] font-black">
                                     Nombres:
@@ -382,13 +390,13 @@
                                     value="{{ old('lastname') }}" />
                                 <x-input-error for="lastname" />
                             </div>
-                            
+
                         </div>
                         <div>
                             <x-label class="mb-1 text-[15px] font-black">
                                 Servicio:
                             </x-label>
-            
+
                             <x-select name="service_id" id="" class="w-full">
                                 <option value="">
                                     Seleccione un servicio (Opcional)
@@ -413,8 +421,8 @@
                                 Mensaje:
                             </x-label>
                             <textarea name="message"
-                            class="w-full h-60 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                            placeholder="Ingresa tu mensaje aquí">{{ old('message') }}</textarea>
+                                class="w-full h-60 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                placeholder="Ingresa tu mensaje aquí">{{ old('message') }}</textarea>
                         </div>
                         <div class="flex w-full justify-center">
                             <a href="#" class="text-white text-lg font-medium bg-blue-700 py-2 px-6 rounded-lg">
@@ -425,9 +433,9 @@
                 </div>
 
                 {{-- Info de contacto --}}
-                <div class="w-full mb-4 lg:mb-0 lg:w-1/2">
+                <div class="w-full lg:pl-4 mb-4 lg:mb-0">
                     {{-- Datos --}}
-                    <div class="lg:pl-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 h-1/2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 mb-3">
 
                         {{-- Telefono --}}
                         <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
@@ -446,7 +454,8 @@
                         </div>
 
                         {{-- Horarios --}}
-                        <div class="w-full sm:h-[83px] p-[10px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                        <div
+                            class="w-full sm:h-[83px] p-[10px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                             {{-- Icono --}}
                             <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                                 <i class="fa-regular fa-clock text-2xl text-white"></i>
@@ -493,12 +502,11 @@
                             </div>
                         </div>
 
-                        
-                    </div>
-                    {{-- Imagen --}}
-                    <div class="h-1/2">
 
                     </div>
+                    {{-- Imagen --}}
+                    <img class="w-full h-[35vh] lg:h-[368px] object-cover object-center border-[3px] border-[#00CAF7] rounded-xl"
+                        src="{{ asset('img/nosotros.jpg') }}" alt="">
                 </div>
             </div>
         </x-container>

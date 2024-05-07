@@ -23,7 +23,7 @@
                     <div
                         class="flex flex-col max-w-full bg-white border-[2px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
 
-                        <img class="object-cover w-full h-[309px] sm:h-[222px] md:h-[190px] xl:h-[228px] 2xl:h-[288px]"
+                        <img class="object-cover object-top w-full h-[309px] sm:h-[222px] md:h-[190px] xl:h-[228px] 2xl:h-[288px]"
                             src="{{ Storage::url($professional->photo_path) }}" alt="" />
 
                         <div class="p-5 flex flex-col grow">
