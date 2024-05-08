@@ -13,8 +13,8 @@ class WelcomeController extends Controller
 
         $services = Service::orderBy('id', 'desc')->get();
         $professionals = Professional::orderBy('id', 'desc')->with('specialties')->get();
-        $clinic_information = ClinicInformation::first();
         
-        return view('welcome', compact('services', 'professionals', 'clinic_information'));
+        
+        return view('welcome', compact('services', 'professionals'));
     }
 }

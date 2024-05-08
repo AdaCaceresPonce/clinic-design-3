@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\AboutUsController;
+use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Web\OurProfessionalsController;
 use App\Http\Controllers\Web\OurServicesController;
 use App\Http\Controllers\WelcomeController;
@@ -12,6 +13,9 @@ Route::get('/our_professionals', [OurProfessionalsController::class, 'index'])->
 Route::get('/our_service', [OurServicesController::class, 'index'])->name('our_service.index');
 
 
+
+
+Route::get('/contact_us', [ContactUsController::class, 'index'])->name('contact_us.index');
 
 // Route::get('/about-us', function () {
 //     return view('about_us.about_us');

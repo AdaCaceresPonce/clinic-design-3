@@ -22,8 +22,8 @@
         ],
         [
             'name' => 'Contacto',
-            'route' => '',
-            'active' => '',
+            'route' => route('contact_us.index'),
+            'active' => request()->routeIs('contact_us.index'),
         ],
     ];
 @endphp
