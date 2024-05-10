@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="hidden lg:block">
-                <a href="{{ route('admin.dashboard') }}" class="text-base text-white px-7 py-2 bg-blue-600 rounded-xl">
+                <a href="{{ route('admin.dashboard') }}" class="text-base text-white px-7 py-2.5 bg-blue-600 rounded-lg">
                     Intranet
                 </a>
             </div>

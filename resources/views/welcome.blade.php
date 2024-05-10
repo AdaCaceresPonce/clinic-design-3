@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
 
+    {{-- Portada --}}
     <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative"
         style="background-image: url('{{ asset('img/bienvenida.jpg') }}');">
 
@@ -26,8 +27,8 @@
                 </p>
 
                 <p class="mt-6 text-base lg:text-lg font-medium">
-                    En Clínica Dental utilizamos las mejores herramientas y materiales para brindarte un servicio y
-                    atención de calidad velando siempre por tu comodidad.</p>
+                    {{ $contents['cover_description'] }}
+                </p>
 
                 <div class="mt-8 sm:mt-12">
                     <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
@@ -39,52 +40,50 @@
         </x-container>
     </section>
 
+    {{-- Confianza --}}
     <section>
         <x-container class="px-4 py-14 sm:py-20">
             <div class="flex items-center flex-wrap-reverse">
+
                 <div class="w-full lg:w-1/2">
                     <img class="h-[450px] sm:h-[550px] lg:h-[670px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
                         src="{{ asset('img/clinica-confianza.jpg') }}" alt="">
                 </div>
+
                 <div class="w-full lg:w-1/2 px-4 pb-10 sm:px-20 lg:pl-16 lg:pr-0 lg:pb-0 text-start">
 
                     <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
                         Una Clínica Dental en la que puedes <span class="text-[#0075FF]">confiar.</span>
                     </p>
 
-                    <p class="text-base sm:text-lg lg:text-xl mt-7">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.
+                    <p class="text-base sm:text-lg lg:text-lg mt-7">
+                        {{ $contents['about_description'] }}
                     </p>
-                    <p class="text-base sm:text-lg lg:text-xl mt-8">
+
+                    <p class="text-base font-bold sm:text-lg lg:text-xl mt-8">
                         Te ofrecemos:
                     </p>
-                    <div class="mt-4">
-                        <ul class="space-y-4">
+
+                    <ul class="mt-4 space-y-3">
+                        {{-- Dividir la cadena de texto en un array, con las 'comas' como delimitadores --}}
+                        @php
+                            $items = explode(',', $contents['about_we_offer_you']);
+                        @endphp
+
+                        @foreach ($items as $item)
                             <li class="flex items-center">
                                 <i class="fa-solid fa-circle-check text-2xl text-[#0075FF] mr-2"></i>
-                                <span class="text-base sm:text-lg lg:text-xl font-bold">Equipamiento moderno</span>
+                                <span class="text-base sm:text-lg lg:text-xl font-bold">{{ $item }}</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-circle-check text-2xl text-[#0075FF] mr-2"></i>
-                                <span class="text-base sm:text-lg lg:text-xl font-bold">Monitoreo continuo</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-circle-check text-2xl text-[#0075FF] mr-2"></i>
-                                <span class="text-base sm:text-lg lg:text-xl font-bold">Equipo de profesionales
-                                    capacitado</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mt-12">
-                        {{-- <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
-                            Conócenos
-                        </button> --}}
-                        <a href="{{ route('about_us.index') }}"
-                            class="text-white text-lg font-medium bg-blue-700 py-4 px-8 rounded-xl">
+                        @endforeach
+                    </ul>
+
+                    <div class="mt-9 flex justify-start">
+                        <a href="{{ route('about_us.index') }}" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                             Conócenos
                         </a>
                     </div>
+
                 </div>
             </div>
         </x-container>
@@ -97,13 +96,14 @@
             <div class="mb-6 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">Nuestros Servicios Dentales.</span>
+                        <span class="text-[#0075FF]">
+                            {{ $contents['our_services_title'] }}
+                        </span>
                     </p>
                 </div>
                 <div>
                     <p class="text-base sm:text-lg lg:text-xl mt-3">
-                        Descubre los servicios que ponemos a tu disposición, siempre con la mejor atención médica
-                        dental.
+                        {{ $contents['our_services_description'] }}
                     </p>
                 </div>
             </div>
@@ -174,12 +174,14 @@
                 <div class="mb-5 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
                     <div>
                         <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                            <span class="text-[#0075FF]">Nuestros Profesionales.</span>
+                            <span class="text-[#0075FF]">
+                                {{ $contents['our_professionals_title'] }}
+                            </span>
                         </p>
                     </div>
                     <div>
                         <p class="text-base sm:text-lg lg:text-xl mt-3">
-                            Disponemos de un equipo de profesionales altamente capacitados.
+                            {{ $contents['our_professionals_description'] }}
                         </p>
                     </div>
                 </div>
@@ -242,12 +244,14 @@
             <div class="mb-3 px-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">Lo que nuestros pacientes opinan.</span>
+                        <span class="text-[#0075FF]">
+                            {{ $contents['testimonials_title'] }}
+                        </span>
                     </p>
                 </div>
                 <div>
                     <p class="text-base sm:text-lg lg:text-xl mt-3">
-                        Pacientes de diferentes lugares nos dejan sus opiniones.
+                        {{ $contents['testimonials_description'] }}
                     </p>
                 </div>
             </div>
@@ -435,7 +439,6 @@
         .professional__card {
             height: calc((100% - 30px) / 2) !important;
         }
-
     </style>
 
     @push('js')

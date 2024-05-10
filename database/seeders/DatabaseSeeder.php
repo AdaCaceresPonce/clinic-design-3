@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('services/cover_images');
         Storage::makeDirectory('professionals');
 
+        $this->call(IndexPageSeeder::class);
+
 
         Service::factory(8)->create();
         $this->call(ClinicInformationSeeder::class);
