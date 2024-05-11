@@ -8,7 +8,7 @@
     <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="'Nuestros Profesionales'" />
 
     <section>
-        <x-container class="px-4 py-12 sm:py-14 md:py-16 lg:py-20">
+        <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
 
                 {{-- Imagen --}}
@@ -42,7 +42,7 @@
     </section>
 
     <section>
-        <x-container class="px-4 py-12 lg:py-20">
+        <x-container class="px-4 section__spacing">
             {{-- Titulo --}}
             <div class="mb-10 px-2 text-center sm:px-15 lg:px-20">
                 <p class="text-3xl sm:text-3xl lg:text-4xl text-[#0075FF] leading-tight lg:leading-tight font-bold">

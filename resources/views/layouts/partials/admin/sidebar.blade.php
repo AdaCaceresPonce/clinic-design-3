@@ -39,10 +39,10 @@
 
     $web_pages = [
         [
-            'icon' => 'fa-solid fa-table-columns',
+            'icon' => 'fa-solid fa-ranking-star',
             'name' => 'Página Inicio',
-            'route' => route('admin.dashboard'),
-            'active' => request()->routeIs('admin.dashboard'),
+            'route' => route('admin.welcome_page_content.index'),
+            'active' => request()->routeIs('admin.welcome_page_content.index'),
         ],
     ];
 @endphp

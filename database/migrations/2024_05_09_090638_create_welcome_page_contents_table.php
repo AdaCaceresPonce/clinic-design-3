@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('index_page_contents', function (Blueprint $table) {
+        Schema::create('welcome_page_contents', function (Blueprint $table) {
             $table->id();
 
             $table->text('cover_title');
@@ -32,6 +32,7 @@ return new class extends Migration
             $table->text('testimonials_title');
             $table->text('testimonials_description');
 
+
             $table->timestamps();
         });
     }
@@ -41,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('index_page_contents');
+        Schema::dropIfExists('welcome_page_contents');
     }
 };

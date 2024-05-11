@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\IndexContent;
+use App\Models\WelcomePageContent;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class IndexPageSeeder extends Seeder
+class WelcomePageContentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -35,6 +35,6 @@ class IndexPageSeeder extends Seeder
             
         ];
 
-        IndexContent::create($content);
+        WelcomePageContent::create($content);
     }
 }

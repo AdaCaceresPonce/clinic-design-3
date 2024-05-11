@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClinicInformation;
-use App\Models\IndexContent;
 use App\Models\Professional;
 use App\Models\Service;
+use App\Models\WelcomePageContent;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -15,7 +14,7 @@ class WelcomeController extends Controller
         $services = Service::orderBy('id', 'desc')->get();
         $professionals = Professional::orderBy('id', 'desc')->with('specialties')->get();
         
-        $contents = IndexContent::first();
+        $contents = WelcomePageContent::first();
         
         return view('welcome', compact('services', 'professionals', 'contents'));
     }

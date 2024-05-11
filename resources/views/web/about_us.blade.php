@@ -14,7 +14,7 @@
 
     {{-- Quienes somos --}}
     <section class="bg-[#E3FFFE]">
-        <x-container class="px-4 py-20">
+        <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap">
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 p-4 lg:pr-12">
@@ -128,15 +128,16 @@
 
     {{-- Info adicional de la clinica --}}
     <section>
-        <x-container class="px-4 py-20">
+        <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
                 {{-- Imagen --}}
-                <div class="w-full mt-10 lg:mt-0 lg:w-1/2 px-4">
+                <div class="w-full mt-10 lg:mt-0 lg:w-1/2 sm:px-4">
                     <img class="h-[450px] sm:h-[550px] lg:h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
                         src="{{ asset('img/nosotros-2.jpg') }}" alt="">
                 </div>
+
                 {{-- Texto --}}
-                <div class="w-full lg:w-1/2 px-4">
+                <div class="w-full lg:w-1/2 px-4 lg:pl-6">
                     <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         <span class="text-[#0075FF]">Lorem ipsum dolor sit amet.</span>
                     </p>

@@ -2,6 +2,8 @@
 
 @import url('buttons.css');
 @import url('components.css');
+@import url('web.css');
+
 
 @tailwind base;
 @tailwind components;

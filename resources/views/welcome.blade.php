@@ -16,11 +16,11 @@
         <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
         </div>
 
-        <x-container
-            class="px-2 sm:px-8 py-20 sm:py-24 h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
+        <x-container class="px-2 sm:px-8 section__spacing 
+            h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
+
             {{-- Tarjeta de bienvenida --}}
-            <div
-                class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
+            <div class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
 
                 <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
                     Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span>
@@ -42,7 +42,7 @@
 
     {{-- Confianza --}}
     <section>
-        <x-container class="px-4 py-14 sm:py-20">
+        <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
 
                 <div class="w-full lg:w-1/2">
@@ -91,7 +91,7 @@
 
     {{-- Servicios --}}
     <section>
-        <x-container class="px-4 py-14 sm:py-20 flex-col">
+        <x-container class="px-4 section__spacing flex-col">
             {{-- Titulo --}}
             <div class="mb-6 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
@@ -168,7 +168,7 @@
 
     {{-- Profesionales --}}
     <section class="bg-[#DEFFFE] border-y-[3px] border-y-[#00CAF7]">
-        <x-container class="px-4 py-14 sm:py-20">
+        <x-container class="px-4 section__spacing">
             <div class="">
                 {{-- Titulo --}}
                 <div class="mb-5 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
@@ -239,7 +239,7 @@
 
     {{-- Opiniones --}}
     <section>
-        <x-container class="px-4 py-20">
+        <x-container class="px-4 section__spacing">
             {{-- Titulo --}}
             <div class="mb-3 px-4 text-center sm:px-15 lg:px-40">
                 <div>
@@ -364,6 +364,7 @@
     <x-contact-section />
 
     <style>
+
         .card__content {
             overflow: hidden;
         }
