@@ -10,6 +10,7 @@
 
     {{-- Portada --}}
     <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative"
+        id="cover"
         style="background-image: url('{{ asset('img/bienvenida.jpg') }}');">
 
         {{-- Fondo azulado para la imagen --}}
@@ -22,9 +23,10 @@
             {{-- Tarjeta de bienvenida --}}
             <div class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
 
-                <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
-                    Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span>
-                </p>
+                <span class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight">
+                    {{-- Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span> --}}
+                    {!! $contents['cover_title'] !!}
+                </span>
 
                 <p class="mt-6 text-base lg:text-lg font-medium">
                     {{ $contents['cover_description'] }}
