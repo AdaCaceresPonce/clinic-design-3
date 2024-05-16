@@ -28,9 +28,11 @@
                     {!! $contents['cover_title'] !!}
                 </span>
 
-                <p class="mt-6 text-base lg:text-lg font-medium">
-                    {{ $contents['cover_description'] }}
-                </p>
+                <div class="mt-6">
+                    <span class="text-base lg:text-lg font-medium">
+                        {!! $contents['cover_description'] !!}
+                    </span>
+                </div>
 
                 <div class="mt-8 sm:mt-12">
                     <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
@@ -43,7 +45,7 @@
     </section>
 
     {{-- Confianza --}}
-    <section>
+    <section id="clinic_about">
         <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
 
@@ -58,9 +60,11 @@
                         Una Clínica Dental en la que puedes <span class="text-[#0075FF]">confiar.</span>
                     </p>
 
-                    <p class="text-base sm:text-lg lg:text-lg mt-7">
-                        {{ $contents['about_description'] }}
-                    </p>
+                    <div class="mt-7">
+                        <span class="text-base sm:text-lg lg:text-lg">
+                            {!! $contents['about_description'] !!}
+                        </span>
+                    </div>
 
                     <p class="text-base font-bold sm:text-lg lg:text-xl mt-8">
                         Te ofrecemos:

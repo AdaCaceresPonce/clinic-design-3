@@ -15,8 +15,8 @@ class WelcomePageContentSeeder extends Seeder
     {
         $content = [
             
-            'cover_title' => 'Prepárate para una grandiosa experiencia dental',
-            'cover_description' => 'En Clínica Dental utilizamos las mejores herramientas y materiales para brindarte un servicio y atención de calidad velando siempre por tu comodidad.',
+            'cover_title' => '<p><strong>Prep&aacute;rate para una <span style="color: rgb(0, 117, 255);">grandiosa experiencia dental.</span></strong></p>',
+            'cover_description' => '<p>En Cl&iacute;nica Dental utilizamos las mejores herramientas y materiales para brindarte un servicio y atenci&oacute;n de calidad velando siempre por tu comodidad.</p>',
             'cover_img' => '',
 
             'about_title' => 'Una Clínica Dental en la que puedes confiar.',

@@ -8,59 +8,163 @@
     ],
 ]">
 
-    <form action="{{ route('admin.welcome_page_content.update', $contents) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.welcome_page_content.update', $contents) }}" method="POST"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="card-gray mx-auto max-w-[1230px]">
+        <div class="card-gray mx-auto max-w-[1230px] space-y-12 divide-y-4 divide-blue-500">
 
-            <div>
-                <span class="text-2xl font-bold mr-1">
-                    Sección de portada
-                </span>
-                <a href="{{ route('welcome.index') }}#cover" target="_blank" class="px-2 py-2 text-white bg-[#0075FF] rounded-lg">
-                    <i class="fa-solid fa-eye"></i>
-                </a>
-            </div>
+            {{-- Seccion de portada --}}
+            <section>
+                <div class="mb-1 section__title__container">
 
-            <div class="mb-4">
+                    {{-- Nombre de seccion --}}
+                    <span class="text-2xl font-bold mr-1">
+                        Sección de portada
+                    </span>
 
-                <x-label class="mb-1 mt-2 text-[15px] font-black">
-                    Título
-                </x-label>
+                    {{-- Botón de redireccion a la web --}}
+                    <a href="{{ route('welcome.index') }}#cover" target="_blank"
+                        class="section__button">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </div>
 
-                <textarea class="textarea" id="seccion4" name="cover_title">
-                @if (isset($contents['cover_title']))
-{{ $contents['cover_title'] }}
-@endif
-            </textarea>
+                {{-- Columnas --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    <div class="space-y-4">
 
-            </div>
+                        <div>
+                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                                Título
+                            </x-label>
+        
+                            <textarea class="textarea" name="cover_title">
+                            @if (isset($contents['cover_title']))
+                            {{ old('cover_title', $contents['cover_title'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+        
+                        <div>
+                            <x-label class="mb-1 text-[15px] font-black">
+                                Descripcion
+                            </x-label>
+        
+                            <textarea class="textarea" name="cover_description">
+                                @if (isset($contents['cover_description']))
+                                {{ old('cover_description', $contents['cover_description'] ) }}
+                                @endif
+                                </textarea>
+                        </div>
+                    </div>
+                    <div class="bg-red-500 h-full flex flex-col">
+                        <div>
+                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                                Imagen
+                            </x-label>
+                        </div>
 
-            <div class="mb-4">
+                        <div class="grow bg-yellow-400">
 
-                <x-label class="mb-1 text-[15px] font-black">
-                    Descripcion
-                </x-label>
+                        </div>
+                    </div>
 
-                <x-input class="w-full" placeholder="Ingrese la descripcion de la portada" name="cover_description"
-                    value="{{ old('cover_description', $contents['cover_description']) }}" />
-                <x-input-error for="cover_description" />
+                </div>
 
-            </div>
+            </section>
 
+            {{-- Seccion de Info Clinica --}}
+            <section class="section">
+                <div class="section__title__container">
+                    <span class="text-2xl font-bold mr-1">
+                        Sección de detalles de la Clínica
+                    </span>
+                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
+                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </div>
+
+                {{-- Columnas --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    <div class="space-y-4">
+
+                        <div>
+                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                                Título
+                            </x-label>
+        
+                            <textarea class="textarea" name="about_title">
+                            @if (isset($contents['about_title']))
+                            {{ old('about_title', $contents['about_title'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+        
+                        <div>
+        
+                            <x-label class="mb-1 text-[15px] font-black">
+                                Descripcion
+                            </x-label>
+        
+                            <textarea class="textarea" name="about_description">
+                                @if (isset($contents['about_description']))
+                                {{ old('about_description', $contents['about_description'] ) }}
+                                @endif
+                                </textarea>
+            
+                        </div>
+                    </div>
+                    <div class="h-full flex flex-col">
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Lista de ofrecemos (Separa cada elemento con una coma)
+                        </x-label>
+
+                        <x-input class="w-full" placeholder="Ingresa los elementos de la lista" name="about_we_offer_you"
+                            value="{{ old('about_we_offer_you', $contents['about_we_offer_you']) }}" />
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Imagen
+                        </x-label>
+        
+                        <div class="grow bg-yellow-400">
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
             {{-- Botón actualizar --}}
-            <div class="flex justify-end">
+            <div class="flex pt-6 justify-end">
 
                 <x-button class="ml-2">
-                    Actualizar
+                    Guardar cambios
                 </x-button>
 
             </div>
 
+            <span class="px-2 py-2 text-white bg-[#0075FF] rounded-lg"></span>
         </div>
     </form>
 
+    <style>
+        .section{
+            padding-top: 48px;
+        }
+        .section__title__container{
+            display: flex;
+            align-items: center;
+        }
+
+        .section__button{
+            @apply px-2 py-2 text-white bg-[#0075FF] rounded-lg;
+        }
+    </style>
+
     @push('js')
+        {{-- TinyMCE --}}
         <script src="https://cdn.tiny.cloud/1/ptkarmvvxs48norvninijsbe8qx8zwy0ouzu9mp22f5kn99n/tinymce/6/tinymce.min.js"
             referrerpolicy="origin"></script>
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/plugins/language/langs/es.js" referrerpolicy="origin">
@@ -69,7 +173,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 tinymce.init({
                     selector: '.textarea',
-                    height: 150,
+                    height: 200,
                     language: 'es',
                     menubar: false,
                     toolbar: 'undo redo | formatselect | ' +
@@ -78,47 +182,6 @@
                         'removeformat',
                 });
             });
-
-            const tabsElement = document.getElementById('tabs-example');
-
-            // create an array of objects with the id, trigger element (eg. button), and the content element
-            const tabElements = [{
-                    id: 'profile',
-                    triggerEl: document.querySelector('#profile-tab-example'),
-                    targetEl: document.querySelector('#profile-example'),
-                },
-                {
-                    id: 'dashboard',
-                    triggerEl: document.querySelector('#dashboard-tab-example'),
-                    targetEl: document.querySelector('#dashboard-example'),
-                },
-                {
-                    id: 'settings',
-                    triggerEl: document.querySelector('#settings-tab-example'),
-                    targetEl: document.querySelector('#settings-example'),
-                },
-                {
-                    id: 'contacts',
-                    triggerEl: document.querySelector('#contacts-tab-example'),
-                    targetEl: document.querySelector('#contacts-example'),
-                },
-            ];
-
-            // options with default values
-            const options = {
-                defaultTabId: 'settings',
-                activeClasses: 'text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 border-blue-600 dark:border-blue-500',
-                inactiveClasses: 'text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300',
-                onShow: () => {
-                    console.log('tab is shown');
-                },
-            };
-
-            // instance options with default values
-            const instanceOptions = {
-                id: 'tabs-example',
-                override: true
-            };
         </script>
     @endpush
 </x-admin-layout>
