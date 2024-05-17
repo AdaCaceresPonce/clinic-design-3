@@ -56,9 +56,10 @@
 
                 <div class="w-full lg:w-1/2 px-4 pb-10 sm:px-20 lg:pl-16 lg:pr-0 lg:pb-0 text-start">
 
-                    <p class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
-                        Una Clínica Dental en la que puedes <span class="text-[#0075FF]">confiar.</span>
-                    </p>
+                    <span class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
+                        {{-- Una Clínica Dental en la que puedes <span class="text-[#0075FF]">confiar.</span> --}}
+                        {!! $contents['about_title'] !!}
+                    </span>
 
                     <div class="mt-7">
                         <span class="text-base sm:text-lg lg:text-lg">
