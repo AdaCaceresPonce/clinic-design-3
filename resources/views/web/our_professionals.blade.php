@@ -5,7 +5,7 @@
     </x-slot>
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="'Nuestros Profesionales'" />
+    <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="$contents['cover_title']" />
 
     <section>
         <x-container class="px-4 section__spacing">
@@ -19,23 +19,16 @@
 
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 px-4">
-                    <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">Nuestros Profesionales</span>
-                    </p>
-                    <p class="mt-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate, laborum officia, ab
-                        labore obcaecati error deleniti quo sit mollitia tempore omnis, cumque eos veniam voluptatibus
-                        nulla doloribus magni assumenda aspernatur quisquam! In qui aspernatur accusamus laborum aperiam
-                        eligendi. Nobis, eos id hic dolorem quis voluptates fuga maiores deserunt ab, officia molestiae
-                        adipisci qui dolor autem sequi architecto quam ad a. Molestiae quos nulla ducimus facilis
-                        aspernatur.
-                        <br>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, sapiente deleniti eius
-                        consequuntur nulla quidem quam soluta voluptatibus ratione libero. Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Dolores porro rerum, animi quae quis ipsum, eos magni nihil
-                        adipisci excepturi vero blanditiis qui temporibus officiis saepe numquam fuga obcaecati beatae.
-                        Iure illum, corrupti dolorum at tenetur doloribus assumenda vel modi.
-                    </p>
+                    <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                        {!! $contents['our_professionals_title'] !!}
+                        
+                    </span>
+                    <div class="mt-4">
+                        <span>
+                            {!! $contents['our_professionals_description'] !!}
+                        </span>
+                    </div>
+                    
                 </div>
             </div>
         </x-container>
@@ -45,7 +38,7 @@
         <x-container class="px-4 section__spacing">
             {{-- Titulo --}}
             <div class="mb-10 px-2 text-center sm:px-15 lg:px-20">
-                <p class="text-3xl sm:text-3xl lg:text-4xl text-[#0075FF] leading-tight lg:leading-tight font-bold">
+                <p class="text-3xl sm:text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                     Conoce a nuestro equipo de Profesionales
                 </p>
                 <p class="text-lg sm:text-lg lg:text-xl mt-4">

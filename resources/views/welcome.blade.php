@@ -102,16 +102,14 @@
             {{-- Titulo --}}
             <div class="mb-6 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
-                    <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">
-                            {{ $contents['our_services_title'] }}
-                        </span>
-                    </p>
+                    <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
+                        {!! $contents['our_services_title'] !!}
+                    </span>
                 </div>
-                <div>
-                    <p class="text-base sm:text-lg lg:text-xl mt-3">
-                        {{ $contents['our_services_description'] }}
-                    </p>
+                <div class="mt-3">
+                    <span class="text-base sm:text-lg lg:text-xl">
+                        {!! $contents['our_services_description'] !!}
+                    </span>
                 </div>
             </div>
             {{-- Slider --}}
@@ -180,16 +178,14 @@
                 {{-- Titulo --}}
                 <div class="mb-5 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
                     <div>
-                        <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                            <span class="text-[#0075FF]">
-                                {{ $contents['our_professionals_title'] }}
-                            </span>
-                        </p>
+                        <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
+                            {!! $contents['our_professionals_title'] !!}
+                        </span>
                     </div>
-                    <div>
-                        <p class="text-base sm:text-lg lg:text-xl mt-3">
-                            {{ $contents['our_professionals_description'] }}
-                        </p>
+                    <div class="mt-3">
+                        <span class="text-base sm:text-lg lg:text-xl">
+                            {!! $contents['our_professionals_description'] !!}
+                        </span>
                     </div>
                 </div>
                 {{-- Slider --}}
@@ -250,16 +246,14 @@
             {{-- Titulo --}}
             <div class="mb-3 px-4 text-center sm:px-15 lg:px-40">
                 <div>
-                    <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">
-                            {{ $contents['testimonials_title'] }}
-                        </span>
-                    </p>
+                    <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
+                        {!! $contents['testimonials_title'] !!}
+                    </span>
                 </div>
-                <div>
-                    <p class="text-base sm:text-lg lg:text-xl mt-3">
-                        {{ $contents['testimonials_description'] }}
-                    </p>
+                <div class="mt-3">
+                    <span class="text-base sm:text-lg lg:text-xl">
+                        {!! $contents['testimonials_description'] !!}
+                    </span>
                 </div>
             </div>
             {{-- Slider Opiniones --}}

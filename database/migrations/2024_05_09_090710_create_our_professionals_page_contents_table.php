@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cover_img');
 
             $table->text('our_professionals_title');
+            $table->text('our_professionals_description');
             $table->string('our_professionals_img');
 
             $table->text('our_professionals_team_title');

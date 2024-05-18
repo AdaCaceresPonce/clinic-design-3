@@ -42,7 +42,35 @@
             'icon' => 'fa-solid fa-ranking-star',
             'name' => 'Página Inicio',
             'route' => route('admin.welcome_page_content.index'),
-            'active' => request()->routeIs('admin.welcome_page_content.index'),
+            'active' => request()->routeIs('admin.welcome_page_content.*'),
+        ],
+
+        [
+            'icon' => 'fa-solid fa-people-group',
+            'name' => 'Página Nosotros',
+            'route' => route('admin.about_us_page_content.index'),
+            'active' => request()->routeIs('admin.about_us_page_content.*'),
+        ],
+
+        [
+            'icon' => 'fa-solid fa-teeth',
+            'name' => 'Página Servicios',
+            'route' => route('admin.our_services_page_content.index'),
+            'active' => request()->routeIs('admin.our_services_page_content.*'),
+        ],
+
+        [
+            'icon' => 'fa-solid fa-stethoscope',
+            'name' => 'Página Profesionales',
+            'route' => route('admin.our_professionals_page_content.index'),
+            'active' => request()->routeIs('admin.our_professionals_page_content.*'),
+        ],
+
+        [
+            'icon' => 'fa-solid fa-address-book',
+            'name' => 'Página Contacto',
+            'route' => route('admin.contact_us_page_content.index'),
+            'active' => request()->routeIs('admin.contact_us_page_content.*'),
         ],
     ];
 @endphp
@@ -71,11 +99,11 @@
             @endforeach
 
         </ul>
-        <ul class="pt-4 border-t border-gray-200 dark:border-gray-700">
+        <ul class="pt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
             @foreach ($web_pages as $web_page)
                 <li>
                     <a href="{{ $web_page['route'] }}"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $link['active'] ? ' bg-gray-100 dark:bg-gray-700' : '' }}">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $web_page['active'] ? ' bg-gray-100 dark:bg-gray-700' : '' }}">
                         <span class="inline-flex w-6 h-6 justify-center items-center">
                             <i class="{{ $web_page['icon'] }}"></i>
                         </span>

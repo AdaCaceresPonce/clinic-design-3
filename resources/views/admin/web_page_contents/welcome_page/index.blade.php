@@ -58,7 +58,7 @@
                                 </textarea>
                         </div>
                     </div>
-                    <div class="bg-red-500 h-full flex flex-col">
+                    <div class="h-full flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -104,7 +104,7 @@
         
                         <div>
         
-                            <x-label class="mb-1 text-[15px] font-black">
+                            <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Descripcion
                             </x-label>
         
@@ -118,7 +118,7 @@
                     </div>
                     <div class="h-full flex flex-col">
                         <x-label class="mb-1 mt-2 text-[15px] font-black">
-                            Lista de ofrecemos (Separa cada elemento con una coma)
+                            Lista de ofrecemos (Separa cada elemento de la lista usando una coma)
                         </x-label>
 
                         <x-input class="w-full" placeholder="Ingresa los elementos de la lista" name="about_we_offer_you"
@@ -136,16 +136,151 @@
                 </div>
             </section>
             
+            {{-- Seccion de Servicios --}}
+            <section class="section">
+                <div class="section__title__container">
+                    <span class="text-2xl font-bold mr-1">
+                        Sección de Servicios
+                    </span>
+                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
+                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </div>
+
+                {{-- Columnas --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    <div>
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Título
+                        </x-label>
+    
+                        <textarea class="textarea" name="our_services_title">
+                        @if (isset($contents['our_services_title']))
+                        {{ old('our_services_title', $contents['our_services_title'] ) }}
+                        @endif
+                        </textarea>
+
+                    </div>
+
+                    <div>
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Descripción
+                        </x-label>
+    
+                        <textarea class="textarea" name="our_services_description">
+                        @if (isset($contents['our_services_description']))
+                        {{ old('our_services_description', $contents['our_services_description'] ) }}
+                        @endif
+                        </textarea>
+
+                    </div>
+
+
+                </div>
+            </section>
+
+            {{-- Seccion de Profesionales --}}
+            <section class="section">
+                <div class="section__title__container">
+                    <span class="text-2xl font-bold mr-1">
+                        Sección de Profesionales
+                    </span>
+                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
+                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </div>
+
+                {{-- Columnas --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    <div>
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Título
+                        </x-label>
+    
+                        <textarea class="textarea" name="our_professionals_title">
+                        @if (isset($contents['our_professionals_title']))
+                        {{ old('our_professionals_title', $contents['our_professionals_title'] ) }}
+                        @endif
+                        </textarea>
+
+                    </div>
+
+                    <div>
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Descripción
+                        </x-label>
+    
+                        <textarea class="textarea" name="our_professionals_description">
+                        @if (isset($contents['our_professionals_description']))
+                        {{ old('our_professionals_description', $contents['our_professionals_description'] ) }}
+                        @endif
+                        </textarea>
+
+                    </div>
+
+                </div>
+            </section>
+
+            {{-- Seccion de Opiniones --}}
+            <section class="section">
+                <div class="section__title__container">
+                    <span class="text-2xl font-bold mr-1">
+                        Sección de Opiniones
+                    </span>
+                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
+                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </div>
+
+                {{-- Columnas --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    <div>
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Título
+                        </x-label>
+    
+                        <textarea class="textarea" name="testimonials_title">
+                        @if (isset($contents['testimonials_title']))
+                        {{ old('testimonials_title', $contents['testimonials_title'] ) }}
+                        @endif
+                        </textarea>
+
+                    </div>
+
+                    <div>
+
+                        <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            Descripción
+                        </x-label>
+    
+                        <textarea class="textarea" name="testimonials_description">
+                        @if (isset($contents['testimonials_description']))
+                        {{ old('testimonials_description', $contents['testimonials_description'] ) }}
+                        @endif
+                        </textarea>
+
+                    </div>
+
+                </div>
+
+            </section>
+
             {{-- Botón actualizar --}}
             <div class="flex pt-6 justify-end">
 
                 <x-button class="ml-2">
-                    Guardar cambios
+                    Guardar todos los cambios
                 </x-button>
 
             </div>
-
-            <span class="px-2 py-2 text-white bg-[#0075FF] rounded-lg"></span>
         </div>
     </form>
 

@@ -58,17 +58,17 @@ class WelcomePageContentController extends Controller
         $request->validate([
             'cover_title' => 'required',
             'cover_description' => 'required',
-            // 'cover_img',
-            // 'about_title' => 'required',
-            // 'about_description' => 'required',
-            // 'about_we_offer_you' => 'required',
-            // 'about_image',
-            // 'our_services_title' => 'required',
-            // 'our_services_description' => 'required',
-            // 'our_professionals_title' => 'required',
-            // 'our_professionals_description' => 'required',
-            // 'testimonials_title' => 'required',
-            // 'testimonials_description' => 'required',
+            'cover_img',
+            'about_title' => 'required',
+            'about_description' => 'required',
+            'about_we_offer_you' => 'required',
+            'about_image',
+            'our_services_title' => 'required',
+            'our_services_description' => 'required',
+            'our_professionals_title' => 'required',
+            'our_professionals_description' => 'required',
+            'testimonials_title' => 'required',
+            'testimonials_description' => 'required',
         ]);
 
         session()->flash('swal', [

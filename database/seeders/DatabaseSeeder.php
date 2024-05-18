@@ -32,9 +32,11 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('professionals');
 
         $this->call(WelcomePageContentSeeder::class);
+        $this->call(AboutUsPageContentSeeder::class);
+        $this->call(OurProfessionalsPageContentSeeder::class);
+        $this->call(ContactUsPageContentSeeder::class);
 
-
-        Service::factory(8)->create();
+        Service::factory(12)->create();
         $this->call(ClinicInformationSeeder::class);
         $this->call(SpecialtySeeder::class);
         $this->call(ProfessionalSeeder::class);
