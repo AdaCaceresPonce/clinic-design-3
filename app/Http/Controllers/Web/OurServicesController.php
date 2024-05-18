@@ -10,7 +10,7 @@ class OurServicesController extends Controller
 {
     public function index(){
 
-        $services = Service::orderBy('id', 'desc')->get();
+        $services = Service::orderBy('id', 'desc')->paginate(9);
         return view('web.our_service',compact('services'));
         
     } 

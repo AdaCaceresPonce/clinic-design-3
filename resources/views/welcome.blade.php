@@ -8,29 +8,31 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
 
+
     {{-- Portada --}}
-    <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative"
-        id="cover"
+    <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative" id="cover"
         style="background-image: url('{{ asset('img/bienvenida.jpg') }}');">
 
         {{-- Fondo azulado para la imagen --}}
         <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
         </div>
 
-        <x-container class="px-2 sm:px-8 section__spacing 
+        <x-container
+            class="px-2 sm:px-8 section__spacing 
             h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
 
             {{-- Tarjeta de bienvenida --}}
-            <div class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
+            <div
+                class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
 
                 <span class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight">
                     {{-- Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span> --}}
-                    {!! $contents['cover_title'] !!}
+                    {!! $contents['cover_title'] ?? 'Titulo predeterminado' !!}
                 </span>
 
                 <div class="mt-6">
                     <span class="text-base lg:text-lg font-medium">
-                        {!! $contents['cover_description'] !!}
+                        {!! $contents['cover_description'] ?? 'Titulo de descripcion' !!}
                     </span>
                 </div>
 
@@ -58,12 +60,12 @@
 
                     <span class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight font-bold">
                         {{-- Una Clínica Dental en la que puedes <span class="text-[#0075FF]">confiar.</span> --}}
-                        {!! $contents['about_title'] !!}
+                        {!! $contents['about_title'] ?? 'titulo acerca de' !!}
                     </span>
 
                     <div class="mt-7">
                         <span class="text-base sm:text-lg lg:text-lg">
-                            {!! $contents['about_description'] !!}
+                            {!! $contents['about_description'] ?? 'descripcion acerca de nosotros' !!}
                         </span>
                     </div>
 
@@ -74,7 +76,7 @@
                     <ul class="mt-4 space-y-3">
                         {{-- Dividir la cadena de texto en un array, con las 'comas' como delimitadores --}}
                         @php
-                            $items = explode(',', $contents['about_we_offer_you']);
+                            $items = explode(',', $contents['about_we_offer_you'] ?? '');
                         @endphp
 
                         @foreach ($items as $item)
@@ -86,7 +88,8 @@
                     </ul>
 
                     <div class="mt-9 flex justify-start">
-                        <a href="{{ route('about_us.index') }}" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                        <a href="{{ route('about_us.index') }}"
+                            class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                             Conócenos
                         </a>
                     </div>
@@ -104,13 +107,13 @@
                 <div>
                     <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         <span class="text-[#0075FF]">
-                            {{ $contents['our_services_title'] }}
+                            {{ $contents['our_services_title'] ?? 'Titulo de nuestro servicio' }}
                         </span>
                     </p>
                 </div>
                 <div>
                     <p class="text-base sm:text-lg lg:text-xl mt-3">
-                        {{ $contents['our_services_description'] }}
+                        {{ $contents['our_services_description'] ?? 'descripcion de nuestros servicios' }}
                     </p>
                 </div>
             </div>
@@ -126,7 +129,7 @@
                                     <div class="card__image w-full flex justify-center items-center relative">
                                         <h3
                                             class="service__name text-white text-2xl font-bold text-center px-4 w-full absolute z-10">
-                                            {{ $service->name }}
+                                            {{ $service->name ?? 'Nombre del servicio' }}
                                         </h3>
                                         <img src="{{ $service->image }}" alt="image"
                                             class="card__img object-cover object-center w-full brightness-75">
@@ -137,7 +140,7 @@
                                             {{ $service->name }}
                                         </h3> --}}
                                         <p class="card__description mb-6 min-h-[120px] line-clamp-5">
-                                            {{ $service->small_description }}
+                                            {{ $service->small_description ?? 'Descripción del servicio' }}
                                         </p>
                                         <div class="flex justify-center">
                                             <a href="#"
@@ -182,13 +185,13 @@
                     <div>
                         <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                             <span class="text-[#0075FF]">
-                                {{ $contents['our_professionals_title'] }}
+                                {{ $contents['our_professionals_title'] ?? 'titulo de nuestros profesionales' }}
                             </span>
                         </p>
                     </div>
                     <div>
                         <p class="text-base sm:text-lg lg:text-xl mt-3">
-                            {{ $contents['our_professionals_description'] }}
+                            {{ $contents['our_professionals_description'] ?? 'descripcion  de nuestros profesionales' }}
                         </p>
                     </div>
                 </div>
@@ -252,13 +255,13 @@
                 <div>
                     <p class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         <span class="text-[#0075FF]">
-                            {{ $contents['testimonials_title'] }}
+                            {{ $contents['testimonials_title'] ?? 'titulo de nuestros testimonios'}}
                         </span>
                     </p>
                 </div>
                 <div>
                     <p class="text-base sm:text-lg lg:text-xl mt-3">
-                        {{ $contents['testimonials_description'] }}
+                        {{ $contents['testimonials_description'] ??'titulo de nuestra description' }}
                     </p>
                 </div>
             </div>
@@ -371,7 +374,6 @@
     <x-contact-section />
 
     <style>
-
         .card__content {
             overflow: hidden;
         }

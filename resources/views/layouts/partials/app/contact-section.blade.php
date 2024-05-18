@@ -97,7 +97,7 @@
                         <div class="ml-2 sm:ml-3 flex flex-1 flex-col">
                             <span class="font-bold">Teléfono</span>
                             <span class="font-medium text-sm text-[#535353]">
-                                {{ $clinic_information['cellphone'] }}
+                                {{ $clinic_information['cellphone']?? 'celular' }}
                             </span>
                         </div>
                     </div>

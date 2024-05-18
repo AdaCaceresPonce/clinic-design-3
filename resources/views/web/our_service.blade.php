@@ -8,21 +8,44 @@
     <x-page-cover :image="asset('img/servicio.jpg')" :name="'Servicios'" />
 
     <section>
-        <x-container
-            class="px-8 py-24 h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
+        <x-container class="px-4 section__spacing">
             {{-- Tarjeta de bienvenida --}}
-            <div class="rounded-3xl px-11 py-12 max-w-[570px] text-center lg:text-start">
-AA
-                <p class="mt-6 text-base lg:text-lg font-medium">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam molestiae quisquam impedit.
-                    Fugit nihil incidunt vero cum aspernatur, nesciunt quae alias exercitationem facere voluptas
-                    suscipit culpa facilis ea vel eligendi, dolorem quaerat hic enim eos voluptatum. Repudiandae
-                    reApellendus magni deserunt illum eius corporis, dolorum incidunt obcaecati saepe, ducimus cum
-                    aliquam rerum ratione, inventore reprehenderit accusantium! Similique natus libero molestias,
-                    consectetur ab vel repellendus quibusdam sapiente possimus quaerat sed animi.
-                </p>
+            <div class="flex items-center flex-wrap-reverse">
+                {{-- Imagen --}}
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 flex justify-center px-0 md:px-44 lg:px-16">
+                    <img class="h-auto sm:h-[510px] sm:w-[350px] lg:h-[600px] lg:w-full object-cover md:object-top object-center border-[4px] border-[#00CAF7] rounded-3xl"
+                        src="{{ asset('img/clinica-confianza.jpg') }}" alt="">
+                </div>
+                {{-- <div class="rounded-3xl px-11 py-12 max-w-[570px] text-center lg:text-start">
+
+                    <div class="w-full lg:w-1/2">
+                        <img class="h-[450px] sm:h-[550px] lg:h-[670px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
+                            src="{{ asset('img/clinica-confianza.jpg') }}" alt="">
+                    </div>
+                </div> --}}
+                {{-- Texto --}}
+                <div class="w-full lg:w-1/2 px-4">
+                    <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                        <span class="text-[#0075FF]">Nuestros Servicios</span>
+                    </p>
+                    <p class="mt-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate, laborum officia, ab
+                        labore obcaecati error deleniti quo sit mollitia tempore omnis, cumque eos veniam voluptatibus
+                        nulla doloribus magni assumenda aspernatur quisquam! In qui aspernatur accusamus laborum aperiam
+                        eligendi. Nobis, eos id hic dolorem quis voluptates fuga maiores deserunt ab, officia molestiae
+                        adipisci qui dolor autem sequi architecto quam ad a. Molestiae quos nulla ducimus facilis
+                        aspernatur.
+                        <br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, sapiente deleniti eius
+                        consequuntur nulla quidem quam soluta voluptatibus ratione libero. Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Dolores porro rerum, animi quae quis ipsum, eos magni nihil
+                        adipisci excepturi vero blanditiis qui temporibus officiis saepe numquam fuga obcaecati beatae.
+                        Iure illum, corrupti dolorum at tenetur doloribus assumenda vel modi.
+                    </p>
+                </div>
         </x-container>
     </section>
+
     {{-- Servicios --}}
     <section>
         <x-container class="px-4 py-20 flex-col">
@@ -40,8 +63,50 @@ AA
                     </p>
                 </div>
             </div>
-            {{-- Slider --}}
-            <div class="flex justify-center align-middle mb-5">
+
+            <div class="sm:px-8 md:px-0 lg:px-0
+                md:w-[684px] lg:w-full mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+                    @foreach ($services as $service)
+                        <div
+                            class="flex flex-col lg:flex-row bg-[#E0FFFF] rounded-xl overflow-hidden shadow-lg
+                        border-[1px] border-[#9B9B9B]  w-[295px] min-[540px]:w-[340px] sm:w-[450px] md:w-[330px] lg:w-full mx-auto">
+                            <div
+                                class=" swiper-slide border-[3px] rounded-xl border-[#1376F8] shadow-lg">
+
+                                <div class="card__image w-full flex justify-center items-center relative">
+                                    <h3
+                                        class="service__name text-white text-2xl font-bold text-center px-4 w-full absolute z-10">
+                                        {{ $service->name ?? 'Nombre del servicio' }}
+                                    </h3>
+                                    <img src="{{ $service->image }}" alt="image"
+                                        class="card__img object-cover object-center w-full brightness-75">
+                                </div>
+
+                                <div class="card__data p-4">
+                                    <p class="card__description mb-6 min-h-[120px] line-clamp-5">
+                                        {{ $service->small_description ?? 'Descripción del servicio' }}
+                                    </p>
+                                    <div class="flex justify-center">
+                                        <a href="#"
+                                            class="text-white items-center bg-blue-700 py-2 px-4 rounded-lg">
+                                            Conoce más
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="mt-8">
+                    {{ $services->links() }}
+                    </div>
+            </div>
+
+    </section>
+    {{-- Slider --}}
+    {{-- <div class="flex justify-center align-middle mb-5">
                 <div class="card__container swiper pb-14 px-10">
                     <div class="card__content rounded-xl">
                         <div class="swiper-wrapper">
@@ -77,25 +142,8 @@ AA
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-                    {{-- Botones de navegacion --}}
-                    <div class="swiper-button-prev">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </div>
-                    <div class="swiper-button-next">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-
-                    {{-- Paginacion --}}
-                    <div class="swiper-pagination service-pagination"></div>
-
-                </div>
-                
-            </div> 
-
-        </x-container>
-        {{-- </section> --}}
-
-
+                    </div>  --}}
+        
+    </x-container>
     </section>
 </x-app-layout>
