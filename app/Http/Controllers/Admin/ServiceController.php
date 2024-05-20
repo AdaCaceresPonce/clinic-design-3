@@ -122,10 +122,12 @@ class ServiceController extends Controller
         $service->update($request->except(['cover_image_path', 'card_image_path']));
 
         if ($request->hasFile('card_image_path')) {
+            Storage::delete($service->card_image_path);
             $service->update(['card_image_path' => $request->file('card_image_path')->store('services/card_images')]);
         }
 
         if ($request->hasFile('cover_image_path')) {
+            Storage::delete($service->cover_image_path);
             $service->update(['cover_image_path' => $request->file('cover_image_path')->store('services/cover_images')]);
         }
 

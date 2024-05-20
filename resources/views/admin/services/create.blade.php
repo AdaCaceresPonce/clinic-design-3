@@ -82,7 +82,7 @@
                     Descripción para la tarjeta:
                 </x-label>
                 <textarea name="small_description"
-                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="w-full min-h-[100px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     placeholder="Ingrese una descripción muy breve del servicio" name="">{{ old('small_description') }}</textarea>
                 <x-input-error for="small_description" />
 
@@ -93,7 +93,7 @@
                     Descripción del servicio:
                 </x-label>
                 <textarea name="long_description"
-                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    class="w-full min-h-[350px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                     placeholder="Ingrese la descripción completa del servicio" name="">{{ old('long_description') }}</textarea>
                 <x-input-error for="long_description" />
 
@@ -104,8 +104,8 @@
                     Información adicional del servicio:
                 </x-label>
                 <textarea name="additional_info"
-                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                    placeholder="Puedes detallar más información adicional del servicio (Opcional)" name="">{{ old('additional_info') }}</textarea>
+                    class="w-full min-h-[350px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    placeholder="Puedes agregar información adicional del servicio (Opcional)" name="">{{ old('additional_info') }}</textarea>
             </div>
 
             <div class="flex justify-end">

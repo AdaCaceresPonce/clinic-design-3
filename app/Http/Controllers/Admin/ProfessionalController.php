@@ -133,6 +133,7 @@ class ProfessionalController extends Controller
         $professional->update($request->except(['photo_path']));
 
         if ($request->hasFile('photo_path')) {
+            Storage::delete($professional->photo_path);
             $professional->update(['photo_path' => $request->file('photo_path')->store('professionals')]);
         }
 

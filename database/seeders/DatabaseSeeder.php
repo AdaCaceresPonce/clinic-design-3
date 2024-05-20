@@ -27,9 +27,22 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('services/cover_images');
         Storage::deleteDirectory('professionals');
 
+        Storage::deleteDirectory('web_pages_images/welcome_page');
+        Storage::deleteDirectory('web_pages_images/about_us_page');
+        Storage::deleteDirectory('web_pages_images/our_services_page');
+        Storage::deleteDirectory('web_pages_images/our_professionals_page');
+        Storage::deleteDirectory('web_pages_images/contact_us_page');
+
         Storage::makeDirectory('services/card_images');
         Storage::makeDirectory('services/cover_images');
         Storage::makeDirectory('professionals');
+
+        Storage::makeDirectory('web_pages_images/welcome_page');
+        Storage::makeDirectory('web_pages_images/about_us_page');
+        Storage::makeDirectory('web_pages_images/our_services_page');
+        Storage::makeDirectory('web_pages_images/our_professionals_page');
+        Storage::makeDirectory('web_pages_images/contact_us_page');
+
 
         $this->call(WelcomePageContentSeeder::class);
         $this->call(AboutUsPageContentSeeder::class);

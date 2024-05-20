@@ -68,22 +68,19 @@
                 md:w-[684px] lg:w-full mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
                     @foreach ($services as $service)
-                        <div
-                            class="flex flex-col lg:flex-row bg-[#E0FFFF] rounded-xl overflow-hidden shadow-lg
-                        border-[1px] border-[#9B9B9B]  w-[295px] min-[540px]:w-[340px] sm:w-[450px] md:w-[330px] lg:w-full mx-auto">
-                            <div
-                                class=" swiper-slide border-[3px] rounded-xl border-[#1376F8] shadow-lg">
 
-                                <div class="card__image w-full flex justify-center items-center relative">
+                            <div class="border-[3px] rounded-xl border-[#1376F8] shadow-lg overflow-hidden">
+
+                                <div class="flex justify-center items-center relative">
                                     <h3
                                         class="service__name text-white text-2xl font-bold text-center px-4 w-full absolute z-10">
                                         {{ $service->name ?? 'Nombre del servicio' }}
                                     </h3>
                                     <img src="{{ $service->image }}" alt="image"
-                                        class="card__img object-cover object-center w-full brightness-75">
+                                        class="card__img object-cover object-center aspect-[4/3] brightness-75">
                                 </div>
 
-                                <div class="card__data p-4">
+                                <div class="p-5">
                                     <p class="card__description mb-6 min-h-[120px] line-clamp-5">
                                         {{ $service->small_description ?? 'Descripción del servicio' }}
                                     </p>
@@ -96,7 +93,6 @@
 
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                 </div>
                 <div class="mt-8">
