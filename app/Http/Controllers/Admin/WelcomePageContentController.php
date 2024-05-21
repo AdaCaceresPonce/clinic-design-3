@@ -58,17 +58,47 @@ class WelcomePageContentController extends Controller
         $request->validate([
             'cover_title' => 'required',
             'cover_description' => 'required',
-            'cover_img',
+            'cover_img' => 'image|max:1024',
+
             'about_title' => 'required',
             'about_description' => 'required',
             'about_we_offer_you' => 'required',
-            'about_image',
+            'about_image' => 'image|max:1024',
+
             'our_services_title' => 'required',
             'our_services_description' => 'required',
+
             'our_professionals_title' => 'required',
             'our_professionals_description' => 'required',
+
             'testimonials_title' => 'required',
             'testimonials_description' => 'required',
+        ],[
+            'cover_title.required' => 'El título de la portada es obligatorio.',
+            'cover_description.required' => 'La descripción de la portada es obligatoria.',
+            'cover_img.image' => 'El archivo para la portada debe ser una imagen.',
+
+            'about_title.required' => 'El título de detalles de la clinica es obligatorio.',
+            'about_description.required' => 'La descripción de detalles de la clinica es obligatoria.',
+            'about_we_offer_you.required' => 'La lista de lo que ofrece la clínica debe contener al menos 1 elemento.',
+            'about_image.image' => 'El archivo sobre detalles de la clínica debe ser una imagen.',
+
+            'our_services_title.required' => 'El título de la sección de servicios es obligatorio.',
+            'our_services_description.required' => 'La descripción de la sección de servicios es obligatoria.',
+
+            'our_professionals_title.required' => 'El título de la sección de profesionales es obligatorio.',
+            'our_professionals_description.required' => 'La descripción de la sección de profesionales es obligatoria.',
+
+            'testimonials_title.required' => 'El título de la sección de opiniones es obligatorio.',
+            'testimonials_description.required' => 'La descripción de la sección de opiniones es obligatoria.',
+
+        ],[
+            'name' => 'nombre',
+            'slug' => 'slug',
+            'small_description' => 'descripción para la carta',
+            'long_description' => 'descripción general del servicio',
+            'card_image_path' => 'imagen para la tarjeta',
+            'cover_image_path' => 'imagen de portada',
         ]);
 
         session()->flash('swal', [

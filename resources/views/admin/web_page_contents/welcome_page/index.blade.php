@@ -8,6 +8,8 @@
     ],
 ]">
 
+    <x-validation-errors class="mb-4"/>
+
     <form action="{{ route('admin.welcome_page_content.update', $contents) }}" method="POST"
         enctype="multipart/form-data">
         @csrf
@@ -39,23 +41,33 @@
                                 Título
                             </x-label>
         
-                            <textarea class="textarea" name="cover_title">
-                            @if (isset($contents['cover_title']))
-                            {{ old('cover_title', $contents['cover_title'] ) }}
-                            @endif
-                            </textarea>
+                            <div class="rounded-lg @error('cover_title') border-[2px] border-red-500 @enderror">
+                                <textarea class="textarea" name="cover_title">
+                                    @if (isset($contents['cover_title']))
+                                    {{ old('cover_title', $contents['cover_title'] ) }}
+                                    @endif
+                                    </textarea>
+                            </div>
+
+                            <x-input-error class="mt-1" for="cover_title" />
+
                         </div>
         
                         <div>
                             <x-label class="mb-1 text-[15px] font-black">
                                 Descripcion
                             </x-label>
-        
-                            <textarea class="textarea" name="cover_description">
-                                @if (isset($contents['cover_description']))
-                                {{ old('cover_description', $contents['cover_description'] ) }}
-                                @endif
-                                </textarea>
+                            
+                            <div class="rounded-lg @error('cover_description') border-[2px] border-red-500 @enderror">
+                                <textarea class="textarea" name="cover_description">
+                                    @if (isset($contents['cover_description']))
+                                    {{ old('cover_description', $contents['cover_description'] ) }}
+                                    @endif
+                                    </textarea>
+                            </div>
+                            
+                            <x-input-error class="mt-1" for="cover_description" />
+                                
                         </div>
                     </div>
                     <div class="h-full flex flex-col">
@@ -79,8 +91,8 @@
                                 src="{{ Storage::url( $contents['cover_img']) }}" alt="">
                         </figure>
 
-                        {{-- <img class=" object-contain bg-white" src="{{ Storage::url( $contents['cover_img']) }}" /> --}}
-
+                        <x-input-error class="mt-1" for="cover_img" />
+                        
                     </div>
 
                 </div>
@@ -108,11 +120,16 @@
                                 Título
                             </x-label>
         
-                            <textarea class="textarea" name="about_title">
-                            @if (isset($contents['about_title']))
-                            {{ old('about_title', $contents['about_title'] ) }}
-                            @endif
-                            </textarea>
+                            <div class="rounded-lg @error('about_title') border-[2px] border-red-500 @enderror">
+                                <textarea class="textarea" name="about_title">
+                                    @if (isset($contents['about_title']))
+                                    {{ old('about_title', $contents['about_title'] ) }}
+                                    @endif
+                                    </textarea>
+                            </div>
+                            
+                            <x-input-error class="mt-1" for="about_title" />
+
                         </div>
         
                         <div>
@@ -121,11 +138,16 @@
                                 Descripcion
                             </x-label>
         
-                            <textarea class="textarea" name="about_description">
-                                @if (isset($contents['about_description']))
-                                {{ old('about_description', $contents['about_description'] ) }}
-                                @endif
-                                </textarea>
+                            <div class="rounded-lg @error('about_description') border-[2px] border-red-500 @enderror">
+                                <textarea class="textarea" name="about_description">
+                                    @if (isset($contents['about_description']))
+                                    {{ old('about_description', $contents['about_description'] ) }}
+                                    @endif
+                                    </textarea>
+                            </div>
+                            
+                            <x-input-error class="mt-1" for="about_description" />
+
             
                         </div>
                     </div>
@@ -137,6 +159,9 @@
     
                             <x-input class="w-full" placeholder="Ingresa los elementos de la lista" name="about_we_offer_you"
                                 value="{{ old('about_we_offer_you', $contents['about_we_offer_you']) }}" />
+                            
+                            <x-input-error class="mt-1" for="about_we_offer_you" />
+                            
                         </div>
 
                         <x-label class="mb-1 mt-2 text-[15px] font-black">
@@ -182,11 +207,16 @@
                             Título
                         </x-label>
     
-                        <textarea class="textarea" name="our_services_title">
-                        @if (isset($contents['our_services_title']))
-                        {{ old('our_services_title', $contents['our_services_title'] ) }}
-                        @endif
-                        </textarea>
+                        <div class="rounded-lg @error('our_services_title') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="our_services_title">
+                            @if (isset($contents['our_services_title']))
+                            {{ old('our_services_title', $contents['our_services_title'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+
+                        <x-input-error class="mt-1" for="our_services_title" />
+
 
                     </div>
 
@@ -196,11 +226,15 @@
                             Descripción
                         </x-label>
     
-                        <textarea class="textarea" name="our_services_description">
-                        @if (isset($contents['our_services_description']))
-                        {{ old('our_services_description', $contents['our_services_description'] ) }}
-                        @endif
-                        </textarea>
+                        <div class="rounded-lg @error('our_services_description') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="our_services_description">
+                            @if (isset($contents['our_services_description']))
+                            {{ old('our_services_description', $contents['our_services_description'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+
+                        <x-input-error class="mt-1" for="our_services_description" />
 
                     </div>
 
@@ -228,11 +262,15 @@
                             Título
                         </x-label>
     
-                        <textarea class="textarea" name="our_professionals_title">
-                        @if (isset($contents['our_professionals_title']))
-                        {{ old('our_professionals_title', $contents['our_professionals_title'] ) }}
-                        @endif
-                        </textarea>
+                        <div class="rounded-lg @error('our_professionals_title') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="our_professionals_title">
+                            @if (isset($contents['our_professionals_title']))
+                            {{ old('our_professionals_title', $contents['our_professionals_title'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+
+                        <x-input-error class="mt-1" for="our_professionals_title" />
 
                     </div>
 
@@ -242,11 +280,15 @@
                             Descripción
                         </x-label>
     
-                        <textarea class="textarea" name="our_professionals_description">
-                        @if (isset($contents['our_professionals_description']))
-                        {{ old('our_professionals_description', $contents['our_professionals_description'] ) }}
-                        @endif
-                        </textarea>
+                        <div class="rounded-lg @error('our_professionals_description') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="our_professionals_description">
+                            @if (isset($contents['our_professionals_description']))
+                            {{ old('our_professionals_description', $contents['our_professionals_description'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+
+                        <x-input-error class="mt-1" for="our_professionals_description" />
 
                     </div>
 
@@ -279,6 +321,8 @@
                         @endif
                         </textarea>
 
+                        <x-input-error class="mt-1" for="testimonials_title" />
+
                     </div>
 
                     <div>
@@ -292,6 +336,8 @@
                         {{ old('testimonials_description', $contents['testimonials_description'] ) }}
                         @endif
                         </textarea>
+
+                        <x-input-error class="mt-1" for="testimonials_description" />
 
                     </div>
 
