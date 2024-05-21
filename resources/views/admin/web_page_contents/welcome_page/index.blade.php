@@ -12,7 +12,7 @@
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="card-gray mx-auto max-w-[1230px] space-y-12 divide-y-4 divide-blue-500">
+        <div class="card-gray mx-auto max-w-[1230px] space-y-12 divide-y-[3px] divide-slate-400">
 
             {{-- Seccion de portada --}}
             <section>
@@ -64,10 +64,23 @@
                                 Imagen
                             </x-label>
                         </div>
+                        <figure class="grow relative">
+                            <div class="absolute top-4 right-4">
+                                <label
+                                    class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                    <i class="fas fa-camera mr-2"></i>
+                                    Actualizar imagen
+                                    <input id="uploadImage1" name="card_image_path" type="file" class="hidden"
+                                        accept="image/*" onchange="previewImage(1);" />
+                                </label>
+                            </div>
+                            <img id="uploadPreview1"
+                                class="object-contain h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                                src="{{ Storage::url( $contents['cover_img']) }}" alt="">
+                        </figure>
 
-                        <div class="grow bg-yellow-400">
+                        {{-- <img class=" object-contain bg-white" src="{{ Storage::url( $contents['cover_img']) }}" /> --}}
 
-                        </div>
                     </div>
 
                 </div>
@@ -117,20 +130,33 @@
                         </div>
                     </div>
                     <div class="h-full flex flex-col">
-                        <x-label class="mb-1 mt-2 text-[15px] font-black">
-                            Lista de ofrecemos (Separa cada elemento de la lista usando una coma)
-                        </x-label>
-
-                        <x-input class="w-full" placeholder="Ingresa los elementos de la lista" name="about_we_offer_you"
-                            value="{{ old('about_we_offer_you', $contents['about_we_offer_you']) }}" />
+                        <div>
+                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                                Lista de ofrecemos (Separa cada elemento de la lista usando una coma)
+                            </x-label>
+    
+                            <x-input class="w-full" placeholder="Ingresa los elementos de la lista" name="about_we_offer_you"
+                                value="{{ old('about_we_offer_you', $contents['about_we_offer_you']) }}" />
+                        </div>
 
                         <x-label class="mb-1 mt-2 text-[15px] font-black">
                             Imagen
                         </x-label>
         
-                        <div class="grow bg-yellow-400">
-
-                        </div>
+                        <figure class="grow relative">
+                            <div class="absolute top-4 right-4">
+                                <label
+                                    class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                    <i class="fas fa-camera mr-2"></i>
+                                    Actualizar imagen
+                                    <input id="uploadImage2" name="card_image_path" type="file" class="hidden"
+                                        accept="image/*" onchange="previewImage(2);" />
+                                </label>
+                            </div>
+                            <img id="uploadPreview2"
+                                class="object-contain h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                                src="{{ Storage::url( $contents['about_image']) }}" alt="">
+                        </figure>
                     </div>
 
                 </div>
@@ -286,7 +312,7 @@
 
     <style>
         .section{
-            padding-top: 48px;
+            padding-top: 34px;
         }
         .section__title__container{
             display: flex;
@@ -308,7 +334,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 tinymce.init({
                     selector: '.textarea',
-                    height: 200,
+                    height: 210,
                     language: 'es',
                     menubar: false,
                     toolbar: 'undo redo | formatselect | ' +
@@ -317,6 +343,15 @@
                         'removeformat',
                 });
             });
+
+            //Previsualizar imagen
+            function previewImage(nb) {
+                var reader = new FileReader();
+                reader.readAsDataURL(document.getElementById('uploadImage' + nb).files[0]);
+                reader.onload = function(e) {
+                    document.getElementById('uploadPreview' + nb).src = e.target.result;
+                };
+            }
         </script>
     @endpush
 </x-admin-layout>
