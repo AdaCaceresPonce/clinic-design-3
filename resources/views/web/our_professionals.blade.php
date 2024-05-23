@@ -71,7 +71,7 @@
                             </div> --}}
                             <img src="{{ $professional->photo }}" 
                                 class="w-full object-cover object-top 
-                                h-[310px] min-[540px]:h-[360px] sm:h-[450px] md:h-[350px] lg:w-1/3 lg:h-[400px]
+                                h-[310px] min-[540px]:h-[360px] sm:h-[450px] md:h-[350px] lg:w-1/3 lg:h-[400px] xl:h-[450px]
                                 border-b-[1px] border-b-[#9B9B9B] 
                                 lg:border-b-0 lg:border-r-[1px] lg:border-r-[#9B9B9B]" alt="">
 
@@ -94,8 +94,8 @@
                                 </p>
 
                                 {{-- Descripcion --}}
-                                <p class="mt-4 text-sm lg:text-sm grow text-ellipsis overflow-hidden">
-                                    {{ $professional->description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. At delectus quidem ipsam tempore, eligendi fugit odit natus qui maiores, nemo, ab labore.
+                                <p class="mt-4 text-sm lg:text-sm xl:text-base grow text-ellipsis overflow-hidden">
+                                    {{ $professional->description }}
                                 </p>
 
                                 {{-- Redes sociales --}}

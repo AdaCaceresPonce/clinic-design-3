@@ -82,27 +82,8 @@
 
             </div>
 
-            <div class="mt-4 h-[500px] w-full" id="map">
-
-            </div>
         </div>
     </form>
 
-    @push('js')
-        
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
-        <script>
-            async function iniciarMap() {
-                var coord = {
-                    lat: -13.417151100601377,
-                    lng: -76.13246253221908
-                };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 20,
-                    center: coord
-                });
-            }
-        </script>
-    @endpush
 
 </x-admin-layout>

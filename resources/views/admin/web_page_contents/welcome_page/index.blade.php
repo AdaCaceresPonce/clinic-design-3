@@ -18,19 +18,8 @@
 
             {{-- Seccion de portada --}}
             <section>
-                <div class="mb-1 section__title__container">
-
-                    {{-- Nombre de seccion --}}
-                    <span class="text-2xl font-bold mr-1">
-                        Sección de portada
-                    </span>
-
-                    {{-- Botón de redireccion a la web --}}
-                    <a href="{{ route('welcome.index') }}#cover" target="_blank"
-                        class="section__button">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                </div>
+                
+                <x-page-section-title :section_title="'Sección de Portada'" :route_name="'welcome.index'" :section_id="'#cover'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -101,15 +90,8 @@
 
             {{-- Seccion de Info Clinica --}}
             <section class="section">
-                <div class="section__title__container">
-                    <span class="text-2xl font-bold mr-1">
-                        Sección de detalles de la Clínica
-                    </span>
-                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
-                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                </div>
+
+                <x-page-section-title :section_title="'Sección de Detalles de la Clínica'" :route_name="'welcome.index'" :section_id="'#clinic_about'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -189,15 +171,7 @@
             
             {{-- Seccion de Servicios --}}
             <section class="section">
-                <div class="section__title__container">
-                    <span class="text-2xl font-bold mr-1">
-                        Sección de Servicios
-                    </span>
-                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
-                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                </div>
+                <x-page-section-title :section_title="'Sección de Servicios'" :route_name="'welcome.index'" :section_id="'#services'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -244,15 +218,8 @@
 
             {{-- Seccion de Profesionales --}}
             <section class="section">
-                <div class="section__title__container">
-                    <span class="text-2xl font-bold mr-1">
-                        Sección de Profesionales
-                    </span>
-                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
-                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                </div>
+
+                <x-page-section-title :section_title="'Sección de Profesionales'" :route_name="'welcome.index'" :section_id="'#professionals'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -297,15 +264,8 @@
 
             {{-- Seccion de Opiniones --}}
             <section class="section">
-                <div class="section__title__container">
-                    <span class="text-2xl font-bold mr-1">
-                        Sección de Opiniones
-                    </span>
-                    <a href="{{ route('welcome.index') }}#clinic_about" target="_blank"
-                        class="px-3 py-2 text-white bg-[#0075FF] rounded-xl">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                </div>
+
+                <x-page-section-title :section_title="'Sección de Opiniones'" :route_name="'welcome.index'" :section_id="'#testimonials'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -315,11 +275,13 @@
                             Título
                         </x-label>
     
-                        <textarea class="textarea" name="testimonials_title">
-                        @if (isset($contents['testimonials_title']))
-                        {{ old('testimonials_title', $contents['testimonials_title'] ) }}
-                        @endif
-                        </textarea>
+                        <div class="rounded-lg @error('testimonials_title') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="testimonials_title">
+                            @if (isset($contents['testimonials_title']))
+                            {{ old('testimonials_title', $contents['testimonials_title'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
 
                         <x-input-error class="mt-1" for="testimonials_title" />
 
@@ -331,12 +293,14 @@
                             Descripción
                         </x-label>
     
-                        <textarea class="textarea" name="testimonials_description">
-                        @if (isset($contents['testimonials_description']))
-                        {{ old('testimonials_description', $contents['testimonials_description'] ) }}
-                        @endif
-                        </textarea>
-
+                        <div class="rounded-lg @error('testimonials_description') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="testimonials_description">
+                            @if (isset($contents['testimonials_description']))
+                            {{ old('testimonials_description', $contents['testimonials_description'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+                        
                         <x-input-error class="mt-1" for="testimonials_description" />
 
                     </div>
@@ -344,6 +308,7 @@
                 </div>
 
             </section>
+
 
             {{-- Botón actualizar --}}
             <div class="flex pt-6 justify-end">
@@ -360,14 +325,6 @@
         .section{
             padding-top: 34px;
         }
-        .section__title__container{
-            display: flex;
-            align-items: center;
-        }
-
-        .section__button{
-            @apply px-2 py-2 text-white bg-[#0075FF] rounded-lg;
-        }
     </style>
 
     @push('js')
@@ -377,17 +334,16 @@
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/plugins/language/langs/es.js" referrerpolicy="origin">
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                tinymce.init({
-                    selector: '.textarea',
-                    height: 210,
-                    language: 'es',
-                    menubar: false,
-                    toolbar: 'undo redo | formatselect | ' +
-                        'bold | forecolor |' +
-                        '| bullist numlist | ' +
-                        'removeformat',
-                });
+
+            tinymce.init({
+                selector: '.textarea',
+                height: 210,
+                language: 'es',
+                menubar: false,
+                toolbar: 'undo redo | formatselect | ' +
+                    'bold | forecolor |' +
+                    '| bullist numlist | ' +
+                    'removeformat',
             });
 
             //Previsualizar imagen

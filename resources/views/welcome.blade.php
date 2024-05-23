@@ -100,7 +100,7 @@
     </section>
 
     {{-- Servicios --}}
-    <section>
+    <section id="services">
         <x-container class="px-4 section__spacing flex-col">
             {{-- Titulo --}}
             <div class="mb-6 pb-4 text-center sm:px-15 lg:px-40">
@@ -175,7 +175,7 @@
     </section>
 
     {{-- Profesionales --}}
-    <section class="bg-[#DEFFFE] border-y-[3px] border-y-[#00CAF7]">
+    <section class="bg-[#DEFFFE] border-y-[3px] border-y-[#00CAF7]" id="professionals">
         <x-container class="px-4 section__spacing">
             <div class="">
                 {{-- Titulo --}}
@@ -244,7 +244,7 @@
     </section>
 
     {{-- Opiniones --}}
-    <section>
+    <section id="testimonials">
         <x-container class="px-4 section__spacing">
             {{-- Titulo --}}
             <div class="mb-3 px-4 text-center sm:px-15 lg:px-40">

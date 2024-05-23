@@ -18,12 +18,12 @@
 
         <div class="mx-auto max-w-[1230px]">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 @foreach ($professionals as $professional)
                     <div
                         class="flex flex-col max-w-full bg-white border-[2px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
 
-                        <img class="object-cover object-top w-full h-[309px] sm:h-[222px] md:h-[190px] xl:h-[228px] 2xl:h-[288px]"
+                        <img class="object-cover object-top w-full aspect-[5/6]"
                             src="{{ Storage::url($professional->photo_path) }}" alt="" />
 
                         <div class="p-5 flex flex-col grow">
@@ -45,7 +45,7 @@
             </div>
         </div>
     @else
-        {{-- Alerta que se muestra cuando no hay servicios registrados --}}
+        {{-- Alerta que se muestra cuando no hay profesionales registrados --}}
         <div class="flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
             role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
