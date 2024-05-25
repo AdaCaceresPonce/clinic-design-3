@@ -14,7 +14,7 @@
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="card-gray mx-auto max-w-[1230px] space-y-12 divide-y-[3px] divide-slate-400">
+        <div class="card-gray mx-auto max-w-[1230px] space-y-12 divide-y-[3px]">
 
             {{-- Seccion de portada --}}
             <section>
@@ -71,7 +71,7 @@
                                     class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
                                     <i class="fas fa-camera mr-2"></i>
                                     Actualizar imagen
-                                    <input id="uploadImage1" name="card_image_path" type="file" class="hidden"
+                                    <input id="uploadImage1" name="cover_img" type="file" class="hidden"
                                         accept="image/*" onchange="previewImage(1);" />
                                 </label>
                             </div>
@@ -156,7 +156,7 @@
                                     class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
                                     <i class="fas fa-camera mr-2"></i>
                                     Actualizar imagen
-                                    <input id="uploadImage2" name="card_image_path" type="file" class="hidden"
+                                    <input id="uploadImage2" name="about_image" type="file" class="hidden"
                                         accept="image/*" onchange="previewImage(2);" />
                                 </label>
                             </div>
@@ -164,6 +164,9 @@
                                 class="object-contain h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
                                 src="{{ Storage::url( $contents['about_image']) }}" alt="">
                         </figure>
+
+                        <x-input-error class="mt-1" for="about_image" />
+
                     </div>
 
                 </div>
@@ -337,7 +340,7 @@
 
             tinymce.init({
                 selector: '.textarea',
-                height: 210,
+                height: 220,
                 language: 'es',
                 menubar: false,
                 toolbar: 'undo redo | formatselect | ' +

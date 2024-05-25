@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\WelcomePageContent;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class WelcomePageContentController extends Controller
 {
     /**
@@ -76,12 +78,12 @@ class WelcomePageContentController extends Controller
         ],[
             'cover_title.required' => 'El título de la portada es obligatorio.',
             'cover_description.required' => 'La descripción de la portada es obligatoria.',
-            'cover_img.image' => 'El archivo para la portada debe ser una imagen.',
+            'cover_img.image' => 'El archivo cargado para la portada debe ser una imagen.',
 
             'about_title.required' => 'El título de detalles de la clinica es obligatorio.',
             'about_description.required' => 'La descripción de detalles de la clinica es obligatoria.',
             'about_we_offer_you.required' => 'La lista de lo que ofrece la clínica debe contener al menos 1 elemento.',
-            'about_image.image' => 'El archivo sobre detalles de la clínica debe ser una imagen.',
+            'about_image.image' => 'El archivo cargado para detalles de la clínica debe ser una imagen.',
 
             'our_services_title.required' => 'El título de la sección de servicios es obligatorio.',
             'our_services_description.required' => 'La descripción de la sección de servicios es obligatoria.',
@@ -92,14 +94,21 @@ class WelcomePageContentController extends Controller
             'testimonials_title.required' => 'El título de la sección de opiniones es obligatorio.',
             'testimonials_description.required' => 'La descripción de la sección de opiniones es obligatoria.',
 
-        ],[
-            'name' => 'nombre',
-            'slug' => 'slug',
-            'small_description' => 'descripción para la carta',
-            'long_description' => 'descripción general del servicio',
-            'card_image_path' => 'imagen para la tarjeta',
-            'cover_image_path' => 'imagen de portada',
         ]);
+
+
+        $welcomePageContent->update($request->except(['cover_img', 'about_image']));
+
+        if ($request->hasFile('cover_img')) {
+            Storage::delete($welcomePageContent->cover_img);
+            $welcomePageContent->update(['cover_img' => $request->file('cover_img')->store('web_pages_images/welcome_page')]);
+        }
+
+        if ($request->hasFile('about_image')) {
+            Storage::delete($welcomePageContent->about_image);
+            $welcomePageContent->update(['about_image' => $request->file('about_image')->store('web_pages_images/welcome_page')]);
+        }
+
 
         session()->flash('swal', [
             'icon' => 'success',
@@ -107,7 +116,6 @@ class WelcomePageContentController extends Controller
             'text' => 'Información actualizada correctamente'
         ]);
 
-        $welcomePageContent->update($request->all());
         return redirect()->route('admin.welcome_page_content.index');
     }
 

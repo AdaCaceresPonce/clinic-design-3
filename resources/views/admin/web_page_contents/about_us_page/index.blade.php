@@ -15,19 +15,8 @@
 
             {{-- Seccion de portada --}}
             <section>
-                <div class="mb-1 section__title__container">
-
-                    {{-- Nombre de seccion --}}
-                    <span class="text-2xl font-bold mr-1">
-                        Sección de portada
-                    </span>
-
-                    {{-- Botón de redireccion a la web --}}
-                    <a href="{{ route('welcome.index') }}#cover" target="_blank"
-                        class="section__button">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                </div>
+                
+                <x-page-section-title :section_title="'Sección de portada'" :route_name="'about_us.index'" :section_id="'#cover'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
