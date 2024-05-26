@@ -23,8 +23,8 @@
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    
                     <div class="space-y-4">
-
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Título

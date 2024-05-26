@@ -10,7 +10,7 @@
     @endpush
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/nosotros.jpg')" :name="'Sobre Nosotros'" />
+    <x-page-cover :image="asset('img/nosotros.jpg')" :name="$contents['cover_title']" />
 
     {{-- Quienes somos --}}
     <section class="bg-[#E3FFFE]">
@@ -18,14 +18,16 @@
             <div class="flex items-center flex-wrap">
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 p-4 lg:pr-12">
-                    <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">¿Quiénes somos?</span>
-                    </p>
-                    <p class="mt-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate, laborum officia, ab labore obcaecati error deleniti quo sit mollitia tempore omnis, cumque eos veniam voluptatibus nulla doloribus magni assumenda aspernatur quisquam! In qui aspernatur accusamus laborum aperiam eligendi. Nobis, eos id hic dolorem quis voluptates fuga maiores deserunt ab, officia molestiae adipisci qui dolor autem sequi architecto quam ad a. Molestiae quos nulla ducimus facilis aspernatur. Vel exercitationem in maxime aut, vero excepturi dignissimos, quasi ut odio praesentium corrupti.
-                        <br><br>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, unde placeat aliquid reprehenderit aut natus ratione rem libero totam tempore odit, deserunt, esse et eveniet! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id saepe ipsa quisquam, hic ad nostrum placeat qui modi aliquam laudantium excepturi nihil facilis doloribus? Ipsum.
-                    </p>
+                    <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight">
+                        {!! $contents['about_us_title'] !!}
+                    </span>
+
+                    <div class="mt-4">
+                        <span>
+                            {!! $contents['about_us_description'] !!}
+                        </span>
+                    </div>
+                    
                 </div>
                 {{-- Imagen --}}
                 <div class="w-full mt-10 lg:mt-0 lg:w-1/2 flex justify-center">
@@ -138,19 +140,31 @@
 
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 px-4 lg:pl-6">
-                    <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">Lorem ipsum dolor sit amet.</span>
-                    </p>
-                    <p class="mt-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate, laborum officia, ab labore obcaecati error deleniti quo sit mollitia tempore omnis, cumque eos veniam voluptatibus nulla doloribus magni assumenda aspernatur quisquam! In qui aspernatur accusamus laborum aperiam eligendi. Nobis, eos id hic dolorem quis voluptates fuga maiores deserunt ab, officia molestiae adipisci qui dolor autem sequi architecto quam ad a. Molestiae quos nulla ducimus facilis aspernatur.
-                    </p>
-                    <br>
-                    <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        <span class="text-[#0075FF]">Lorem ipsum dolor sit.</span>
-                    </p>
-                    <p class="mt-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate, laborum officia, ab labore obcaecati error deleniti quo sit mollitia tempore omnis, cumque eos veniam voluptatibus nulla doloribus magni assumenda aspernatur quisquam! In qui aspernatur accusamus laborum aperiam eligendi. Nobis, eos id hic dolorem quis voluptates fuga maiores deserunt ab, officia molestiae adipisci qui dolor autem sequi architecto quam ad a. Molestiae quos nulla ducimus facilis aspernatur.
-                    </p>
+
+                    {{-- Contenido libre 1 --}}
+                    <div>
+                        <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight">
+                            {!! $contents['free_title_1'] !!}
+                        </span>
+                        <div class="mt-3">
+                            <span>
+                                {!! $contents['free_description_1'] !!}
+                            </span>
+                        </div>
+                    </div>
+
+                    {{-- Contenido libre 2 --}}
+                    <div class="mt-8">
+                        <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight">
+                            {!! $contents['free_title_2'] !!}
+                        </span>
+                        <div class="mt-3">
+                            <span>
+                                {!! $contents['free_description_2'] !!}
+                            </span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </x-container>
