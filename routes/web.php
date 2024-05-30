@@ -11,6 +11,8 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_us.index');
 Route::get('/our_professionals', [OurProfessionalsController::class, 'index'])->name('our_professionals.index');
 Route::get('/our_service', [OurServicesController::class, 'index'])->name('our_service.index');
+Route::get('/our_service/{service}', [OurServicesController::class, 'show_service'])->name('our_service.show_service');
+
 
 
 

@@ -10,7 +10,8 @@
     @endpush
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/nosotros.jpg')" :name="$contents['cover_title']" />
+    <x-page-cover :image="asset('img/nosotros.jpg')" :name="$contents['cover_title'] ?? 'Título por Defecto'" />
+
 
     {{-- Quienes somos --}}
     <section class="bg-[#E3FFFE]">
@@ -19,12 +20,13 @@
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 p-4 lg:pr-12">
                     <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight">
-                        {!! $contents['about_us_title'] !!}
+                        {!! $contents['about_us_title'] ?? 'Título por Defecto' !!}
+
                     </span>
 
                     <div class="mt-4">
                         <span>
-                            {!! $contents['about_us_description'] !!}
+                            {!! $contents['about_us_description'] ?? 'Descripción por Defecto' !!}
                         </span>
                     </div>
                     
@@ -144,11 +146,11 @@
                     {{-- Contenido libre 1 --}}
                     <div>
                         <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight">
-                            {!! $contents['free_title_1'] !!}
+                            {!! $contents['free_title_1'] ?? 'Título libre' !!}
                         </span>
                         <div class="mt-3">
                             <span>
-                                {!! $contents['free_description_1'] !!}
+                                {!! $contents['free_description_1'] ?? 'Título por descripcion' !!}
                             </span>
                         </div>
                     </div>
@@ -156,11 +158,11 @@
                     {{-- Contenido libre 2 --}}
                     <div class="mt-8">
                         <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight">
-                            {!! $contents['free_title_2'] !!}
+                            {!! $contents['free_title_2'] ?? 'Título 2' !!}
                         </span>
                         <div class="mt-3">
                             <span>
-                                {!! $contents['free_description_2'] !!}
+                                {!! $contents['free_description_2'] ?? 'Título por descripcion 2'!!}
                             </span>
                         </div>
                     </div>

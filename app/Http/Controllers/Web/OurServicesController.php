@@ -13,5 +13,10 @@ class OurServicesController extends Controller
         $services = Service::orderBy('id', 'desc')->paginate(9);
         return view('web.our_service',compact('services'));
         
-    } 
+    }
+
+    public function show_service(Service $service){
+
+        return view('web.service_details', compact('service'));
+    }
 }

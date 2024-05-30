@@ -28,6 +28,7 @@ class Service extends Model
             get: fn() => Storage::url($this->card_image_path),
         );
     }
+    
 
     public function getRouteKeyName(){
         return 'slug';
