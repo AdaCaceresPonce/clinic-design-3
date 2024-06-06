@@ -89,7 +89,7 @@
                                     </textarea>
                             </div>
 
-                            <x-input-error class="mt-1" for="free_title_1" />
+                            <x-input-error class="mt-1" for="about_us_title" />
 
                         </div>
         

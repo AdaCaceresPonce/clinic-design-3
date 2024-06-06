@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\AboutUsPageContent;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
+
 class AboutUsPageContentController extends Controller
 {
     /**
@@ -86,7 +89,23 @@ class AboutUsPageContentController extends Controller
 
         ]);
 
-        $aboutUsPageContent->update($request->except(['cover_img', 'about_us_image', 'free_img']));
+        $aboutUsPageContent->update($request->except(['cover_img', 'about_us_img', 'free_img']));
+
+        if ($request->hasFile('cover_img')) {
+            Storage::delete($aboutUsPageContent->cover_img);
+            $aboutUsPageContent->update(['cover_img' => $request->file('cover_img')->store('web_pages_images/about_us_page')]);
+        }
+
+        if ($request->hasFile('about_us_img')) {
+            Storage::delete($aboutUsPageContent->about_us_img);
+            $aboutUsPageContent->update(['about_us_img' => $request->file('about_us_img')->store('web_pages_images/about_us_page')]);
+        }
+
+        if ($request->hasFile('free_img')) {
+            Storage::delete($aboutUsPageContent->free_img);
+            $aboutUsPageContent->update(['free_img' => $request->file('free_img')->store('web_pages_images/about_us_page')]);
+        }
+
 
         session()->flash('swal', [
             'icon' => 'success',

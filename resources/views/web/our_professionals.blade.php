@@ -5,9 +5,9 @@
     </x-slot>
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="$contents['cover_title']" />
+    <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="$contents['cover_title']" :id="'cover'"/>
 
-    <section>
+    <section id="our_professionals">
         <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
 
@@ -34,16 +34,20 @@
         </x-container>
     </section>
 
-    <section>
+    <section id="our_professionals_team">
         <x-container class="px-4 section__spacing">
             {{-- Titulo --}}
             <div class="mb-10 px-2 text-center sm:px-15 lg:px-20">
-                <p class="text-3xl sm:text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                    Conoce a nuestro equipo de Profesionales
-                </p>
-                <p class="text-lg sm:text-lg lg:text-xl mt-4">
-                    Disponemos de un equipo de profesionales altamente capacitados.
-                </p>
+                <span class="text-3xl sm:text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
+                    {!! $contents['our_professionals_team_title'] !!}
+                </span>
+
+                <div class="mt-4">
+                    <span class="text-lg sm:text-lg lg:text-xl">
+                        {!! $contents['our_professionals_team_description'] !!}
+                    </span>
+                </div>
+                
             </div>
 
             {{--Seccion Profesionales --}}
@@ -57,18 +61,9 @@
 
                         {{-- Carta de profesional --}}
                         <div class="flex flex-col lg:flex-row bg-[#E0FFFF] rounded-lg overflow-hidden shadow-lg 
-                        border-[1px] border-[#9B9B9B]
-                        w-[295px] min-[540px]:w-[340px] sm:w-[450px] md:w-[330px] lg:w-full mx-auto">
+                            border-[1px] border-[#9B9B9B]
+                            w-[295px] min-[540px]:w-[340px] sm:w-[450px] md:w-[330px] lg:w-full mx-auto">
 
-                            {{-- Foto del profesional --}}
-                            {{-- <div
-                                class="w-full lg:w-1/3 h-[400px]
-                            border-b-[1px] lg:border-b-[0px] lg:border-r-[1px] border-r-[#9B9B9B] rounded-l-lg">
-
-                                <img class="size-full object-cover object-center" src="{{ $professional->photo }}"
-                                    alt="">
-
-                            </div> --}}
                             <img src="{{ $professional->photo }}" 
                                 class="w-full object-cover object-top 
                                 h-[310px] min-[540px]:h-[360px] sm:h-[450px] md:h-[350px] lg:w-1/3 lg:h-[400px] xl:h-[450px]

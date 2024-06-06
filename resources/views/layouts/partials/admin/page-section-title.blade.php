@@ -1,4 +1,4 @@
-@props(['section_title', 'route_name', 'section_id'])
+@props(['section_title' => 'Sin título', 'route_name' => 'welcome.index', 'section_id' => '#'])
 
 <div class="flex items-center border-b-[3px] border-b-slate-400 pb-2 mb-1">
 
