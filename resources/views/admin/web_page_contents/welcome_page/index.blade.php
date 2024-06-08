@@ -22,7 +22,7 @@
                 <x-page-section-title :section_title="'Sección de Portada'" :route_name="'welcome.index'" :section_id="'#cover'" />
 
                 {{-- Columnas --}}
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                     
                     <div class="space-y-4">
                         <div>
@@ -59,7 +59,8 @@
                                 
                         </div>
                     </div>
-                    <div class="h-full flex flex-col">
+
+                    <div class="h-full max-w-[650px] mx-auto flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -76,7 +77,7 @@
                                 </label>
                             </div>
                             <img id="uploadPreview1"
-                                class="object-contain h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                                class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
                                 src="{{ Storage::url( $contents['cover_img']) }}" alt="">
                         </figure>
 
@@ -94,7 +95,7 @@
                 <x-page-section-title :section_title="'Sección de Detalles de la Clínica'" :route_name="'welcome.index'" :section_id="'#clinic_about'" />
 
                 {{-- Columnas --}}
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                     <div class="space-y-4">
 
                         <div>
@@ -133,7 +134,7 @@
             
                         </div>
                     </div>
-                    <div class="h-full flex flex-col">
+                    <div class="h-full max-w-[650px] mx-auto flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Lista de ofrecemos (Separa cada elemento de la lista usando una coma)
@@ -161,7 +162,7 @@
                                 </label>
                             </div>
                             <img id="uploadPreview2"
-                                class="object-contain h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                                class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
                                 src="{{ Storage::url( $contents['about_image']) }}" alt="">
                         </figure>
 
@@ -177,7 +178,7 @@
                 <x-page-section-title :section_title="'Sección de Servicios'" :route_name="'welcome.index'" :section_id="'#services'" />
 
                 {{-- Columnas --}}
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                     <div>
 
                         <x-label class="mb-1 mt-2 text-[15px] font-black">
@@ -225,7 +226,7 @@
                 <x-page-section-title :section_title="'Sección de Profesionales'" :route_name="'welcome.index'" :section_id="'#professionals'" />
 
                 {{-- Columnas --}}
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                     <div>
 
                         <x-label class="mb-1 mt-2 text-[15px] font-black">
@@ -271,7 +272,7 @@
                 <x-page-section-title :section_title="'Sección de Opiniones'" :route_name="'welcome.index'" :section_id="'#testimonials'" />
 
                 {{-- Columnas --}}
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                     <div>
 
                         <x-label class="mb-1 mt-2 text-[15px] font-black">
