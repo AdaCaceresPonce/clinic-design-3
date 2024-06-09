@@ -55,7 +55,7 @@
                                 </label>
                             </div>
                             <img id="uploadPreview1"
-                                class="object-contain w-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('cover_img') border-red-500 @enderror rounded-xl"
+                                class="object-contain h-full w-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('cover_img') border-red-500 @enderror rounded-xl"
                                 src="{{ Storage::url( $contents['cover_img']) }}" alt="">
                         </figure>
 
@@ -67,10 +67,10 @@
 
             </section>
 
-            {{-- Seccion de Profesionales --}}
+            {{-- Seccion de Contacto --}}
             <section class="section">
 
-                <x-page-section-title :section_title="'Sección de Contacto'" :route_name="'contact_us.index'" :section_id="'#contact_section'" />
+                <x-page-section-title :section_title="'Sección de Contacto'" :route_name="'contact_us.index'" :section_id="'#contact'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">

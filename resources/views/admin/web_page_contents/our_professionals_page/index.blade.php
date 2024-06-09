@@ -37,7 +37,7 @@
                         </div>
         
                     </div>
-                    <div class="h-full max-w-[650px] mx-auto">
+                    <div class="h-full">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -70,7 +70,7 @@
             {{-- Sección con texto Sobre Profesionales --}}
             <section>
                 
-                <x-page-section-title :section_title="'Sección sobre Profesionales'" :route_name="'our_professionals.index'" :section_id="'#our_professionals'" />
+                <x-page-section-title :section_title="'Sección sobre Profesionales'" :route_name="'our_professionals.index'" :section_id="'#professionals'" />
                 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
@@ -110,7 +110,7 @@
                                 
                         </div>
                     </div>
-                    <div class="h-full max-w-[650px] mx-auto flex flex-col">
+                    <div class="h-full flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -141,7 +141,7 @@
             {{-- Seccion de Profesionales --}}
             <section class="section">
 
-                <x-page-section-title :section_title="'Sección de Equipo de Profesionales'" :route_name="'our_professionals.index'" :section_id="'#our_professionals_team'" />
+                <x-page-section-title :section_title="'Sección de Equipo de Profesionales'" :route_name="'our_professionals.index'" :section_id="'#professionals_team'" />
 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">

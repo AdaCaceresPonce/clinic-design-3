@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <div class="h-full max-w-[650px] mx-auto flex flex-col">
+                    <div class="h-full flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -77,7 +77,7 @@
                                 </label>
                             </div>
                             <img id="uploadPreview1"
-                                class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                                class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('cover_img') border-red-500 @enderror rounded-xl"
                                 src="{{ Storage::url( $contents['cover_img']) }}" alt="">
                         </figure>
 
@@ -134,7 +134,7 @@
             
                         </div>
                     </div>
-                    <div class="h-full max-w-[650px] mx-auto flex flex-col">
+                    <div class="h-full flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Lista de ofrecemos (Separa cada elemento de la lista usando una coma)
@@ -162,7 +162,7 @@
                                 </label>
                             </div>
                             <img id="uploadPreview2"
-                                class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                                class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('about_image') border-red-500 @enderror rounded-xl"
                                 src="{{ Storage::url( $contents['about_image']) }}" alt="">
                         </figure>
 

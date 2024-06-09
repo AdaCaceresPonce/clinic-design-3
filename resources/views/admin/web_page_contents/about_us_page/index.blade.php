@@ -37,7 +37,7 @@
                         </div>
         
                     </div>
-                    <div class="h-full max-w-[650px] mx-auto">
+                    <div class="h-full">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -110,7 +110,7 @@
                                 
                         </div>
                     </div>
-                    <div class="h-full max-w-[650px] mx-auto flex flex-col">
+                    <div class="h-full flex flex-col">
                         <div>
                             <x-label class="mb-1 mt-2 text-[15px] font-black">
                                 Imagen
@@ -237,7 +237,7 @@
                             </label>
                         </div>
                         <img id="uploadPreview3"
-                            class="object-contain w-full aspect-[3/2] border-[2px] bg-white border-blue-400 rounded-xl"
+                            class="object-contain w-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('free_img') border-red-500 @enderror rounded-xl"
                             src="{{ Storage::url( $contents['free_img']) }}" alt="">
                     </figure>
 

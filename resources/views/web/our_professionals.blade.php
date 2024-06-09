@@ -7,7 +7,7 @@
     {{-- Portada --}}
     <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="$contents['cover_title']" :id="'cover'"/>
 
-    <section id="our_professionals">
+    <section id="professionals">
         <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
 
@@ -34,7 +34,7 @@
         </x-container>
     </section>
 
-    <section id="our_professionals_team">
+    <section id="professionals_team">
         <x-container class="px-4 section__spacing">
             {{-- Titulo --}}
             <div class="mb-10 px-2 text-center sm:px-15 lg:px-20">

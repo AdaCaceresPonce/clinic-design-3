@@ -1,4 +1,4 @@
-<section class="">
+<section id="contact" class="">
     <x-container class="px-4 section__spacing">
         {{-- Titulo --}}
         <div class="mb-10 px-4 text-center sm:px-15 lg:px-20">
