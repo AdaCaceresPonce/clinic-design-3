@@ -13,7 +13,7 @@
         [
             'name' => 'Servicios',
             'route' => route('our_service.index'),
-            'active' => request()->routeIs('our_service.index'),
+            'active' => request()->routeIs('our_service.*'),
         ],
         [
             'name' => 'Profesionales',

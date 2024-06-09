@@ -207,7 +207,7 @@
                                     {{-- Foto del profesional --}}
                                     <div class="">
                                         <img src="{{ $professional->photo }}" alt="image"
-                                            class="card__img w-full object-cover object-top">
+                                            class="professional__photo w-full object-cover object-top">
                                     </div>
                                     {{-- Datos del profesional --}}
                                     <div class="px-4 py-6 text-center">
@@ -443,11 +443,19 @@
         .professional__card {
             height: calc((100% - 30px) / 2) !important;
         }
+
+        .professional__photo {
+            height: 310px;
+            margin: 0 auto;
+        }
+
     </style>
 
     @push('js')
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
+
+            //Swiper Servicios
             let swiperCards = new Swiper('.card__content', {
                 // Optional parameters
                 loop: true,
@@ -475,6 +483,7 @@
                 },
             });
 
+            //Swiper Opiniones
             let swiperTestimonials = new Swiper('.js-testimonials-slider', {
                 // Optional parameters
                 loop: true,
@@ -496,11 +505,11 @@
                 },
             });
 
+            //Swiper Profesionales
             let swiperProfessionals = new Swiper('.js-professionals-slider', {
                 // Optional parameters
                 spaceBetween: 30,
                 grabCursor: true,
-
 
                 // If we need pagination
                 pagination: {

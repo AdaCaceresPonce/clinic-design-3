@@ -146,10 +146,14 @@
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                     
+                    {{-- Texto 1 --}}
                     <div class="space-y-4">
                         <div>
-                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            <x-label class="mb-1 mt-2 text-[15px] font-black flex items-center">
+
+                                <span class="flex w-2.5 h-2.5 bg-teal-500 rounded-full me-1.5 flex-shrink-0"></span>
                                 Título texto 1
+
                             </x-label>
         
                             <div class="rounded-lg @error('free_title_1') border-[2px] border-red-500 @enderror">
@@ -165,8 +169,11 @@
                         </div>
         
                         <div>
-                            <x-label class="mb-1 text-[15px] font-black">
+                            <x-label class="mb-1 text-[15px] font-black flex items-center">
+                                
+                                <span class="flex w-2.5 h-2.5 bg-teal-500 rounded-full me-1.5 flex-shrink-0"></span>
                                 Descripcion texto 1
+
                             </x-label>
                             
                             <div class="rounded-lg @error('free_description_1') border-[2px] border-red-500 @enderror">
@@ -182,10 +189,14 @@
                         </div>
                     </div>
 
+                    {{-- Texto 2 --}}
                     <div class="space-y-4">
                         <div>
-                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            <x-label class="mb-1 mt-2 text-[15px] font-black flex items-center">
+
+                                <span class="flex w-2.5 h-2.5 bg-purple-500 rounded-full me-1.5 flex-shrink-0"></span>
                                 Título texto 2
+
                             </x-label>
         
                             <div class="rounded-lg @error('free_title_2') border-[2px] border-red-500 @enderror">
@@ -201,8 +212,11 @@
                         </div>
         
                         <div>
-                            <x-label class="mb-1 text-[15px] font-black">
+                            <x-label class="mb-1 text-[15px] font-black flex items-center">
+
+                                <span class="flex w-2.5 h-2.5 bg-purple-500 rounded-full me-1.5 flex-shrink-0"></span>
                                 Descripcion texto 2
+
                             </x-label>
                             
                             <div class="rounded-lg @error('free_description_2') border-[2px] border-red-500 @enderror">

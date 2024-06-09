@@ -87,7 +87,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 mb-3">
 
                     {{-- Telefono --}}
-                    <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                    <div class="w-full p-[10px] sm:h-[83px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                         {{-- Icono --}}
                         <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                             <i class="fa-solid fa-phone text-xl text-white"></i>
@@ -104,7 +104,7 @@
 
                     {{-- Horarios --}}
                     <div
-                        class="w-full sm:h-[83px] p-[10px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                        class="w-full p-[10px] sm:h-[83px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                         {{-- Icono --}}
                         <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                             <i class="fa-regular fa-clock text-2xl text-white"></i>
@@ -120,7 +120,7 @@
                     </div>
 
                     {{-- Email --}}
-                    <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                    <div class="w-full p-[10px] sm:h-[83px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                         {{-- Icono --}}
                         <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                             <i class="fa-regular fa-envelope text-2xl text-white"></i>
@@ -136,7 +136,7 @@
                     </div>
 
                     {{-- Direccion --}}
-                    <div class="w-full h-[83px] px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
+                    <div class="w-full p-[10px] sm:h-[83px] sm:px-[17px] bg-[#C8F8FF] rounded-full flex items-center">
                         {{-- Icono --}}
                         <div class="rounded-full bg-[#0075FF] size-[50px] flex items-center justify-center">
                             <i class="fa-solid fa-map-location-dot text-2xl text-white"></i>
