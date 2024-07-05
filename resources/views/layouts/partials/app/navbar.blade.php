@@ -39,9 +39,9 @@
 
             {{-- Logo empresa --}}
             <div class="flex">
-                <a href="/" class="flex items-center">
+                <a href="{{ route('welcome.index') }}" class="flex items-center">
                     <img class="size-[52px] object-cover border-[3px] rounded-full"
-                        src="{{ asset('img/logo-navbar.png') }}" alt="">
+                        src="{{ Storage::url($clinicInformation['navbar_clinic_logo']) }}" alt="">
                     <h1 class="ml-2 text-xl font-black">Clínica Dental</h1>
                 </a>
             </div>
@@ -87,5 +87,11 @@
             </ul>
         </div>
     </nav>
+
+    <style>
+        #navigation-menu {
+            height: calc(100vh - 68px);
+        }
+    </style>
 
 </header>

@@ -2,14 +2,16 @@
     <div class="mx-auto w-full max-w-screen-xl px-4 py-6 lg:px-8 lg:py-8">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
-                <a href="https://flowbite.com/" class="flex items-center">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Clínica Dental</span>
+                <a href="{{ route('welcome.index') }}" class="flex items-center">
+                    <img src="{{ Storage::url($clinicInformation['footer_clinic_logo']) }}" class="size-8 border border-white rounded-full me-3" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Clínica
+                        Dental</span>
                 </a>
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
-                    <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Enlaces Rápidos</h2>
+                    <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Enlaces Rápidos
+                    </h2>
                     <ul class="text-white font-medium">
                         <li class="mb-3">
                             <a href="" class="hover:underline">Inicio</a>
@@ -28,17 +30,36 @@
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
-                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                        <li class="mb-4">
-                            <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
-                        </li>
-                        <li>
-                            <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                        </li>
-                    </ul>
-                </div>
+
+                @if (isset($clinicInformation['facebook_link']) ||
+                        isset($clinicInformation['twitter_link']) ||
+                        isset($clinicInformation['instagram_link']))
+                    <div>
+                        <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Síguenos</h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            @isset($clinicInformation['facebook_link'])
+                                <li>
+                                    <a href="{{ $clinicInformation['facebook_link'] }}"
+                                        class="hover:underline ">Facebook</a>
+                                </li>
+                            @endisset
+
+                            @isset($clinicInformation['twitter_link'])
+                                <li>
+                                    <a href="{{ $clinicInformation['twitter_link'] }}" class="hover:underline ">Twitter</a>
+                                </li>
+                            @endisset
+
+                            @isset($clinicInformation['instagram_link'])
+                                <li>
+                                    <a href="{{ $clinicInformation['instagram_link'] }}" class="hover:underline ">Instagram</a>
+                                </li>
+                            @endisset
+
+                        </ul>
+                    </div>
+                @endif
+
                 <div>
                     <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
@@ -55,9 +76,9 @@
         <hr class="my-6 border-white sm:mx-auto lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
             <span class="text-sm text-white sm:text-center">© 2024 <a href="https://flowbite.com/"
-                    class="hover:underline">Clínica Dental™</a>. Todos los derechos reservados.
+                    class="hover:underline">Clínica Dental™</a>. Todos los derechos reservados. Elaborado por <a href="https://www.cuanticagroup.com/">Cuántica Group S.A.C.</a>
             </span>
-            <div class="flex mt-4 sm:justify-center sm:mt-0">
+            {{-- <div class="flex mt-4 sm:justify-center sm:mt-0">
                 <a href="#" class="text-white dark:hover:text-white">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 8 19">
@@ -102,7 +123,7 @@
                     </svg>
                     <span class="sr-only">Dribbble account</span>
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </footer>

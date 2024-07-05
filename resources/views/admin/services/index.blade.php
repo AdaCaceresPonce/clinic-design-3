@@ -25,7 +25,7 @@
                         class="max-w-full bg-white border-[2px] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
 
                         <img class="object-cover w-full aspect-[4/3]"
-                            src="{{ Storage::url($service->card_image_path) }}" alt="" />
+                            src="{{ Storage::url($service->card_img_path) }}" alt="" />
 
                         <div class="p-5 flex flex-col grow">
                             <h5 class="mb-4 text-lg sm:text-xl grow font-bold min-h-[56px] line-clamp-2 tracking-tight text-gray-900 dark:text-white">

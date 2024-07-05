@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Inquiry;
 use App\Models\Service;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,9 +24,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678'),
         ]);
 
+        //Eliminar carpetas
         Storage::deleteDirectory('services/card_images');
         Storage::deleteDirectory('services/cover_images');
         Storage::deleteDirectory('professionals');
+
+        Storage::deleteDirectory('clinic_information_images/navbar');
+        Storage::deleteDirectory('clinic_information_images/footer');
 
         Storage::deleteDirectory('web_pages_images/welcome_page');
         Storage::deleteDirectory('web_pages_images/about_us_page');
@@ -36,6 +41,10 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('services/card_images');
         Storage::makeDirectory('services/cover_images');
         Storage::makeDirectory('professionals');
+
+        //Crear carpetas
+        Storage::makeDirectory('clinic_information_images/navbar');
+        Storage::makeDirectory('clinic_information_images/footer');
 
         Storage::makeDirectory('web_pages_images/welcome_page');
         Storage::makeDirectory('web_pages_images/about_us_page');
@@ -53,6 +62,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ClinicInformationSeeder::class);
         $this->call(SpecialtySeeder::class);
         $this->call(ProfessionalSeeder::class);
+
+        Inquiry::factory(30)->create();
 
     }
 }

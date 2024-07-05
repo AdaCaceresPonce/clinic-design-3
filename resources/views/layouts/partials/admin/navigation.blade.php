@@ -14,10 +14,10 @@
                         </path>
                     </svg>
                 </button>
-                <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+                <a href="{{ route('admin.dashboard') }}" class="flex ms-2 md:me-24">
+                    <img src="{{ Storage::url($clinicInformation['navbar_clinic_logo']) }}" class="size-8 border border-white me-3 rounded-full" alt="FlowBite Logo" />
                     <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Clinica Dental</span>
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Panel</span>
                 </a>
             </div>
             <div class="flex items-center">

@@ -1,3 +1,7 @@
-.section__spacing{
+.section__spacing {
     @apply py-14 sm:py-24;
+}
+
+html {
+    scroll-behavior: smooth;
 }

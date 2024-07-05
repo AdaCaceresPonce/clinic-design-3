@@ -12,15 +12,18 @@
     ],
 ]">
 
-    <form action="{{ route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{   route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card-gray mx-auto max-w-[1230px]">
             {{-- Imagenes --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <div class="col lg:mb-0">
-                    <x-label class="mb-2 text-[15px] font-black">
+                    <x-label class="text-[15px] font-black">
                         Imagen de la tarjeta:
+                    </x-label>
+                    <x-label class="mb-2">
+                        (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
                     </x-label>
                     <figure class="relative">
                         <div class="absolute top-4 right-4">
@@ -28,22 +31,25 @@
                                 class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
                                 <i class="fas fa-camera mr-2"></i>
                                 Actualizar imagen
-                                <input id="uploadImage1" name="card_image_path" type="file" class="hidden"
+                                <input id="uploadImage1" name="card_img_path" type="file" class="hidden"
                                     accept="image/*" onchange="previewImage(1);" />
                             </label>
                         </div>
                         <img id="uploadPreview1"
-                            class="object-contain w-full max-h-48 md:max-h-[365px] md:min-h-[365px] border-[2px] bg-white border-blue-400 rounded-xl
-                        @error('card_image_path') border-red-500 @enderror"
-                            src="{{ Storage::url($service->card_image_path) }}" alt="">
+                            class="object-contain w-full aspect-[4/3] border-[2px] bg-white border-blue-400 rounded-xl
+                        @error('card_img_path') border-red-500 @enderror"
+                            src="{{ Storage::url($service->card_img_path) }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
-                    <x-input-error for="card_image_path" />
+                    <x-input-error for="card_img_path" />
                 </div>
 
                 <div class="col">
-                    <x-label class="mb-2 text-[15px] font-black">
+                    <x-label class="text-[15px] font-black">
                         Imagen de portada:
+                    </x-label>
+                    <x-label class="mb-2">
+                        (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
                     </x-label>
                     <figure class="relative">
                         <div class="absolute top-4 right-4">
@@ -51,17 +57,17 @@
                                 class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
                                 <i class="fas fa-camera mr-2"></i>
                                 Actualizar imagen
-                                <input id="uploadImage2" name="cover_image_path" type="file" class="hidden"
+                                <input id="uploadImage2" name="cover_img_path" type="file" class="hidden"
                                     accept="image/*" onchange="previewImage(2);" />
                             </label>
                         </div>
                         <img id="uploadPreview2"
-                            class="object-contain w-full max-h-48 md:max-h-[365px] md:min-h-[365px] border-[2px] bg-white border-blue-400 rounded-xl
-                        @error('cover_image_path') border-red-500 @enderror"
-                            src="{{ Storage::url($service->cover_image_path) }}" alt="">
+                            class="object-contain w-full aspect-[4/3] border-[2px] bg-white border-blue-400 rounded-xl
+                        @error('cover_img_path') border-red-500 @enderror"
+                            src="{{ Storage::url($service->cover_img_path) }}" alt="">
                     </figure>
                     {{-- Alerta de validacion --}}
-                    <x-input-error for="cover_image_path" />
+                    <x-input-error for="cover_img_path" />
                 </div>
             </div>
 

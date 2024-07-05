@@ -19,6 +19,13 @@
 
     @stack('css')
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+    </style>
+
     {{-- FontAwesome --}}
     <script src="https://kit.fontawesome.com/c5d68cbda8.js" crossorigin="anonymous"></script>
 
@@ -50,8 +57,8 @@
 
     @include('layouts.partials.admin.navigation')
 
-    @include('layouts.partials.admin.sidebar')
-
+    {{-- @include('layouts.partials.admin.sidebar') --}}
+    @livewire('layouts.partials.admin.sidebar')
 
     <div class="p-4 sm:ml-64">
 

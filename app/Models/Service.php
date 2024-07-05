@@ -16,22 +16,26 @@ class Service extends Model
         'slug',
         'small_description',
         'long_description',
-        'card_image_path',
-        'cover_image_path',
+        'card_img_path',
+        'cover_img_path',
         'additional_info',
     ];
 
+    protected $primaryKey = 'slug';
+    public $incrementing = false;    // La clave primaria no es incremental
+    protected $keyType = 'string';
 
-    protected function image(): Attribute
+
+    protected function img(): Attribute
     {
         return Attribute::make(
-            get: fn() => Storage::url($this->card_image_path),
+            get: fn() => Storage::url($this->card_img_path),
         );
     }
     
-
-    public function getRouteKeyName(){
-        return 'slug';
+    //Relacion uno a muchos con la tabla consultas
+    public function inquiries(){
+        return $this->hasMany(Inquiry::class);
     }
 
 }
