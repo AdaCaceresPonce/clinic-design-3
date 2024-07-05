@@ -97,49 +97,9 @@
                 </div>
                 <div class="mt-8">
                     {{ $services->links() }}
-                    </div>
+                </div>
             </div>
-
+        </x-container>
     </section>
-    {{-- Slider --}}
-    {{-- <div class="flex justify-center align-middle mb-5">
-                <div class="card__container swiper pb-14 px-10">
-                    <div class="card__content rounded-xl">
-                        <div class="swiper-wrapper">
-                            @foreach ($services->chunk(3) as $row)
-                                <div class="swiper-slide">
-                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                                        @foreach ($row as $service)
-                                            <article
-                                                class="card__article border-[3px] rounded-xl border-[#1376F8] shadow-lg">
-                                                <div
-                                                    class="card__image w-full flex justify-center items-center relative">
-                                                    <h3
-                                                        class="service__name text-white text-2xl font-bold text-center px-4 w-full absolute z-10">
-                                                        {{ $service->name }}
-                                                    </h3>
-                                                    <img src="{{ $service->image }}" alt="image"
-                                                        class="card__img object-cover object-center w-full brightness-75">
-                                                </div>
-                                                <div class="card__data">
-                                                    <p class="card__description mb-6 min-h-[120px] line-clamp-5">
-                                                        {{ $service->small_description }}
-                                                    </p>
-                                                    <div class="flex justify-center">
-                                                        <a href="#"
-                                                            class="text-white items-center bg-blue-700 py-2 px-6 rounded-lg">
-                                                            Conoce más
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>  --}}
-        
-    </x-container>
-    </section>
+    
 </x-app-layout>

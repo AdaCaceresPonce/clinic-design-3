@@ -6,10 +6,6 @@
     @apply bg-gray-200 rounded-lg shadow-lg p-6;
 }
 
-.container-css{
-    @apply max-w-7xl mx-auto sm:px-6 lg:px-8;
-}
-
 #navigation-menu{
     height: calc(100vh - 68px);
 }

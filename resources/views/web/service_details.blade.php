@@ -11,7 +11,7 @@
             </p>
         </x-container>
     </section>
-    <section class="bg-center py-4">
+    <section class="bg-center section__spacing">
         <p class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold text-center">
             <span class="block">Sobre este servicio</span>
             <div class="flex justify-center mt-2">
