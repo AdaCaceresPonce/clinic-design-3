@@ -13,7 +13,9 @@ class InquiryController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('admin.mailbox.inquiries.index');
+        
     }
 
     /**

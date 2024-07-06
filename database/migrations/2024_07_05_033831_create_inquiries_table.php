@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastname');
-            
-            $table->string('service_slug')->nullable();
-            $table->foreign('service_slug')->references('slug')->on('services');
+
+            $table->foreignId('service_id')->nullable()->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
             $table->string('contact_number');
             $table->text('message');

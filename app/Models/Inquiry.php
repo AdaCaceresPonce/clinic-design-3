@@ -12,7 +12,7 @@ class Inquiry extends Model
     protected $fillable = [
         'name',
         'lastname',
-        'service_slug',
+        'service_id',
         'contact_number',
         'message',
         'state',
@@ -20,7 +20,7 @@ class Inquiry extends Model
 
     //Relacion uno a muchos inversa
     public function service(){
-        return $this->belongsTo(Service::class, 'service_slug');
+        return $this->belongsTo(Service::class);
     }
 
 }

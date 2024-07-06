@@ -21,9 +21,10 @@ class Service extends Model
         'additional_info',
     ];
 
-    protected $primaryKey = 'slug';
-    public $incrementing = false;    // La clave primaria no es incremental
-    protected $keyType = 'string';
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 
 
     protected function img(): Attribute
