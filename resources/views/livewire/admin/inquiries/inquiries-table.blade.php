@@ -48,19 +48,7 @@
                                 </th>
                                 <td class="px-6 py-4 items-center align-middle">
 
-                                    @php
-                                        $createdAt = $inquiry->created_at;
-                                        $diffInHours = $createdAt->diffInHours(now());
-
-                                        if ($diffInHours < 1) {
-                                            $bgColor = 'time-blue';
-                                        } elseif ($diffInHours < 12) {
-                                            $bgColor = 'time-indigo';
-                                        } else {
-                                            $bgColor = 'time-gray';
-                                        }
-                                    @endphp
-                                    <span class="{{ $bgColor }} whitespace-nowrap inline-flex items-center">
+                                    <span class="{{ $this->getBgColor($inquiry->created_at) }} whitespace-nowrap inline-flex items-center">
                                         <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                             <path
@@ -140,24 +128,8 @@
                                     a las
                                     {{ $inquiryInfo['created_at'] ? $inquiryInfo['created_at']->format('H:i a') : 'N/A' }}
                                 </span>
-                                @php
-                                    if ($inquiryInfo['created_at']) {
-                                        $createdAt = $inquiryInfo['created_at'];
-                                        $diffInHours = $createdAt->diffInHours(now());
 
-                                        if ($diffInHours < 1) {
-                                            $bgColor = 'time-blue';
-                                        } elseif ($diffInHours < 12) {
-                                            $bgColor = 'time-indigo';
-                                        } else {
-                                            $bgColor = 'time-gray';
-                                        }
-                                    } else {
-                                        $bgColor = 'time-gray';
-                                    }
-
-                                @endphp
-                                <span class="{{ $bgColor }} text-sm">
+                                <span class="{{ $this->getBgColor($inquiryInfo['created_at']) }} text-sm">
                                     <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path

@@ -85,7 +85,7 @@
                                         {{ $service->small_description ?? 'Descripción del servicio' }}
                                     </p>
                                     <div class="flex justify-center">
-                                        <a href="{{ route('our_service.show_service', $service) }}"
+                                        <a href="{{ route('our_services.show_service', $service) }}"
                                             class="text-white items-center bg-blue-700 py-2 px-4 rounded-lg">
                                             Conoce más
                                         </a>

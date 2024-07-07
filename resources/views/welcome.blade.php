@@ -448,13 +448,22 @@
             height: 310px;
             margin: 0 auto;
         }
-
     </style>
 
     @push('js')
+        {{-- SweetAlert --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        {{-- Alerta para livewire --}}
+        <script>
+            Livewire.on('swal', data => {
+                Swal.fire(data[0]);
+            });
+        </script>
+        
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
-
             //Swiper Servicios
             let swiperCards = new Swiper('.card__content', {
                 // Optional parameters

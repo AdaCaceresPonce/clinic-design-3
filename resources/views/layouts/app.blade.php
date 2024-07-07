@@ -66,6 +66,14 @@
     @livewireScripts
 
     @stack('js')
+
+    {{-- Alerta para sesiones flash --}}
+    @if (session('swal'))
+        <script>
+            Swal.fire({!! json_encode(session('swal')) !!});
+        </script>
+    @endif
+    
 </body>
 
 </html>

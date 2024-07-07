@@ -24,8 +24,7 @@ class ContactSection extends Component
     public function render(): View|Closure|string
     {
         $clinic_information = ClinicInformation::first();
-        $services = Service::orderBy('id', 'desc')->get();
 
-        return view('layouts.partials.app.contact-section', compact('clinic_information', 'services'));
+        return view('layouts.partials.app.contact-section', compact('clinic_information'));
     }
 }

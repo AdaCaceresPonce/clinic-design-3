@@ -89,6 +89,25 @@ class InquiriesTable extends Component
         ]);
     }
 
+    //Define los colores de las marcas de tiempo
+    public function getBgColor($createdAt)
+    {
+        if ($createdAt) {
+            $createdAt = Carbon::parse($createdAt);
+            $diffInHours = $createdAt->diffInHours(now());
+
+            if ($diffInHours < 4) {
+                return 'time-blue';
+            } elseif ($diffInHours < 12) {
+                return 'time-indigo';
+            } else {
+                return 'time-gray';
+            }
+        } else {
+            return 'time-gray';
+        }
+    }
+
     #[On('destroy')] 
     public function destroy()
     {

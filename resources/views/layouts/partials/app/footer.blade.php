@@ -10,23 +10,23 @@
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
-                    <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Enlaces Rápidos
+                    <h2 class="mb-6 text-base font-semibold uppercase text-white">Enlaces Rápidos
                     </h2>
-                    <ul class="text-white font-medium">
+                    <ul class="text-gray-300 font-medium">
                         <li class="mb-3">
-                            <a href="" class="hover:underline">Inicio</a>
+                            <a href="{{ route('welcome.index') }}" class="hover:underline">Inicio</a>
                         </li>
                         <li class="mb-3">
-                            <a href="" class="hover:underline">Nosotros</a>
+                            <a href="{{ route('about_us.index') }}" class="hover:underline">Nosotros</a>
                         </li>
                         <li class="mb-3">
-                            <a href="" class="hover:underline">Servicios</a>
+                            <a href="{{ route('our_services.index') }}" class="hover:underline">Servicios</a>
                         </li>
                         <li class="mb-3">
-                            <a href="" class="hover:underline">Profesionales</a>
+                            <a href="{{ route('our_professionals.index') }}" class="hover:underline">Profesionales</a>
                         </li>
                         <li>
-                            <a href="" class="hover:underline">Contacto</a>
+                            <a href="{{ route('contact_us.index') }}" class="hover:underline">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -35,8 +35,8 @@
                         isset($clinicInformation['twitter_link']) ||
                         isset($clinicInformation['instagram_link']))
                     <div>
-                        <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Síguenos</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <h2 class="mb-6 text-base font-semibold uppercase text-white">Síguenos</h2>
+                        <ul class="text-gray-300 font-medium space-y-3">
                             @isset($clinicInformation['facebook_link'])
                                 <li>
                                     <a href="{{ $clinicInformation['facebook_link'] }}"
@@ -75,8 +75,8 @@
         </div>
         <hr class="my-6 border-white sm:mx-auto lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-white sm:text-center">© 2024 <a href="https://flowbite.com/"
-                    class="hover:underline">Clínica Dental™</a>. Todos los derechos reservados. Elaborado por <a href="https://www.cuanticagroup.com/">Cuántica Group S.A.C.</a>
+            <span class="text-sm text-white sm:text-center">© 2024 <a href="{{ route('welcome.index') }}"
+                    class="hover:underline">Clínica Dental™</a>. Todos los derechos reservados. Elaborado por <a href="https://www.cuanticagroup.com/" class="hover:underline">Cuántica Group S.A.C.</a>
             </span>
             {{-- <div class="flex mt-4 sm:justify-center sm:mt-0">
                 <a href="#" class="text-white dark:hover:text-white">
