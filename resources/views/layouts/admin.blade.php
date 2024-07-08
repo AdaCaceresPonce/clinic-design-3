@@ -68,6 +68,7 @@
                 {{-- Breadcrumb --}}
                 @include('layouts.partials.admin.breadcrumb')
 
+                {{-- Botón de 'Nuevo', es para los crud --}}
                 @isset($action)
                     <div>
                         {{ $action }}

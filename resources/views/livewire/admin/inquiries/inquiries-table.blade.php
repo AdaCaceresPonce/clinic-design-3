@@ -2,7 +2,7 @@
 
     {{-- Barra de busqueda --}}
     <div class="mb-4 w-full flex sm:flex-wrap gap-3">
-        <input type="text" wire:model.live="search" placeholder="Buscar consultas por nombres, apellidos o estado..."
+        <input type="text" wire:model.live.debounce.500ms="search" placeholder="Buscar consultas por nombres, apellidos o estado..."
             class="p-2 border flex-1 rounded">
         <x-button wire:click="resetSearch">Limpiar búsqueda</x-button>
     </div>

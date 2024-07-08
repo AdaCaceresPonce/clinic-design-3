@@ -16,9 +16,9 @@ class ProfessionalController extends Controller
      */
     public function index()
     {
-        $professionals = Professional::orderBy('id', 'desc')->with('specialties')->paginate(8);
+        // $professionals = Professional::orderBy('id', 'desc')->with('specialties')->paginate(8);
         
-        return view('admin.professionals.index', compact('professionals'));
+        return view('admin.professionals.index');
     }
 
     /**
