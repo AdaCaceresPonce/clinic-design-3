@@ -211,7 +211,7 @@
                                     </div>
                                     {{-- Datos del profesional --}}
                                     <div class="px-4 py-6 text-center">
-                                        <p class="font-bold text-lg">{{ $professional->name }}</p>
+                                        <p class="font-bold text-lg line-clamp-2">{{ $professional->name }}</p>
                                         <p class="text-[#0075FF] font-bold">
                                             @foreach ($professional->specialties as $specialty)
                                                 {{ $specialty->name }}

@@ -58,7 +58,7 @@ class ClinicInformationController extends Controller
     {
         // Validación de los datos del formulario
         $request->validate([
-            'phone' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:255',
             'cellphone' => 'required|string|max:255',
             'schedule' => 'required|string|max:500',
             'email' => 'required|email|max:255',
@@ -66,8 +66,19 @@ class ClinicInformationController extends Controller
             'facebook_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
-            'navbar_clinic_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'footer_clinic_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'navbar_clinic_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'footer_clinic_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ],[],[
+            'phone' => 'número de teléfono',
+            'cellphone' => 'número de celular',
+            'schedule' => 'horario',
+            'email' => 'correo electrónico',
+            'address' => 'dirección',
+            'facebook_link' => 'enlace de facebook',
+            'twitter_link' => 'enlace de twitter',
+            'instagram_link' => 'enlace de instagram',
+            'navbar_clinic_logo' => 'logo para el navbar',
+            'footer_clinic_logo' => 'logo para el footer',
         ]);
 
         $clinicInformation->update($request->except('navbar_clinic_logo', 'footer_clinic_logo'));

@@ -123,7 +123,7 @@
                                 Recibido el día:
                             </x-label>
                             <x-label class="flex flex-wrap gap-1">
-                                <span class="time-blue text-wrap text-sm">
+                                <span class="bg-blue-100 text-blue-800 dark:text-[#60f0f5] text-sm font-medium me-1 px-2.5 py-0.5 dark:bg-gray-700 border border-blue-400 dark:border-[#00CAF7] rounded text-wrap">
                                     {{ $inquiryInfo['created_at'] ? $inquiryInfo['created_at']->format('d/m/Y') : 'N/A' }}
                                     a las
                                     {{ $inquiryInfo['created_at'] ? $inquiryInfo['created_at']->format('H:i a') : 'N/A' }}
@@ -145,19 +145,16 @@
                                     <p><strong>Teléfono de contacto:</strong> {{ $inquiryInfo['contact_number'] }}</p>
                                     <p><strong>Servicio:</strong> {{ $inquiryInfo['service'] }}</p>
                                     <p><strong>Mensaje:</strong> {{ $inquiryInfo['message'] }}</p>
-                                    <div>
-                                        <p class="mb-1 mt-2 flex items-center me-3"><span
-                                                class="flex w-2.5 h-2.5 bg-teal-500 rounded-full me-1.5 flex-shrink-0"></span><strong>Cambia
-                                                el estado de la consulta:</strong></p>
-                                        <x-select wire:model="inquiryInfo.state" class="p-2 border rounded w-full">
-                                            @foreach ($states as $state)
-                                                <option value="{{ $state['name'] }}">{{ $state['name'] }}</option>
-                                            @endforeach
-                                        </x-select>
-                                    </div>
                                 </div>
 
-
+                                <div class="mt-4 pl-3 border-l-4 border-l-teal-500">
+                                    <p class="mb-1 mt-2 flex items-center me-3">Cambia el estado de la consulta:</p>
+                                    <x-select wire:model="inquiryInfo.state" class="p-2 border rounded w-full">
+                                        @foreach ($states as $state)
+                                            <option value="{{ $state['name'] }}">{{ $state['name'] }}</option>
+                                        @endforeach
+                                    </x-select>
+                                </div>
                             </div>
 
                         </div>

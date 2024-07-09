@@ -16,6 +16,17 @@
         @csrf
         @method('PUT')
         <div class="card-gray mx-auto max-w-[1230px]">
+
+            {{-- Campos --}}
+            <div class="mb-4">
+                <x-label class="mb-1 text-[15px] font-black">
+                    Nombre:
+                </x-label>
+                <x-input class="w-full" placeholder="Ingrese el nombre del servicio" name="name"
+                    value="{{ old('name', $service->name) }}" />
+                <x-input-error for="name" />
+            </div>
+            
             {{-- Imagenes --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <div class="col lg:mb-0">
@@ -71,15 +82,7 @@
                 </div>
             </div>
 
-            {{-- Campos --}}
-            <div class="mb-4">
-                <x-label class="mb-1 text-[15px] font-black">
-                    Nombre:
-                </x-label>
-                <x-input class="w-full" placeholder="Ingrese el nombre del servicio" name="name"
-                    value="{{ old('name', $service->name) }}" />
-                <x-input-error for="name" />
-            </div>
+            
 
             <div class="mb-4">
                 <x-label class="mb-1 text-[15px] font-black">

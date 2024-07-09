@@ -39,20 +39,20 @@
                         <ul class="text-gray-300 font-medium space-y-3">
                             @isset($clinicInformation['facebook_link'])
                                 <li>
-                                    <a href="{{ $clinicInformation['facebook_link'] }}"
+                                    <a href="{{ $clinicInformation['facebook_link'] }}" target="_blank"
                                         class="hover:underline ">Facebook</a>
                                 </li>
                             @endisset
 
                             @isset($clinicInformation['twitter_link'])
                                 <li>
-                                    <a href="{{ $clinicInformation['twitter_link'] }}" class="hover:underline ">Twitter</a>
+                                    <a href="{{ $clinicInformation['twitter_link'] }}" target="_blank" class="hover:underline ">Twitter</a>
                                 </li>
                             @endisset
 
                             @isset($clinicInformation['instagram_link'])
                                 <li>
-                                    <a href="{{ $clinicInformation['instagram_link'] }}" class="hover:underline ">Instagram</a>
+                                    <a href="{{ $clinicInformation['instagram_link'] }}" target="_blank" class="hover:underline ">Instagram</a>
                                 </li>
                             @endisset
 

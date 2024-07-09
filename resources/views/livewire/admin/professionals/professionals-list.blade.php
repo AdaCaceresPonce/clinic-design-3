@@ -6,8 +6,8 @@
             class="mx-auto relative bg-white  flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-md focus-within:border-gray-300"
             for="search-bar">
 
-            <input id="search-bar" placeholder="Buscar por nombre, especialidad..." class="px-4 py-2 w-full rounded-md flex-1 outline-none bg-white"
-                wire:model.live.debounce.500ms="search">
+            <input id="search-bar" placeholder="Buscar por nombre, especialidad..."
+                class="px-4 py-2 w-full rounded-md flex-1 outline-none bg-white" wire:model.live.debounce.500ms="search">
 
             <button wire:click="resetSearch"
                 class="w-full md:w-auto px-6 py-3 bg-black border-black text-white fill-white active:scale-95 duration-100 border will-change-transform overflow-hidden relative rounded-xl transition-all disabled:opacity-70">
@@ -56,19 +56,17 @@
 
                             <div class="p-5 flex flex-col grow">
                                 <h5
-                                    class="mb-3 text-lg sm:text-xl grow font-bold tracking-tight text-gray-900 dark:text-white">
+                                    class="mb-1 text-lg sm:text-xl font-bold line-clamp-2 tracking-tight text-gray-900 dark:text-white">
                                     {{ $professional->name }}
                                 </h5>
-                                <p class="text-[#0075FF] dark:text-[#00CAF7] grow mb-3 text-base sm:text-lg font-bold">
+                                <div class="mb-3 text-base sm:text-lg font-bold">
                                     @foreach ($professional->specialties as $specialty)
-                                        {{ $specialty->name }}
-                                        @if (!$loop->last)
-                                            /
-                                        @endif
+                                        <span
+                                            class="bg-blue-100 text-blue-800 dark:text-[#60f0f5] text-sm font-medium me-1 px-2.5 py-0.5 dark:bg-gray-700 border border-blue-400 dark:border-[#00CAF7] rounded-full">{{ $specialty->name }}</span>
                                     @endforeach
-                                </p>
+                                </div>
                                 <a href="{{ route('admin.professionals.edit', $professional) }}"
-                                    class="items-center px-2 py-1.5 sm:px-3 sm:py-2 text-base sm:text-base font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-400">
+                                    class="items-center mt-auto px-2 py-1.5 sm:px-3 sm:py-2 text-base sm:text-base font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-400">
                                     Editar
                                     <i class="fa-solid fa-pen-to-square ml-2"></i>
                                 </a>

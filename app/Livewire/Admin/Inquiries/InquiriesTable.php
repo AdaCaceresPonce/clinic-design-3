@@ -121,7 +121,7 @@ class InquiriesTable extends Component
         $this->dispatch('swal', [
             'icon' => 'success',
             'title' => '¡Bien hecho!',
-            'text' => 'Consulta eliminada cambiado correctamente.'
+            'text' => 'Consulta eliminada correctamente.'
         ]);
 
     }

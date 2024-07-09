@@ -45,13 +45,16 @@ class ProfessionalController extends Controller
             'linkedin_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
-        ],[
-            'name.required' => 'El nombre del profesional es obligatorio.',
-            'lastname.required' => 'El apellido del profesional es obligatorio.',
-            'description.required' => 'La descripcion del profesional es requerido.',
-            'specialties.required' => 'Selecciona al menos una especialidad.',
-            'photo_path.required' => 'La foto del profesional es necesaria.',
-            'photo_path.image' => 'El archivo cargado debe ser una imagen.',
+        ],[], [
+            'name' => 'nombres',
+            'lastname' => 'apellidos',
+            'description' => 'descripción',
+            'photo_path' => 'foto del profesional',
+            'specialties' => 'especialidades',
+            'facebook_link' => 'enlace de facebook',
+            'linkedin_link' => 'enlace de linkedin',
+            'twitter_link' => 'enlace de twitter',
+            'instagram_link' => 'enlace de instagram',
         ]);
 
         $professional = [];
