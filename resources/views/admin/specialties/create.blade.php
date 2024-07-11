@@ -12,12 +12,14 @@
     ],
 ]">
 
-    <x-validation-errors class="mb-4" />
+<div class="mx-auto max-w-[1230px]">
+
+    <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md"/>
 
     <form action="{{ route('admin.specialties.store') }}" method="POST">
         @csrf
 
-        <div class="card-gray mx-auto max-w-[1230px]">
+        <div class="card-gray">
             {{-- Campos --}}
             <div class="mb-4">
                 <x-label class="mb-1 text-[15px] font-black">
@@ -36,5 +38,6 @@
 
         </div>
     </form>
+</div>
 
 </x-admin-layout>

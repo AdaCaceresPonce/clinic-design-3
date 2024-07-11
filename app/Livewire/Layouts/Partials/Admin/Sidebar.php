@@ -3,16 +3,21 @@
 namespace App\Livewire\Layouts\Partials\Admin;
 
 use App\Models\Inquiry;
+use App\Models\Opinion;
 use Livewire\Component;
 
 class Sidebar extends Component
 {
-    public $new_inquiries_count;
-
+    //Enlaces del sidebar
     public $dashboard;
     public $links;
     public $inquiries_mailbox;
+    public $opinions_mailbox;
     public $web_pages;
+
+    //Variables para el buzon
+    public $new_inquiries_count;
+    public $new_opinions_count;
 
     public function mount()
     {
@@ -65,6 +70,14 @@ class Sidebar extends Component
             'active' => request()->routeIs('admin.inquiries.*'),
         ];
 
+        $this->opinions_mailbox = [
+            //Buzón de opinioness
+            'icon' => 'fa-solid fa-envelope',
+            'name' => 'Opiniones',
+            'route' => route('admin.opinions.index'),
+            'active' => request()->routeIs('admin.opinions.*'),
+        ];
+
         $this->web_pages = [
             [
                 'icon' => 'fa-solid fa-ranking-star',
@@ -107,6 +120,12 @@ class Sidebar extends Component
     {
 
         $this->new_inquiries_count = Inquiry::where('state', 'Nuevo')->count();
+    }
+
+    public function refreshOpinionsCount()
+    {
+
+        $this->new_opinions_count = Opinion::where('state', 'Nuevo')->count();
     }
 
     public function render()

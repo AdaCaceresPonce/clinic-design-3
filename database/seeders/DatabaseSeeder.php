@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Inquiry;
+use App\Models\Opinion;
 use App\Models\Service;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -64,6 +65,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfessionalSeeder::class);
 
         Inquiry::factory(30)->create();
+        Opinion::factory(30)->create();
 
     }
 }

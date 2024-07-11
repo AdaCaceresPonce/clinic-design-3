@@ -61,6 +61,8 @@
             <li>
                 <h2 class="text-gray-400 font-bold">BUZÓN DE MENSAJES</h2>
             </li>
+
+            {{-- Consultas --}}
             <li>
                 <a href="{{ $inquiries_mailbox['route'] }}" wire:poll.visible="refreshInquiriesCount"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group {{ $inquiries_mailbox['active'] ? ' bg-gray-200 dark:bg-gray-700' : '' }}">
@@ -75,6 +77,27 @@
                         <span
                             class="inline-flex items-center justify-center size-5 ms-2 text-sm font-bold text-white bg-red-500 rounded-full">
                             {{ $new_inquiries_count }}
+                        </span>
+                    @endif
+
+                </a>
+            </li>
+
+            {{-- Opiniones --}}
+            <li>
+                <a href="{{ $opinions_mailbox['route'] }}" wire:poll.visible="refreshOpinionsCount"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group {{ $opinions_mailbox['active'] ? ' bg-gray-200 dark:bg-gray-700' : '' }}">
+                    <span class="inline-flex w-6 h-6 justify-center items-center">
+                        <i class="{{ $opinions_mailbox['icon'] }}"></i>
+                    </span>
+                    <span class="ms-2 flex-1">
+                        {{ $opinions_mailbox['name'] }}
+                    </span>
+
+                    @if ($new_opinions_count > 0)
+                        <span
+                            class="inline-flex items-center justify-center size-5 ms-2 text-sm font-bold text-white bg-red-500 rounded-full">
+                            {{ $new_opinions_count }}
                         </span>
                     @endif
 

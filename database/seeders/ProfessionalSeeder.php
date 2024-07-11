@@ -14,7 +14,7 @@ class ProfessionalSeeder extends Seeder
      */
     public function run(): void
     {
-        Professional::factory(10)->create()->each(function(Professional $professional){
+        Professional::factory(20)->create()->each(function(Professional $professional){
             $specialties = Specialty::all();
             $randomSpecialty = $specialties->random();
             $professional->specialties()->attach($randomSpecialty);

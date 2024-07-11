@@ -39,4 +39,9 @@ class Service extends Model
         return $this->hasMany(Inquiry::class);
     }
 
+    //Relacion uno a muchos con la tabla opiniones
+    public function opinions(){
+        return $this->hasMany(Opinion::class);
+    }
+
 }

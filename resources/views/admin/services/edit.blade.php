@@ -12,15 +12,19 @@
     ],
 ]">
 
+<div class="mx-auto max-w-[1230px]">
+
+    <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md"/>
+
     <form action="{{   route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="card-gray mx-auto max-w-[1230px]">
+        <div class="card-gray">
 
             {{-- Campos --}}
             <div class="mb-4">
                 <x-label class="mb-1 text-[15px] font-black">
-                    Nombre:
+                    Nombre
                 </x-label>
                 <x-input class="w-full" placeholder="Ingrese el nombre del servicio" name="name"
                     value="{{ old('name', $service->name) }}" />
@@ -30,8 +34,8 @@
             {{-- Imagenes --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <div class="col lg:mb-0">
-                    <x-label class="text-[15px] font-black">
-                        Imagen de la tarjeta:
+                    <x-label class="font-black">
+                        Imagen de la tarjeta
                     </x-label>
                     <x-label class="mb-2">
                         (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
@@ -57,7 +61,7 @@
 
                 <div class="col">
                     <x-label class="text-[15px] font-black">
-                        Imagen de portada:
+                        Imagen de portada
                     </x-label>
                     <x-label class="mb-2">
                         (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
@@ -86,7 +90,7 @@
 
             <div class="mb-4">
                 <x-label class="mb-1 text-[15px] font-black">
-                    Descripción para la tarjeta:
+                    Descripción para la tarjeta
                 </x-label>
                 <textarea name="small_description"
                     class="w-full min-h-[100px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
@@ -97,7 +101,7 @@
 
             <div class="mb-4">
                 <x-label class="mb-1 text-[15px] font-black">
-                    Descripción del servicio:
+                    Descripción del servicio
                 </x-label>
                 <textarea name="long_description"
                     class="w-full min-h-[350px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
@@ -108,7 +112,7 @@
 
             <div class="mb-4">
                 <x-label class="mb-1 text-[15px] font-black">
-                    Información adicional del servicio:
+                    Información adicional del servicio
                 </x-label>
                 <textarea name="additional_info"
                     class="w-full min-h-[350px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
@@ -128,6 +132,8 @@
 
         </div>
     </form>
+</div>
+
 
     {{-- Formulario que será enviado al presionar "Eliminar" --}}
     <form id="delete-form" action="{{ route('admin.services.destroy', $service) }}" method="POST">

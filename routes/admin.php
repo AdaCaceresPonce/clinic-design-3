@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutUsPageContentController;
 use App\Http\Controllers\Admin\ClinicInformationController;
 use App\Http\Controllers\Admin\ContactUsPageContentController;
 use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\OpinionController;
 use App\Http\Controllers\Admin\OurProfessionalsPageContentController;
 use App\Http\Controllers\Admin\OurServicesPageContentController;
 use App\Http\Controllers\Admin\ProfessionalController;
@@ -24,6 +25,8 @@ Route::resource('professionals', ProfessionalController::class);
 Route::resource('clinic_information', ClinicInformationController::class);
 
 Route::resource('inquiries', InquiryController::class);
+Route::resource('opinions', OpinionController::class);
+
 
 Route::resource('welcome_page_content', WelcomePageContentController::class);
 Route::resource('about_us_page_content', AboutUsPageContentController::class);
