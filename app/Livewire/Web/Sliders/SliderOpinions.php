@@ -2,15 +2,16 @@
 
 namespace App\Livewire\Web\Sliders;
 
-use App\Models\Professional;
+use App\Models\Opinion;
 use Livewire\Component;
 
-class SliderProfessionals extends Component
+class SliderOpinions extends Component
 {
-    public $professionals;
+
+    public $opinions;
 
     public function mount(){
-        $this->professionals = Professional::all();
+        $this->opinions = Opinion::all();
     }
 
     public function placeholder(){
@@ -19,6 +20,6 @@ class SliderProfessionals extends Component
 
     public function render()
     {
-        return view('livewire.web.sliders.slider-professionals');
+        return view('livewire.web.sliders.slider-opinions');
     }
 }

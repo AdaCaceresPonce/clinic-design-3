@@ -179,38 +179,9 @@
                 </div>
             </div>
             {{-- Slider Opiniones --}}
-            <div class="testimonials__content">
-                <div class="swiper pt-6 pb-14  lg:px-4 testimonials__slider js-testimonials-slider">
-                    <div class="swiper-wrapper">
-                        {{-- Carta de opinion --}}
-                        <div
-                            class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF] shadow-lg">
-                            <div class="info flex items-center justify-between">
-                                {{-- <img class="mr-4 size-16 object-cover object-center rounded-full"
-                                    src="{{ asset('img/ceo.jpg') }}" alt=""> --}}
-                                <span class="name text-2xl font-extrabold">
-                                    Pedro Alberto
-                                </span>
-                                <i
-                                    class="fa-solid fa-quote-right text-[#0075FF] text-[45px]"></i>
-                            </div>
-                            <p class="mt-[20px] text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dignissimos ullam
-                                molestias ex dolorum exercitationem incidunt. Aliquam repellat ipsum a non sunt deserunt
-                                veniam velit delectus sint, cum, assumenda facilis itaque modi explicabo illum nobis ab
-                                sequi voluptatibus reiciendis vero molestias. Quisquam omnis maxime repellat adipisci
-                                dolor at voluptatem atque!
-                            </p>
-                        </div>
 
-                    </div>
-
-                    {{-- Paginacion --}}
-                    <div class="swiper-pagination js-testimonials-pagination"></div>
-                </div>
-
-
-            </div>
+            <livewire:web.sliders.slider-opinions lazy />
+            
 
             {{-- Enviar opinion --}}
             <div class="flex w-full justify-center mt-5">
@@ -256,56 +227,10 @@
             
 
             //Swiper Opiniones
-            let swiperTestimonials = new Swiper('.js-testimonials-slider', {
-                // Optional parameters
-                loop: true,
-                spaceBetween: 30,
-                grabCursor: true,
-                // If we need pagination
-                pagination: {
-                    el: '.js-testimonials-pagination',
-                    clickable: true,
-                },
-
-                breakpoints: {
-                    600: {
-                        slidesPerView: 1,
-                    },
-                    968: {
-                        slidesPerView: 2,
-                    },
-                },
-            });
+            
 
             //Swiper Profesionales
-            let swiperProfessionals = new Swiper('.js-professionals-slider', {
-                // Optional parameters
-                spaceBetween: 30,
-                grabCursor: true,
-
-                // If we need pagination
-                pagination: {
-                    el: '.js-professionals-pagination',
-                    clickable: true,
-                },
-
-                breakpoints: {
-                    600: {
-                        slidesPerView: 2,
-                        grid: {
-                            rows: 1,
-                            fill: "row",
-                        },
-                    },
-                    968: {
-                        slidesPerView: 3,
-                        grid: {
-                            rows: 2,
-                            fill: "row",
-                        },
-                    },
-                },
-            });
+            
         </script>
     @endpush
 

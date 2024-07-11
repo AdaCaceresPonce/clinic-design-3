@@ -3,7 +3,7 @@
 
         {{-- Nombres y Apellidos --}}
         <div class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0">
-            
+            @dump($inquiry)
             {{-- Nombres --}}
             <div class="flex-1">
                 <x-label class="mb-1 text-[15px] font-black">

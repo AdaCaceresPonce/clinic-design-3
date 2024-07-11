@@ -21,15 +21,20 @@ class Sidebar extends Component
 
     public function mount()
     {
-        $this->refreshInquiriesCount();
 
+        //Inicializar los contadores
+        $this->refreshInquiriesCount();
+        $this->refreshOpinionsCount();
+
+        //Informacion que necesita el sidebar
         $this->dashboard = [
             'icon' => 'fa-solid fa-table-columns',
             'name' => 'Dashboard',
             'route' => route('admin.dashboard'),
             'active' => request()->routeIs('admin.dashboard'),
         ];
-        //Informacion que necesita el sidebar
+
+        //Registros
         $this->links = [
             [
                 //Servicios
@@ -62,6 +67,7 @@ class Sidebar extends Component
             ],
         ];
 
+        //Buzon de mensajes
         $this->inquiries_mailbox = [
             //Buzón de consultas
             'icon' => 'fa-solid fa-envelope',
@@ -72,12 +78,13 @@ class Sidebar extends Component
 
         $this->opinions_mailbox = [
             //Buzón de opinioness
-            'icon' => 'fa-solid fa-envelope',
+            'icon' => 'fa-solid fa-comments',
             'name' => 'Opiniones',
             'route' => route('admin.opinions.index'),
             'active' => request()->routeIs('admin.opinions.*'),
         ];
 
+        //Contenidos de Paginas
         $this->web_pages = [
             [
                 'icon' => 'fa-solid fa-ranking-star',

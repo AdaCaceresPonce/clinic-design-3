@@ -10,7 +10,7 @@
     @endpush
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/nosotros.jpg')" :name="$contents['cover_title'] ?? 'Título por Defecto'" />
+    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
 
 
     {{-- Quienes somos --}}

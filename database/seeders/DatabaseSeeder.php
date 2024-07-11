@@ -57,6 +57,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WelcomePageContentSeeder::class);
         $this->call(AboutUsPageContentSeeder::class);
         $this->call(OurProfessionalsPageContentSeeder::class);
+        $this->call(OurServicesPageContentSeeder::class);
         $this->call(ContactUsPageContentSeeder::class);
 
         Service::factory(12)->create();

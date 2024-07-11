@@ -1,4 +1,4 @@
-@props(['image', 'name' => 'Sin título', 'id' => '#' ])
+@props(['image' => '', 'name' => 'Sin título', 'id' => '#' ])
 
 <section class="w-full brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative"
     style="background-image: url('{{ $image }}');"

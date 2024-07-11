@@ -1,10 +1,10 @@
 <x-app-layout>
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/contacto.jpg')" :name="'Contacto'" />
+    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
 
     {{-- Contactanos --}}
-    <x-contact-section />
+    <x-contact-section :service="$service->id ?? ''" />
 
     @push('js')
         {{-- SweetAlert --}}

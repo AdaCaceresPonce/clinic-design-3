@@ -17,7 +17,7 @@ Route::get('/our_services/{service}', [OurServicesController::class, 'show_servi
 
 
 
-Route::get('/contact_us', [ContactUsController::class, 'index'])->name('contact_us.index');
+Route::get('/contact_us/{service?}', [ContactUsController::class, 'index'])->name('contact_us.index');
 
 // Route::get('/about-us', function () {
 //     return view('about_us.about_us');

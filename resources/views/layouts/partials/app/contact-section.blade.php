@@ -1,4 +1,4 @@
-@props(['service_id' => ''])
+@props(['service' => ''])
 
 <section id="contact" class="">
     <x-container class="px-4 section__spacing">
@@ -20,7 +20,7 @@
 
             <div class="w-full order-last lg:order-first">
                 {{-- Formulario --}}
-                @livewire('web.inquiries.save-inquiry', compact('service_id'))
+                @livewire('web.inquiries.save-inquiry', compact('service'))
             </div>
 
             {{-- Info de contacto --}}

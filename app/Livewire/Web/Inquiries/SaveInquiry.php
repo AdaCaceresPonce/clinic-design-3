@@ -9,7 +9,7 @@ use Livewire\Component;
 class SaveInquiry extends Component
 {
     //Variable que contiene el id del servicio si es que se accedió al formulario desde su pagina de detalles de servicio
-    public $service_id_received;
+    public $service;
 
     //Variable para cargar los Servicios
     public $services;
@@ -33,30 +33,24 @@ class SaveInquiry extends Component
         });
     }
 
-    public function mount(){
-
-        //Cargar los servicios
+    public function mount($service = null)
+    {
         $this->services = Service::orderBy('id', 'desc')->get();
 
-        // Inicializa los campos del array que contendrá la información de la consulta del usuario
         $this->inquiry = [
             'name' => '',
             'lastname' => '',
-            'service_id' => '', // Inicializado como cadena vacía
+            'service_id' => '',
             'contact_number' => '',
             'message' => '',
             'state' => $this->state,
         ];
 
-        // Comprobar si la variable service_id_received no es una cadena vacía
-        if (!empty($this->service_id_received)) {
-            
-            // Buscar el servicio con el id recibido
-            $service_data = Service::find($this->service_id_received);
-
+        if ($service) {
+            $service_data = Service::find($service);
             if ($service_data) {
-                // Establecer el service_id de la consulta
-                $this->inquiry['service_id'] = $this->service_id_received;
+                $this->service = $service_data;
+                $this->inquiry['service_id'] = $service_data->id;
             }
         }
     }

@@ -5,7 +5,7 @@
     </x-slot>
 
     {{-- Portada --}}
-    <x-page-cover :image="asset('img/nuestros_profesionales.jpg')" :name="$contents['cover_title']" :id="'cover'"/>
+    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
 
     <section id="professionals">
         <x-container class="px-4 section__spacing">
