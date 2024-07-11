@@ -9,6 +9,7 @@ class Sidebar extends Component
 {
     public $new_inquiries_count;
 
+    public $dashboard;
     public $links;
     public $inquiries_mailbox;
     public $web_pages;
@@ -17,14 +18,14 @@ class Sidebar extends Component
     {
         $this->refreshInquiriesCount();
 
+        $this->dashboard = [
+            'icon' => 'fa-solid fa-table-columns',
+            'name' => 'Dashboard',
+            'route' => route('admin.dashboard'),
+            'active' => request()->routeIs('admin.dashboard'),
+        ];
         //Informacion que necesita el sidebar
         $this->links = [
-            [
-                'icon' => 'fa-solid fa-table-columns',
-                'name' => 'Dashboard',
-                'route' => route('admin.dashboard'),
-                'active' => request()->routeIs('admin.dashboard'),
-            ],
             [
                 //Servicios
                 'icon' => 'fa-solid fa-tooth',
@@ -46,7 +47,7 @@ class Sidebar extends Component
                 'route' => route('admin.professionals.index'),
                 'active' => request()->routeIs('admin.professionals.*'),
             ],
-    
+
             [
                 //Información de la Clínica
                 'icon' => 'fa-solid fa-house-chimney-medical',
@@ -55,7 +56,7 @@ class Sidebar extends Component
                 'active' => request()->routeIs('admin.clinic_information.*'),
             ],
         ];
-    
+
         $this->inquiries_mailbox = [
             //Buzón de consultas
             'icon' => 'fa-solid fa-envelope',
@@ -63,7 +64,7 @@ class Sidebar extends Component
             'route' => route('admin.inquiries.index'),
             'active' => request()->routeIs('admin.inquiries.*'),
         ];
-    
+
         $this->web_pages = [
             [
                 'icon' => 'fa-solid fa-ranking-star',
@@ -71,28 +72,28 @@ class Sidebar extends Component
                 'route' => route('admin.welcome_page_content.index'),
                 'active' => request()->routeIs('admin.welcome_page_content.*'),
             ],
-    
+
             [
                 'icon' => 'fa-solid fa-people-group',
                 'name' => 'Página Nosotros',
                 'route' => route('admin.about_us_page_content.index'),
                 'active' => request()->routeIs('admin.about_us_page_content.*'),
             ],
-    
+
             [
                 'icon' => 'fa-solid fa-teeth',
                 'name' => 'Página Servicios',
                 'route' => route('admin.our_services_page_content.index'),
                 'active' => request()->routeIs('admin.our_services_page_content.*'),
             ],
-    
+
             [
                 'icon' => 'fa-solid fa-stethoscope',
                 'name' => 'Página Profesionales',
                 'route' => route('admin.our_professionals_page_content.index'),
                 'active' => request()->routeIs('admin.our_professionals_page_content.*'),
             ],
-    
+
             [
                 'icon' => 'fa-solid fa-address-book',
                 'name' => 'Página Contacto',
@@ -102,7 +103,8 @@ class Sidebar extends Component
         ];
     }
 
-    public function refreshInquiriesCount(){
+    public function refreshInquiriesCount()
+    {
 
         $this->new_inquiries_count = Inquiry::where('state', 'Nuevo')->count();
     }

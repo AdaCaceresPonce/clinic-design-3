@@ -115,56 +115,10 @@
                     </span>
                 </div>
             </div>
+
             {{-- Slider --}}
-            <div class="flex justify-center align-middle w-[307px] sm:w-full mb-5 mx-auto">
-                <div class="card__container swiper pb-14 px-0 sm:px-10">
-                    <div class="card__content rounded-xl">
-                        <div class="swiper-wrapper ">
-                            @foreach ($services as $service)
-                                <article
-                                    class="card__article swiper-slide border-[3px] rounded-xl border-[#1376F8] shadow-lg">
-
-                                    <div class="card__image w-full flex justify-center items-center relative">
-                                        <h3
-                                            class="service__name text-white text-2xl font-bold text-center px-4 w-full absolute z-10">
-                                            {{ $service->name ?? 'Nombre del servicio' }}
-                                        </h3>
-                                        <img src="{{ $service->image }}" alt="image"
-                                            class="card__img object-cover object-center w-full brightness-75">
-                                    </div>
-
-                                    <div class="card__data">
-                                        {{-- <h3 class="card__name font-bold text-lg mb-2 line-clamp-2 min-h-[56px]">
-                                            {{ $service->name }}
-                                        </h3> --}}
-                                        <p class="card__description mb-6 min-h-[120px] line-clamp-5">
-                                            {{ $service->small_description ?? 'Descripción del servicio' }}
-                                        </p>
-                                        <div class="flex justify-center">
-                                            <a href="#"
-                                                class="text-white items-center bg-blue-700 py-2 px-6 rounded-lg">
-                                                Conoce más
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </article>
-                            @endforeach
-                        </div>
-                    </div>
-                    {{-- Botones de navegacion --}}
-                    <div class="swiper-button-prev">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </div>
-                    <div class="swiper-button-next">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-
-                    {{-- Paginacion --}}
-                    <div class="swiper-pagination service-pagination"></div>
-
-                </div>
-            </div>
+            <livewire:web.sliders.slider-services lazy />
+            
             {{-- Ver todos los servicios --}}
             <div class="flex w-full justify-center">
                 <a href="#" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
@@ -266,14 +220,14 @@
                         {{-- Carta de opinion --}}
                         <div
                             class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF] shadow-lg">
-                            <div class="info flex items-center relative">
-                                <img class="mr-4 size-16 object-cover object-center rounded-full"
-                                    src="{{ asset('img/ceo.jpg') }}" alt="">
+                            <div class="info flex items-center justify-between">
+                                {{-- <img class="mr-4 size-16 object-cover object-center rounded-full"
+                                    src="{{ asset('img/ceo.jpg') }}" alt=""> --}}
                                 <span class="name text-2xl font-extrabold">
-                                    Pedro Alberto.
+                                    Pedro Alberto
                                 </span>
                                 <i
-                                    class="fa-solid fa-quote-right text-[#0075FF] text-[45px] absolute z-10 top-0 right-0"></i>
+                                    class="fa-solid fa-quote-right text-[#0075FF] text-[45px]"></i>
                             </div>
                             <p class="mt-[20px] text-base">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dignissimos ullam
@@ -284,66 +238,6 @@
                             </p>
                         </div>
 
-                        {{-- Carta de opinion --}}
-                        <div
-                            class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF]">
-                            <div class="info flex items-center relative">
-                                <img class="mr-4 size-16 object-cover object-center rounded-full"
-                                    src="{{ asset('img/ceo.jpg') }}" alt="">
-                                <span class="name text-2xl font-extrabold">
-                                    Pedro Alberto.
-                                </span>
-                                <i
-                                    class="fa-solid fa-quote-right text-[#0075FF] text-[45px] absolute z-10 top-0 right-0"></i>
-                            </div>
-                            <p class="mt-[20px] text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dignissimos ullam
-                                molestias ex dolorum exercitationem incidunt. Aliquam repellat ipsum a non sunt deserunt
-                                veniam velit delectus sint, cum, assumenda facilis itaque modi explicabo illum nobis ab
-                                sequi voluptatibus reiciendis vero molestias. Quisquam omnis maxime repellat adipisci
-                                dolor at voluptatem atque!
-                            </p>
-                        </div>
-                        {{-- Carta de opinion --}}
-                        <div
-                            class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF]">
-                            <div class="info flex items-center relative">
-                                <img class="mr-4 size-16 object-cover object-center rounded-full"
-                                    src="{{ asset('img/ceo.jpg') }}" alt="">
-                                <span class="name text-2xl font-extrabold">
-                                    Pedro Alberto.
-                                </span>
-                                <i
-                                    class="fa-solid fa-quote-right text-[#0075FF] text-[45px] absolute z-10 top-0 right-0"></i>
-                            </div>
-                            <p class="mt-[20px] text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dignissimos ullam
-                                molestias ex dolorum exercitationem incidunt. Aliquam repellat ipsum a non sunt deserunt
-                                veniam velit delectus sint, cum, assumenda facilis itaque modi explicabo illum nobis ab
-                                sequi voluptatibus reiciendis vero molestias. Quisquam omnis maxime repellat adipisci
-                                dolor at voluptatem atque!
-                            </p>
-                        </div>
-                        {{-- Carta de opinion --}}
-                        <div
-                            class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF]">
-                            <div class="info flex items-center relative">
-                                <img class="mr-4 size-16 object-cover object-center rounded-full"
-                                    src="{{ asset('img/ceo.jpg') }}" alt="">
-                                <span class="name text-2xl font-extrabold">
-                                    Pedro Alberto.
-                                </span>
-                                <i
-                                    class="fa-solid fa-quote-right text-[#0075FF] text-[45px] absolute z-10 top-0 right-0"></i>
-                            </div>
-                            <p class="mt-[20px] text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dignissimos ullam
-                                molestias ex dolorum exercitationem incidunt. Aliquam repellat ipsum a non sunt deserunt
-                                veniam velit delectus sint, cum, assumenda facilis itaque modi explicabo illum nobis ab
-                                sequi voluptatibus reiciendis vero molestias. Quisquam omnis maxime repellat adipisci
-                                dolor at voluptatem atque!
-                            </p>
-                        </div>
                     </div>
 
                     {{-- Paginacion --}}
@@ -368,77 +262,7 @@
     <x-contact-section />
 
     <style>
-        .card__content {
-            overflow: hidden;
-        }
-
-        .card__article {
-            width: 250px;
-            overflow: hidden;
-        }
-
-
-        .card__data {
-            padding: 1.2rem 1.2rem;
-        }
-
-        .card__img {
-            height: 260px;
-            margin: 0 auto;
-        }
-
-        /* Swiper class */
-        .swiper-button-prev:after,
-        .swiper-button-next:after {
-            content: "";
-        }
-
-        .swiper-button-prev,
-        .swiper-button-next {
-            width: initial;
-            height: initial;
-            font-size: 3rem;
-            color: #0075FF;
-            display: none;
-        }
-
-        .swiper-button-prev {
-            left: 0;
-        }
-
-        .swiper-button-next {
-            right: 0;
-        }
-
-        @media screen and (max-width: 320px) {
-            .card__data {
-                padding: 1rem;
-            }
-        }
-
-        @media screen and (min-width: 768px) {
-            .card__content {
-                margin__inline: 3rem;
-            }
-
-            .swiper-button-prev,
-            .swiper-button-next {
-                display: block;
-            }
-        }
-
-        @media screen and(min-width: 1120px) {
-            .card__container {}
-
-            .swiper-button-next {
-                right: -1rem;
-            }
-
-            .swiper-button-prev {
-                left: -1rem;
-            }
-        }
-
+    
         /* Slider profesionales */
         .professional__card {
             height: calc((100% - 30px) / 2) !important;
@@ -464,33 +288,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
-            //Swiper Servicios
-            let swiperCards = new Swiper('.card__content', {
-                // Optional parameters
-                loop: true,
-                spaceBetween: 25,
-                grabCursor: true,
-                // If we need pagination
-                pagination: {
-                    el: '.service-pagination',
-                    clickable: true,
-                },
-
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                breakpoints: {
-                    600: {
-                        slidesPerView: 2,
-                    },
-                    968: {
-                        slidesPerView: 3,
-                    },
-                },
-            });
+            
 
             //Swiper Opiniones
             let swiperTestimonials = new Swiper('.js-testimonials-slider', {

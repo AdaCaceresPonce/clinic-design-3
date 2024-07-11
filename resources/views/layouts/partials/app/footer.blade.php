@@ -4,11 +4,11 @@
             <div class="mb-6 md:mb-0">
                 <a href="{{ route('welcome.index') }}" class="flex items-center">
                     <img src="{{ Storage::url($clinicInformation['footer_clinic_logo']) }}" class="size-8 border border-white rounded-full me-3" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Clínica
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Clínica
                         Dental</span>
                 </a>
             </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
                 <div>
                     <h2 class="mb-6 text-base font-semibold uppercase text-white">Enlaces Rápidos
                     </h2>
@@ -40,19 +40,19 @@
                             @isset($clinicInformation['facebook_link'])
                                 <li>
                                     <a href="{{ $clinicInformation['facebook_link'] }}" target="_blank"
-                                        class="hover:underline ">Facebook</a>
+                                        class="hover:underline "><i class="fa-brands fa-facebook me-2"></i>Facebook</a>
                                 </li>
                             @endisset
 
                             @isset($clinicInformation['twitter_link'])
                                 <li>
-                                    <a href="{{ $clinicInformation['twitter_link'] }}" target="_blank" class="hover:underline ">Twitter</a>
+                                    <a href="{{ $clinicInformation['twitter_link'] }}" target="_blank" class="hover:underline "><i class="fa-brands fa-twitter me-2"></i>Twitter</a>
                                 </li>
                             @endisset
 
                             @isset($clinicInformation['instagram_link'])
                                 <li>
-                                    <a href="{{ $clinicInformation['instagram_link'] }}" target="_blank" class="hover:underline ">Instagram</a>
+                                    <a href="{{ $clinicInformation['instagram_link'] }}" target="_blank" class="hover:underline "><i class="fa-brands fa-instagram me-2"></i> Instagram</a>
                                 </li>
                             @endisset
 
@@ -60,7 +60,7 @@
                     </div>
                 @endif
 
-                <div>
+                {{-- <div>
                     <h2 class="mb-6 text-base font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
@@ -70,7 +70,7 @@
                             <a href="#" class="hover:underline">Terms &amp; Conditions</a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
         <hr class="my-6 border-white sm:mx-auto lg:my-8" />

@@ -142,7 +142,7 @@
                 <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
                     @foreach ($mailbox as $mailbox_item)
                         <a href="{{ $mailbox_item['route'] }}"
-                            class="p-5 flex items-center bg-sky-600 text-white shadow-md rounded-lg transition duration-150 hover:scale-105">
+                            class="p-5 flex items-center bg-sky-500 text-white shadow-md rounded-lg transition duration-150 hover:scale-105">
 
                             <span class="inline-flex w-6 h-6 justify-center items-center">
                                 <i class="{{ $mailbox_item['icon'] }}"></i>

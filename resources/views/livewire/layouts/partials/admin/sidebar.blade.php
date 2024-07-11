@@ -1,4 +1,3 @@
-
 <aside id="logo-sidebar"
     class="fixed top-0 left-0 z-40 w-64 h-[100dvh] pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
     :class="{
@@ -8,7 +7,38 @@
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
 
+
         <ul class="pb-4 space-y-2 font-medium">
+
+            {{-- Boton de visitar web --}}
+            {{-- <li>
+                <a href="{{ route('welcome.index') }}" target="_blank"
+                    class="flex items-center p-2 rounded-lg text-white bg-sky-500 group">
+                    <span class="inline-flex w-6 h-6 justify-center items-center">
+                        <i class="ml-1 fa-solid fa-earth-americas"></i>
+                    </span>
+                    <span class="ms-2">
+                        Visitar Web
+                    </span>
+                </a>
+            </li> --}}
+
+            {{-- Dashboard --}}
+            <li>
+                <a href="{{ $dashboard['route'] }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group {{ $dashboard['active'] ? ' bg-gray-200 dark:bg-gray-700' : '' }}">
+                    <span class="inline-flex w-6 h-6 justify-center items-center">
+                        <i class="{{ $dashboard['icon'] }}"></i>
+                    </span>
+                    <span class="ms-2">
+                        {{ $dashboard['name'] }}
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+
+        <ul class="pt-4 pb-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
             <li>
                 <h2 class="text-gray-400 font-bold">REGISTROS</h2>
             </li>
@@ -25,7 +55,6 @@
                     </a>
                 </li>
             @endforeach
-
         </ul>
 
         <ul class="pt-4 pb-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
@@ -33,8 +62,7 @@
                 <h2 class="text-gray-400 font-bold">BUZÓN DE MENSAJES</h2>
             </li>
             <li>
-                <a href="{{ $inquiries_mailbox['route'] }}"
-                    wire:poll.visible="refreshInquiriesCount"
+                <a href="{{ $inquiries_mailbox['route'] }}" wire:poll.visible="refreshInquiriesCount"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group {{ $inquiries_mailbox['active'] ? ' bg-gray-200 dark:bg-gray-700' : '' }}">
                     <span class="inline-flex w-6 h-6 justify-center items-center">
                         <i class="{{ $inquiries_mailbox['icon'] }}"></i>
@@ -47,9 +75,9 @@
                         <span
                             class="inline-flex items-center justify-center size-5 ms-2 text-sm font-bold text-white bg-red-500 rounded-full">
                             {{ $new_inquiries_count }}
-                            </span>
+                        </span>
                     @endif
-                    
+
                 </a>
             </li>
         </ul>
