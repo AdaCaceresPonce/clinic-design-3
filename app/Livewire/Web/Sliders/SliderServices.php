@@ -11,7 +11,7 @@ class SliderServices extends Component
     public $services;
 
     public function mount(){
-        $this->services = Service::all();
+        $this->services = Service::orderBy('id', 'desc')->get();
     }
 
     public function placeholder(){

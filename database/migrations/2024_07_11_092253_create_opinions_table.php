@@ -21,6 +21,7 @@ return new class extends Migration
 
             $table->text('opinion');
             $table->string('state');
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }

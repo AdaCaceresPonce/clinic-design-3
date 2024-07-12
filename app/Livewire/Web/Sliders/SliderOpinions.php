@@ -11,7 +11,7 @@ class SliderOpinions extends Component
     public $opinions;
 
     public function mount(){
-        $this->opinions = Opinion::all();
+        $this->opinions = Opinion::where('is_published', true)->orderBy('id', 'desc')->get();
     }
 
     public function placeholder(){

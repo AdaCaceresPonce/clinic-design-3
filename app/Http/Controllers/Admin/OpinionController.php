@@ -13,7 +13,7 @@ class OpinionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.mailbox.opinions.index');
     }
 
     /**

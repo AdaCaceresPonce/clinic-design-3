@@ -15,6 +15,7 @@ class Opinion extends Model
         'service_id',
         'opinion',
         'state',
+        'is_published'
     ];
 
     //Relacion uno a muchos inversa

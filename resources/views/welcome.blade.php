@@ -37,9 +37,9 @@
                 </div>
 
                 <div class="mt-8 sm:mt-12">
-                    <button class="text-base lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
+                    <a href=" {{ route('contact_us.index') }}" class="text-base inline-flex lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
                         Agenda una cita
-                    </button>
+                    </a>
                 </div>
 
             </div>

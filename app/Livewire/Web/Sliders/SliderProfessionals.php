@@ -10,7 +10,7 @@ class SliderProfessionals extends Component
     public $professionals;
 
     public function mount(){
-        $this->professionals = Professional::all();
+        $this->professionals = Professional::orderBy('id', 'desc')->with('specialties')->get();
     }
 
     public function placeholder(){

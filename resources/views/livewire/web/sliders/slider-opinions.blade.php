@@ -26,22 +26,29 @@
     });">
         <div class="swiper-wrapper">
             {{-- Carta de opinion --}}
-            @foreach ($opinions as $opinion)
-                <div
-                    class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF] shadow-lg">
-                    <div class="info flex items-center justify-between">
-                        {{-- <img class="mr-4 size-16 object-cover object-center rounded-full"
-                    src="{{ asset('img/ceo.jpg') }}" alt=""> --}}
-                        <span class="name text-2xl font-extrabold">
-                            {{ $opinion->name }} {{ $opinion->lastname }}
-                        </span>
-                        <i class="fa-solid fa-quote-right text-[#0075FF] text-[45px]"></i>
+            @if ($opinions->count())
+                @foreach ($opinions as $opinion)
+                    <div
+                        class="testimonials__item swiper-slide bg-[#EFFFFF] rounded-xl p-[30px] border-[2.5px] border-[#0075FF] shadow-lg">
+                        <div class="info flex items-center justify-between">
+                            {{-- <img class="mr-4 size-16 object-cover object-center rounded-full"
+                src="{{ asset('img/ceo.jpg') }}" alt=""> --}}
+                            <span class="name text-2xl font-extrabold">
+                                {{ $opinion->name }} {{ $opinion->lastname }}
+                            </span>
+                            <i class="fa-solid fa-quote-right text-[#0075FF] text-[45px]"></i>
+                        </div>
+                        <p class="mt-[10px] text-base">
+                            {{ $opinion->opinion }}
+                        </p>
                     </div>
-                    <p class="mt-[10px] text-base">
-                        {{ $opinion->opinion }}
-                    </p>
+                @endforeach
+            @else
+                <div class=" w-full text-center text-2xl font-bold pt-10">
+                    <span>Todavía no tenemos opiniones. ¡Anímate a enviar la tuya!</span>
                 </div>
-            @endforeach
+            @endif
+
 
         </div>
 
