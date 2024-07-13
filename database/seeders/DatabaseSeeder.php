@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OurServicesPageContentSeeder::class);
         $this->call(ContactUsPageContentSeeder::class);
 
-        Service::factory(12)->create();
+        Service::factory(1)->create();
         $this->call(ClinicInformationSeeder::class);
         $this->call(SpecialtySeeder::class);
         $this->call(ProfessionalSeeder::class);

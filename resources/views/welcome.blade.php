@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Inicio">
 
     <x-slot name="title">
         Inicio
@@ -11,7 +11,7 @@
 
     {{-- Portada --}}
     <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative" id="cover"
-        style="background-image: url('{{ asset('img/bienvenida.jpg') }}');">
+        style="background-image: url('{{ Storage::url($contents['cover_img']) }}');">
 
         {{-- Fondo azulado para la imagen --}}
         <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
@@ -53,7 +53,7 @@
 
                 <div class="w-full lg:w-1/2">
                     <img class="h-[450px] sm:h-[550px] lg:h-[670px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
-                        src="{{ asset('img/clinica-confianza.jpg') }}" alt="">
+                        src="{{ Storage::url($contents['about_image']) }}" alt="">
                 </div>
 
                 <div class="w-full lg:w-1/2 px-4 pb-10 sm:px-20 lg:pl-16 lg:pr-0 lg:pb-0 text-start">
