@@ -38,6 +38,11 @@
                             </span>
                             <i class="fa-solid fa-quote-right text-[#0075FF] text-[45px]"></i>
                         </div>
+                        <p class="text-[#0075FF]">
+                            @if ($opinion->service)
+                                {{ $opinion->service->name }}
+                            @endif
+                        </p>
                         <p class="mt-[10px] text-base">
                             {{ $opinion->opinion }}
                         </p>

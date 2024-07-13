@@ -79,14 +79,13 @@
             <div class="mx-auto p-6">
                 <div>
                     <div class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold text-center text-blue-700">
-                        <span class="">¿Tienes alguna duda de este servicio? Te respondemos cualquier duda que
-                            tengas.</span>
+                        <span class="">Tu salud bucal es importante para nosotros, no dudes en consultar.</span>
                     </div>
                     <div class="flex justify-center mt-6">
                         <a href="{{ route('contact_us.index', $service) }}#form"
                             class="text-lg font-bold text-white py-3 px-6 rounded-lg border-[3px] border-[#0075FF] bg-[#0075FF]
                         transition duration-150 hover:bg-transparent hover:text-[#0075FF]">
-                            Envía tu consulta aquí
+                            Solicita una cita o envía una consulta aquí
                         </a>
                     </div>
                 </div>

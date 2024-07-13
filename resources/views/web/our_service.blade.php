@@ -4,6 +4,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    
     {{-- Portada --}}
     <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
 

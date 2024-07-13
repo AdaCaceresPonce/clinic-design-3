@@ -1,3 +1,23 @@
+@php
+    $page_sections = [
+        [
+            'name' => 'Sección de Portada',
+            'id' => '#cover',
+        ],
+
+        [
+            'name' => 'Sección de Contacto',
+            'id' => '#contact_section',
+        ],
+
+        [
+            'name' => 'Sección de Opiniones',
+            'id' => '#opinions_section',
+        ],
+
+    ];
+@endphp
+
 <x-admin-layout :breadcrumbs="[
     [
         'name' => 'Dashboard',
@@ -8,17 +28,39 @@
     ],
 ]">
 
-    <x-validation-errors class="mb-4"/>
+<div class="max-w-[1230px] mx-auto">
+
+    <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md"/>
+
+    <div class="text-xs md:text-base mb-3 p-4 border border-gray-800 border-l-4">
+        {{-- <p class="mb-3">
+            Aquí puedes modificar los contenidos que se muestran en la <strong>Página de Inicio</strong>, se recomienda considerar los colores representativos del sitio y cargar las imágenes de acuerdo a lo recomendado. Al final de esta página se encuentra el botón para guardar todos los cambios.
+        </p> --}}
+
+        <p class="mb-2">
+            Para una rápida navegación estas son las secciones de ésta página:
+        </p>
+
+        <ul class="list-disc list-inside">
+            
+            @foreach ($page_sections as $section)
+
+                <li><a class="no-underline hover:underline hover:underline-offset-2 text-blue-800" href="{{ $section['id'] }}">{{ $section['name'] }}</a></li>
+
+            @endforeach
+            
+        </ul>
+    </div>
 
     <form action="{{ route('admin.contact_us_page_content.update', $contents) }}" method="POST"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <div class="card-gray mx-auto max-w-[1230px] space-y-14">
+        <div class="card-gray space-y-14">
 
             {{-- Seccion de portada --}}
-            <section>
+            <section id="cover">
                 
                 <x-page-section-title :section_title="'Sección de portada'" :route_name="'contact_us.index'" :section_id="'#cover'" />
 
@@ -39,8 +81,11 @@
                     </div>
                     <div class="h-full">
                         <div>
-                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            <x-label class="mt-2 text-[15px] font-black">
                                 Imagen
+                            </x-label>
+                            <x-label class="mb-1">
+                                (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
                             </x-label>
                         </div>
 
@@ -68,7 +113,7 @@
             </section>
 
             {{-- Seccion de Contacto --}}
-            <section class="section">
+            <section id="contact_section">
 
                 <x-page-section-title :section_title="'Sección de Contacto'" :route_name="'contact_us.index'" :section_id="'#contact'" />
 
@@ -112,6 +157,109 @@
 
                 </div>
 
+                <div class="mt-6 max-w-[650px] mx-auto">
+                    <div>
+                        <x-label class="mt-2 text-[15px] font-black">
+                            Imagen
+                        </x-label>
+                        <x-label class="mb-1">
+                            (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
+                        </x-label>
+                    </div>
+                    <figure class="relative">
+                        <div class="absolute top-4 right-4">
+                            <label
+                                class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                <i class="fas fa-camera mr-2"></i>
+                                Actualizar imagen
+                                <input id="uploadImage2" name="contact_us_img" type="file" class="hidden"
+                                    accept="image/*" onchange="previewImage(2);" />
+                            </label>
+                        </div>
+                        <img id="uploadPreview2"
+                            class="object-contain w-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('contact_us_img') border-red-500 @enderror rounded-xl"
+                            src="{{ Storage::url( $contents['contact_us_img']) }}" alt="">
+                    </figure>
+
+                    <x-input-error class="mt-1" for="contact_us_img" />
+                    
+                </div>
+
+            </section>
+
+            {{-- Seccion de Opiniones --}}
+            <section id="opinions_section">
+
+                <x-page-section-title :section_title="'Sección de Opiniones'" :route_name="'contact_us.index'" :section_id="'#opinions_form'" />
+
+                {{-- Columnas --}}
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
+                    <div>
+
+                        <x-label for="opinions_title" class="mb-1 mt-2 text-[15px] font-black">
+                            Título
+                        </x-label>
+
+                        <div class="rounded-lg @error('opinions_title') border-[2px] border-red-500 @enderror">
+                            <textarea id="opinions_title" class="textarea" name="opinions_title">
+                            @if (isset($contents['opinions_title']))
+                            {{ old('opinions_title', $contents['opinions_title'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+
+                        <x-input-error class="mt-1" for="opinions_title" />
+
+                    </div>
+
+                    <div>
+
+                        <x-label for="opinions_description" class="mb-1 mt-2 text-[15px] font-black">
+                            Descripción
+                        </x-label>
+
+                        <div id="opinions_description" class="rounded-lg @error('opinions_description') border-[2px] border-red-500 @enderror">
+                            <textarea class="textarea" name="opinions_description">
+                            @if (isset($contents['opinions_description']))
+                            {{ old('opinions_description', $contents['opinions_description'] ) }}
+                            @endif
+                            </textarea>
+                        </div>
+
+                        <x-input-error class="mt-1" for="opinions_description" />
+
+                    </div>
+
+                </div>
+
+                <div class="mt-6 max-w-[650px] mx-auto">
+                    <div>
+                        <x-label class="mt-2 text-[15px] font-black">
+                            Imagen
+                        </x-label>
+                        <x-label class="mb-1">
+                            (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
+                        </x-label>
+                    </div>
+                    <figure class="relative">
+                        <div class="absolute top-4 right-4">
+                            <label
+                                class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                <i class="fas fa-camera mr-2"></i>
+                                Actualizar imagen
+                                <input id="uploadImage3" name="opinions_img" type="file" class="hidden"
+                                    accept="image/*" onchange="previewImage(3);" />
+                            </label>
+                        </div>
+                        <img id="uploadPreview3"
+                            class="object-contain w-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('opinions_img') border-red-500 @enderror rounded-xl"
+                            src="{{ Storage::url( $contents['opinions_img']) }}" alt="">
+                    </figure>
+
+                    <x-input-error class="mt-1" for="opinions_img" />
+                    
+                </div>
+
             </section>
 
             {{-- Botón actualizar --}}
@@ -125,6 +273,7 @@
 
         </div>
     </form>
+</div>
 
     @push('js')
         {{-- TinyMCE --}}

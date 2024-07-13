@@ -117,11 +117,11 @@
             </div>
 
             {{-- Slider --}}
-            <livewire:web.sliders.slider-services lazy />
+            <livewire:web.sliders.slider-services lazy/>
             
             {{-- Ver todos los servicios --}}
             <div class="flex w-full justify-center">
-                <a href="#" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                <a href="{{ route('our_services.index') }}" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                     Ver todos los servicios
                 </a>
             </div>
@@ -185,7 +185,7 @@
 
             {{-- Enviar opinion --}}
             <div class="flex w-full justify-center mt-5">
-                <a href="{{ route('contact_us.index') }}"
+                <a href="{{ route('contact_us.index') }}#opinions_form"
                     class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                     Envíanos tu opinión aquí
                 </a>

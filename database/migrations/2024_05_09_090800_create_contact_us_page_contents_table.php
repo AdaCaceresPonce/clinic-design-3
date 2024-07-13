@@ -21,6 +21,10 @@ return new class extends Migration
             $table->text('contact_us_description');
             $table->string('contact_us_img');
 
+            $table->text('opinions_title');
+            $table->text('opinions_description');
+            $table->string('opinions_img');
+
             $table->timestamps();
         });
     }

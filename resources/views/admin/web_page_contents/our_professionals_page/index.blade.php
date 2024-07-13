@@ -1,3 +1,23 @@
+@php
+    $page_sections = [
+        [
+            'name' => 'Sección de Portada',
+            'id' => '#cover',
+        ],
+
+        [
+            'name' => 'Sección de Profesionales',
+            'id' => '#professionals',
+        ],
+
+        [
+            'name' => 'Sección de Equipo de Profesionales',
+            'id' => '#professionals_team',
+        ],
+
+    ];
+@endphp
+
 <x-admin-layout :breadcrumbs="[
     [
         'name' => 'Dashboard',
@@ -8,17 +28,39 @@
     ],
 ]">
 
-    <x-validation-errors class="mb-4"/>
+<div class="max-w-[1230px] mx-auto">
+
+    <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md"/>
+
+    <div class="text-xs md:text-base mb-3 p-4 border border-gray-800 border-l-4">
+        {{-- <p class="mb-3">
+            Aquí puedes modificar los contenidos que se muestran en la <strong>Página de Inicio</strong>, se recomienda considerar los colores representativos del sitio y cargar las imágenes de acuerdo a lo recomendado. Al final de esta página se encuentra el botón para guardar todos los cambios.
+        </p> --}}
+
+        <p class="mb-2">
+            Para una rápida navegación estas son las secciones de ésta página:
+        </p>
+
+        <ul class="list-disc list-inside">
+            
+            @foreach ($page_sections as $section)
+
+                <li><a class="no-underline hover:underline hover:underline-offset-2 text-blue-800" href="{{ $section['id'] }}">{{ $section['name'] }}</a></li>
+
+            @endforeach
+            
+        </ul>
+    </div>
 
     <form action="{{ route('admin.our_professionals_page_content.update', $contents) }}" method="POST"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <div class="card-gray mx-auto max-w-[1230px] space-y-14">
+        <div class="card-gray space-y-14">
 
             {{-- Seccion de portada --}}
-            <section>
+            <section id="cover">
                 
                 <x-page-section-title :section_title="'Sección de portada'" :route_name="'our_professionals.index'" :section_id="'#cover'" />
 
@@ -68,7 +110,7 @@
             </section>
 
             {{-- Sección con texto Sobre Profesionales --}}
-            <section>
+            <section id="professionals">
                 
                 <x-page-section-title :section_title="'Sección sobre Profesionales'" :route_name="'our_professionals.index'" :section_id="'#professionals'" />
                 
@@ -139,7 +181,7 @@
             </section>
 
             {{-- Seccion de Profesionales --}}
-            <section class="section">
+            <section id="professionals_team">
 
                 <x-page-section-title :section_title="'Sección de Equipo de Profesionales'" :route_name="'our_professionals.index'" :section_id="'#professionals_team'" />
 
@@ -197,6 +239,7 @@
         </div>
     </form>
 
+</div>
     @push('js')
         {{-- TinyMCE --}}
         <script src="https://cdn.tiny.cloud/1/ptkarmvvxs48norvninijsbe8qx8zwy0ouzu9mp22f5kn99n/tinymce/6/tinymce.min.js"

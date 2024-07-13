@@ -67,6 +67,8 @@
 
     @stack('js')
 
+    
+
     {{-- Alerta para sesiones flash --}}
     @if (session('swal'))
         <script>

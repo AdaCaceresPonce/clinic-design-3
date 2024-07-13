@@ -1,10 +1,16 @@
 <x-app-layout>
-
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
     {{-- Portada --}}
-    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
+    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'" />
 
     {{-- Contactanos --}}
     <x-contact-section :service="$service->id ?? ''" />
+
+    <x-opinion-section />
 
     @push('js')
         {{-- SweetAlert --}}
@@ -17,5 +23,5 @@
             });
         </script>
     @endpush
-    
+
 </x-app-layout>

@@ -35,6 +35,13 @@
             'name' => 'Consultas',
             'route' => route('admin.inquiries.index'),
         ],
+
+        [
+            //Buzón de opinioness
+            'icon' => 'fa-solid fa-comments',
+            'name' => 'Opiniones',
+            'route' => route('admin.opinions.index'),
+        ],
     ];
 
     $web_pages = [
@@ -123,7 +130,7 @@
                 <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
                     @foreach ($links as $link)
                         <a href="{{ $link['route'] }}"
-                            class="p-5 flex items-center bg-emerald-600 text-white shadow-md rounded-lg transition duration-150 hover:scale-105">
+                            class="p-5 flex items-center font-medium bg-emerald-600 text-white shadow-md rounded-lg transition duration-150 hover:scale-105">
 
                             <span class="inline-flex w-6 h-6 justify-center items-center">
                                 <i class="{{ $link['icon'] }}"></i>
@@ -142,7 +149,7 @@
                 <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
                     @foreach ($mailbox as $mailbox_item)
                         <a href="{{ $mailbox_item['route'] }}"
-                            class="p-5 flex items-center bg-sky-500 text-white shadow-md rounded-lg transition duration-150 hover:scale-105">
+                            class="p-5 flex items-center font-medium bg-sky-500 text-white shadow-md rounded-lg transition duration-150 hover:scale-105">
 
                             <span class="inline-flex w-6 h-6 justify-center items-center">
                                 <i class="{{ $mailbox_item['icon'] }}"></i>
@@ -162,7 +169,7 @@
                 <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
                     @foreach ($web_pages as $web_page)
                         <a href="{{ $web_page['route'] }}"
-                            class="p-5 flex items-center bg-indigo-600 text-white shadow-md rounded-lg  transition duration-150 hover:scale-105">
+                            class="p-5 flex items-center font-medium bg-indigo-600 text-white shadow-md rounded-lg  transition duration-150 hover:scale-105">
 
                             <span class="inline-flex w-6 h-6 justify-center items-center">
                                 <i class="{{ $web_page['icon'] }}"></i>

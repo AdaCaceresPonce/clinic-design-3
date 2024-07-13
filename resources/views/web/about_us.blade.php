@@ -5,6 +5,12 @@
         Sobre Nosotros
     </x-slot>
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
     @push('css')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
@@ -14,7 +20,7 @@
 
 
     {{-- Quienes somos --}}
-    <section class="bg-[#E3FFFE]">
+    <section id="clinic_about" class="bg-[#E3FFFE]">
         <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap">
                 {{-- Texto --}}
@@ -40,7 +46,7 @@
 
                             <img class="rounded-full 
                                 size-[250px] sm:size-[340px] md:size-[390px] lg:size-[440px] 
-                                border-[3.5px] border-[#23B0FF] object-cover object-center " src="{{ asset('img/quienes-somos.jpg') }}" alt="">
+                                border-[3.5px] border-[#23B0FF] object-cover object-center " src="{{ Storage::url($contents['about_us_img']) }}" alt="">
 
                             {{-- Bolitas del lado superior izquierdo --}}
                             <div class="bg-[#23B0FF] size-[14px] top-[18.6%] left-[6.2%] rounded-full 
@@ -131,13 +137,13 @@
     </section>
 
     {{-- Info adicional de la clinica --}}
-    <section>
+    <section id="free_content_1">
         <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
                 {{-- Imagen --}}
                 <div class="w-full mt-10 lg:mt-0 lg:w-1/2 sm:px-4">
                     <img class="h-[450px] sm:h-[550px] lg:h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
-                        src="{{ asset('img/nosotros-2.jpg') }}" alt="">
+                        src="{{ Storage::url($contents['free_img']) }}" alt="">
                 </div>
 
                 {{-- Texto --}}

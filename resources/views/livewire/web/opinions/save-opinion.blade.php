@@ -1,5 +1,5 @@
 <form wire:submit="save" id="form">
-    <div class="bg-[#F1FDFF] h-full rounded-xl px-6 py-6 sm:px-8 sm:py-8 size-full border-[3px] border-[#00CAF7] space-y-5">
+    <div class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 size-full border-[3px] border-[#00CAF7] space-y-5">
 
         {{-- Nombres y Apellidos --}}
         <div class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0">
@@ -10,8 +10,8 @@
                     Nombres:
                     <span class="text-red-500">*</span>
                 </x-label>
-                <x-input class="w-full" placeholder="Ingrese sus nombres" wire:model.live="inquiry.name"/>
-                <x-input-error for="inquiry.name" />
+                <x-input class="w-full" placeholder="Ingrese sus nombres" wire:model.live="opinion.name"/>
+                <x-input-error for="opinion.name" />
             </div>
 
             {{-- Apellidos --}}
@@ -20,8 +20,8 @@
                     Apellidos:
                     <span class="text-red-500">*</span>
                 </x-label>
-                <x-input class="w-full" placeholder="Ingrese sus apellidos" wire:model.live="inquiry.lastname" />
-                <x-input-error for="inquiry.lastname" />
+                <x-input class="w-full" placeholder="Ingrese sus apellidos" wire:model.live="opinion.lastname" />
+                <x-input-error for="opinion.lastname" />
             </div>
 
         </div>
@@ -32,7 +32,7 @@
                 Servicio:
             </x-label>
 
-            <x-select id="" class="w-full" wire:model.live="inquiry.service_id">
+            <x-select id="" class="w-full" wire:model.live="opinion.service_id">
                 <option value="">
                     Seleccione un servicio (Opcional)
                 </option>
@@ -42,30 +42,21 @@
                     </option>
                 @endforeach
             </x-select>
-            <x-input-error for="inquiry.service_id" />
+            <x-input-error for="opinion.service_id" />
         </div>
 
-        {{-- Número de contacto --}}
-        <div>
-            <x-label class="mb-1 text-[15px] font-black">
-                Teléfono o celular:
-                <span class="text-red-500">*</span>
-            </x-label>
-            <x-input class="w-full" placeholder="Ingrese su número de contacto" wire:model.live="inquiry.contact_number" />
-            <x-input-error for="inquiry.contact_number" />
-        </div>
 
-        {{-- Mensaje de Consulta --}}
+        {{-- Mensaje de opinión --}}
         <div>
             <x-label class="mb-1 text-[15px] font-black">
-                Mensaje:
+                Opinión:
                 <span class="text-red-500">*</span>
             </x-label>
-            <textarea name="message"
+            <textarea name="opinion"
                 class="w-full h-60 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                placeholder="Ingresa tu mensaje aquí" wire:model.live="inquiry.message"></textarea>
+                placeholder="Ingresa tu opinión aquí" wire:model.live="opinion.opinion"></textarea>
 
-            <x-input-error for="inquiry.message" />
+            <x-input-error for="opinion.opinion" />
         </div>
 
         {{-- Botón de enviar --}}

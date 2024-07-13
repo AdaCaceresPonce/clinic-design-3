@@ -17,6 +17,9 @@ class ContactUsPageContent extends Model
         'contact_us_title',
         'contact_us_description',
         'contact_us_img',
+        'opinions_title',
+        'opinions_description',
+        'opinions_img',
 
     ];
 }

@@ -1,5 +1,11 @@
 <x-app-layout>
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    
     <x-slot name="title">
         Nuestros Profesionales
     </x-slot>

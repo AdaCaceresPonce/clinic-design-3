@@ -1,3 +1,23 @@
+@php
+    $page_sections = [
+        [
+            'name' => 'Sección de Portada',
+            'id' => '#cover',
+        ],
+
+        [
+            'name' => 'Sección sobre la Clinica',
+            'id' => '#clinic_about',
+        ],
+
+        [
+            'name' => 'Contenido libre',
+            'id' => '#free_content_1',
+        ],
+
+    ];
+@endphp
+
 <x-admin-layout :breadcrumbs="[
     [
         'name' => 'Dashboard',
@@ -8,17 +28,39 @@
     ],
 ]">
 
-    <x-validation-errors class="mb-4"/>
+<div class="max-w-[1230px] mx-auto">
+
+    <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md"/>
+
+    <div class="text-xs md:text-base mb-3 p-4 border border-gray-800 border-l-4">
+        {{-- <p class="mb-3">
+            Aquí puedes modificar los contenidos que se muestran en la <strong>Página de Inicio</strong>, se recomienda considerar los colores representativos del sitio y cargar las imágenes de acuerdo a lo recomendado. Al final de esta página se encuentra el botón para guardar todos los cambios.
+        </p> --}}
+
+        <p class="mb-2">
+            Para una rápida navegación estas son las secciones de ésta página:
+        </p>
+
+        <ul class="list-disc list-inside">
+            
+            @foreach ($page_sections as $section)
+
+                <li><a class="no-underline hover:underline hover:underline-offset-2 text-blue-800" href="{{ $section['id'] }}">{{ $section['name'] }}</a></li>
+
+            @endforeach
+            
+        </ul>
+    </div>
 
     <form action="{{ route('admin.about_us_page_content.update', $contents) }}" method="POST"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <div class="card-gray mx-auto max-w-[1230px] space-y-14">
+        <div class="card-gray space-y-14">
 
             {{-- Seccion de portada --}}
-            <section>
+            <section id="cover">
                 
                 <x-page-section-title :section_title="'Sección de portada'" :route_name="'about_us.index'" :section_id="'#cover'" />
 
@@ -68,9 +110,9 @@
             </section>
 
             {{-- Sección sobre la Clínica --}}
-            <section>
+            <section id="clinic_about">
                 
-                <x-page-section-title :section_title="'Sección sobre la Clínica'" :route_name="'about_us.index'" :section_id="'#cover'" />
+                <x-page-section-title :section_title="'Sección sobre la Clínica'" :route_name="'about_us.index'" :section_id="'#clinic_about'" />
                 
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
@@ -139,9 +181,9 @@
             </section>
 
             {{-- Sección con contenido libre --}}
-            <section>
+            <section id="free_content_1">
                 
-                <x-page-section-title :section_title="'Sección con contenido libre'" :route_name="'about_us.index'" :section_id="'#cover'" />
+                <x-page-section-title :section_title="'Sección con contenido libre'" :route_name="'about_us.index'" :section_id="'#free_content_1'" />
             
                 {{-- Columnas --}}
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
@@ -272,7 +314,7 @@
             </div>
         </div>
     </form>
-
+</div>
     <style>
         .section{
             padding-top: 48px;

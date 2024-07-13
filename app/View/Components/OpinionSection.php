@@ -2,14 +2,12 @@
 
 namespace App\View\Components;
 
-use App\Models\ClinicInformation;
 use App\Models\ContactUsPageContent;
-use App\Models\Service;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ContactSection extends Component
+class OpinionSection extends Component
 {
     /**
      * Create a new component instance.
@@ -24,10 +22,9 @@ class ContactSection extends Component
      */
     public function render(): View|Closure|string
     {
-        $clinic_information = ClinicInformation::first();
 
-        $contact_section = ContactUsPageContent::first();
+        $opinion_section = ContactUsPageContent::first();
 
-        return view('layouts.partials.app.contact-section', compact('clinic_information', 'contact_section'));
+        return view('layouts.partials.app.opinion-section', compact('opinion_section'));
     }
 }
