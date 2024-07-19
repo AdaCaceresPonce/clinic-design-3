@@ -1,6 +1,6 @@
 <div class="flex justify-center align-middle w-full mb-5 mx-auto" >
 
-<div class="card__container swiper pb-8 px-0 min-[768px]:px-10" x-init="let swiperCards = new Swiper('.card__content', {
+<div class="card__container swiper pb-8 px-0 w-full min-[768px]:px-10" x-init="let swiperCards = new Swiper('.card__content', {
     // Optional parameters
     loop: true,
     spaceBetween: 25,

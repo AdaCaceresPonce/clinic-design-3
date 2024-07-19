@@ -19,13 +19,13 @@
     <form action="{{ route('admin.professionals.update', $professional) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="card-gray">
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                {{-- Foto  --}}
-                <div class="col lg:mb-0">
+            <div class="flex flex-col lg:flex-row gap-5">
+
+                {{-- Foto del especialista --}}
+                <div class="card-gray w-full self-start lg:w-1/2 xl:w-1/3 lg:sticky top-[72px]">
                     <x-label class="mb-1 text-[15px] font-black">
-                        Foto del doctor:
+                        Foto del profesional
                     </x-label>
                     <figure class="relative">
                         <div class="absolute top-4 right-4">
@@ -38,7 +38,7 @@
                             </label>
                         </div>
                         <img id="uploadPreview1"
-                            class="object-cover object-top w-full max-h-96 md:max-h-[660.6px] md:min-h-[660.6px] border-[2px] bg-white border-blue-400 rounded-xl
+                            class="object-cover object-top size-full aspect-[4/5] bg-white border-[2px] border-blue-400 rounded-xl
                     @error('photo_path') border-red-500 @enderror"
                             src="{{ Storage::url($professional->photo_path) }}" alt="">
                     </figure>
@@ -46,27 +46,32 @@
                     <x-input-error class="mt-1" for="photo_path" />
                 </div>
 
-                <div class="col">
+                {{-- Datos del doctor --}}
+                <div class="card-gray w-full lg:w-1/2 xl:w-2/3">
+
+                    {{-- Nombres --}}
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Nombre:
+                            Nombres
                         </x-label>
                         <x-input class="w-full"
                             placeholder="Ingrese el nombre del profesional" name="name"
                             value="{{ old('name', $professional->name) }}" />
                     </div>
 
+                    {{-- Apellidos --}}
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Apellidos:
+                            Apellidos
                         </x-label>
                         <x-input class="w-full" placeholder="Ingrese el apellido del profesional" name="lastname"
                             value="{{ old('lastname', $professional->lastname) }}" />
                     </div>
 
+                    {{-- Especialidades --}}
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Especialidades:
+                            Especialidades
                         </x-label>
                         <select
                             class="w-full select-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
@@ -86,51 +91,50 @@
                             Descripción del profesional
                         </x-label>
                         <textarea name="description"
-                            class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                            class="w-full h-64 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                             placeholder="Ingrese la descripción completa del profesional">{{ old('description', $professional->description) }}</textarea>
                     </div>
 
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Facebook:
+                            Enlace Facebook
                         </x-label>
                         <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Facebook (Opcional)"
                             name="facebook_link" value="{{ old('facebook_link', $professional->facebook_link) }}" />
                     </div>
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Linkedin:
+                            Enlace Linkedin
                         </x-label>
                         <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Linkedin (Opcional)"
                             name="linkedin_link" value="{{ old('linkedin_link', $professional->linkedin_link) }}" />
                     </div>
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Twitter:
+                            Enlace Twitter
                         </x-label>
                         <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Twitter (Opcional)"
                             name="twitter_link" value="{{ old('twitter_link', $professional->twitter_link) }}" />
                     </div>
                     <div class="mb-4">
                         <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Instagram:
+                            Enlace Instagram
                         </x-label>
                         <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Instagram (Opcional)"
                             name="instagram_link" value="{{ old('instagram_link', $professional->instagram_link) }}" />
                     </div>
 
+                    <div class="flex justify-end">
+                        <x-danger-button onclick="confirmDelete()">
+                            Eliminar
+                        </x-danger-button>
+                        <x-button class="ml-2">
+                            Actualizar Datos
+                        </x-button>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex justify-end">
-                <x-danger-button onclick="confirmDelete()">
-                    Eliminar
-                </x-danger-button>
-                <x-button class="ml-2">
-                    Actualizar Datos
-                </x-button>
-            </div>
-        </div>
     </form>
 </div>
     {{-- Formulario que será enviado al presionar "Eliminar" --}}

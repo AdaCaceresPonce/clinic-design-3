@@ -3,7 +3,7 @@
 }
 
 .card-gray {
-    @apply bg-gray-200 rounded-lg shadow-lg p-6;
+    @apply bg-gray-300/40 rounded-lg shadow-lg p-6;
 }
 
 
