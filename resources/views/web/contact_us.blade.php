@@ -8,7 +8,7 @@
     <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'" />
 
     {{-- Contactanos --}}
-    <x-contact-section :service="$service->id ?? ''" />
+    <x-contact-section service_selected="{{ $service }}" />
 
     <x-opinion-section />
 

@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class SaveInquiry extends Component
 {
-    //Variable que contiene el id del servicio si es que se accedió al formulario desde su pagina de detalles de servicio
-    public $service;
+    //Variable que contiene el slug del servicio si es que se accedió al formulario desde su pagina de detalles de servicio
+    public $service_selected;
 
     //Variable para cargar los Servicios
     public $services;
@@ -33,7 +33,7 @@ class SaveInquiry extends Component
         });
     }
 
-    public function mount($service = null)
+    public function mount()
     {
         $this->services = Service::orderBy('id', 'desc')->get();
 
@@ -46,10 +46,9 @@ class SaveInquiry extends Component
             'state' => $this->state,
         ];
 
-        if ($service) {
-            $service_data = Service::find($service);
+        if ($this->service_selected) {
+            $service_data = Service::where('slug', $this->service_selected)->first();
             if ($service_data) {
-                $this->service = $service_data;
                 $this->inquiry['service_id'] = $service_data->id;
             }
         }
