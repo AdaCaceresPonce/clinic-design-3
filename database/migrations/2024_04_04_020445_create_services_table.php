@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('small_description');
             $table->text('long_description');
-            $table->string('card_image_path');
-            $table->string('cover_image_path');
+            $table->string('card_img_path');
+            $table->string('cover_img_path');
             $table->text('additional_info')->nullable();
             $table->timestamps();
         });

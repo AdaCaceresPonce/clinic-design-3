@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+@import url('buttons.css');
+@import url('components.css');
+@import url('web.css');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

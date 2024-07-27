@@ -21,7 +21,7 @@ class SpecialtySeeder extends Seeder
                 'name' => 'Ortodoncista',
             ],
             [
-                'name' => 'Periodontista',
+                'name' => 'Periodoncista',
             ],
             [
                 'name' => 'Odontopediatra',
