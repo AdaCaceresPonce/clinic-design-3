@@ -52,7 +52,7 @@
 
                             @isset($clinicInformation['instagram_link'])
                                 <li>
-                                    <a href="{{ $clinicInformation['instagram_link'] }}" target="_blank" class="hover:underline "><i class="fa-brands fa-instagram me-2"></i> Instagram</a>
+                                    <a href="{{ $clinicInformation['instagram_link'] }}" target="_blank" class="hover:underline "><i class="fa-brands fa-instagram me-2"></i>Instagram</a>
                                 </li>
                             @endisset
 
