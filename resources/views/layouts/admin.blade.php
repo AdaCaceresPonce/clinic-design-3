@@ -1,4 +1,7 @@
-@props(['breadcrumbs' => []])
+@props([
+    'title' => config('app.name', 'Laravel'),
+    'breadcrumbs'=>[],
+])
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -8,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -43,7 +46,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased sm:overflow-y-auto" x-data="{
+<body class="font-sans bg-gray-50 antialiased sm:overflow-y-auto" x-data="{
     sidebarOpen: false
 }"
     :class="{
@@ -57,8 +60,8 @@
 
     @include('layouts.partials.admin.navigation')
 
-    {{-- @include('layouts.partials.admin.sidebar') --}}
-    @livewire('layouts.partials.admin.sidebar')
+    @include('layouts.partials.admin.sidebar')
+    {{-- @livewire('layouts.partials.admin.sidebar') --}}
 
     <div class="p-4 sm:ml-64">
 
@@ -77,7 +80,7 @@
 
             </div>
 
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+            <div class="">
 
                 {{ $slot }}
 

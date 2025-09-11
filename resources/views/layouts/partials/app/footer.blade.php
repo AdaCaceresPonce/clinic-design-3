@@ -75,8 +75,9 @@
         </div>
         <hr class="my-6 border-white sm:mx-auto lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-white sm:text-center">© 2024 <a href="{{ route('welcome.index') }}"
-                    class="hover:underline">Clínica Dental™</a>. Todos los derechos reservados. Elaborado por <a href="https://www.cuanticagroup.com/" class="hover:underline">Cuántica Group S.A.C.</a>
+            <span class="text-sm text-white sm:text-center">© {{ date('Y') }} <a href="{{ route('welcome.index') }}"
+                    class="hover:underline">
+                    Clínica Dental™</a>. Todos los derechos reservados. Desarrollado por: <a href="https://www.linkedin.com/in/ada-beatriz-caceres-ponce-041410291/" class="hover:underline font-bold"> Ada Cáceres <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a> y <a href="https://www.linkedin.com/in/everthuaman/" class="hover:underline font-bold"> Evert Huaman <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
             </span>
             {{-- <div class="flex mt-4 sm:justify-center sm:mt-0">
                 <a href="#" class="text-white dark:hover:text-white">
