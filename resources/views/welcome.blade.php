@@ -18,7 +18,7 @@
         </div>
 
         <x-container
-            class="px-2 sm:px-8 section__spacing 
+            class="px-2 sm:px-8 py-16 sm:py-24
             h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
 
             {{-- Tarjeta de bienvenida --}}
