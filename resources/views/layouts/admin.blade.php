@@ -46,7 +46,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased sm:overflow-y-auto" x-data="{
+<body class="font-sans bg-gray-50 antialiased sm:overflow-y-auto" x-data="{
     sidebarOpen: false
 }"
     :class="{
@@ -60,8 +60,8 @@
 
     @include('layouts.partials.admin.navigation')
 
-    {{-- @include('layouts.partials.admin.sidebar') --}}
-    @livewire('layouts.partials.admin.sidebar')
+    @include('layouts.partials.admin.sidebar')
+    {{-- @livewire('layouts.partials.admin.sidebar') --}}
 
     <div class="p-4 sm:ml-64">
 
@@ -80,7 +80,7 @@
 
             </div>
 
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+            <div class="">
 
                 {{ $slot }}
 
