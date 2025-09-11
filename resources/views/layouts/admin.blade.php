@@ -1,6 +1,6 @@
 @props([
     'title' => config('app.name', 'Laravel'),
-    'breadcrumbs' => [],
+    'breadcrumbs'=>[],
 ])
 
 <!DOCTYPE html>

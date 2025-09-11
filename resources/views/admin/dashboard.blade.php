@@ -45,35 +45,35 @@
     ];
 
     $web_pages = [
-            [
-                'icon' => 'fa-solid fa-ranking-star',
-                'name' => 'Página Inicio',
-                'route' => route('admin.welcome_page_content.index'),
-            ],
+            // [
+            //     'icon' => 'fa-solid fa-ranking-star',
+            //     'name' => 'Página Inicio',
+            //     'route' => route('admin.welcome_page_content.index'),
+            // ],
     
-            [
-                'icon' => 'fa-solid fa-people-group',
-                'name' => 'Página Nosotros',
-                'route' => route('admin.about_us_page_content.index'),
-            ],
+            // [
+            //     'icon' => 'fa-solid fa-people-group',
+            //     'name' => 'Página Nosotros',
+            //     'route' => route('admin.about_us_page_content.index'),
+            // ],
     
-            [
-                'icon' => 'fa-solid fa-teeth',
-                'name' => 'Página Servicios',
-                'route' => route('admin.our_services_page_content.index'),
-            ],
+            // [
+            //     'icon' => 'fa-solid fa-teeth',
+            //     'name' => 'Página Servicios',
+            //     'route' => route('admin.our_services_page_content.index'),
+            // ],
     
-            [
-                'icon' => 'fa-solid fa-stethoscope',
-                'name' => 'Página Profesionales',
-                'route' => route('admin.our_professionals_page_content.index'),
-            ],
+            // [
+            //     'icon' => 'fa-solid fa-stethoscope',
+            //     'name' => 'Página Profesionales',
+            //     'route' => route('admin.our_professionals_page_content.index'),
+            // ],
     
-            [
-                'icon' => 'fa-solid fa-address-book',
-                'name' => 'Página Contacto',
-                'route' => route('admin.contact_us_page_content.index'),
-            ],
+            // [
+            //     'icon' => 'fa-solid fa-address-book',
+            //     'name' => 'Página Contacto',
+            //     'route' => route('admin.contact_us_page_content.index'),
+            // ],
         ];
 @endphp
 
