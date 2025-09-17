@@ -12,13 +12,25 @@
     ],
 ]">
 
-<div class="mx-auto max-w-[1230px]">
+    @push('css')
+        {{-- Select2 CSS --}}
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md"/>
+        {{-- JQuery --}}
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <form action="{{ route('admin.professionals.update', $professional) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+        {{-- Select2 JS --}}
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @endpush
+
+    <div class="mx-auto max-w-[1230px]">
+
+        <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md" />
+
+        <form action="{{ route('admin.professionals.update', $professional) }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
             <div class="flex flex-col lg:flex-row gap-5">
 
@@ -54,8 +66,7 @@
                         <x-label class="mb-1 text-[15px] font-black">
                             Nombres
                         </x-label>
-                        <x-input class="w-full"
-                            placeholder="Ingrese el nombre del profesional" name="name"
+                        <x-input class="w-full" placeholder="Ingrese el nombre del profesional" name="name"
                             value="{{ old('name', $professional->name) }}" />
                     </div>
 
@@ -135,8 +146,8 @@
                 </div>
             </div>
 
-    </form>
-</div>
+        </form>
+    </div>
     {{-- Formulario que será enviado al presionar "Eliminar" --}}
     <form id="delete-form" action="{{ route('admin.professionals.destroy', $professional) }}" method="POST">
         @csrf
