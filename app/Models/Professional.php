@@ -22,15 +22,18 @@ class Professional extends Model
         'instagram_link',
     ];
 
-    //Relacion muchos a muchos con la tabla especialidades
-    public function specialties(){
-        return $this->belongsToMany('App\Models\Specialty');
-    }
-
+    //Accesor para imagen
     protected function photo(): Attribute
     {
         return Attribute::make(
-            get: fn() => Storage::url($this->photo_path),
+            get: fn() => $this->photo_path ? Storage::url($this->photo_path) : asset('img/no-image.jpg'),
         );
     }
+
+    //Relacion muchos a muchos con la tabla especialidades
+    public function specialties()
+    {
+        return $this->belongsToMany('App\Models\Specialty');
+    }
+
 }

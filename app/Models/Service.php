@@ -27,10 +27,11 @@ class Service extends Model
     }
 
 
-    protected function img(): Attribute
+    //Accesor para imagen
+    protected function cardImg(): Attribute
     {
         return Attribute::make(
-            get: fn() => Storage::url($this->card_img_path),
+            get: fn() => $this->card_img_path ? Storage::url($this->card_img_path) : asset('img/no-image.jpg'),
         );
     }
     
