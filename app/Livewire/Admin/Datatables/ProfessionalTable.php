@@ -38,9 +38,25 @@ class ProfessionalTable extends DataTableComponent
                 ),
 
             Column::make("Nombres", "name")
+                ->searchable()
                 ->sortable(),
             Column::make("Apellidos", "lastname")
                 ->sortable(),
+
+            Column::make("Especialidades")
+                ->searchable()
+                ->label(function ($row) {
+                    return view('admin.professionals.specialties', [
+                        'specialties' => $row->specialties
+                    ]);
+                }),
+
+            Column::make("Acciones")
+                ->label(function ($row) {
+                    return view('admin.professionals.actions', [
+                        'professional' => $row
+                    ]);
+                }),
 
 
         ];
