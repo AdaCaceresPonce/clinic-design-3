@@ -20,7 +20,7 @@
                 </li>
             @endforeach
 
-        </ol>
+        </ol> 
 
         {{-- Te indica en que vista estas --}}
         {{-- Si la cantidad de enlaces recibidos es mayor a 1 se muestra, sino se oculta, ya que estas en una ruta tipo principal y es redundante mostrar lo mismo 2 veces --}}

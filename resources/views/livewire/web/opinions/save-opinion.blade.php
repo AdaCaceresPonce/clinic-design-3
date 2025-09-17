@@ -1,3 +1,4 @@
+{{-- seccion de contacto opiniones --}}
 <form wire:submit="save" id="form">
     <div class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 size-full border-[3px] border-[#00CAF7] space-y-5">
 
