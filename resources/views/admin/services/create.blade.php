@@ -29,116 +29,143 @@
 
     <div class="mx-auto max-w-[1230px]">
 
-        <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md" />
+        <x-wireui-errors class="mb-3" />
 
         <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="card-gray">
+            <x-wireui-card padding="large">
 
-                {{-- Campos --}}
-                <div class="mb-4">
-                    <x-label class="mb-1 text-[15px] font-black">
-                        Nombre
-                    </x-label>
-                    <x-input class="w-full" placeholder="Ingrese el nombre del servicio" name="name"
-                        value="{{ old('name') }}" />
-                    <x-input-error for="name" />
+                {{-- Información principal --}}
+                <div>
+                    <x-admin.form-section-title class="mb-6">
+
+                        <x-slot name="title">
+                            Información Principal
+                        </x-slot>
+
+                    </x-admin.form-section-title>
+
+                    {{-- Campos --}}
+                    <div class="space-y-6">
+
+                        <x-wireui-input label="Nombre" name="name" placeholder="Ingrese el nombre del servicio"
+                            value="{{ old('name') }}" />
+
+                        <x-wireui-textarea label="Descripción corta"
+                            placeholder="Ingrese una descripción breve del servicio" name="small_description">
+                            {{ old('small_description') }}
+                        </x-wireui-textarea>
+
+                        <x-wireui-textarea label="Descripción completa"
+                            placeholder="Ingrese una descripción detallada del servicio" name="long_description"
+                            description="Información completa que aparecerá en la página del servicio">
+                            {{ old('long_description') }}
+                        </x-wireui-textarea>
+
+                    </div>
                 </div>
+
+                <x-admin.form-separator />
 
                 {{-- Imagenes --}}
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                    <div class="col lg:mb-0">
-                        <x-label class="text-[15px] font-black">
-                            Imagen de la tarjeta
-                        </x-label>
-                        <x-label class="mb-2">
-                            (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
-                        </x-label>
-                        <figure class="relative">
-                            <div class="absolute top-4 right-4">
-                                <label
-                                    class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
-                                    <i class="fas fa-camera mr-2"></i>
-                                    Actualizar imagen
-                                    <input id="uploadImage1" name="card_img_path" type="file" class="hidden"
-                                        accept="image/*" onchange="previewImage(1);" />
-                                </label>
-                            </div>
-                            <img id="uploadPreview1"
-                                class="object-contain w-full aspect-[4/3] border-[2px] bg-white border-blue-400 rounded-xl
+                <div>
+                    <x-admin.form-section-title class="mb-6">
+
+                        <x-slot name="title">
+                            Imágenes del Servicio
+                        </x-slot>
+
+                    </x-admin.form-section-title>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="col lg:mb-0">
+                            <x-label class="text-[15px] font-black">
+                                Imagen de Tarjeta
+                            </x-label>
+                            <x-label class="mb-2">
+                                (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
+                            </x-label>
+                            <figure class="relative">
+                                <div class="absolute top-4 right-4">
+                                    <label
+                                        class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                        <i class="fas fa-camera mr-2"></i>
+                                        Actualizar imagen
+                                        <input id="uploadImage1" name="card_img_path" type="file" class="hidden"
+                                            accept="image/*" onchange="previewImage(1);" />
+                                    </label>
+                                </div>
+                                <img id="uploadPreview1"
+                                    class="object-contain w-full aspect-[4/3] border-[2px] bg-white border-blue-400 rounded-xl
                             @error('card_img_path') border-red-500 @enderror"
-                                src="{{ asset('img/no-image.jpg') }}" alt="">
-                        </figure>
-                        {{-- Alerta de validacion --}}
-                        <x-input-error class="mt-1" for="card_img_path" />
-                    </div>
+                                    src="{{ asset('img/no-image.jpg') }}" alt="">
+                            </figure>
+                            {{-- Alerta de validacion --}}
+                            <x-input-error class="mt-1" for="card_img_path" />
+                        </div>
 
-                    <div class="col">
-                        <x-label class="text-[15px] font-black">
-                            Imagen de la portada
-                        </x-label>
-                        <x-label class="mb-2">
-                            (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
-                        </x-label>
-                        <figure class="relative">
-                            <div class="absolute top-4 right-4">
-                                <label
-                                    class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
-                                    <i class="fas fa-camera mr-2"></i>
-                                    Actualizar imagen
-                                    <input id="uploadImage2" name="cover_img_path" type="file" class="hidden"
-                                        accept="image/*" onchange="previewImage(2);" />
-                                </label>
-                            </div>
-                            <img id="uploadPreview2"
-                                class="object-contain w-full aspect-[4/3] border-[2px] bg-white border-blue-400 rounded-xl
+                        <div class="col">
+                            <x-label class="text-[15px] font-black">
+                                Imagen de Portada
+                            </x-label>
+                            <x-label class="mb-2">
+                                (Formatos aceptados: JPG, JPEG, PNG, SVG. / Máx: 1mb)
+                            </x-label>
+                            <figure class="relative">
+                                <div class="absolute top-4 right-4">
+                                    <label
+                                        class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                        <i class="fas fa-camera mr-2"></i>
+                                        Actualizar imagen
+                                        <input id="uploadImage2" name="cover_img_path" type="file" class="hidden"
+                                            accept="image/*" onchange="previewImage(2);" />
+                                    </label>
+                                </div>
+                                <img id="uploadPreview2"
+                                    class="object-contain w-full aspect-[4/3] border-[2px] bg-white border-blue-400 rounded-xl
                             @error('cover_img_path') border-red-500 @enderror"
-                                src="{{ asset('img/no-image.jpg') }}" alt="">
-                        </figure>
-                        {{-- Alerta de validacion --}}
-                        <x-input-error class="mt-1" for="cover_img_path" />
+                                    src="{{ asset('img/no-image.jpg') }}" alt="">
+                            </figure>
+                            {{-- Alerta de validacion --}}
+                            <x-input-error class="mt-1" for="cover_img_path" />
+                        </div>
                     </div>
                 </div>
 
-                <div class="mb-4">
-                    <x-label class="mb-1 text-[15px] font-black">
-                        Descripción para la tarjeta
-                    </x-label>
-                    <textarea name="small_description"
-                        class="w-full min-h-[100px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                        placeholder="Ingrese una descripción muy breve del servicio" name="">{{ old('small_description') }}</textarea>
-                    <x-input-error for="small_description" />
+                <x-admin.form-separator />
 
+                <div>
+                    <x-admin.form-section-title class="mb-6">
+
+                        <x-slot name="title">
+                            Información Adicional (Opcional)
+                        </x-slot>
+
+                    </x-admin.form-section-title>
+
+                    <div class="">
+
+                        <x-wireui-textarea label="Información adicional del servicio"
+                            placeholder="Información extra: contraindicaciones, tiempo de recuperación, etc."
+                            name="additional_info"
+                            description="Información complementaria que puede ser útil para los pacientes">
+                            {{ old('additional_info') }}
+                        </x-wireui-textarea>
+
+                    </div>
                 </div>
 
-                <div class="mb-4">
-                    <x-label class="mb-1 text-[15px] font-black">
-                        Descripción del servicio
-                    </x-label>
-                    <textarea name="long_description"
-                        class="w-full min-h-[350px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                        placeholder="Ingrese la descripción completa del servicio" name="">{{ old('long_description') }}</textarea>
-                    <x-input-error for="long_description" />
 
-                </div>
-
-                <div class="mb-4">
-                    <x-label class="mb-1 text-[15px] font-black">
-                        Información adicional del servicio
-                    </x-label>
-                    <textarea name="additional_info"
-                        class="w-full min-h-[350px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                        placeholder="Puedes agregar información adicional del servicio (Opcional)" name="">{{ old('additional_info') }}</textarea>
-                </div>
-
-                <div class="flex justify-end">
+                <x-slot name="footer" class="flex items-center justify-end">
                     <x-button>
                         Crear servicio
                     </x-button>
-                </div>
+                </x-slot>
 
-            </div>
+
+            </x-wireui-card>
+
         </form>
 
     </div>
