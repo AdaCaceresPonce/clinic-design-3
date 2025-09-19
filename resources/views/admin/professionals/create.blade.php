@@ -44,114 +44,138 @@
 
         <form action="{{ route('admin.professionals.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="card-gray">
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                    {{-- Foto  --}}
-                    <div class="col lg:mb-0">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Foto del doctor:
-                        </x-label>
-                        <figure class="relative">
-                            <div class="absolute top-4 right-4">
-                                <label
-                                    class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
-                                    <i class="fas fa-camera mr-2"></i>
-                                    Actualizar imagen
-                                    <input id="uploadImage1" name="photo_path" type="file" class="hidden"
-                                        accept="image/*" onchange="previewImage(1);" />
-                                </label>
-                            </div>
-                            <img id="uploadPreview1"
-                                class="object-cover object-top w-full max-h-48 md:max-h-[660.6px] md:min-h-[660.6px] border-[2px] bg-white border-blue-400 rounded-xl
+            <div class="flex flex-col lg:flex-row gap-5">
+
+                {{-- Foto del especialista --}}
+                <x-wireui-card padding="large" class="self-start lg:w-1/2 xl:w-1/3 lg:sticky top-[72px]">
+                    <x-label class="mb-1 text-[15px] font-black">
+                        Foto del profesional
+                    </x-label>
+                    <figure class="relative">
+                        <div class="absolute top-4 right-4">
+                            <label
+                                class="flex items-center px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-lg btn-blue cursor-pointer text-sm lg:text-base">
+                                <i class="fas fa-camera mr-2"></i>
+                                Actualizar imagen
+                                <input id="uploadImage1" name="photo_path" type="file" class="hidden"
+                                    accept="image/*" onchange="previewImage(1);" />
+                            </label>
+                        </div>
+                        <img id="uploadPreview1"
+                            class="object-cover object-top size-full aspect-[4/5] bg-white border-[2px] border-blue-400 rounded-xl
                     @error('photo_path') border-red-500 @enderror"
-                                src="{{ asset('img/no-image.jpg') }}" alt="">
-                        </figure>
-                        {{-- Alerta de validacion --}}
-                        <x-input-error class="mt-1" for="photo_path" />
-                    </div>
+                            src="{{ asset('img/no-image.jpg') }}" alt="">
+                    </figure>
+                    {{-- Alerta de validacion --}}
+                    <x-input-error class="mt-1" for="photo_path" />
+                </x-wireui-card>
 
-                    <div class="col">
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Nombre:
-                            </x-label>
-                            <x-input class="w-full " placeholder="Ingrese el nombre del profesional" name="name"
-                                value="{{ old('name') }}" />
-                        </div>
+                {{-- Datos del doctor --}}
+                <x-wireui-card padding="large" class="lg:w-1/2 xl:w-2/3">
 
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Apellidos:
-                            </x-label>
-                            <x-input class="w-full" placeholder="Ingrese el apellido del profesional" name="lastname"
-                                value="{{ old('lastname') }}" />
-                        </div>
+                    {{-- Información principal --}}
+                    <div>
+                        <x-admin.form-section-title class="mb-6">
 
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Especialidades:
-                            </x-label>
-                            <select
-                                class="w-full select-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                                name="specialties[]" multiple="multiple">
-                                <option value="" disabled="disabled">Selecciona una o más especialidades</option>
-                                @foreach ($specialties as $specialty)
-                                    <option value="{{ $specialty->id }}"
-                                        {{ in_array($specialty->id, old('specialties', [])) ? 'selected' : '' }}>
-                                        {{ $specialty->name }}
+                            <x-slot name="title">
+                                Datos Principales
+                            </x-slot>
+
+                        </x-admin.form-section-title>
+
+                        {{-- Campos --}}
+                        <div class="space-y-6">
+
+                            <x-wireui-input label="Nombres" name="name"
+                                placeholder="Ingrese el nombre del profesional" value="{{ old('name') }}" />
+
+                            <x-wireui-input label="Apellidos" name="lastname"
+                                placeholder="Ingrese el apellido del profesional" value="{{ old('name') }}" />
+
+                            {{-- <div>
+
+                                <x-wireui-select label="Especialidades del Profesional"
+                                    placeholder="Selecciona una o más especialidades" name="specialties[]" multiselect>
+
+                                    @foreach ($specialties as $specialty)
+                                        <x-wireui-select.option :label="$specialty->name" :value="$specialty->id" />
+                                    @endforeach
+
+                                </x-wireui-select>
+                            </div> --}}
+
+                            <div class="">
+                                <x-label class="mb-1 text-[15px] font-black">
+                                    Especialidades
+                                </x-label>
+                                <select
+                                    class="w-full select-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    name="specialties[]" multiple="multiple">
+                                    <option value="" disabled="disabled">Selecciona una o más especialidades
                                     </option>
-                                @endforeach
-                            </select>
-                        </div>
+                                    @foreach ($specialties as $specialty)
+                                        <option value="{{ $specialty->id }}"
+                                            {{ in_array($specialty->id, old('specialties', [])) ? 'selected' : '' }}>
+                                            {{ $specialty->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Descripción del profesional
-                            </x-label>
-                            <textarea name="description"
-                                class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                                placeholder="Ingrese la descripción completa del profesional">{{ old('description') }}</textarea>
-                        </div>
+                            <x-wireui-textarea label="Descripción del Profesional"
+                                placeholder="Ingrese la descripción del profesional, puede ser su trayectoria, logros, conocimientos, etc."
+                                name="description" rows="9">
+                                {{ old('description') }}
+                            </x-wireui-textarea>
 
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Enlace Facebook:
-                            </x-label>
-                            <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Facebook (Opcional)"
-                                name="facebook_link" value="{{ old('facebook_link') }}" />
                         </div>
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Enlace Linkedin:
-                            </x-label>
-                            <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Linkedin (Opcional)"
-                                name="linkedin_link" value="{{ old('linkedin_link') }}" />
-                        </div>
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Enlace Twitter:
-                            </x-label>
-                            <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Twitter (Opcional)"
-                                name="twitter_link" value="{{ old('twitter_link') }}" />
-                        </div>
-                        <div class="mb-4">
-                            <x-label class="mb-1 text-[15px] font-black">
-                                Enlace Instagram:
-                            </x-label>
-                            <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Instagram (Opcional)"
-                                name="instagram_link" value="{{ old('instagram_link') }}" />
-                        </div>
-
                     </div>
-                </div>
 
-                <div class="flex justify-end">
-                    <x-button>
-                        Registrar Profesional
-                    </x-button>
-                </div>
+                    <x-admin.form-separator />
+
+                    {{-- Redes Sociales --}}
+                    <div>
+                        <x-admin.form-section-title class="mb-6">
+
+                            <x-slot name="title">
+                                Redes Sociales
+                            </x-slot>
+
+                        </x-admin.form-section-title>
+
+                        {{-- Campos --}}
+                        <div class="space-y-6">
+
+                            <x-wireui-input label="Perfil de Facebook" name="facebook_link"
+                                placeholder="Ingrese el enlace de perfil de Facebook"
+                                value="{{ old('facebook_link') }}" />
+
+                            <x-wireui-input label="Perfil de Linkedin" name="linkedin_link"
+                                placeholder="Ingrese el enlace de perfil de Linkedin"
+                                value="{{ old('linkedin_link') }}" />
+
+                            <x-wireui-input label="Perfil de Twitter" name="twitter_link"
+                                placeholder="Ingrese el enlace de perfil de Twitter"
+                                value="{{ old('twitter_link') }}" />
+
+                            <x-wireui-input label="Perfil de Instagram" name="instagram_link"
+                                placeholder="Ingrese el enlace de perfil de Instagram"
+                                value="{{ old('instagram_link') }}" />
+
+                        </div>
+                    </div>
+
+                    <x-slot name="footer" class="flex items-center justify-end">
+
+                        <x-button class="">
+                            Crear Profesional
+                        </x-button>
+                    </x-slot>
+
+                </x-wireui-card>
             </div>
+
         </form>
     </div>
     @push('js')
