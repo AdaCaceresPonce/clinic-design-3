@@ -79,7 +79,6 @@ class UserController extends Controller
         if (!empty($data['password'])) {
 
             $data['password'] = bcrypt($data['password']);
-            
         } else {
 
             //En cambio si se recibe vacia, se quita del array
@@ -102,6 +101,26 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
+        if (auth()->id() === $user->id) {
+
+            session()->flash('swal', [
+                'icon' => 'error',
+                'title' => '¡Ups!',
+                'text' => 'Lo sentimos. No puedes eliminar tu propio usuario.'
+            ]);
+
+            return redirect()->route('admin.users.index');
+        }
+
+        $user->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Usuario eliminado correctamente'
+        ]);
+
+        return redirect()->route('admin.users.index');
     }
 }
