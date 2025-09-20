@@ -69,7 +69,32 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed'
+        ]);
+
+        //Si la contraseña no se recibe vacia, se hace el encriptado, ya que se va a actualizar
+        if (!empty($data['password'])) {
+
+            $data['password'] = bcrypt($data['password']);
+            
+        } else {
+
+            //En cambio si se recibe vacia, se quita del array
+            unset($data['password']);
+        }
+
+        $user->update($data);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Usuario actualizado correctamente'
+        ]);
+
+        return redirect()->route('admin.users.edit', compact('user'));
     }
 
     /**
