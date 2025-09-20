@@ -14,7 +14,6 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.users.index');
-        
     }
 
     /**
@@ -22,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-
+        return view('admin.users.create');
     }
 
     /**
@@ -30,7 +29,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+
+        $data['password'] = bcrypt($data['password']);
+
+        User::create($data);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'Usuario creado correctamente'
+        ]);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -47,7 +62,6 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));
-    
     }
 
     /**
