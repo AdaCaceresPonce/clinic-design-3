@@ -112,6 +112,34 @@
             'route' => route('admin.opinions.index'),
             'active' => request()->routeIs('admin.opinions.*'),
         ],
+
+        [
+            'header' => 'Configuración',
+        ],
+
+        [
+            //Usuarios
+            'icon' => 'fa-solid fa-users',
+            'name' => 'Usuarios',
+            'route' => route('admin.users.index'),
+            'active' => request()->routeIs('admin.users.*'),
+        ],
+
+        [
+            //Roles
+            'icon' => 'fa-solid fa-user-shield',
+            'name' => 'Roles',
+            'route' => route('admin.opinions.index'),
+            'active' => request()->routeIs('admin.opinions.*'),
+        ],
+
+        [
+            //Permisos
+            'icon' => 'fa-solid fa-user-lock',
+            'name' => 'Permisos',
+            'route' => route('admin.opinions.index'),
+            'active' => request()->routeIs('admin.opinions.*'),
+        ],
     ];
 
     // $web_pages = [
@@ -153,7 +181,7 @@
 
 @endphp
 
-<aside id="logo-sidebar" 
+<aside id="logo-sidebar"
     class="fixed top-0 left-0 z-40 w-64 h-[100dvh] pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
     :class="{
         'translate-x-0 ease-out': sidebarOpen,
