@@ -19,11 +19,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@mail.com',
-            'password' => bcrypt('12345678'),
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@mail.com',
+        //     'password' => bcrypt('12345678'),
+        // ]);
+
+        //Crear Roles, permisos, y usuario admin
+        $this->call(RoleSeeder::class);
 
         //Eliminar carpetas
         Storage::deleteDirectory('services/card_images');
