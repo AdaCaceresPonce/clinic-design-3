@@ -129,17 +129,10 @@
             //Roles
             'icon' => 'fa-solid fa-user-shield',
             'name' => 'Roles',
-            'route' => route('admin.opinions.index'),
-            'active' => request()->routeIs('admin.opinions.*'),
+            'route' => route('admin.roles.index'),
+            'active' => request()->routeIs('admin.roles.*'),
         ],
 
-        [
-            //Permisos
-            'icon' => 'fa-solid fa-user-lock',
-            'name' => 'Permisos',
-            'route' => route('admin.opinions.index'),
-            'active' => request()->routeIs('admin.opinions.*'),
-        ],
     ];
 
     // $web_pages = [
