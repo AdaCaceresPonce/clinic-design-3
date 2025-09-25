@@ -36,15 +36,15 @@ class RoleTable extends DataTableComponent
             // Column::make("Is active", "is_active")
             //     ->sortable(),
 
-            Column::make('N° Usuarios')
-                ->label(fn($row) => $row->users_count),
-
-            Column::make("Permisos")
+            Column::make("Permisos por módulo")
                 ->label(function ($row) {
                     return view('admin.roles.permissions', [
                         'permissions' => $row->permissions
                     ]);
                 }),
+
+            Column::make('N° Usuarios')
+                ->label(fn($row) => $row->users_count),
 
             Column::make("Acciones")
                 ->label(function ($row) {
