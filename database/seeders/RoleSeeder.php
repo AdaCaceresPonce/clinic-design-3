@@ -292,6 +292,6 @@ class RoleSeeder extends Seeder
             'name' => 'Visitante',
             'email' => 'visitante@mail.com',
             'password' => bcrypt('12345678'),
-        ])->assignRole('viewer');
+        ])->assignRole('visitante');
     }
 }
