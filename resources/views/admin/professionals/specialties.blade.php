@@ -1,12 +1,11 @@
-<div class="flex flex-wrap gap-2">
+<div class="flex flex-wrap gap-1">
     @forelse ($specialties as $specialty)
-        <span
-            class="bg-blue-100 text-blue-800 dark:text-[#60f0f5] text-sm font-medium px-2.5 py-0.5 dark:bg-gray-700 border border-blue-400 dark:border-[#00CAF7] rounded-full">
+        <x-wireui-badge blue>
             {{ $specialty->name }}
-        </span>
+        </x-wireui-badge>
     @empty
-
-
-
+        <x-wireui-badge secondary>
+            Sin especialidades
+        </x-wireui-badge>
     @endforelse
 </div>
