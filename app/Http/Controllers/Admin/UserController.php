@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -29,15 +31,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:8|confirmed',
+            'roles' => 'nullable|array',
         ]);
 
+        //Encriptar contraseña
         $data['password'] = bcrypt($data['password']);
 
-        User::create($data);
+        //Extraer array de roles y quitarlos del request
+        $roles = $data['roles'] ?? null;
+        unset($data['roles']);
+
+        $user = User::create($data);
+
+        //Verificar si se está recibiendo roles, y asignarlos al usuario si es el caso.
+        if ($roles) {
+            $user->roles()->sync($roles);
+        }
 
         session()->flash('swal', [
             'icon' => 'success',
@@ -61,7 +75,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $user->load('roles');
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -72,7 +88,8 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed'
+            'password' => 'nullable|string|min:8|confirmed',
+            'roles' => 'nullable|array',
         ]);
 
         //Si la contraseña no se recibe vacia, se hace el encriptado, ya que se va a actualizar
@@ -85,7 +102,19 @@ class UserController extends Controller
             unset($data['password']);
         }
 
+        //Extraer array de roles y quitarlos del request
+        $roles = $data['roles'] ?? null;
+        unset($data['roles']);
+
         $user->update($data);
+
+        //Al recibir datos en el array, sincroniza los roles nuevos, mantiene los que ya estaban, elimina los que ya no están en el array
+        if ($roles) {
+            $user->roles()->sync($roles);
+        } else {
+            //Si no se recibió nada en el array, quiere decir que se desmarcaron todos los permisos y se van a eliminar de la relacion
+            $user->roles()->detach();
+        }
 
         session()->flash('swal', [
             'icon' => 'success',
