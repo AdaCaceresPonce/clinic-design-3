@@ -45,7 +45,7 @@
 
                 </x-admin.form-section-title>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
                     <x-wireui-input label="Nombre" name="name" placeholder="Ingrese el nombre del usuario"
                         icon="user" value="{{ old('name', $user->name) }}" />
@@ -61,6 +61,30 @@
                         icon="key" placeholder="Confirma la contraseña del usuario"
                         description="8 caracteres mínimo" />
 
+                </div>
+
+                <div>
+                    <p
+                        class="block text-sm font-medium disabled:opacity-60 text-gray-700 dark:text-gray-400 invalidated:text-negative-600 dark:invalidated:text-negative-700 mb-3">
+                        Roles:
+                    </p>
+
+                    <ul class="grid grid-cols-1 gap-1">
+
+                        @foreach ($roles as $role)
+                            <li class="flex flex-row gap-2">
+                                <label class="flex items-start gap-2">
+                                    <x-checkbox class="mt-0.5" name="roles[]" value="{{ $role->id }}" 
+                                        :checked="in_array($role->id, old('roles', $user->roles->pluck('id')->toArray()))" />
+                                    <span class="text-sm text-gray-700">
+                                        {{ $role->display_name }}
+                                    </span>
+                                </label>
+
+                            </li>
+                        @endforeach
+
+                    </ul>
                 </div>
 
                 <x-slot name="footer" class="flex items-center justify-end">
