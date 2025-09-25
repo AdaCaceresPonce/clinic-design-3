@@ -22,4 +22,37 @@
         </x-wireui-button>
     </x-slot>
 
+    @livewire('admin.datatables.role-table')
+
+    @push('js')
+        <script>
+            //Seleccionar todos los forms que tengan la siguiente clase
+            forms = document.querySelectorAll('.delete-form');
+
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    Swal.fire({
+                        title: "¿Estás seguro?",
+                        text: "¡No podrás revertir esto!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "¡Sí, borralo!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+
+                    });
+
+
+                });
+            });
+        </script>
+    @endpush
+
 </x-admin-layout>
