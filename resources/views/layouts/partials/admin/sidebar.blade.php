@@ -33,14 +33,6 @@
             'active' => request()->routeIs('admin.specialties.*'),
         ],
 
-        [
-            //Información de la Clínica
-            'icon' => 'fa-solid fa-house-chimney-medical',
-            'name' => 'Información',
-            'route' => route('admin.clinic_information.index'),
-            'active' => request()->routeIs('admin.clinic_information.*'),
-        ],
-
         // [
         //     'header' => 'Páginas',
         // ],
@@ -133,6 +125,13 @@
             'active' => request()->routeIs('admin.roles.*'),
         ],
 
+        [
+            //Información de la Clínica
+            'icon' => 'fa-solid fa-gear',
+            'name' => 'Ajustes',
+            'route' => route('admin.clinic_information.index'),
+            'active' => request()->routeIs('admin.clinic_information.*'),
+        ],
     ];
 
     // $web_pages = [
