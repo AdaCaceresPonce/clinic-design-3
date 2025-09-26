@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ClinicInformation;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ClinicInformationController extends Controller
@@ -15,6 +15,8 @@ class ClinicInformationController extends Controller
      */
     public function index()
     {
+        Gate::authorize('settings.view');
+
         $clinic_information = ClinicInformation::first();
         return view('admin.clinic_information.index', compact('clinic_information'));
     }
@@ -48,7 +50,7 @@ class ClinicInformationController extends Controller
      */
     public function edit(ClinicInformation $clinicInformation)
     {
-        //
+        Gate::authorize('settings.update');
     }
 
     /**
@@ -56,6 +58,8 @@ class ClinicInformationController extends Controller
      */
     public function update(Request $request, ClinicInformation $clinicInformation)
     {
+        Gate::authorize('settings.update');
+
         // Validación de los datos del formulario
         $request->validate([
             'phone' => 'nullable|string|max:255',
@@ -68,7 +72,7 @@ class ClinicInformationController extends Controller
             'instagram_link' => 'nullable|url',
             'navbar_clinic_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'footer_clinic_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
-        ],[],[
+        ], [], [
             'phone' => 'número de teléfono',
             'cellphone' => 'número de celular',
             'schedule' => 'horario',
