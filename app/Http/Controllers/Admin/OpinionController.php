@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Opinion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OpinionController extends Controller
 {
@@ -13,6 +14,8 @@ class OpinionController extends Controller
      */
     public function index()
     {
+        Gate::authorize('opinions.view');
+
         return view('admin.mailbox.opinions.index');
     }
 
