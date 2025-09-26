@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -14,6 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        Gate::authorize('users.view');
+
         return view('admin.users.index');
     }
 
@@ -22,6 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        Gate::authorize('users.create');
+
         $roles = Role::all();
         return view('admin.users.create', compact('roles'));
     }
@@ -31,6 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('users.create');
 
         $data = $request->validate([
             'name' => 'required|string|max:255',
@@ -75,6 +81,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        Gate::authorize('users.update');
+
         $user->load('roles');
         $roles = Role::all();
         return view('admin.users.edit', compact('user', 'roles'));
@@ -85,6 +93,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        Gate::authorize('users.update');
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -130,6 +140,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        Gate::authorize('users.delete');
 
         if (auth()->id() === $user->id) {
 
