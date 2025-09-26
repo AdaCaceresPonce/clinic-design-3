@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class InquiryController extends Controller
 {
@@ -13,6 +14,7 @@ class InquiryController extends Controller
      */
     public function index()
     {
+        Gate::authorize('inquiries.view');
         
         return view('admin.mailbox.inquiries.index');
         
