@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SpecialtyController extends Controller
 {
@@ -13,6 +14,8 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
+        Gate::authorize('specialties.view');
+
         $specialties = Specialty::orderBy('id', 'desc')->paginate(6);
         
         return view('admin.specialties.index', compact('specialties'));
@@ -23,6 +26,8 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
+        Gate::authorize('specialties.create');
+
         return view('admin.specialties.create');
     }
 
@@ -31,6 +36,8 @@ class SpecialtyController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('specialties.create');
+
         $request->validate([
             'name' => 'required'
         ]);
@@ -59,6 +66,8 @@ class SpecialtyController extends Controller
      */
     public function edit(Specialty $specialty)
     {
+        Gate::authorize('specialties.update');
+
         return view('admin.specialties.edit', compact('specialty'));
     }
 
@@ -67,6 +76,8 @@ class SpecialtyController extends Controller
      */
     public function update(Request $request, Specialty $specialty)
     {
+        Gate::authorize('specialties.update');
+
         $request->validate([
             'name' => 'required'
         ]);
@@ -86,6 +97,8 @@ class SpecialtyController extends Controller
      */
     public function destroy(Specialty $specialty)
     {
+        Gate::authorize('specialties.delete');
+
         if ($specialty->professionals()->count() > 0){
             session()->flash('swal', [
                 'icon' => 'error',
