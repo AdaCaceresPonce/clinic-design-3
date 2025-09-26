@@ -82,7 +82,7 @@ class RoleSeeder extends Seeder
                     'display_name' => 'Ver Página Inicio',
                 ],
                 [
-                    'name' => 'welcome_page.edit',
+                    'name' => 'welcome_page.update',
                     'display_name' => 'Editar Página Inicio',
                 ],
 
@@ -92,7 +92,7 @@ class RoleSeeder extends Seeder
                     'display_name' => 'Ver Página Nosotros',
                 ],
                 [
-                    'name' => 'about_us_page.edit',
+                    'name' => 'about_us_page.update',
                     'display_name' => 'Editar Página Nosotros',
                 ],
 
@@ -102,7 +102,7 @@ class RoleSeeder extends Seeder
                     'display_name' => 'Ver Página Nuestros Servicios',
                 ],
                 [
-                    'name' => 'our_services_page.edit',
+                    'name' => 'our_services_page.update',
                     'display_name' => 'Editar Página Nuestros Servicios',
                 ],
 
@@ -112,7 +112,7 @@ class RoleSeeder extends Seeder
                     'display_name' => 'Ver Página Nuestros Profesionales',
                 ],
                 [
-                    'name' => 'our_professionals_page.edit',
+                    'name' => 'our_professionals_page.update',
                     'display_name' => 'Editar Página Nuestros Profesionales',
                 ],
 
@@ -122,7 +122,7 @@ class RoleSeeder extends Seeder
                     'display_name' => 'Ver Página Contáctanos',
                 ],
                 [
-                    'name' => 'contact_us_page.edit',
+                    'name' => 'contact_us_page.update',
                     'display_name' => 'Editar Página Contáctanos',
                 ],
 
