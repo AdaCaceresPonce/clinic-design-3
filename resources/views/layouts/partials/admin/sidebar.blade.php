@@ -260,8 +260,8 @@
             @endforeach
 
         </ul>
-        <ul class="pt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
-            {{-- @foreach ($web_pages as $web_page)
+        {{-- <ul class="pt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+            @foreach ($web_pages as $web_page)
                 <li>
                     <a href="{{ $web_page['route'] }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $web_page['active'] ? ' bg-gray-100 dark:bg-gray-700' : '' }}">
@@ -273,9 +273,8 @@
                         </span>
                     </a>
                 </li>
-            @endforeach --}}
+            @endforeach
 
-
-        </ul>
+        </ul> --}}
     </div>
 </aside>
