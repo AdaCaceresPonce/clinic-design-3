@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\OurProfessionalsPageContent;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class OurProfessionalsPageContentController extends Controller
@@ -15,6 +15,8 @@ class OurProfessionalsPageContentController extends Controller
      */
     public function index()
     {
+        Gate::authorize('our_professionals_page.view');
+
         $contents = OurProfessionalsPageContent::first();
 
         return view('admin.web_page_contents.our_professionals_page.index', compact('contents'));
@@ -49,7 +51,7 @@ class OurProfessionalsPageContentController extends Controller
      */
     public function edit(OurProfessionalsPageContent $ourProfessionalsPageContent)
     {
-        //
+        Gate::authorize('our_professionals_page.update');
     }
 
     /**
@@ -57,6 +59,8 @@ class OurProfessionalsPageContentController extends Controller
      */
     public function update(Request $request, OurProfessionalsPageContent $ourProfessionalsPageContent)
     {
+        Gate::authorize('our_professionals_page.update');
+
         $request->validate([
             'cover_title' => 'required',
             'cover_img' => 'image|max:1024',
@@ -68,7 +72,7 @@ class OurProfessionalsPageContentController extends Controller
             'our_professionals_team_title' => 'required',
             'our_professionals_team_description' => 'required',
 
-        ],[
+        ], [
             'cover_title.required' => 'El título de la portada es obligatorio.',
             'cover_img.image' => 'El archivo cargado para la portada debe ser una imagen.',
 

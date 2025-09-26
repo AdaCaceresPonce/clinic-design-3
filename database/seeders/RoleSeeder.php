@@ -258,7 +258,7 @@ class RoleSeeder extends Seeder
         ]);
 
         Role::create([
-            'name' => 'viewer',
+            'name' => 'visitante',
             'display_name' => 'Visitante',
         ])->givePermissionTo([
             'services.view',
