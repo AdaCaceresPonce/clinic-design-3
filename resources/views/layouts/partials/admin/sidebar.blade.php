@@ -188,7 +188,7 @@
                 <li>
                     {{-- Si está definido el campo header, se muestra como cabecera, usualmente tendrá solo ese campo --}}
                     @isset($link['header'])
-                        <div class="px-2 py-2 text-sm font-semibold text-gray-400 uppercase">
+                        <div class="px-2 py-2 text-[13px] font-semibold text-gray-500 uppercase">
                             {{ $link['header'] }}
                         </div>
 
@@ -202,10 +202,10 @@
 
                                 {{-- Botón --}}
                                 <button @click="open = !open"
-                                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200/70 hover:text-gray-900 dark:text-white dark:hover:bg-gray-700"
                                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
 
-                                    <span class="inline-flex w-6 h-6 justify-center items-center">
+                                    <span class="text-gray-500 inline-flex w-6 h-6 justify-center items-center group-hover:text-gray-900">
                                         <i class="{{ $link['icon'] }}"></i>
                                     </span>
 
@@ -225,8 +225,8 @@
                                     @foreach ($link['submenu'] as $item)
                                         <li>
                                             <a href="{{ $item['route'] }}"
-                                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-5 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ $item['active'] ? ' bg-gray-100 dark:bg-gray-700' : '' }}">
-                                                <span class="inline-flex w-6 h-6 justify-center items-center">
+                                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-5 group hover:bg-gray-200/70 dark:text-white dark:hover:bg-gray-700 {{ $item['active'] ? ' bg-gray-200/70 dark:bg-gray-700' : '' }}">
+                                                <span class="text-gray-500 inline-flex w-6 h-6 justify-center items-center group-hover:text-gray-900 {{ $item['active'] ? ' text-gray-900' : '' }}">
                                                     <i class="fa-regular fa-circle"></i>
                                                 </span>
                                                 <span class="ms-2">
@@ -245,8 +245,8 @@
                             {{-- Sino, se muestra el enlace del sidebar normal --}}
                         @else
                             <a href="{{ $link['route'] }}"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $link['active'] ? ' bg-gray-100 dark:bg-gray-700' : '' }}">
-                                <span class="inline-flex w-6 h-6 justify-center items-center">
+                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200/70 dark:hover:bg-gray-700 group {{ $link['active'] ? 'text-gray-900 bg-gray-200/70 dark:bg-gray-700' : '' }}">
+                                <span class="text-gray-500 inline-flex w-6 h-6 justify-center items-center group-hover:text-gray-900 {{ $link['active'] ? 'text-gray-900' : '' }}">
                                     <i class="{{ $link['icon'] }}"></i>
                                 </span>
                                 <span class="ms-2">
