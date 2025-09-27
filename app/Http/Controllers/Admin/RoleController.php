@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 
@@ -16,6 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('roles.view');
+
         return view('admin.roles.index');
     }
 
@@ -24,6 +27,8 @@ class RoleController extends Controller
      */
     public function create()
     {
+        Gate::authorize('roles.create');
+
         $permissions = Permission::all();
         return view('admin.roles.create', compact('permissions'));
     }
@@ -33,6 +38,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('roles.create');
 
         $request->merge([
             'name' => Str::slug($request->input('display_name')),
@@ -80,6 +86,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        Gate::authorize('roles.update');
+
         $role->load('permissions');
         $permissions = Permission::all();
         return view('admin.roles.edit', compact('role', 'permissions'));
@@ -90,6 +98,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        Gate::authorize('roles.update');
+
         $request->merge([
             'name' => Str::slug($request->input('display_name')),
         ]);
@@ -131,6 +141,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        Gate::authorize('roles.delete');
+
         $role->delete();
 
         session()->flash('swal', [

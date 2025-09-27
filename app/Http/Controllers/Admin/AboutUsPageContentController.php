@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUsPageContent;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -16,6 +16,8 @@ class AboutUsPageContentController extends Controller
      */
     public function index()
     {
+        Gate::authorize('about_us_page.view');
+
         $contents = AboutUsPageContent::first();
 
         return view('admin.web_page_contents.about_us_page.index', compact('contents'));
@@ -50,7 +52,7 @@ class AboutUsPageContentController extends Controller
      */
     public function edit(AboutUsPageContent $aboutUsPageContent)
     {
-        //
+        Gate::authorize('about_us_page.update');
     }
 
     /**
@@ -58,6 +60,9 @@ class AboutUsPageContentController extends Controller
      */
     public function update(Request $request, AboutUsPageContent $aboutUsPageContent)
     {
+
+        Gate::authorize('about_us_page.update');
+
         $request->validate([
 
             'cover_title' => 'required',
@@ -73,7 +78,7 @@ class AboutUsPageContentController extends Controller
             'free_description_2' => 'required',
             'free_img' => 'image|max:1024',
 
-        ],[
+        ], [
             'cover_title.required' => 'El título de la portada es obligatorio.',
             'cover_img.image' => 'El archivo cargado para la portada debe ser una imagen.',
 

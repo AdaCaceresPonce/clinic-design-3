@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Opinions;
 
 use App\Models\Opinion;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -49,7 +50,7 @@ class OpinionsTable extends Component
         $this->search = '';
     }
 
-    
+
     public function show($opinionId)
     {
         $this->open = true;
@@ -67,11 +68,11 @@ class OpinionsTable extends Component
         $this->opinionInfo['state'] = $opinion->state;
         $this->opinionInfo['is_published'] = (bool) $opinion->is_published;
         $this->opinionInfo['created_at'] = $opinion->created_at ? Carbon::parse($opinion->created_at) : null;
-
     }
 
     public function update()
     {
+        Gate::authorize('opinions.update');
 
         $opinion = Opinion::with('service')->find($this->opinionEditId);
 
@@ -89,9 +90,11 @@ class OpinionsTable extends Component
         ]);
     }
 
-    #[On('destroy')] 
+    #[On('destroy')]
     public function destroy()
     {
+        Gate::authorize('opinions.delete');
+
         // Lógica para eliminar la consulta
         $inquiry = Opinion::with('service')->find($this->opinionEditId);
 
@@ -104,7 +107,6 @@ class OpinionsTable extends Component
             'title' => '¡Bien hecho!',
             'text' => 'Opinión eliminada correctamente.'
         ]);
-
     }
 
     //Define los colores de las marcas de tiempo
@@ -125,7 +127,7 @@ class OpinionsTable extends Component
             return 'time-gray';
         }
     }
-    
+
     public function render()
     {
 

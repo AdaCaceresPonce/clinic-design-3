@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Professional;
 use App\Models\Specialty;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,6 +17,7 @@ class ProfessionalController extends Controller
     public function index()
     {
         // $professionals = Professional::orderBy('id', 'desc')->with('specialties')->paginate(8);
+        Gate::authorize('professionals.view');
         
         return view('admin.professionals.index');
     }
@@ -26,6 +27,8 @@ class ProfessionalController extends Controller
      */
     public function create()
     {
+        Gate::authorize('professionals.create');
+
         $specialties = Specialty::all();
         return view('admin.professionals.create', compact('specialties'));
     }
@@ -35,6 +38,8 @@ class ProfessionalController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('professionals.create');
+
         $request->validate([
             'name' => 'required',
             'lastname' => 'required',
@@ -92,6 +97,8 @@ class ProfessionalController extends Controller
      */
     public function edit(Professional $professional)
     {
+        Gate::authorize('professionals.update');
+
         $specialties = Specialty::all();
         return view('admin.professionals.edit', compact('professional', 'specialties'));
     }
@@ -101,6 +108,8 @@ class ProfessionalController extends Controller
      */
     public function update(Request $request, Professional $professional)
     {
+        Gate::authorize('professionals.update');
+
         $request->validate([
             'name' => 'required',
             'lastname' => 'required',
@@ -154,6 +163,8 @@ class ProfessionalController extends Controller
      */
     public function destroy(Professional $professional)
     {
+        Gate::authorize('professionals.delete');
+
         Storage::delete($professional->photo_path);
 
         $professional->delete();

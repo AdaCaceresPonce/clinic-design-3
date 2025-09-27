@@ -158,9 +158,11 @@
                     </div>
 
                     <x-slot name="footer" class="flex items-center justify-end">
-                        <x-danger-button onclick="confirmDelete()">
-                            Eliminar
-                        </x-danger-button>
+                        @can('professionals.delete')
+                            <x-danger-button onclick="confirmDelete()">
+                                Eliminar
+                            </x-danger-button>
+                        @endcan
 
                         <x-button class="ml-2">
                             Actualizar
@@ -173,11 +175,14 @@
 
         </form>
     </div>
-    {{-- Formulario que será enviado al presionar "Eliminar" --}}
-    <form id="delete-form" action="{{ route('admin.professionals.destroy', $professional) }}" method="POST">
-        @csrf
-        @method('DELETE')
-    </form>
+
+    @can('professionals.delete')
+        {{-- Formulario que será enviado al presionar "Eliminar" --}}
+        <form id="delete-form" action="{{ route('admin.professionals.destroy', $professional) }}" method="POST">
+            @csrf
+            @method('DELETE')
+        </form>
+    @endcan
 
     @push('js')
         <script>
@@ -197,25 +202,27 @@
                 });
             });
 
-            //Alerta de confirmar eliminar
-            function confirmDelete() {
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esto!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Sí, borralo!",
-                    cancelButtonText: "Cancelar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('delete-form').submit();
-                    }
+            @can('professionals.delete')
+                //Alerta de confirmar eliminar
+                function confirmDelete() {
+                    Swal.fire({
+                        title: "¿Estás seguro?",
+                        text: "¡No podrás revertir esto!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "¡Sí, borralo!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById('delete-form').submit();
+                        }
 
-                });
+                    });
 
-            }
+                }
+            @endcan
         </script>
     @endpush
 

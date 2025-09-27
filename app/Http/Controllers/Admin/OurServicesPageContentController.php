@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\OurServicesPageContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class OurServicesPageContentController extends Controller
@@ -14,6 +15,8 @@ class OurServicesPageContentController extends Controller
      */
     public function index()
     {
+        Gate::authorize('our_services_page.view');
+
         $contents = OurServicesPageContent::first();
 
         return view('admin.web_page_contents.our_services_page.index', compact('contents'));
@@ -48,7 +51,7 @@ class OurServicesPageContentController extends Controller
      */
     public function edit(OurServicesPageContent $ourServicesPageContent)
     {
-        //
+        Gate::authorize('our_services_page.update');
     }
 
     /**
@@ -56,6 +59,8 @@ class OurServicesPageContentController extends Controller
      */
     public function update(Request $request, OurServicesPageContent $ourServicesPageContent)
     {
+        Gate::authorize('our_services_page.update');
+
         $request->validate([
             'cover_title' => 'required',
             'cover_img' => 'image|max:1024',
@@ -67,7 +72,7 @@ class OurServicesPageContentController extends Controller
             'services_we_offer_title' => 'required',
             'services_we_offer_description' => 'required',
 
-        ], [] , [
+        ], [], [
             'cover_title' => 'título de la portada',
             'cover_img' => 'imagen de la portada',
 
@@ -80,17 +85,17 @@ class OurServicesPageContentController extends Controller
 
         ]);
 
-        $images = ['cover_img', 'our_services_img' ];
+        $images = ['cover_img', 'our_services_img'];
 
         $ourServicesPageContent->update($request->except($images));
 
         foreach ($images as $image) {
-            
+
             if ($request->hasFile($image)) {
 
                 // Eliminar la imagen antigua
                 Storage::delete($ourServicesPageContent->$image);
-        
+
                 // Almacenar la nueva imagen y actualizar el campo correspondiente en el modelo
                 $ourServicesPageContent->update([$image => $request->file($image)->store('web_pages_images/our_services_page')]);
             }

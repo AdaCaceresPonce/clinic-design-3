@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\WelcomePageContent;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class WelcomePageContentController extends Controller
@@ -15,6 +15,8 @@ class WelcomePageContentController extends Controller
      */
     public function index()
     {
+        Gate::authorize('welcome_page.view');
+
         $contents = WelcomePageContent::first();
 
         return view('admin.web_page_contents.welcome_page.index', compact('contents'));
@@ -49,7 +51,7 @@ class WelcomePageContentController extends Controller
      */
     public function edit(WelcomePageContent $welcomePageContent)
     {
-        //
+        Gate::authorize('welcome_page.update');
     }
 
     /**
@@ -57,6 +59,8 @@ class WelcomePageContentController extends Controller
      */
     public function update(Request $request, WelcomePageContent $welcomePageContent)
     {
+        Gate::authorize('welcome_page.update');
+
         $request->validate([
             'cover_title' => 'required',
             'cover_description' => 'required',
@@ -75,7 +79,7 @@ class WelcomePageContentController extends Controller
 
             'testimonials_title' => 'required',
             'testimonials_description' => 'required',
-        ],[
+        ], [
             'cover_title.required' => 'El título de la portada es obligatorio.',
             'cover_description.required' => 'La descripción de la portada es obligatoria.',
             'cover_img.image' => 'El archivo cargado para la portada debe ser una imagen.',

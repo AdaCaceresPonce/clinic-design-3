@@ -33,14 +33,6 @@
             'active' => request()->routeIs('admin.specialties.*'),
         ],
 
-        [
-            //Información de la Clínica
-            'icon' => 'fa-solid fa-house-chimney-medical',
-            'name' => 'Información',
-            'route' => route('admin.clinic_information.index'),
-            'active' => request()->routeIs('admin.clinic_information.*'),
-        ],
-
         // [
         //     'header' => 'Páginas',
         // ],
@@ -133,6 +125,13 @@
             'active' => request()->routeIs('admin.roles.*'),
         ],
 
+        [
+            //Información de la Clínica
+            'icon' => 'fa-solid fa-gear',
+            'name' => 'Ajustes',
+            'route' => route('admin.clinic_information.index'),
+            'active' => request()->routeIs('admin.clinic_information.*'),
+        ],
     ];
 
     // $web_pages = [
@@ -261,8 +260,8 @@
             @endforeach
 
         </ul>
-        <ul class="pt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
-            {{-- @foreach ($web_pages as $web_page)
+        {{-- <ul class="pt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+            @foreach ($web_pages as $web_page)
                 <li>
                     <a href="{{ $web_page['route'] }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $web_page['active'] ? ' bg-gray-100 dark:bg-gray-700' : '' }}">
@@ -274,9 +273,8 @@
                         </span>
                     </a>
                 </li>
-            @endforeach --}}
+            @endforeach
 
-
-        </ul>
+        </ul> --}}
     </div>
 </aside>
