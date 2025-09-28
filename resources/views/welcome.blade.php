@@ -11,7 +11,7 @@
 
     {{-- Portada --}}
     <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative" id="cover"
-        style="background-image: url('{{ Storage::url($contents['cover_img']) }}');">
+        style="background-image: url('{{ Storage::url(optional($contents)['cover_img'] ?? 'images/default.jpg') }}');">
 
         {{-- Fondo azulado para la imagen --}}
         <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
@@ -53,7 +53,7 @@
 
                 <div class="w-full lg:w-1/2">
                     <img class="h-[450px] sm:h-[550px] lg:h-[670px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
-                        src="{{ Storage::url($contents['about_image']) }}" alt="">
+                        src="{{ isset($contents['about_image']) ? Storage::url($contents['about_image']) : asset('images/default-about.jpg') }}">
                 </div>
 
                 <div class="w-full lg:w-1/2 px-4 pb-10 sm:px-20 lg:pl-16 lg:pr-0 lg:pb-0 text-start">
@@ -106,12 +106,13 @@
             <div class="mb-6 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
-                        {!! $contents['our_services_title'] !!}
+                        {!! $contents['our_services_title'] ?? 'Título de servicios no configurado' !!}
+
                     </span>
                 </div>
                 <div class="mt-3">
                     <span class="text-base sm:text-lg lg:text-xl">
-                        {!! $contents['our_services_description'] !!}
+                        {!! $contents['our_services_description'] ?? 'Título de servicios no configurado' !!}
                     </span>
                 </div>
             </div>
@@ -136,12 +137,12 @@
                 <div class="mb-5 px-2 sm:px-4 text-center sm:px-15 lg:px-40">
                     <div>
                         <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
-                            {!! $contents['our_professionals_title'] !!}
+                            {!! $contents['our_professionals_title'] ?? 'Título de professionales no configurado' !!}
                         </span>
                     </div>
                     <div class="mt-3">
                         <span class="text-base sm:text-lg lg:text-xl">
-                            {!! $contents['our_professionals_description'] !!}
+                            {!! $contents['our_professionals_description'] ?? 'Título de professionales no configurado'!!}
                         </span>
                     </div>
                 </div>
@@ -169,12 +170,12 @@
             <div class="mb-3 px-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
-                        {!! $contents['testimonials_title'] !!}
+                        {!! $contents['testimonials_title'] ?? 'Título de testimonios no configurado'!!}
                     </span>
                 </div>
                 <div class="mt-3">
                     <span class="text-base sm:text-lg lg:text-xl">
-                        {!! $contents['testimonials_description'] !!}
+                        {!! $contents['testimonials_description'] ?? 'Título de testimonios no configurado'!!}
                     </span>
                 </div>
             </div>

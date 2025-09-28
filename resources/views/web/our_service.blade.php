@@ -11,27 +11,38 @@
     </style>
     
     {{-- Portada --}}
-    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
+    {{-- <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/> --}}
+    <x-page-cover 
+    :image="Storage::url($contents->cover_img ?? 'default_cover.jpg')" 
+    :name="$contents->cover_title ?? 'Nuestros Servicios'" 
+    :id="'cover'"/>
+
+    <img src="{{ Storage::url($contents->our_services_img ?? 'default_service.jpg') }}" alt="">
+    <span>{!! $contents->our_services_title ?? 'Servicios que ofrecemos' !!}</span>
 
     <section id="services">
         <x-container class="px-4 section__spacing">
             <div class="flex items-center flex-wrap-reverse">
 
                 {{-- Imagen --}}
-                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 flex justify-center px-0 sm:px-32 md:px-40 lg:px-8 xl:px-10">
+                {{-- <div class="w-full lg:w-1/2 mt-8 lg:mt-0 flex justify-center px-0 sm:px-32 md:px-40 lg:px-8 xl:px-10">
                     <img class="size-full aspect-[4/5] lg:max-h-[540px] lg:w-full object-cover md:object-top object-center border-[4px] border-[#00CAF7] rounded-3xl"
                         src="{{ Storage::url($contents['our_services_img']) }}" alt="">
+                </div> --}}
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 flex justify-center px-0 sm:px-32 md:px-40 lg:px-8 xl:px-10">
+                <img class="size-full aspect-[4/5] lg:max-h-[540px] lg:w-full object-cover md:object-top object-center border-[4px] border-[#00CAF7] rounded-3xl"
+                        src="{{ Storage::url($contents->our_services_img ?? 'default_service.jpg') }}" alt="">
                 </div>
-
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 px-4">
                     <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        {!! $contents['our_services_title'] !!}
-                        
+                        {{-- {!! $contents['our_services_title'] !!} --}}
+                        {!! $contents->our_services_title ?? 'Servicios que ofrecemos' !!}
                     </span>
                     <div class="mt-4">
                         <span>
-                            {!! $contents['our_services_description'] !!}
+                            {{-- {!! $contents['our_services_description'] !!} --}}
+                            {!! $contents->our_services_description ?? 'Aquí va la descripción de tus servicios.' !!}
                         </span>
                     </div>
                     
@@ -47,12 +58,12 @@
             <div class="mb-8 pb-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <span class="text-4xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        {!! $contents['services_we_offer_title'] !!}
+                        {!! $contents['services_we_offer_title'] ?? 'Título por defecto' !!}
                     </span>
                 </div>
                 <div class="mt-3">
                     <span class="text-base sm:text-lg lg:text-xl">
-                        {!! $contents['services_we_offer_description'] !!}
+                        {!! $contents['services_we_offer_description'] ?? 'Descripción por defecto' !!}
                     </span>
                 </div>
             </div>

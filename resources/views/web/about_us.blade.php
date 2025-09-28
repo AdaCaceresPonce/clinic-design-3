@@ -16,8 +16,11 @@
     @endpush
 
     {{-- Portada --}}
-    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/>
-
+    {{-- <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'"/> --}}
+    <x-page-cover 
+    :image="Storage::url(data_get($contents, 'cover_img', 'images/default-cover.jpg'))" 
+    :name="data_get($contents, 'cover_title', 'Título por Defecto')" 
+    :id="'cover'"/>
 
     {{-- Quienes somos --}}
     <section id="clinic_about" class="bg-[#E3FFFE]">
@@ -44,9 +47,14 @@
                             size-[300px] bg-white sm:size-[400px]  md:size-[450px] lg:size-[500px] 
                             justify-center rounded-full border-[3.5px] border-[#23B0FF] relative">
 
-                            <img class="rounded-full 
+                            {{-- <img class="rounded-full 
                                 size-[250px] sm:size-[340px] md:size-[390px] lg:size-[440px] 
-                                border-[3.5px] border-[#23B0FF] object-cover object-center " src="{{ Storage::url($contents['about_us_img']) }}" alt="">
+                                border-[3.5px] border-[#23B0FF] object-cover object-center " src="{{ Storage::url($contents['about_us_img']) }}" alt=""> --}}
+                            <img class="rounded-full
+                            size-[250px] sm:size-[340px] md:size-[390px] lg:size-[440px]
+                            border-[3.5px] border-[#23B0FF] object-cover object-center"
+                            src="{{ Storage::url(data_get($contents, 'about_us_img', 'images/default-about.jpg')) }}" 
+                            alt="">
 
                             {{-- Bolitas del lado superior izquierdo --}}
                             <div class="bg-[#23B0FF] size-[14px] top-[18.6%] left-[6.2%] rounded-full 
@@ -142,8 +150,11 @@
             <div class="flex items-center flex-wrap-reverse">
                 {{-- Imagen --}}
                 <div class="w-full mt-10 lg:mt-0 lg:w-1/2 sm:px-4">
-                    <img class="h-[450px] sm:h-[550px] lg:h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
-                        src="{{ Storage::url($contents['free_img']) }}" alt="">
+                    {{-- <img class="h-[450px] sm:h-[550px] lg:h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
+                        src="{{ Storage::url($contents['free_img']) }}" alt=""> --}}
+                        <img class="h-[450px] sm:h-[550px] lg:h-[600px] w-full object-cover object-center border-[4px] border-[#00CAF7] rounded-3xl"
+                        src="{{ $contents && data_get($contents, 'free_img') ? Storage::url(data_get($contents, 'free_img')) : asset('images/default.jpg') }}"
+                        alt="">
                 </div>
 
                 {{-- Texto --}}

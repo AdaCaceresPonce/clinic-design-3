@@ -41,7 +41,8 @@
             <div class="flex">
                 <a href="{{ route('welcome.index') }}" class="flex items-center">
                     <img class="size-[52px] object-cover border-[3px] rounded-full"
-                        src="{{ Storage::url($clinicInformation['navbar_clinic_logo']) }}" alt="">
+                    src="{{ Storage::url(data_get($clinicInformation, 'navbar_clinic_logo', 'images/default-logo.png')) }}" alt="">
+
                     <h1 class="ml-2 text-xl font-black">Clínica Dental</h1>
                 </a>
             </div>

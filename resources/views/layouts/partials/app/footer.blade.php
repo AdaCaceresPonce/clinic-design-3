@@ -3,7 +3,15 @@
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <a href="{{ route('welcome.index') }}" class="flex items-center">
-                    <img src="{{ Storage::url($clinicInformation['footer_clinic_logo']) }}" class="size-8 border border-white rounded-full me-3" />
+                    {{-- <img src="{{ Storage::url($clinicInformation['footer_clinic_logo']) }}" class="size-8 border border-white rounded-full me-3" />
+                     --}}
+                     @if(!empty($clinicInformation) && !empty($clinicInformation['footer_clinic_logo']))
+                            <img src="{{ Storage::url($clinicInformation['footer_clinic_logo']) }}"
+                                class="size-8 border border-white rounded-full me-3" />
+                        @else
+                            <img src="{{ asset('images/default-footer.png') }}"
+                                class="size-8 border border-white rounded-full me-3" />
+                        @endif
                     <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Clínica
                         Dental</span>
                 </a>

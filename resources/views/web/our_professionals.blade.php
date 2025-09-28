@@ -11,7 +11,11 @@
     </x-slot>
 
     {{-- Portada --}}
-    <x-page-cover :image="Storage::url($contents['cover_img'])" :name="$contents['cover_title']" :id="'cover'" />
+    <x-page-cover 
+    :image="Storage::url($contents->cover_img ?? 'default_cover.jpg')" 
+    :name="$contents->cover_title ?? 'Nuestros Profesionales'" 
+    :id="'cover'" 
+    />
 
     <section id="professionals">
         <x-container class="px-4 section__spacing">
@@ -26,15 +30,8 @@
                 {{-- Texto --}}
                 <div class="w-full lg:w-1/2 px-4">
                     <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                        {!! $contents['our_professionals_title'] !!}
-
+                        {!! $contents->our_professionals_title ?? 'Título por defecto' !!}
                     </span>
-                    <div class="mt-4">
-                        <span>
-                            {!! $contents['our_professionals_description'] !!}
-                        </span>
-                    </div>
-
                 </div>
             </div>
         </x-container>
@@ -45,12 +42,12 @@
             {{-- Titulo --}}
             <div class="mb-10 px-2 text-center sm:px-15 lg:px-20">
                 <span class="text-3xl sm:text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
-                    {!! $contents['our_professionals_team_title'] !!}
+                    {!! $contents->our_professionals_team_title ?? 'Nuestro equipo de profesionales' !!}
                 </span>
 
                 <div class="mt-4">
                     <span class="text-lg sm:text-lg lg:text-xl">
-                        {!! $contents['our_professionals_team_description'] !!}
+                    {!! $contents->our_professionals_team_description ?? 'Descripción por defecto del equipo.' !!}
                     </span>
                 </div>
 
