@@ -19,7 +19,7 @@ class ItemHeader implements ItemInterface
     {
         //Se añade el html de la cabecera
         return <<<HTML
-            <div class="px-2 py-2 text-[13px] font-semibold text-gray-500 uppercase">
+            <div class="px-2 py-2 text-xs font-semibold text-gray-500 uppercase">
                {$this->title}             
             </div>
         HTML;
