@@ -40,7 +40,7 @@
 
     <div class="mx-auto max-w-[1230px]">
 
-        <x-validation-errors class="mb-3 p-4 border-2 border-red-500 rounded-md" />
+        <x-wireui-errors class="mb-3" />
 
         <form action="{{ route('admin.professionals.update', $professional) }}" method="POST"
             enctype="multipart/form-data">
@@ -50,7 +50,7 @@
             <div class="flex flex-col lg:flex-row gap-5">
 
                 {{-- Foto del especialista --}}
-                <div class="card-gray w-full self-start lg:w-1/2 xl:w-1/3 lg:sticky top-[72px]">
+                <x-wireui-card padding="large" class="self-start lg:w-1/2 xl:w-1/3 lg:sticky top-[72px]">
                     <x-label class="mb-1 text-[15px] font-black">
                         Foto del profesional
                     </x-label>
@@ -71,103 +71,118 @@
                     </figure>
                     {{-- Alerta de validacion --}}
                     <x-input-error class="mt-1" for="photo_path" />
-                </div>
+                </x-wireui-card>
 
                 {{-- Datos del doctor --}}
-                <div class="card-gray w-full lg:w-1/2 xl:w-2/3">
+                <x-wireui-card padding="large" class="lg:w-1/2 xl:w-2/3">
 
-                    {{-- Nombres --}}
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Nombres
-                        </x-label>
-                        <x-input class="w-full" placeholder="Ingrese el nombre del profesional" name="name"
-                            value="{{ old('name', $professional->name) }}" />
-                    </div>
+                    {{-- Información principal --}}
+                    <div>
+                        <x-admin.form-section-title class="mb-6">
 
-                    {{-- Apellidos --}}
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Apellidos
-                        </x-label>
-                        <x-input class="w-full" placeholder="Ingrese el apellido del profesional" name="lastname"
-                            value="{{ old('lastname', $professional->lastname) }}" />
-                    </div>
+                            <x-slot name="title">
+                                Datos Principales
+                            </x-slot>
 
-                    {{-- Especialidades --}}
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Especialidades
-                        </x-label>
-                        <select
-                            class="w-full select-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                            name="specialties[]" multiple="multiple">
-                            {{-- <option value="" disabled="disabled">Selecciona una o más especialidades</option> --}}
-                            @foreach ($specialties as $specialty)
-                                <option value="{{ $specialty->id }}"
-                                    {{ in_array($specialty->id, old('specialties', [])) || $professional->specialties->contains('id', $specialty->id) ? 'selected' : '' }}>
-                                    {{ $specialty->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                        </x-admin.form-section-title>
 
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Descripción del profesional
-                        </x-label>
-                        <textarea name="description"
-                            class="w-full h-64 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                            placeholder="Ingrese la descripción completa del profesional">{{ old('description', $professional->description) }}</textarea>
-                    </div>
+                        {{-- Campos --}}
+                        <div class="space-y-6">
 
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Facebook
-                        </x-label>
-                        <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Facebook (Opcional)"
-                            name="facebook_link" value="{{ old('facebook_link', $professional->facebook_link) }}" />
-                    </div>
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Linkedin
-                        </x-label>
-                        <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Linkedin (Opcional)"
-                            name="linkedin_link" value="{{ old('linkedin_link', $professional->linkedin_link) }}" />
-                    </div>
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Twitter
-                        </x-label>
-                        <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Twitter (Opcional)"
-                            name="twitter_link" value="{{ old('twitter_link', $professional->twitter_link) }}" />
-                    </div>
-                    <div class="mb-4">
-                        <x-label class="mb-1 text-[15px] font-black">
-                            Enlace Instagram
-                        </x-label>
-                        <x-input class="w-full" placeholder="Ingrese el enlace de perfil de Instagram (Opcional)"
-                            name="instagram_link" value="{{ old('instagram_link', $professional->instagram_link) }}" />
+                            <x-wireui-input label="Nombres" name="name"
+                                placeholder="Ingrese el nombre del profesional"
+                                value="{{ old('name', $professional->name) }}" />
+
+                            <x-wireui-input label="Apellidos" name="lastname"
+                                placeholder="Ingrese el apellido del profesional"
+                                value="{{ old('name', $professional->lastname) }}" />
+
+                            <div class="">
+                                <x-label class="mb-1 text-[15px] font-black">
+                                    Especialidades
+                                </x-label>
+                                <select
+                                    class="w-full select-multiple border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    name="specialties[]" multiple="multiple">
+                                    {{-- <option value="" disabled="disabled">Selecciona una o más especialidades</option> --}}
+                                    @foreach ($specialties as $specialty)
+                                        <option value="{{ $specialty->id }}"
+                                            {{ in_array($specialty->id, old('specialties', [])) || $professional->specialties->contains('id', $specialty->id) ? 'selected' : '' }}>
+                                            {{ $specialty->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <x-wireui-textarea label="Descripción del Profesional"
+                                placeholder="Ingrese la descripción del profesional, puede ser su trayectoria, logros, conocimientos, etc."
+                                name="description" rows="9">
+                                {{ old('description', $professional->description) }}
+                            </x-wireui-textarea>
+
+                        </div>
                     </div>
 
-                    <div class="flex justify-end">
-                        <x-danger-button onclick="confirmDelete()">
-                            Eliminar
-                        </x-danger-button>
+                    <x-admin.form-separator />
+
+                    {{-- Redes Sociales --}}
+                    <div>
+                        <x-admin.form-section-title class="mb-6">
+
+                            <x-slot name="title">
+                                Redes Sociales
+                            </x-slot>
+
+                        </x-admin.form-section-title>
+
+                        {{-- Campos --}}
+                        <div class="space-y-6">
+
+                            <x-wireui-input label="Perfil de Facebook" name="facebook_link"
+                                placeholder="Ingrese el enlace de perfil de Facebook"
+                                value="{{ old('facebook_link', $professional->facebook_link) }}" />
+
+                            <x-wireui-input label="Perfil de Linkedin" name="linkedin_link"
+                                placeholder="Ingrese el enlace de perfil de Linkedin"
+                                value="{{ old('linkedin_link', $professional->linkedin_link) }}" />
+
+                            <x-wireui-input label="Perfil de Twitter" name="twitter_link"
+                                placeholder="Ingrese el enlace de perfil de Twitter"
+                                value="{{ old('twitter_link', $professional->twitter_link) }}" />
+
+                            <x-wireui-input label="Perfil de Instagram" name="instagram_link"
+                                placeholder="Ingrese el enlace de perfil de Instagram"
+                                value="{{ old('instagram_link', $professional->instagram_link) }}" />
+
+                        </div>
+                    </div>
+
+                    <x-slot name="footer" class="flex items-center justify-end">
+                        @can('professionals.delete')
+                            <x-danger-button onclick="confirmDelete()">
+                                Eliminar
+                            </x-danger-button>
+                        @endcan
+
                         <x-button class="ml-2">
-                            Actualizar Datos
+                            Actualizar
                         </x-button>
-                    </div>
-                </div>
+                    </x-slot>
+
+                </x-wireui-card>
+
             </div>
 
         </form>
     </div>
-    {{-- Formulario que será enviado al presionar "Eliminar" --}}
-    <form id="delete-form" action="{{ route('admin.professionals.destroy', $professional) }}" method="POST">
-        @csrf
-        @method('DELETE')
-    </form>
+
+    @can('professionals.delete')
+        {{-- Formulario que será enviado al presionar "Eliminar" --}}
+        <form id="delete-form" action="{{ route('admin.professionals.destroy', $professional) }}" method="POST">
+            @csrf
+            @method('DELETE')
+        </form>
+    @endcan
 
     @push('js')
         <script>
@@ -187,25 +202,27 @@
                 });
             });
 
-            //Alerta de confirmar eliminar
-            function confirmDelete() {
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡No podrás revertir esto!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "¡Sí, borralo!",
-                    cancelButtonText: "Cancelar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('delete-form').submit();
-                    }
+            @can('professionals.delete')
+                //Alerta de confirmar eliminar
+                function confirmDelete() {
+                    Swal.fire({
+                        title: "¿Estás seguro?",
+                        text: "¡No podrás revertir esto!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "¡Sí, borralo!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById('delete-form').submit();
+                        }
 
-                });
+                    });
 
-            }
+                }
+            @endcan
         </script>
     @endpush
 

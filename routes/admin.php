@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\OpinionController;
 use App\Http\Controllers\Admin\OurProfessionalsPageContentController;
 use App\Http\Controllers\Admin\OurServicesPageContentController;
 use App\Http\Controllers\Admin\ProfessionalController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SpecialtyController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WelcomePageContentController;
 use App\Models\ClinicInformation;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +36,5 @@ Route::resource('our_services_page_content', OurServicesPageContentController::c
 Route::resource('our_professionals_page_content', OurProfessionalsPageContentController::class);
 Route::resource('contact_us_page_content', ContactUsPageContentController::class);
 
-
+Route::resource('users', UserController::class);
+Route::resource('roles', RoleController::class);

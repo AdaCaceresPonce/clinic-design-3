@@ -37,5 +37,14 @@ export default {
         },
     },
 
+    safelist: [
+        'bg-gray-200/70',
+        'hover:bg-gray-200/70',
+        'group-hover:text-gray-900',
+        'dark:bg-gray-700',
+        'text-gray-900',
+        'group-[.active]:text-gray-900',
+    ],
+
     plugins: [forms, typography],
 };

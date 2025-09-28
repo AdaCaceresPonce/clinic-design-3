@@ -1,4 +1,4 @@
-<div wire:poll.5s >
+<div wire:poll.5s>
 
     {{-- Barra de busqueda --}}
     <div class="mb-4">
@@ -7,8 +7,7 @@
             for="search-bar">
 
             <input id="search-bar" placeholder="Buscar opiniones por nombres, apellidos o estado..."
-                class="px-4 py-2 w-full rounded-md flex-1 outline-none bg-white"
-                wire:model.live.debounce.500ms="search">
+                class="px-4 py-2 w-full rounded-md flex-1 outline-none bg-white" wire:model.live.debounce.500ms="search">
 
             <button wire:click="resetSearch"
                 class="w-full md:w-auto px-6 py-3 bg-black border-black text-white fill-white active:scale-95 duration-100 border will-change-transform overflow-hidden relative rounded-xl transition-all disabled:opacity-70">
@@ -42,7 +41,7 @@
 
     <div>
         @if ($opinions->count())
-        
+
             {{-- Tabla que muestra las consultas --}}
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -84,7 +83,8 @@
                                 </th>
                                 <td class="px-6 py-4 items-center align-middle">
 
-                                    <span class="{{ $this->getBgColor($opinion->created_at) }} whitespace-nowrap inline-flex items-center">
+                                    <span
+                                        class="{{ $this->getBgColor($opinion->created_at) }} whitespace-nowrap inline-flex items-center">
                                         <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                             <path
@@ -156,11 +156,13 @@
                             <div>
                                 Opinión de: {{ $opinionInfo['name'] }}, {{ $opinionInfo['lastname'] }}
                             </div>
-                            <div>
-                                <x-danger-button onclick="confirmDelete()">
-                                    <i class="fa-solid fa-trash-can text-base"></i>
-                                </x-danger-button>
-                            </div>
+                            @can('opinions.delete')
+                                <div>
+                                    <x-danger-button onclick="confirmDelete()">
+                                        <i class="fa-solid fa-trash-can text-base"></i>
+                                    </x-danger-button>
+                                </div>
+                            @endcan
                         </div>
                     </x-slot>
 
@@ -170,7 +172,8 @@
                                 Recibido el día:
                             </x-label>
                             <x-label class="flex flex-wrap gap-1">
-                                <span class="bg-blue-100 text-blue-800 dark:text-[#60f0f5] text-sm font-medium me-1 px-2.5 py-0.5 dark:bg-gray-700 border border-blue-400 dark:border-[#00CAF7] rounded text-wrap">
+                                <span
+                                    class="bg-blue-100 text-blue-800 dark:text-[#60f0f5] text-sm font-medium me-1 px-2.5 py-0.5 dark:bg-gray-700 border border-blue-400 dark:border-[#00CAF7] rounded text-wrap">
                                     {{ $opinionInfo['created_at'] ? $opinionInfo['created_at']->format('d/m/Y') : 'N/A' }}
                                     a las
                                     {{ $opinionInfo['created_at'] ? $opinionInfo['created_at']->format('H:i a') : 'N/A' }}
@@ -192,23 +195,35 @@
                                     <p><strong>Servicio:</strong> {{ $opinionInfo['service'] }}</p>
                                     <p><strong>Opinion:</strong> {{ $opinionInfo['opinion'] }}</p>
                                     {{-- @dump($opinionInfo) --}}
-                                    <div class="flex justify-end">
-                                        <label class="inline-flex items-center me-5 cursor-pointer">
-                                            <input type="checkbox" value="" wire:model.live='opinionInfo.is_published' class="sr-only peer" checked>
-                                            <div class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"></div>
-                                            <span class="ms-3 text-sm font-medium text-gray-900">Aprobar</span>
-                                          </label>
-                                    </div>
+                                    @can('opinions.update')
+                                        <div class="flex justify-end">
+                                            <label class="inline-flex items-center me-5 cursor-pointer">
+                                                <input type="checkbox" value=""
+                                                    wire:model.live='opinionInfo.is_published' class="sr-only peer" checked>
+                                                <div
+                                                    class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400">
+                                                </div>
+                                                <span class="ms-3 text-sm font-medium text-gray-900">Aprobar</span>
+                                            </label>
+                                        </div>
+                                    @endcan
                                 </div>
 
                                 <div class="mt-4 pl-3 border-l-4 border-l-teal-500">
-                                    <p class="mb-1 mt-2 flex items-center me-3">Cambia el estado de la opinión:</p>
-                                    <x-select wire:model="opinionInfo.state" class="p-2 border rounded w-full">
-                                        @foreach ($states as $state)
-                                            <option value="{{ $state['name'] }}">{{ $state['name'] }}</option>
-                                        @endforeach
-                                    </x-select>
+
+                                    @can('opinions.update')
+                                        <p class="mb-1 mt-2 flex items-center me-3">Cambia el estado de la opinión:</p>
+                                        <x-select wire:model="opinionInfo.state" class="p-2 border rounded w-full">
+                                            @foreach ($states as $state)
+                                                <option value="{{ $state['name'] }}">{{ $state['name'] }}</option>
+                                            @endforeach
+                                        </x-select>
+                                    @else
+                                        <p><strong>Estado:</strong> {{ $opinionInfo['state'] }}</p>
+                                    @endcan
+
                                 </div>
+
                             </div>
 
                         </div>
@@ -221,9 +236,12 @@
                                 Regresar
                             </x-danger-button>
 
-                            <x-button>
-                                Guardar estado
-                            </x-button>
+                            @can('opinions.update')
+                                <x-button>
+                                    Guardar estado
+                                </x-button>
+                            @endcan
+
                         </div>
                     </x-slot>
                 </x-dialog-modal>

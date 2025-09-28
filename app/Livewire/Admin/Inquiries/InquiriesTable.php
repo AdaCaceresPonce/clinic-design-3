@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Inquiries;
 
 use App\Models\Inquiry;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -73,6 +74,7 @@ class InquiriesTable extends Component
 
     public function update()
     {
+        Gate::authorize('inquiries.update');
 
         $inquiry = Inquiry::with('service')->find($this->inquiryEditId);
 
@@ -111,6 +113,8 @@ class InquiriesTable extends Component
     #[On('destroy')] 
     public function destroy()
     {
+        Gate::authorize('inquiries.destroy');
+
         // Lógica para eliminar la consulta
         $inquiry = Inquiry::with('service')->find($this->inquiryEditId);
 

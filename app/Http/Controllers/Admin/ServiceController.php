@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -15,6 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
+
+        Gate::authorize('services.view');
         $services = Service::orderBy('id', 'desc')->paginate(6);
         
         return view('admin.services.index', compact('services'));
@@ -25,6 +28,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
+        Gate::authorize('services.create');
         return view('admin.services.create');
     }
 
@@ -33,6 +37,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+
+        Gate::authorize('services.create');
 
         $request['slug'] = Str::slug($request->input('name'));
 
@@ -92,6 +98,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
+        Gate::authorize('services.update');
+
         return view('admin.services.edit', compact('service'));
     }
 
@@ -100,6 +108,8 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+
+        Gate::authorize('services.update');
 
         $request['slug'] = Str::slug($request->input('name'));
 
@@ -145,6 +155,8 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
+        Gate::authorize('services.delete');
+
         Storage::delete($service->card_img_path);
         Storage::delete($service->cover_img_path);
 

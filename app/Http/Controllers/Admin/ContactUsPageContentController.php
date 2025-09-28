@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ContactUsPageContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ContactUsPageContentController extends Controller
@@ -14,6 +15,8 @@ class ContactUsPageContentController extends Controller
      */
     public function index()
     {
+        Gate::authorize('contact_us_page.view');
+
         $contents = ContactUsPageContent::first();
 
         return view('admin.web_page_contents.contact_us_page.index', compact('contents'));
@@ -48,7 +51,7 @@ class ContactUsPageContentController extends Controller
      */
     public function edit(ContactUsPageContent $contactUsPageContent)
     {
-        //
+        Gate::authorize('contact_us_page.update');
     }
 
     /**
@@ -56,6 +59,8 @@ class ContactUsPageContentController extends Controller
      */
     public function update(Request $request, ContactUsPageContent $contactUsPageContent)
     {
+        Gate::authorize('contact_us_page.update');
+
         $request->validate([
             'cover_title' => 'required',
             'cover_img' => 'image|max:1024',
@@ -68,7 +73,7 @@ class ContactUsPageContentController extends Controller
             'opinions_description' => 'required',
             'opinions_img' => 'image|max:1024',
 
-        ], [] , [
+        ], [], [
 
             'cover_title' => 'título de la portada',
             'cover_img' => 'imagen de la portada',
@@ -83,17 +88,17 @@ class ContactUsPageContentController extends Controller
 
         ]);
 
-        $images = ['cover_img', 'contact_us_img', 'opinions_img' ];
+        $images = ['cover_img', 'contact_us_img', 'opinions_img'];
 
         $contactUsPageContent->update($request->except($images));
 
         foreach ($images as $image) {
-            
+
             if ($request->hasFile($image)) {
 
                 // Eliminar la imagen antigua
                 Storage::delete($contactUsPageContent->$image);
-        
+
                 // Almacenar la nueva imagen y actualizar el campo correspondiente en el modelo
                 $contactUsPageContent->update([$image => $request->file($image)->store('web_pages_images/contact_us_page')]);
             }
