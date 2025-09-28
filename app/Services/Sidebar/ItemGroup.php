@@ -33,11 +33,11 @@ class ItemGroup implements ItemInterface
         $itemsHtml = collect($this->items)
             ->map(function(ItemInterface $item){
                 return '<li class="pl-4">' . $item->render() . '</li>';
-            })->implode('\n');
+            })->implode("\n");
 
         return <<<HTML
             <div x-data="{
-                open: { $open }
+                open: {$open}
             }">
 
                 <!-- Botón -->
