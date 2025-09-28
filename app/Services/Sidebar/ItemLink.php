@@ -28,7 +28,7 @@ class ItemLink implements ItemInterface
         return <<<HTML
         
             <a href="{$this->url}"
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200/70 dark:hover:bg-gray-700 group { $activeClass }">
+                class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-200/70 dark:hover:bg-gray-700 group {$activeClass}">
                 <span class="text-gray-500 inline-flex w-6 h-6 justify-center items-center group-hover:text-gray-900 group-[.active]:text-gray-900">
                     <i class="{$this->icon}"></i>
                 </span>
