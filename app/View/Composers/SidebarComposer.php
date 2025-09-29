@@ -14,6 +14,11 @@ class SidebarComposer
         $items = collect(config('sidebar'))
             ->map(function ($item) {
                 return $this->parseItem($item);
+            })
+            ->filter(function ($item) {
+                // Después del parseo, se hace un filtro de solo los items que el usuario puede ver, es decir, remueve aquellos que el usuario no tiene permiso
+                // authorize() ejecuta el método según el tipo de item (ItemLink, ItemGroup o ItemHeader)
+                return $item && $item->authorize();
             });
 
         //Compartir los items parseados en una variable llamada itemsSidebar
@@ -52,6 +57,7 @@ class SidebarComposer
                     title: $item['title'],
                     icon: $item['icon'] ?? 'fa-regular fa-circle',
                     active: isset($item['active']) ? request()->routeIs($item['active']) : false,
+                    can: $item['can'] ?? [],
                 );
 
                 foreach ($item['items'] as $subItem) {
