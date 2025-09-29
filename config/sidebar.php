@@ -11,6 +11,17 @@ return [
     [
         'type' => 'header',
         'title' => 'Administrar página',
+        'can' => [
+            'services.view',
+            'professionals.view',
+            'specialties.view',
+            'services.view',
+            'welcome_page.view',
+            'about_us_page.view',
+            'our_services_page.view',
+            'our_professionals_page.view',
+            'contact_us_page.view',
+        ],
     ],
     [
         //Servicios
@@ -19,6 +30,12 @@ return [
         'title' => 'Servicios',
         'route' => 'admin.services.index',
         'active' => 'admin.services.*',
+        'can' => [
+            'services.view',
+            // 'services.create',
+            // 'services.update',
+            // 'services.delete'
+        ],
     ],
 
     [
@@ -28,6 +45,9 @@ return [
         'title' => 'Profesionales',
         'route' => 'admin.professionals.index',
         'active' => 'admin.professionals.*',
+        'can' => [
+            'professionals.view',
+        ],
     ],
 
     [
@@ -37,6 +57,9 @@ return [
         'title' => 'Especialidades',
         'route' => 'admin.specialties.index',
         'active' => 'admin.specialties.*',
+        'can' => [
+            'specialties.view',
+        ],
     ],
 
     [
@@ -58,6 +81,9 @@ return [
                 'title' => 'Inicio',
                 'route' => 'admin.welcome_page_content.index',
                 'active' => 'admin.welcome_page_content.*',
+                'can' => [
+                    'welcome_page.view',
+                ],
             ],
 
             [
@@ -66,6 +92,9 @@ return [
                 'title' => 'Nosotros',
                 'route' => 'admin.about_us_page_content.index',
                 'active' => 'admin.about_us_page_content.*',
+                'can' => [
+                    'about_us_page.view',
+                ],
             ],
 
             [
@@ -74,6 +103,9 @@ return [
                 'title' => 'Servicios',
                 'route' => 'admin.our_services_page_content.index',
                 'active' => 'admin.our_services_page_content.*',
+                'can' => [
+                    'our_services_page.view',
+                ],
             ],
 
             [
@@ -82,6 +114,9 @@ return [
                 'title' => 'Profesionales',
                 'route' => 'admin.our_professionals_page_content.index',
                 'active' => 'admin.our_professionals_page_content.*',
+                'can' => [
+                    'our_professionals_page.view',
+                ],
             ],
 
             [
@@ -90,6 +125,9 @@ return [
                 'title' => 'Contacto',
                 'route' => 'admin.contact_us_page_content.index',
                 'active' => 'admin.contact_us_page_content.*',
+                'can' => [
+                    'contact_us_page.view',
+                ],
             ],
         ],
     ],
@@ -97,6 +135,10 @@ return [
     [
         'type' => 'header',
         'title' => 'Buzón',
+        'can' => [
+            'inquiries.view',
+            'opinions.view',
+        ],
     ],
 
     [
@@ -106,6 +148,9 @@ return [
         'title' => 'Consultas',
         'route' => 'admin.inquiries.index',
         'active' => 'admin.inquiries.*',
+        'can' => [
+            'inquiries.view',
+        ],
     ],
 
     [
@@ -115,11 +160,19 @@ return [
         'title' => 'Opiniones',
         'route' => 'admin.opinions.index',
         'active' => 'admin.opinions.*',
+        'can' => [
+            'opinions.view',
+        ],
     ],
 
     [
         'type' => 'header',
         'title' => 'Configuración',
+        'can' => [
+            'users.view',
+            'roles.view',
+            'settings.view',
+        ],
     ],
 
     [
@@ -129,6 +182,9 @@ return [
         'title' => 'Usuarios',
         'route' => 'admin.users.index',
         'active' => 'admin.users.*',
+        'can' => [
+            'users.view',
+        ],
     ],
 
     [
@@ -138,6 +194,9 @@ return [
         'title' => 'Roles',
         'route' => 'admin.roles.index',
         'active' => 'admin.roles.*',
+        'can' => [
+            'roles.view',
+        ],
     ],
 
     [
@@ -147,5 +206,8 @@ return [
         'title' => 'Ajustes',
         'route' => 'admin.clinic_information.index',
         'active' => 'admin.clinic_information.*',
+        'can' => [
+            'settings.view',
+        ],
     ],
 ];

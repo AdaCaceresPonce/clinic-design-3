@@ -2,6 +2,8 @@
 
 namespace App\Services\Sidebar;
 
+use Illuminate\Support\Facades\Gate;
+
 class ItemLink implements ItemInterface
 {
     private string $title;
@@ -42,6 +44,12 @@ class ItemLink implements ItemInterface
 
     public function authorize(): bool
     {
-        return true;
+        /* return Gate::any($this->can); */
+        //Esto verifica si se tiene algún permiso en la variable $can, y retorna true o false
+        //Contar si se tiene por lo menos un permiso en el array $can, si se tiene, se hace la verificacion, pero si no se tiene definido permisos en el item, que retorne true
+        //Esto es por si un item no tiene definido permisos, que se muestre por defecto; ya si luego se le añade permisos se hace la verificación
+        return count($this->can)
+            ? Gate::any($this->can)
+            : true;
     }
 }

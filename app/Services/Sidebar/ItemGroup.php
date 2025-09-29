@@ -2,6 +2,8 @@
 
 namespace App\Services\Sidebar;
 
+use Illuminate\Support\Facades\Gate;
+
 class ItemGroup implements ItemInterface
 {
 
@@ -9,13 +11,15 @@ class ItemGroup implements ItemInterface
     private string $icon;
     private bool $active;
     private array $items = [];
+    private array $can;
 
     //Recibir las variables y almacenarlas en las definidas arriba
-    public function __construct(string $title, string $icon, bool $active)
+    public function __construct(string $title, string $icon, bool $active, array $can = [])
     {
         $this->title = $title;
         $this->icon = $icon;
         $this->active = $active;
+        $this->can = $can;
     }
 
     public function add(ItemInterface $item): self
@@ -27,11 +31,22 @@ class ItemGroup implements ItemInterface
 
     public function render(): string
     {
+        // Filtrar solo los items autorizados
+        $authorizedItems = collect($this->items)
+            ->filter(function (ItemInterface $item) {
+                return $item->authorize();
+            });
+
+        // Si no hay items autorizados, no mostrar el grupo
+        if ($authorizedItems->isEmpty()) {
+            return '';
+        }
 
         $open = $this->active ? 'true' : 'false';
 
-        $itemsHtml = collect($this->items)
-            ->map(function(ItemInterface $item){
+        // Renderizar cada item autorizado dentro de un <li> y concatenarlos con saltos de línea
+        $itemsHtml = $authorizedItems
+            ->map(function (ItemInterface $item) {
                 return '<li class="pl-4">' . $item->render() . '</li>';
             })->implode("\n");
 
@@ -72,6 +87,18 @@ class ItemGroup implements ItemInterface
 
     public function authorize(): bool
     {
-        return true;
+        // Si hay permisos específicos para el grupo, verificarlos
+        if (count($this->can)) {
+            return Gate::any($this->can);
+        }
+
+        // Si no hay permisos específicos, verificar si al menos un item hijo está autorizado
+        foreach ($this->items as $item) {
+            if ($item->authorize()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

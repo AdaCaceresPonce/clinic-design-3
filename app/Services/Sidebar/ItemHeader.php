@@ -2,6 +2,8 @@
 
 namespace App\Services\Sidebar;
 
+use Illuminate\Support\Facades\Gate;
+
 class ItemHeader implements ItemInterface
 {
 
@@ -9,7 +11,7 @@ class ItemHeader implements ItemInterface
     private array $can;
 
     //Recibir las variables y almacenarlas en las definidas arriba
-    public function __construct(string $title, array $can = [] )
+    public function __construct(string $title, array $can = [])
     {
         $this->title = $title;
         $this->can = $can;
@@ -27,6 +29,8 @@ class ItemHeader implements ItemInterface
 
     public function authorize(): bool
     {
-        return true;
+        return count($this->can)
+            ? Gate::any($this->can)
+            : true;
     }
 }
