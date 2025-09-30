@@ -13,6 +13,7 @@ class Opinion extends Model
         'name',
         'lastname',
         'service_id',
+        'rating',
         'opinion',
         'state',
         'is_published'
