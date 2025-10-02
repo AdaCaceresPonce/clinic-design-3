@@ -66,40 +66,44 @@
                                 </div>
                             </div>
 
-                            {{-- Texto de la opinión --}}
+                           {{-- Texto de la opinión --}}
                             <div x-data="{ expanded: false }">
-                                <p class="text-gray-600 text-[15px] leading-relaxed"
-                                    :class="expanded ? '' : 'line-clamp-4'">
-                                    "{{ $opinion->opinion }}"
+                                @php
+                                    // Cortamos a 20 palabras
+                                    $words = str_word_count($opinion->opinion, 1);
+                                    $shortText = implode(' ', array_slice($words, 0, 20));
+                                    $isLong = count($words) > 20;
+                                @endphp
+
+                                <p class="text-gray-600 text-[15px] leading-relaxed">
+                                    <span x-show="!expanded">
+                                        "{{ $shortText }}@if($isLong)...@endif"
+                                    </span>
+                                    <span x-show="expanded">
+                                        "{{ $opinion->opinion }}"
+                                    </span>
                                 </p>
 
-                                @if (str_word_count($opinion->opinion) > 20)
-                                     <button @click="expanded = !expanded"
-                                        class="text-[#0075FF] text-sm font-semibold mt-2">
-                                        <span x-show="!expanded">Leer más</span>
-                                        <span x-show="expanded">Leer menos</span>
-                                    </button> 
-                                    {{-- <button 
+                                @if ($isLong)
+                                    <button 
                                         @click="expanded = !expanded" 
-                                        :aria-expanded="expanded.toString()" 
                                         class="text-[#0075FF] text-sm font-semibold mt-2"
                                     >
                                         <span x-show="!expanded">Leer más</span>
                                         <span x-show="expanded">Leer menos</span>
-                                    </button> --}}
+                                    </button>
                                 @endif
                             </div>
-
                             {{-- Separador --}}
                             <div class="border-t border-gray-100 my-3"></div>
 
                             {{-- Info del usuario --}}
-                            <div class="flex items-center gap-3 mt-auto">
+                            <div class="flex items-center gap-3 mt-auto ">
                                 <div class="relative flex-shrink-0">
                                     <img src="https://ui-avatars.com/api/?name={{ urlencode($opinion->name . ' ' . $opinion->lastname) }}&background=0075FF&color=fff&size=48&bold=true"
                                         alt="{{ $opinion->name }}"
                                         class="w-12 h-12 rounded-full border-2 border-[#0075FF] object-cover shadow-md">
-                                    {{-- Badge de verificación --}}
+                                    {{-- Badge de verificación
                                     <div
                                         class="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-1 border-2 border-white">
                                         <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -107,13 +111,41 @@
                                                 d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
-                                <div class="flex-1 min-w-0">
+                                {{-- <div class="flex-1 min-w-0">
                                     <h4 class="text-gray-900 font-bold text-sm truncate">
                                         {{ $opinion->name }} {{ $opinion->lastname }}
                                     </h4>
+                                    @if ($opinion->service)
+                                        <p class="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
+                                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            {{ $opinion->service->name }}
+                                        </p>
+                                    @else
+                                        <p class="text-xs text-gray-500 mt-0.5">Paciente verificado</p>
+                                    @endif
+                                </div> --}}
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center gap-1">
+                                        <h4 class="text-gray-900 font-bold text-sm truncate">
+                                            {{ $opinion->name }} {{ $opinion->lastname }}
+                                        </h4>
+                                        {{-- Badge de verificación --}}
+                                        <div class="bg-green-500 rounded-full p-0.5">
+                                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+
                                     @if ($opinion->service)
                                         <p class="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
                                             <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
