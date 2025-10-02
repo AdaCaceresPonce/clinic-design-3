@@ -1,94 +1,122 @@
-<div class="flex justify-center align-middle w-full mb-5 mx-auto" >
+<div class="flex justify-center align-middle w-full mb-5 mx-auto">
 
-<div class="card__container swiper pb-8 px-0 w-full min-[768px]:px-10" x-init="let swiperCards = new Swiper('.card__content', {
-    // Optional parameters
-    loop: true,
-    spaceBetween: 25,
-    grabCursor: true,
-    // If we need pagination
-    pagination: {
-        el: '.service-pagination',
-        clickable: true,
-    },
-
-    autoplay: {
-        delay: 6500,
-        disableOnInteraction: false
-    },
-
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    breakpoints: {
-        600: {
-            slidesPerView: 2,
+    <div class="card__container swiper pb-8 px-0 w-full min-[768px]:px-10" x-init="let swiperCards = new Swiper('.card__content', {
+        loop: true,
+        spaceBetween: 30,
+        grabCursor: true,
+        pagination: {
+            el: '.service-pagination',
+            clickable: true,
         },
-        968: {
-            slidesPerView: 3,
+        autoplay: {
+            delay: 6500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
         },
-    },
-});">
-    <div class="card__content px-3 pb-8 rounded-xl">
-        <div class="swiper-wrapper ">
-            @foreach ($services as $service)
-                <article class="card__article swiper-slide border-[3px] rounded-xl border-[#1376F8] shadow-lg shadow-cyan-400/50">
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 25,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+            },
+        },
+    });">
+        <div class="card__content px-0 md:px-6 py-6">
+            <div class="swiper-wrapper">
+                @foreach ($services as $service)
+                    <article class="card__article swiper-slide group">
+                        {{-- Card Container con hover effect --}}
+                        <div
+                            class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-[#0075FF] hover:-translate-y-2 h-full flex flex-col">
 
-                    <div class="card__image w-full flex justify-center items-center relative">
-                        <h3 class="service__name text-white text-2xl font-bold text-center px-4 w-full absolute z-10">
-                            {{ $service->name ?? 'Nombre del servicio' }}
-                        </h3>
-                        <img src="{{ Storage::url($service->card_img_path) }}" alt="image"
-                            class="card__img aspect-[4/3] object-cover object-center w-full brightness-75">
-                    </div>
+                            {{-- Imagen con overlay y título --}}
+                            <div class="relative overflow-hidden aspect-[4/3]">
+                                {{-- Imagen --}}
+                                <img src="{{ Storage::url($service->card_img_path) }}" alt="{{ $service->name }}"
+                                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
 
-                    <div class="card__data">
-                        <p class="card__description mb-6 min-h-[120px] line-clamp-5">
-                            {{ $service->small_description ?? 'Descripción del servicio' }}
-                        </p>
-                        <div class="flex justify-center">
-                            <a href="{{ route('our_services.show_service', $service) }}"
-                                class="text-white items-center bg-blue-700 py-2 px-6 rounded-lg">
-                                Conoce más
-                            </a>
+                                {{-- Overlay gradient --}}
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                                </div>
+
+                                {{-- Título sobre la imagen --}}
+                                <div class="absolute bottom-0 left-0 right-0 p-5">
+                                    <h3 class="text-white text-xl font-bold leading-tight drop-shadow-lg">
+                                        {{ $service->name ?? 'Nombre del servicio' }}
+                                    </h3>
+                                </div>
+
+                            </div>
+
+                            {{-- Contenido de la card --}}
+                            <div class="p-5 flex flex-col flex-grow">
+                                {{-- Descripción --}}
+                                <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow line-clamp-4">
+                                    {{ $service->small_description ?? 'Descripción del servicio' }}
+                                </p>
+
+                                {{-- Botón "Conoce más" --}}
+                                <div class="mt-auto">
+                                    <a href="{{ route('our_services.show_service', $service) }}"
+                                        class="group/btn relative inline-flex items-center justify-center w-full bg-[#0075FF] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl">
+                                        <span class="relative z-10 flex items-center gap-2">
+                                            Conoce más
+                                            <svg class="w-5 h-5 transition-transform group-hover/btn:translate-x-1"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-
-                    </div>
-                </article>
-            @endforeach
+                    </article>
+                @endforeach
+            </div>
         </div>
-    </div>
-    {{-- Botones de navegacion --}}
-    <div class="swiper-button-prev">
-        <i class="fa-solid fa-angle-left"></i>
-    </div>
-    <div class="swiper-button-next">
-        <i class="fa-solid fa-angle-right"></i>
-    </div>
 
-    {{-- Paginacion --}}
-    <div class="swiper-pagination service-pagination"></div>
-</div>
-    
+        {{-- Botones de navegación mejorados --}}
+        <div class="swiper-button-prev">
+            <div
+                class="bg-white hover:bg-[#0075FF] text-[#0075FF] hover:text-white rounded-full w-12 h-12 flex items-center justify-center shadow-xl transition-all duration-300 border-2 border-[#0075FF]">
+                <i class="fa-solid fa-chevron-left text-xl"></i>
+            </div>
+        </div>
+        <div class="swiper-button-next">
+            <div
+                class="bg-white hover:bg-[#0075FF] text-[#0075FF] hover:text-white rounded-full w-12 h-12 flex items-center justify-center shadow-xl transition-all duration-300 border-2 border-[#0075FF]">
+                <i class="fa-solid fa-chevron-right text-xl"></i>
+            </div>
+        </div>
+
+        {{-- Paginación mejorada --}}
+        <div class="swiper-pagination service-pagination"></div>
+    </div>
 
     <style>
         .card__content {
+
             overflow: hidden;
         }
 
         .card__article {
-            width: 250px;
-            overflow: hidden;
+            height: auto;
         }
 
-
-        .card__data {
-            padding: 1.2rem 1.2rem;
-        }
-
-        /* Swiper class */
+        /* Swiper Navigation Buttons */
         .swiper-button-prev:after,
         .swiper-button-next:after {
             content: "";
@@ -98,50 +126,69 @@
         .swiper-button-next {
             width: initial;
             height: initial;
-            font-size: 3rem;
-            color: #0ad3ff;
             display: none;
+            z-index: 10;
         }
 
-        .swiper-button-prev {
-            left: 0;
+        /* .swiper-button-prev {
+            left: -10px;
         }
 
         .swiper-button-next {
-            right: 0;
+            right: -10px;
+        } */
+
+        /* Pagination */
+        .swiper-pagination {
+            bottom: 0 !important;
         }
 
         .swiper-pagination-bullet {
-            background-color: #0ad3ff;
+            background-color: #0075FF;
+            width: 10px;
+            height: 10px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
         }
 
-        @media screen and (max-width: 320px) {
-            .card__data {
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            width: 30px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #0075FF 0%, #00CAF7 100%);
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 640px) {
+            .card__article .p-5 {
                 padding: 1rem;
             }
         }
 
         @media screen and (min-width: 768px) {
-            .card__content {
-                margin__inline: 3rem;
-            }
 
             .swiper-button-prev,
             .swiper-button-next {
-                display: block;
+                display: flex;
             }
         }
 
-        @media screen and(min-width: 1120px) {
-            .card__container {}
-
-            .swiper-button-next {
-                right: -1rem;
+        @media screen and (min-width: 1280px) {
+            /* .swiper-button-next {
+                right: 3px;
             }
 
             .swiper-button-prev {
-                left: -1rem;
-            }
+                left: 3px;
+            } */
+        }
+
+        /* Line clamp fallback para navegadores antiguos */
+        .line-clamp-4 {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     </style>
 </div>
