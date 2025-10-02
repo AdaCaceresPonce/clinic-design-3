@@ -74,11 +74,19 @@
                                 </p>
 
                                 @if (str_word_count($opinion->opinion) > 20)
-                                    <button @click="expanded = !expanded"
+                                     <button @click="expanded = !expanded"
                                         class="text-[#0075FF] text-sm font-semibold mt-2">
                                         <span x-show="!expanded">Leer más</span>
                                         <span x-show="expanded">Leer menos</span>
-                                    </button>
+                                    </button> 
+                                    {{-- <button 
+                                        @click="expanded = !expanded" 
+                                        :aria-expanded="expanded.toString()" 
+                                        class="text-[#0075FF] text-sm font-semibold mt-2"
+                                    >
+                                        <span x-show="!expanded">Leer más</span>
+                                        <span x-show="expanded">Leer menos</span>
+                                    </button> --}}
                                 @endif
                             </div>
 
