@@ -17,8 +17,8 @@
     :name="$contents->cover_title ?? 'Nuestros Servicios'" 
     :id="'cover'"/>
 
-    <img src="{{ Storage::url($contents->our_services_img ?? 'default_service.jpg') }}" alt="">
-    <span>{!! $contents->our_services_title ?? 'Servicios que ofrecemos' !!}</span>
+    {{-- <img src="{{ Storage::url($contents->our_services_img ?? 'default_service.jpg') }}" alt="">
+    <span>{!! $contents->our_services_title ?? 'Servicios que ofrecemos' !!}</span> --}}
 
     <section id="services">
         <x-container class="px-4 section__spacing">
