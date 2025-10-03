@@ -1,6 +1,6 @@
 <div class="flex justify-center align-middle w-full mb-5 mx-auto">
 
-    <div class="card__container swiper pb-8 px-0 w-full min-[768px]:px-10" x-init="let swiperCards = new Swiper('.card__content', {
+    <div class="card__container swiper pb-8 px-0 w-full min-[768px]:px-12" x-init="let swiperCards = new Swiper('.card__content', {
         loop: true,
         spaceBetween: 30,
         grabCursor: true,
@@ -28,11 +28,11 @@
             },
             1024: {
                 slidesPerView: 3,
-                spaceBetween: 25,
+                spaceBetween: 30,
             },
         },
     });">
-        <div class="card__content px-0 md:px-6 py-6">
+        <div class="card__content px-0 md:px-5 py-6">
             <div class="swiper-wrapper">
                 @foreach ($services as $service)
                     <article class="card__article swiper-slide group">
@@ -138,25 +138,7 @@
             right: -10px;
         } */
 
-        /* Pagination */
-        .swiper-pagination {
-            bottom: 0 !important;
-        }
 
-        .swiper-pagination-bullet {
-            background-color: #0075FF;
-            width: 10px;
-            height: 10px;
-            opacity: 0.5;
-            transition: all 0.3s ease;
-        }
-
-        .swiper-pagination-bullet-active {
-            opacity: 1;
-            width: 30px;
-            border-radius: 5px;
-            background: linear-gradient(90deg, #0075FF 0%, #00CAF7 100%);
-        }
 
         /* Responsive */
         @media screen and (max-width: 640px) {
