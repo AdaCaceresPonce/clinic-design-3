@@ -28,6 +28,7 @@ class OpinionFactory extends Factory
             'name' => $this->faker->firstName,
             'lastname' => $this->faker->lastName,
             'service_id' => $service ? $service->id : null,
+            'rating' => $this->faker->numberBetween(1, 5),
             'opinion' => $this->faker->text(400),
             'state' => $this->faker->randomElement(['Nuevo', 'Revisado']),
             'created_at' => $createdAt,
