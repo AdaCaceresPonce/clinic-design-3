@@ -2,6 +2,26 @@
     @apply py-14 sm:py-24;
 }
 
+/* Paginación de Sliders */
+.swiper-pagination {
+    bottom: 0 !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: #0075FF;
+    width: 10px;
+    height: 10px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #0075FF 0%, #00CAF7 100%);
+}
+
 /* html {
     scroll-behavior: smooth;
 } */
