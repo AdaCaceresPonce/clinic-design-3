@@ -20,7 +20,7 @@
         </div>
 
         {{-- Fondo azulado con gradiente --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0075FF]/60 via-[#0075FF]/30 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-blue-500/30 to-transparent z-10"></div>
 
         <x-container
             class="px-4 sm:px-8
@@ -87,7 +87,7 @@
                             px-6 py-4 bg-white border-2 border-[#0075FF]
                             hover:bg-blue-100/70
                             rounded-xl shadow-lg hover:shadow-xl
-                            transition-all duration-300">
+                            transition-all duration-300 hover:-translate-y-0.5">
 
                         <span>Ver servicios</span>
 
