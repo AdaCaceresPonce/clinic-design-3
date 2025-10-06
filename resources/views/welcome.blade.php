@@ -10,40 +10,112 @@
 
 
     {{-- Portada --}}
-    <section class="w-full  brightness-90 contrast-150 bg-cover bg-no-repeat bg-center relative" id="cover"
-        style="background-image: url('{{ Storage::url(optional($contents)['cover_img'] ?? 'images/default.jpg') }}');">
+    <section class="w-full min-h-[calc(100dvh-4.44rem)] relative" id="cover">
 
-        {{-- Fondo azulado para la imagen --}}
-        <div class="bg-blue-700 bg-opacity-20 inset-0 absolute z-10">
+        {{-- Imagen de fondo --}}
+        <div class="absolute inset-0 z-0">
+            <img src="{{ Storage::url(optional($contents)['cover_img'] ?? 'images/default.jpg') }}" alt="Clínica Dental"
+                class="w-full h-full object-cover brightness-90 contrast-125">
+
+            {{-- Fondo azulado para la imagen --}}
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0075FF]/60 via-[#0075FF]/30 to-transparent"></div>
+
+
         </div>
 
+
         <x-container
-            class="px-2 sm:px-8 py-16 sm:py-24
-            h-full flex align-middle items-center justify-center lg:justify-start relative z-20">
+            class="px-4 sm:px-8
+            min-h-[calc(100dvh-4.44rem)] flex items-center justify-center lg:justify-start relative z-20
+            py-16 sm:py-12">
 
             {{-- Tarjeta de bienvenida --}}
             <div
-                class="bg-[#EAFBFF] bg-opacity-65 sm:bg-opacity-75 rounded-3xl px-6 py-10 sm:px-11 sm:py-12 max-w-[570px] text-center lg:text-start">
+                class="bg-white/95 max-w-[570px] backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl">
 
-                <span class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight">
-                    {{-- Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span> --}}
-                    {!! $contents['cover_title'] ?? 'Titulo predeterminado' !!}
-                </span>
+                {{-- Badge superior --}}
+                <div
+                    class="inline-flex items-center gap-2 bg-blue-50 text-[#0075FF] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span>Clínica dental de confianza</span>
+                </div>
 
-                <div class="mt-6">
-                    <span class="text-base lg:text-lg font-medium">
+                {{-- Título --}}
+                <div class="mb-4">
+                    <span class="text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-tight">
+                        {{-- Prepárate para una <span class="text-[#0075FF]"> grandiosa experiencia dental.</span> --}}
+                        {!! $contents['cover_title'] ?? 'Titulo predeterminado' !!}
+                    </span>
+                </div>
+
+                {{-- Descripción --}}
+                <div class="mb-8 sm:mb-10">
+                    <span class="text-base leading-relaxed">
                         {!! $contents['cover_description'] ?? 'Titulo de descripcion' !!}
                     </span>
                 </div>
 
-                <div class="mt-8 sm:mt-12">
-                    <a href=" {{ route('contact_us.index') }}" class="text-base inline-flex lg:text-xl text-white px-8 py-4 bg-blue-600 rounded-xl">
-                        Agenda una cita
+                {{-- Botones --}}
+                <div class="flex flex-col sm:flex-row gap-3">
+
+                    <a href="{{ route('contact_us.index') }}"
+                        class="group inline-flex flex-1 gap-2 items-center justify-center 
+                            text-base sm:text-lg font-semibold text-white 
+                            px-6 py-4 bg-gradient-to-r from-[#0075FF] to-[#00CAF7] 
+                            hover:from-[#0060D9] hover:to-[#0075FF]
+                            rounded-xl shadow-lg hover:shadow-xl 
+                            transition-all duration-300 hover:-translate-y-0.5">
+
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>Agenda tu cita</span>
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+
+                    </a>
+
+                    <a href="#services"
+                        class="inline-flex items-center justify-center gap-2
+                            text-base sm:text-lg font-semibold text-[#0075FF]
+                            px-6 py-4 bg-white border-2 border-[#0075FF]
+                            hover:bg-blue-100/70
+                            rounded-xl shadow-lg hover:shadow-xl
+                            transition-all duration-300">
+
+                        <span>Ver servicios</span>
+                        
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+
                     </a>
                 </div>
 
             </div>
         </x-container>
+
+        {{-- Indicador de scroll --}}
+        <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20">
+
+            <div class="flex items-center text-white animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down w-9 h-9 drop-shadow-md">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 9l6 6l6 -6" />
+                </svg>
+            </div>
+
+        </div>
     </section>
 
     {{-- Confianza --}}
@@ -118,11 +190,12 @@
             </div>
 
             {{-- Slider --}}
-            <livewire:web.sliders.slider-services lazy/>
-            
+            <livewire:web.sliders.slider-services lazy />
+
             {{-- Ver todos los servicios --}}
             <div class="flex w-full justify-center">
-                <a href="{{ route('our_services.index') }}" class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                <a href="{{ route('our_services.index') }}"
+                    class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
                     Ver todos los servicios
                 </a>
             </div>
@@ -142,7 +215,7 @@
                     </div>
                     <div class="mt-3">
                         <span class="text-base sm:text-lg lg:text-xl">
-                            {!! $contents['our_professionals_description'] ?? 'Título de professionales no configurado'!!}
+                            {!! $contents['our_professionals_description'] ?? 'Título de professionales no configurado' !!}
                         </span>
                     </div>
                 </div>
@@ -150,7 +223,7 @@
                 {{-- Slider --}}
                 <livewire:web.sliders.slider-professionals lazy />
 
-                
+
                 {{-- Ver todos los profesionales --}}
                 <div class="flex w-full justify-center">
                     <a href="{{ route('our_professionals.index') }}"
@@ -170,19 +243,19 @@
             <div class="mb-3 px-4 text-center sm:px-15 lg:px-40">
                 <div>
                     <span class="text-3xl sm:text-4xl lg:text-4xl leading-tight lg:leading-tight">
-                        {!! $contents['testimonials_title'] ?? 'Título de testimonios no configurado'!!}
+                        {!! $contents['testimonials_title'] ?? 'Título de testimonios no configurado' !!}
                     </span>
                 </div>
                 <div class="mt-3">
                     <span class="text-base sm:text-lg lg:text-xl">
-                        {!! $contents['testimonials_description'] ?? 'Título de testimonios no configurado'!!}
+                        {!! $contents['testimonials_description'] ?? 'Título de testimonios no configurado' !!}
                     </span>
                 </div>
             </div>
             {{-- Slider Opiniones --}}
 
             <livewire:web.sliders.slider-opinions lazy />
-            
+
 
             {{-- Enviar opinion --}}
             <div class="flex w-full justify-center mt-5">
@@ -199,7 +272,6 @@
     <x-contact-section />
 
     <style>
-    
         /* Slider profesionales */
         .professional__card {
             height: calc((100% - 30px) / 2) !important;
@@ -222,16 +294,13 @@
                 Swal.fire(data[0]);
             });
         </script>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
-            
-
             //Swiper Opiniones
-            
+
 
             //Swiper Profesionales
-            
         </script>
     @endpush
 
