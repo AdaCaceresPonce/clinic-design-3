@@ -10,19 +10,17 @@
 
 
     {{-- Portada --}}
-    <section class="w-full min-h-[calc(100dvh-4.44rem)] relative" id="cover">
+    <section class="w-full min-h-[calc(100vh-4.44rem)] relative" id="cover">
 
         {{-- Imagen de fondo --}}
         <div class="absolute inset-0 z-0">
             <img src="{{ Storage::url(optional($contents)['cover_img'] ?? 'images/default.jpg') }}" alt="Clínica Dental"
-                class="w-full h-full object-cover brightness-90 contrast-125">
-
-            {{-- Fondo azulado para la imagen --}}
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0075FF]/60 via-[#0075FF]/30 to-transparent"></div>
-
+                class="w-full h-full object-cover">
 
         </div>
 
+        {{-- Fondo azulado con gradiente --}}
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0075FF]/60 via-[#0075FF]/30 to-transparent z-10"></div>
 
         <x-container
             class="px-4 sm:px-8
@@ -92,7 +90,7 @@
                             transition-all duration-300">
 
                         <span>Ver servicios</span>
-                        
+
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -104,12 +102,12 @@
         </x-container>
 
         {{-- Indicador de scroll --}}
-        <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20">
+        <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 z-20">
 
             <div class="flex items-center text-white animate-bounce">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down w-9 h-9 drop-shadow-md">
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down w-9 h-9">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M6 9l6 6l6 -6" />
                 </svg>
@@ -161,7 +159,10 @@
 
                     <div class="mt-9 flex justify-start">
                         <a href="{{ route('about_us.index') }}"
-                            class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                            class="text-base sm:text-lg font-semibold text-white
+                                bg-gradient-to-r from-[#0075FF] to-[#00CAF7] hover:from-[#0060D9] hover:to-[#0075FF]
+                                rounded-xl px-6 py-4
+                                transition-all duration-300 hover:-translate-y-0.5">
                             Conócenos
                         </a>
                     </div>
@@ -195,7 +196,10 @@
             {{-- Ver todos los servicios --}}
             <div class="flex w-full justify-center">
                 <a href="{{ route('our_services.index') }}"
-                    class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                    class="text-base sm:text-lg font-semibold text-white
+                        bg-gradient-to-r from-[#0075FF] to-[#00CAF7] hover:from-[#0060D9] hover:to-[#0075FF]
+                        rounded-xl px-6 py-4
+                        transition-all duration-300 hover:-translate-y-0.5">
                     Ver todos los servicios
                 </a>
             </div>
@@ -227,7 +231,10 @@
                 {{-- Ver todos los profesionales --}}
                 <div class="flex w-full justify-center">
                     <a href="{{ route('our_professionals.index') }}"
-                        class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                        class="text-base sm:text-lg font-semibold text-white
+                            bg-gradient-to-r from-[#0075FF] to-[#00CAF7] hover:from-[#0060D9] hover:to-[#0075FF]
+                            rounded-xl px-6 py-4
+                            transition-all duration-300 hover:-translate-y-0.5">
                         Conoce al equipo completo
                     </a>
                 </div>
@@ -260,7 +267,10 @@
             {{-- Enviar opinion --}}
             <div class="flex w-full justify-center mt-5">
                 <a href="{{ route('contact_us.index') }}#opinions_form"
-                    class="text-white text-lg font-medium bg-blue-700 py-3 px-6 rounded-lg">
+                    class="text-base sm:text-lg font-semibold text-white
+                        bg-gradient-to-r from-[#0075FF] to-[#00CAF7] hover:from-[#0060D9] hover:to-[#0075FF]
+                        rounded-xl px-6 py-4
+                        transition-all duration-300 hover:-translate-y-0.5">
                     Envíanos tu opinión aquí
                 </a>
             </div>
