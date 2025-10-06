@@ -11,11 +11,7 @@
     </x-slot>
 
     {{-- Portada --}}
-    <x-page-cover 
-    :image="Storage::url($contents->cover_img ?? 'default_cover.jpg')" 
-    :name="$contents->cover_title ?? 'Nuestros Profesionales'" 
-    :id="'cover'" 
-    />
+    <x-page-cover :image="Storage::url($contents->cover_img ?? 'default_cover.jpg')" :name="$contents->cover_title ?? 'Nuestros Profesionales'" :id="'cover'" />
 
     <section id="professionals">
         <x-container class="px-4 section__spacing">
@@ -32,6 +28,12 @@
                     <span class="text-3xl lg:text-4xl leading-tight lg:leading-tight font-bold">
                         {!! $contents->our_professionals_title ?? 'Título por defecto' !!}
                     </span>
+
+                    <div class="mt-4">
+                        <span>
+                            {!! $contents['our_professionals_description'] !!}
+                        </span>
+                    </div>
                 </div>
             </div>
         </x-container>
@@ -47,7 +49,7 @@
 
                 <div class="mt-4">
                     <span class="text-lg sm:text-lg lg:text-xl">
-                    {!! $contents->our_professionals_team_description ?? 'Descripción por defecto del equipo.' !!}
+                        {!! $contents->our_professionals_team_description ?? 'Descripción por defecto del equipo.' !!}
                     </span>
                 </div>
 
@@ -97,7 +99,8 @@
                                 </p>
 
                                 {{-- Redes sociales --}}
-                                <div class="text-[#0075FF] mt-auto text-2xl flex space-x-3 items-center justify-center lg:justify-end">
+                                <div
+                                    class="text-[#0075FF] mt-auto text-2xl flex space-x-3 items-center justify-center lg:justify-end">
                                     @if ($professional->facebook_link)
                                         <a href="{{ $professional->facebook_link }}"
                                             class="hover:text-[#0048ff] hover:scale-110">
