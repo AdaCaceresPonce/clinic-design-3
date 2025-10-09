@@ -24,7 +24,7 @@
 
     @if ($src)
         <figure class="relative group overflow-hidden rounded-lg">
-            <img class="object-cover object-center w-full aspect-video border border-gray-300 rounded-lg transition-transform duration-300 group-hover:scale-105"
+            <img class="object-contain object-center w-full aspect-video border bg-white border-gray-300 rounded-lg transition-transform duration-300 group-hover:scale-105"
                 src="{{ Storage::url($src) }}" alt="{{ $label }}">
 
             <div
