@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\PagesContents;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactUsPageContent;
 use Illuminate\Http\Request;
+use App\Rules\QuillRequired;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ContactUsPageContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         Gate::authorize('contact_us_page.view');
@@ -22,56 +20,32 @@ class ContactUsPageContentController extends Controller
         return view('admin.web_page_contents.contact_us_page.index', compact('contents'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(ContactUsPageContent $contactUsPageContent)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ContactUsPageContent $contactUsPageContent)
+    public function edit()
     {
         Gate::authorize('contact_us_page.update');
+
+        $contents = ContactUsPageContent::first();
+
+        return view('admin.web_page_contents.contact_us_page.edit', compact('contents'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ContactUsPageContent $contactUsPageContent)
+    public function update(Request $request)
     {
         Gate::authorize('contact_us_page.update');
+
+        $contactUsPageContent = ContactUsPageContent::firstOrFail();
 
         $request->validate([
-            'cover_title' => 'required',
-            'cover_img' => 'image|max:1024',
+            'cover_title' => [new QuillRequired()],
+            'cover_img' => 'nullable|image|max:1024',
 
-            'contact_us_title' => 'required',
-            'contact_us_description' => 'required',
-            'contact_us_img' => 'image|max:1024',
+            'contact_us_title' => [new QuillRequired()],
+            'contact_us_description' => [new QuillRequired()],
+            'contact_us_img' => 'nullable|image|max:1024',
 
-            'opinions_title' => 'required',
-            'opinions_description' => 'required',
-            'opinions_img' => 'image|max:1024',
+            'opinions_title' => [new QuillRequired()],
+            'opinions_description' => [new QuillRequired()],
+            'opinions_img' => 'nullable|image|max:1024',
 
         ], [], [
 
@@ -84,7 +58,7 @@ class ContactUsPageContentController extends Controller
 
             'opinions_title' => 'título de la sección de opiniones',
             'opinions_description' => 'descripción de la sección de opiniones',
-            'opinions_img' => 'image|max:1024',
+            'opinions_img' => 'imagen de la sección opiniones',
 
         ]);
 
@@ -111,13 +85,5 @@ class ContactUsPageContentController extends Controller
         ]);
 
         return redirect()->route('admin.contact_us_page_content.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ContactUsPageContent $contactUsPageContent)
-    {
-        //
     }
 }

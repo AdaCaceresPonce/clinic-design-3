@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\PagesContents;
 
 use App\Http\Controllers\Controller;
 use App\Models\OurServicesPageContent;
 use Illuminate\Http\Request;
+use App\Rules\QuillRequired;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class OurServicesPageContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         Gate::authorize('our_services_page.view');
@@ -22,55 +20,31 @@ class OurServicesPageContentController extends Controller
         return view('admin.web_page_contents.our_services_page.index', compact('contents'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(OurServicesPageContent $ourServicesPageContent)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(OurServicesPageContent $ourServicesPageContent)
+    public function edit()
     {
         Gate::authorize('our_services_page.update');
+
+        $contents = OurServicesPageContent::first();
+
+        return view('admin.web_page_contents.our_services_page.edit', compact('contents'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, OurServicesPageContent $ourServicesPageContent)
+    public function update(Request $request)
     {
         Gate::authorize('our_services_page.update');
+        
+        $ourServicesPageContent = OurServicesPageContent::firstOrFail();
 
         $request->validate([
-            'cover_title' => 'required',
-            'cover_img' => 'image|max:1024',
+            'cover_title' => [new QuillRequired()],
+            'cover_img' => 'nullable|image|max:1024',
 
-            'our_services_title' => 'required',
-            'our_services_description' => 'required',
-            'our_services_img' => 'image|max:1024',
+            'our_services_title' => [new QuillRequired()],
+            'our_services_description' => [new QuillRequired()],
+            'our_services_img' => 'nullable|image|max:1024',
 
-            'services_we_offer_title' => 'required',
-            'services_we_offer_description' => 'required',
+            'services_we_offer_title' => [new QuillRequired()],
+            'services_we_offer_description' => [new QuillRequired()],
 
         ], [], [
             'cover_title' => 'título de la portada',
@@ -108,13 +82,5 @@ class OurServicesPageContentController extends Controller
         ]);
 
         return redirect()->route('admin.our_services_page_content.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(OurServicesPageContent $ourServicesPageContent)
-    {
-        //
     }
 }
