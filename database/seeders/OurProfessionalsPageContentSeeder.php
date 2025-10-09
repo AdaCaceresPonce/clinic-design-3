@@ -23,7 +23,7 @@ class OurProfessionalsPageContentSeeder extends Seeder
 
         // 'nombre_campo_bd' => 'archivo.jpg',
         'cover_img' => 'cover.webp',
-        'pur_professionals_img' => 'our_professionals.webp',
+        'our_professionals_img' => 'our_professionals.webp',
     ];
 
     public function run(): void
