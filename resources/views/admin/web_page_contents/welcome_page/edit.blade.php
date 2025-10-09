@@ -98,13 +98,11 @@
         <form action="{{ route('admin.welcome_page_content.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="card w-full space-y-14">
+            <div class="space-y-6"">
 
-                {{-- Seccion de portada --}}
-                <section id="cover">
-
-                    <x-page-section-title :section_title="'Sección de Portada'" :route_name="'welcome.index'" :section_id="'#cover'" />
-
+                {{-- Sección Portada --}}
+                <x-admin.web_page_contents.page-section-card id="cover" :section_title="'Portada'" :description="'Primera sección con imagen de fondo'"
+                    :route_name="'welcome.index'" :section_id="'#cover'">
                     {{-- Columnas --}}
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
 
@@ -166,14 +164,12 @@
                         </div>
 
                     </div>
-
-                </section>
+                </x-admin.web_page_contents.page-section-card>
 
                 {{-- Seccion de Info Clinica --}}
-                <section id="info_clinic">
 
-                    <x-page-section-title :section_title="'Sección de Detalles de la Clínica'" :route_name="'welcome.index'" :section_id="'#clinic_about'" />
-
+                <x-admin.web_page_contents.page-section-card id="info_clinic" :section_title="'Sobre Nosotros'" :description="'Información de confianza de la Clínica'"
+                    :route_name="'welcome.index'" :section_id="'#clinic_about'">
                     {{-- Columnas --}}
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                         <div class="space-y-4">
@@ -248,12 +244,11 @@
                         </div>
 
                     </div>
-                </section>
+                </x-admin.web_page_contents.page-section-card>
 
                 {{-- Seccion de Servicios --}}
-                <section id="services">
-                    <x-page-section-title :section_title="'Sección de Servicios'" :route_name="'welcome.index'" :section_id="'#services'" />
-
+                <x-admin.web_page_contents.page-section-card id="services" :section_title="'Nuestros Servicios'" :description="'Títulos de la sección Servicios'"
+                    :route_name="'welcome.index'" :section_id="'#services'">
                     {{-- Columnas --}}
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                         <div>
@@ -291,13 +286,11 @@
 
 
                     </div>
-                </section>
+                </x-admin.web_page_contents.page-section-card>
 
                 {{-- Seccion de Profesionales --}}
-                <section id="professionals">
-
-                    <x-page-section-title :section_title="'Sección de Profesionales'" :route_name="'welcome.index'" :section_id="'#professionals'" />
-
+                <x-admin.web_page_contents.page-section-card id="professionals" :section_title="'Nuestros Profesionales'" :description="'Títulos de la sección del equipo'"
+                    :route_name="'welcome.index'" :section_id="'#professionals'">
                     {{-- Columnas --}}
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                         <div>
@@ -333,13 +326,11 @@
                         </div>
 
                     </div>
-                </section>
+                </x-admin.web_page_contents.page-section-card>
 
                 {{-- Seccion de Opiniones --}}
-                <section id="opinions">
-
-                    <x-page-section-title :section_title="'Sección de Opiniones'" :route_name="'welcome.index'" :section_id="'#testimonials'" />
-
+                <x-admin.web_page_contents.page-section-card id="opinions" :section_title="'Opiniones'" :description="'Títulos de la sección de testimonios'" :route_name="'welcome.index'"
+                    :section_id="'#testimonials'">
                     {{-- Columnas --}}
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                         <div>
@@ -375,12 +366,10 @@
                         </div>
 
                     </div>
-
-                </section>
-
+                </x-admin.web_page_contents.page-section-card>
 
                 {{-- Botón actualizar --}}
-                <div class="flex pt-6 justify-end">
+                <div class="flex justify-end">
 
                     <x-button class="ml-2">
                         Guardar todos los cambios
