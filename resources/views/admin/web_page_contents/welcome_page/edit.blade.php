@@ -159,6 +159,10 @@
                                     src="{{ Storage::url($contents['cover_img']) }}" alt="">
                             </figure>
 
+                            <x-label class="mt-2">
+                                (Formatos aceptados: JPG, JPEG, PNG, WEBP. / Máx: 1mb)
+                            </x-label>
+
                             <x-input-error class="mt-1" for="cover_img" />
 
                         </div>
@@ -167,7 +171,6 @@
                 </x-admin.web_page_contents.page-section-card>
 
                 {{-- Seccion de Info Clinica --}}
-
                 <x-admin.web_page_contents.page-section-card id="info_clinic" :section_title="'Sobre Nosotros'" :description="'Información de confianza de la Clínica'"
                     :route_name="'welcome.index'" :section_id="'#clinic_about'">
                     {{-- Columnas --}}
@@ -220,7 +223,7 @@
 
                             </div>
 
-                            <x-label class="mb-1 mt-2 text-[15px] font-black">
+                            <x-label class="mb-1 mt-4 text-[15px] font-black">
                                 Imagen
                             </x-label>
 
@@ -238,6 +241,10 @@
                                     class="object-contain w-full h-full aspect-[3/2] border-[2px] bg-white border-blue-400 @error('about_image') border-red-500 @enderror rounded-xl"
                                     src="{{ Storage::url($contents['about_image']) }}" alt="">
                             </figure>
+
+                            <x-label class="mt-2">
+                                (Formatos aceptados: JPG, JPEG, PNG, WEBP. / Máx: 1mb)
+                            </x-label>
 
                             <x-input-error class="mt-1" for="about_image" />
 
@@ -329,8 +336,8 @@
                 </x-admin.web_page_contents.page-section-card>
 
                 {{-- Seccion de Opiniones --}}
-                <x-admin.web_page_contents.page-section-card id="opinions" :section_title="'Opiniones'" :description="'Títulos de la sección de testimonios'" :route_name="'welcome.index'"
-                    :section_id="'#testimonials'">
+                <x-admin.web_page_contents.page-section-card id="opinions" :section_title="'Opiniones'" :description="'Títulos de la sección de testimonios'"
+                    :route_name="'welcome.index'" :section_id="'#testimonials'">
                     {{-- Columnas --}}
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
                         <div>
