@@ -39,7 +39,7 @@ class AboutUsPageContentController extends Controller
         $request->validate(
             [
 
-                'cover_title' => [new QuillRequired()],
+                'cover_title' => 'required',
                 'cover_img' => 'nullable|image|max:1024',
 
                 'about_us_title' => [new QuillRequired()],

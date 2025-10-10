@@ -36,7 +36,7 @@ class OurServicesPageContentController extends Controller
         $ourServicesPageContent = OurServicesPageContent::firstOrFail();
 
         $request->validate([
-            'cover_title' => [new QuillRequired()],
+            'cover_title' => 'required',
             'cover_img' => 'nullable|image|max:1024',
 
             'our_services_title' => [new QuillRequired()],

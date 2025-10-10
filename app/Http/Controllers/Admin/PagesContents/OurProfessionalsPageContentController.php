@@ -37,7 +37,7 @@ class OurProfessionalsPageContentController extends Controller
 
         $request->validate(
             [
-                'cover_title' => [new QuillRequired()],
+                'cover_title' => 'required',
                 'cover_img' => 'nullable|image|max:1024',
 
                 'our_professionals_title' => [new QuillRequired()],

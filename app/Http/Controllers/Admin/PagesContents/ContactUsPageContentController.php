@@ -36,7 +36,7 @@ class ContactUsPageContentController extends Controller
         $contactUsPageContent = ContactUsPageContent::firstOrFail();
 
         $request->validate([
-            'cover_title' => [new QuillRequired()],
+            'cover_title' => 'required',
             'cover_img' => 'nullable|image|max:1024',
 
             'contact_us_title' => [new QuillRequired()],
