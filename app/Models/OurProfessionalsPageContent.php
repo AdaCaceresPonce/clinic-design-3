@@ -15,6 +15,7 @@ class OurProfessionalsPageContent extends Model
         'cover_title',
         'cover_img',
         'our_professionals_title',
+        'our_professionals_description',
         'our_professionals_img',
         'our_professionals_team_title',
         'our_professionals_team_description',
