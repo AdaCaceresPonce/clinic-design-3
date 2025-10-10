@@ -5,8 +5,8 @@
     'section_id' => ''
 ])
 
-<div {{ $attributes->merge(['class' => 'mb-6']) }}>
-    <div class="flex flex-col sm:flex-row sm:items-start lg:items-center sm:justify-between gap-3 border-b-2 border-gray-200 pb-4">
+<div {{ $attributes->merge(['class' => '']) }}>
+    <div class="flex flex-col sm:flex-row sm:items-start lg:items-center sm:justify-between gap-3">
         
         {{-- Lado izquierdo: Título y descripción --}}
         <div class="flex-1 min-w-0 space-y-1 mb-1 md:mb-0">
