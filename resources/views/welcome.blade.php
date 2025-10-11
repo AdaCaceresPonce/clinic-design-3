@@ -207,7 +207,7 @@
     </section>
 
     {{-- Profesionales --}}
-    <section class="bg-[#DEFFFE] border-y-[3px] border-y-[#00CAF7]" id="professionals">
+    <section class=" " id="professionals">
         <x-container class="px-4 section__spacing">
             <div class="">
                 {{-- Titulo --}}
@@ -281,17 +281,6 @@
     {{-- Contacto --}}
     <x-contact-section />
 
-    <style>
-        /* Slider profesionales */
-        .professional__card {
-            height: calc((100% - 30px) / 2) !important;
-        }
-
-        .professional__photo {
-            height: 310px;
-            margin: 0 auto;
-        }
-    </style>
 
     @push('js')
         {{-- SweetAlert --}}
@@ -306,12 +295,7 @@
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
-            //Swiper Opiniones
-
-
-            //Swiper Profesionales
-        </script>
+        
     @endpush
 
 </x-app-layout>
