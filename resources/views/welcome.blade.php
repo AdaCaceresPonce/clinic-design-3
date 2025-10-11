@@ -207,7 +207,7 @@
     </section>
 
     {{-- Profesionales --}}
-    <section class="bg-[#DEFFFE] border-y-[3px] border-y-[#00CAF7]" id="professionals">
+    <section class=" " id="professionals">
         <x-container class="px-4 section__spacing">
             <div class="">
                 {{-- Titulo --}}

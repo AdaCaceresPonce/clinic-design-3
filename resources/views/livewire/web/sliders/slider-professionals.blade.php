@@ -39,7 +39,7 @@
 
                     <div
                         class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl 
-                                transition-all duration-500 h-full flex flex-col border-2 border-gray-100 
+                                transition-all duration-500 h-full flex flex-col border-2 border-gray-200 
                                 hover:border-[#00CAF7] hover:-translate-y-2">
 
                         {{-- Contenedor de imagen --}}
