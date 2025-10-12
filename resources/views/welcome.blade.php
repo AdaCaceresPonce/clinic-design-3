@@ -20,7 +20,9 @@
         </div>
 
         {{-- Fondo azulado con gradiente --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-blue-500/30 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-sky-400/30 to-teal-400/30 z-10"></div>
+        {{-- <div class="absolute inset-0 bg-gradient-to-r from-teal-400/50 via-sky-400/30 to-blue-600/40 z-10"></div> --}}
+
 
         <x-container
             class="px-4 sm:px-8
@@ -107,7 +109,7 @@
             <div class="flex items-center text-white animate-bounce">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down w-9 h-9">
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down w-9 h-9 drop-shadow-md">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M6 9l6 6l6 -6" />
                 </svg>
