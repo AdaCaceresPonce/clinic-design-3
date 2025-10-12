@@ -82,7 +82,7 @@
                                     {{ $service->small_description ?? 'Descripción del servicio' }}
                                 </p>
                                 <div class="flex justify-center">
-                                    <a href="{{ route('our_services.show_service', $service) }}"
+                                    <a href="{{ route('our_services.show_service', $service) }}"scm-history-item:c%3A%5Cxampp%5Chtdocs%5CEjercicioLaravel%5Cclinic-design-3?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%222db3ec2bfc191dd09c8cc8145b614f8cd6cf6021%22%2C%22historyItemParentId%22%3A%22fe1479d26e392f60477e78c1792ffcd474fe3b88%22%2C%22historyItemDisplayId%22%3A%222db3ec2%22%7D
                                         class="text-white items-center bg-blue-700 py-2 px-4 rounded-lg">
                                         Conoce más
                                     </a>
