@@ -1,22 +1,22 @@
 {{-- seccion de contacto opiniones --}}
-<form wire:submit="save" id="form">
-    <div class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 size-full border-[3px] border-[#00CAF7] space-y-5">
+ <form wire:submit="save" id="form">
+    <div class="bg-[#F1FDFF] rounded-xl px-6 py-6 sm:px-8 sm:py-8 size-full border-[3px] border-[#00CAF7] space-y-5"> 
 
         {{-- Nombres y Apellidos --}}
-        <div class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0">
+        <div class="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-4 lg:flex-col lg:space-y-5 lg:space-x-0"> 
 
             {{-- Nombres --}}
-            <div class="flex-1">
+             <div class="flex-1">
                 <x-label class="mb-1 text-[15px] font-black">
                     Nombres:
                     <span class="text-red-500">*</span>
                 </x-label>
                 <x-input class="w-full" placeholder="Ingrese sus nombres" wire:model.live="opinion.name" />
                 <x-input-error for="opinion.name" />
-            </div>
+            </div> 
 
             {{-- Apellidos --}}
-            <div class="flex-1">
+             <div class="flex-1">
                 <x-label class="mb-1 text-[15px] font-black">
                     Apellidos:
                     <span class="text-red-500">*</span>
@@ -25,10 +25,10 @@
                 <x-input-error for="opinion.lastname" />
             </div>
 
-        </div>
+        </div> 
 
         {{-- Servicio --}}
-        <div>
+         <div>
             <x-label class="mb-1 text-[15px] font-black">
                 Servicio:
             </x-label>
@@ -44,10 +44,10 @@
                 @endforeach
             </x-select>
             <x-input-error for="opinion.service_id" />
-        </div>
+        </div> 
 
         {{-- Valoración con Estrellas --}}
-        <div x-data="{
+         <div x-data="{
             rating: @entangle('opinion.rating').live,
             hover: 0
         }">
@@ -76,10 +76,10 @@
             </div>
 
             <x-input-error for="opinion.rating" />
-        </div>
+        </div> 
 
         {{-- Mensaje de opinión --}}
-        <div>
+         <div>
             <x-label class="mb-1 text-[15px] font-black">
                 Opinión:
                 <span class="text-red-500">*</span>
@@ -89,10 +89,10 @@
                 placeholder="Ingresa tu opinión aquí" wire:model.live="opinion.opinion"></textarea>
 
             <x-input-error for="opinion.opinion" />
-        </div>
+        </div> 
 
         {{-- Botón de enviar --}}
-        <div class="flex w-full justify-center">
+         <div class="flex w-full justify-center">
 
             <button type="submit" wire:loading.attr="disabled" wire:target="save"
                 class="text-white text-lg font-medium bg-blue-700 py-2 px-6 rounded-lg">
@@ -117,4 +117,4 @@
             </button>
         </div>
     </div>
-</form>
+</form> 
