@@ -20,7 +20,7 @@
         </div>
 
         {{-- Fondo azulado con gradiente --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-sky-400/30 to-teal-400/30 z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-sky-400/30 to-transparent z-10"></div>
         {{-- <div class="absolute inset-0 bg-gradient-to-r from-teal-400/50 via-sky-400/30 to-blue-600/40 z-10"></div> --}}
 
 
