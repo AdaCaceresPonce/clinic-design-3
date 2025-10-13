@@ -1,5 +1,5 @@
 <div
-    class="professionals__content w-full max-w-[400px] sm:w-[543px] min-[780px]:w-[600px] min-[968px]:w-full lg:max-w-[1150px]
+    class="professionals__content w-full max-w-[400px] sm:max-w-[600px] min-[780px]:max-w-[800px] min-[968px]:w-full lg:max-w-[1150px]
         min-[968px]:px-8 mb-5 
         flex justify-center mx-auto align-middle">
 
@@ -23,7 +23,7 @@
                         fill: 'row',
                     },
                 },
-                968: {
+                1000: {
                     slidesPerView: 3,
                     grid: {
                         rows: 2,
