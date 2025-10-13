@@ -10,24 +10,24 @@
 
 
     {{-- Portada --}}
-    <section class="w-full min-h-[calc(100vh-4.44rem)] relative" id="cover">
+    <section class="w-full min-h-[calc(100vh-4.25rem)] sm:min-h-[calc(100vh-4.5rem)] relative" id="cover">
 
         {{-- Imagen de fondo --}}
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-10">
             <img src="{{ Storage::url(optional($contents)['cover_img'] ?? 'images/default.jpg') }}" alt="Clínica Dental"
                 class="w-full h-full object-cover">
 
         </div>
 
         {{-- Fondo azulado con gradiente --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-sky-400/30 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-sky-400/30 to-transparent z-20"></div>
         {{-- <div class="absolute inset-0 bg-gradient-to-r from-teal-400/50 via-sky-400/30 to-blue-600/40 z-10"></div> --}}
 
 
         <x-container
             class="px-4 sm:px-8
-            min-h-[calc(100dvh-4.44rem)] flex items-center justify-center lg:justify-start relative z-20
-            py-16 sm:py-12">
+            min-h-[calc(100vh-4.25rem)] sm:min-h-[calc(100vh-4.5rem)] flex items-center justify-center lg:justify-start relative z-30
+            py-14 sm:py-12">
 
             {{-- Tarjeta de bienvenida --}}
             <div
