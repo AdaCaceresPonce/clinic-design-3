@@ -3,9 +3,11 @@
         min-[968px]:px-8 mb-5 
         flex justify-center mx-auto align-middle">
 
-    <div class="swiper w-full h-full professionals__slider px-4 min-[968px]:px-4 pt-6 pb-14 js-professionals-slider"
+    <div class="swiper w-full h-full professionals__slider px-4 min-[968px]:px-4 pt-6 pb-10 js-professionals-slider"
         x-init="let swiperProfessionals = new Swiper('.js-professionals-slider', {
+        
             // Optional parameters
+            loop: true,
             spaceBetween: 30,
             grabCursor: true,
         
@@ -15,20 +17,22 @@
                 clickable: true,
             },
         
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+        
             breakpoints: {
-                600: {
-                    slidesPerView: 2,
-                    grid: {
-                        rows: 1,
-                        fill: 'row',
-                    },
+        
+                640: {
+                    slidesPerView: 1,
                 },
-                1000: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
                     slidesPerView: 3,
-                    grid: {
-                        rows: 2,
-                        fill: 'row',
-                    },
                 },
             },
         });">
@@ -43,7 +47,7 @@
                                 hover:border-[#00CAF7] hover:-translate-y-2">
 
                         {{-- Contenedor de imagen --}}
-                        <div class="relative overflow-hidden aspect-[5/6]">
+                        <div class="relative overflow-hidden aspect-[5/5]">
 
                             {{-- Foto del Profesional --}}
                             <img src="{{ $professional->photo }}" alt="image"
@@ -135,10 +139,11 @@
                         </div>
 
                         {{-- Datos del profesional --}}
-                        <div class="px-6 py-6 flex-1 grow flex flex-col bg-gradient-to-b from-white to-gray-50/30">
+                        <div
+                            class="px-6 py-6 flex-1 grow flex flex-col gap-4 bg-gradient-to-b from-white to-gray-50/30">
 
                             {{-- Nombre --}}
-                            <h3 class="font-bold text-lg text-gray-900 mb-4 line-clamp-2 leading-tight">
+                            <h3 class="font-bold text-lg text-gray-900 line-clamp-2 leading-tight">
                                 {{ $professional->name }} {{ $professional->lastname }}
                             </h3>
 
@@ -161,6 +166,22 @@
                                 @endforeach
                             </div>
 
+                            {{-- Botón de acción --}}
+                            <div class="">
+                                <button
+                                    class="w-full group/btn flex items-center justify-center gap-2 
+                                               bg-[#0075FF]
+                                               text-white font-semibold text-sm py-3 px-4 rounded-xl
+                                               transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                                    <span>Ver perfil</span>
+                                    <svg class="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </article>
@@ -173,7 +194,6 @@
 
 
     <style>
-
         /* .professional__card {
             height: calc((100% - 30px) / 2) !important;
         } */
