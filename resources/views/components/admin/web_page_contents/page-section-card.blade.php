@@ -5,7 +5,7 @@
     'section_id' => ''
 ])
 
-<x-wireui-card padding="none" {{ $attributes->merge(['class' => 'overflow-hidden']) }}>
+<x-wireui-card padding="none" shadow="md" {{ $attributes->merge(['class' => 'overflow-hidden']) }}>
 
     {{-- Header / Título --}}
     <div class="px-6 py-5 border-b border-gray-200">
