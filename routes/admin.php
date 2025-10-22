@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::resource('services', ServiceController::class);
 Route::resource('specialties', SpecialtyController::class);
 Route::resource('professionals', ProfessionalController::class);
-Route::resource('clinic_information', ClinicInformationController::class);
+// Route::resource('clinic_information', ClinicInformationController::class);
 
 Route::resource('inquiries', InquiryController::class);
 Route::resource('opinions', OpinionController::class);
@@ -52,3 +52,7 @@ Route::put('contact_us_page_content', [ContactUsPageContentController::class, 'u
 
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
+
+Route::get('clinic_information', [ClinicInformationController::class, 'index'])->name('clinic_information.index');
+Route::get('clinic_information/edit', [ClinicInformationController::class, 'edit'])->name('clinic_information.edit');
+Route::put('clinic_information', [ClinicInformationController::class, 'update'])->name('clinic_information.update');
