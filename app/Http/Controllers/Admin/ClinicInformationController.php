@@ -48,17 +48,22 @@ class ClinicInformationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ClinicInformation $clinicInformation)
+    public function edit()
     {
         Gate::authorize('settings.update');
+
+        $clinic_information = ClinicInformation::first();
+        return view('admin.clinic_information.edit', compact('clinic_information'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ClinicInformation $clinicInformation)
+    public function update(Request $request)
     {
         Gate::authorize('settings.update');
+
+        $clinicInformation = ClinicInformation::firstOrFail();
 
         // Validación de los datos del formulario
         $request->validate([
