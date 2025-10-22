@@ -10,7 +10,7 @@
 
     @can('settings.update')
         <x-slot name="action">
-            <x-wireui-button href="{{ route('admin.clinic_information.edit') }}">
+            <x-wireui-button amber href="{{ route('admin.clinic_information.edit') }}">
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
                     <path
