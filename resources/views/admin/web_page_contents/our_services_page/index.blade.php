@@ -10,7 +10,7 @@
 
     @can('our_services_page.update')
         <x-slot name="action">
-            <x-wireui-button href="{{ route('admin.our_services_page_content.edit') }}">
+            <x-wireui-button amber href="{{ route('admin.our_services_page_content.edit') }}">
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
                     <path
